@@ -1,0 +1,214 @@
+<svg viewBox="0 0 1300 570" width="1300" height="570" lang="de" role="img" aria-labelledby="archify-diagram-title archify-diagram-description" style="font-family:ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;fill:rgb(0, 0, 0);font-size:16px;font-weight:400;" xmlns="http://www.w3.org/2000/svg">
+        <title id="archify-diagram-title">clubforge: eine App, ein Server pro Verein</title>
+        <desc id="archify-diagram-description">Architektur von clubforge: Expo-App mit lokaler Datenbank, Caddy, FastAPI-API, PowerSync, Zitadel, Worker und PostgreSQL auf dem Vereinsserver; Mail, Web Push und Push-Gateway als externe Dienste.</desc>
+<rect width="1300" height="570" rx="20" style="fill:#f6f1e9"/>
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" style="fill:rgb(138, 129, 116);"></polygon>
+          </marker>
+          <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" style="fill:rgb(217, 84, 12);"></polygon>
+          </marker>
+          <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" style="fill:rgb(168, 50, 74);"></polygon>
+          </marker>
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" style="fill:rgb(46, 98, 130);"></polygon>
+          </marker>
+        </defs>
+        <rect x="10" y="216" width="230" height="122" rx="8" stroke-width="1" style="fill:rgba(0, 0, 0, 0);stroke:rgb(168, 50, 74);stroke-width:1px;stroke-dasharray:4px, 4px;"></rect>
+        <rect x="340" y="80" width="690" height="404" rx="12" stroke-width="1" style="fill:rgba(251, 191, 36, 0.05);stroke:rgb(168, 116, 15);stroke-width:1px;stroke-dasharray:8px, 4px;"></rect>
+        <path d="M 210 282 L 370 282" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" style="fill:none;stroke:rgb(217, 84, 12);stroke-width:1.8px;"></path>
+        <path d="M 440 250 L 440 234 Q 440 226 448 226 L 568 226 Q 576 226 576 218 L 576 150 Q 576 142 584 142 L 600 142" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" style="fill:none;stroke:rgb(217, 84, 12);stroke-width:1.8px;"></path>
+        <path d="M 510 275 L 600 275" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 510 289 L 547 289 Q 555 289 555 297 L 555 424 Q 555 432 563 432 L 600 432" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 750 142 L 766 142 Q 774 142 774 150 L 774 214 Q 774 222 782 222 L 917 222 Q 925 222 925 230 L 925 246" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)" style="fill:none;stroke:rgb(217, 84, 12);stroke-width:1.8px;"></path>
+        <path d="M 750 282 L 850 282" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 750 432 L 917 432 Q 925 432 925 424 L 925 318" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 925 174 L 925 246" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 1000 128 L 1032 128 Q 1040 128 1040 120 L 1040 108 Q 1040 100 1048 100 L 1080 100" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 1000 142 L 1032 142 Q 1040 142 1040 150 L 1040 182 Q 1040 190 1048 190 L 1080 190" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <path d="M 1000 156 L 1032 156 Q 1040 156 1040 164 L 1040 272 Q 1040 280 1048 280 L 1080 280" stroke-width="1.5" marker-end="url(#arrowhead-dashed)" style="fill:none;stroke:rgb(46, 98, 130);stroke-width:1.5px;stroke-dasharray:4px, 4px;"></path>
+        <path d="M 440 314 L 440 330 Q 440 338 448 338 L 458 338 Q 466 338 466 346 L 466 368 Q 466 376 458 376 L 458 376 Q 450 376 450 384 L 450 400" stroke-width="1.5" marker-end="url(#arrowhead)" style="fill:none;stroke:rgb(138, 129, 116);stroke-width:1.5px;"></path>
+        <g role="group" aria-label="Direct relationship explorer" style="fill:rgb(0, 0, 0);"><desc id="archify-relationship-help">Use arrow keys to explore relationships. Press Enter or Space to pin details; Escape clears.</desc><g role="button" tabindex="0" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 1 of 12: Expo-App to Caddy, Commands (HTTPS). Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Expo-App → Caddy · Commands (HTTPS)</title><path d="M 210 282 L 370 282" stroke-width="1.8" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 210 282 L 370 282" stroke-width="1.8" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 2 of 12: Caddy to FastAPI-API, connects to. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Caddy → FastAPI-API · connects to</title><path d="M 440 250 L 440 234 Q 440 226 448 226 L 568 226 Q 576 226 576 218 L 576 150 Q 576 142 584 142 L 600 142" stroke-width="1.8" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 440 250 L 440 234 Q 440 226 448 226 L 568 226 Q 576 226 576 218 L 576 150 Q 576 142 584 142 L 600 142" stroke-width="1.8" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 3 of 12: Caddy to PowerSync, Sync (Stream). Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Caddy → PowerSync · Sync (Stream)</title><path d="M 510 275 L 600 275" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 510 275 L 600 275" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 4 of 12: Caddy to Zitadel v4, Login. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Caddy → Zitadel v4 · Login</title><path d="M 510 289 L 547 289 Q 555 289 555 297 L 555 424 Q 555 432 563 432 L 600 432" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 510 289 L 547 289 Q 555 289 555 297 L 555 424 Q 555 432 563 432 L 600 432" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 5 of 12: FastAPI-API to PostgreSQL 17, SQL (RLS). Press Enter for details." style="fill:rgb(0, 0, 0);"><title>FastAPI-API → PostgreSQL 17 · SQL (RLS)</title><path d="M 750 142 L 766 142 Q 774 142 774 150 L 774 214 Q 774 222 782 222 L 917 222 Q 925 222 925 230 L 925 246" stroke-width="1.8" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 750 142 L 766 142 Q 774 142 774 150 L 774 214 Q 774 222 782 222 L 917 222 Q 925 222 925 230 L 925 246" stroke-width="1.8" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 6 of 12: PowerSync to PostgreSQL 17, Replikation. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>PowerSync → PostgreSQL 17 · Replikation</title><path d="M 750 282 L 850 282" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 750 282 L 850 282" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 7 of 12: Zitadel v4 to PostgreSQL 17, connects to. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Zitadel v4 → PostgreSQL 17 · connects to</title><path d="M 750 432 L 917 432 Q 925 432 925 424 L 925 318" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 750 432 L 917 432 Q 925 432 925 424 L 925 318" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 8 of 12: Worker to PostgreSQL 17, Outbox. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Worker → PostgreSQL 17 · Outbox</title><path d="M 925 174 L 925 246" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 925 174 L 925 246" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 9 of 12: Worker to Mail-Server, connects to. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Worker → Mail-Server · connects to</title><path d="M 1000 128 L 1032 128 Q 1040 128 1040 120 L 1040 108 Q 1040 100 1048 100 L 1080 100" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 1000 128 L 1032 128 Q 1040 128 1040 120 L 1040 108 Q 1040 100 1048 100 L 1080 100" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 10 of 12: Worker to Web Push, connects to. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Worker → Web Push · connects to</title><path d="M 1000 142 L 1032 142 Q 1040 142 1040 150 L 1040 182 Q 1040 190 1048 190 L 1080 190" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 1000 142 L 1032 142 Q 1040 142 1040 150 L 1040 182 Q 1040 190 1048 190 L 1080 190" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 11 of 12: Worker to Push-Gateway, connects to. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Worker → Push-Gateway · connects to</title><path d="M 1000 156 L 1032 156 Q 1040 156 1040 164 L 1040 272 Q 1040 280 1048 280 L 1080 280" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 1000 156 L 1032 156 Q 1040 156 1040 164 L 1040 272 Q 1040 280 1048 280 L 1080 280" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g><g role="button" tabindex="-1" aria-pressed="false" aria-describedby="archify-relationship-help" aria-label="Inspect relationship 12 of 12: Caddy to Instanz-Manifest, /.well-known/clubforge.json. Press Enter for details." style="fill:rgb(0, 0, 0);"><title>Caddy → Instanz-Manifest · /.well-known/clubforge.json</title><path d="M 440 314 L 440 330 Q 440 338 448 338 L 458 338 Q 466 338 466 346 L 466 368 Q 466 376 458 376 L 458 376 Q 450 376 450 384 L 450 400" stroke-width="1.5" style="fill:none;stroke:rgba(0, 0, 0, 0);stroke-width:24px;stroke-linecap:round;stroke-linejoin:round;"></path><path d="M 440 314 L 440 330 Q 440 338 448 338 L 458 338 Q 466 338 466 346 L 466 368 Q 466 376 458 376 L 458 376 Q 450 376 450 384 L 450 400" stroke-width="1.5" style="fill:none;stroke:color(srgb 0.85098 0.329412 0.0470588 / 0.34);stroke-width:6px;stroke-dasharray:2px, 4px;stroke-linecap:round;stroke-linejoin:round;opacity:0;"></path></g></g><g id="node-app" tabindex="0" role="button" aria-label="Focus Expo-App, SQLite + PowerSync-SDK, Gerät: iOS, Android, Web" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Expo-App · SQLite + PowerSync-SDK · Gerät: iOS, Android, Web</title>
+          <rect x="40" y="246" width="170" height="72" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="40" y="246" width="170" height="72" rx="6" stroke-width="1.5" style="fill:rgba(217, 84, 12, 0.1);stroke:rgb(217, 84, 12);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(46 252) scale(0.6875)" style="fill:none;stroke:rgb(217, 84, 12);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <rect x="2" y="3" width="12" height="10" rx="2" style="fill:none;stroke:rgb(217, 84, 12);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></rect>
+            <path d="M2 6.5h12" style="fill:none;stroke:rgb(217, 84, 12);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+            <circle cx="4.1" cy="4.8" r=".7" style="fill:rgb(217, 84, 12);stroke:none;stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></circle>
+            <circle cx="6.3" cy="4.8" r=".7" style="fill:rgb(217, 84, 12);stroke:none;stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></circle>
+          </g>
+          <text x="125" y="280" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Expo-App</text>
+        <text x="125" y="296" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">SQLite + PowerSync-SDK</text>
+        </g>
+        <g id="node-manifest" tabindex="0" role="button" aria-label="Focus Instanz-Manifest, Name, Logo, Farben, Login, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Instanz-Manifest · Name, Logo, Farben, Login · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="370" y="400" width="160" height="64" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="370" y="400" width="160" height="64" rx="6" stroke-width="1.5" style="fill:rgba(27, 23, 20, 0.05);stroke:rgb(74, 64, 54);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(376 406) scale(0.6875)" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="450" y="430" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Instanz-Manifest</text>
+        <text x="450" y="446" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">Name, Logo, Farben, Login</text>
+        </g>
+        <g id="node-caddy" tabindex="0" role="button" aria-label="Focus Caddy, TLS, Reverse Proxy, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Caddy · TLS, Reverse Proxy · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="370" y="250" width="140" height="64" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="370" y="250" width="140" height="64" rx="6" stroke-width="1.5" style="fill:rgba(176, 122, 20, 0.1);stroke:rgb(168, 116, 15);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(376 256) scale(0.6875)" style="fill:none;stroke:rgb(168, 116, 15);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <path d="M4.3 12.5h7.3a2.4 2.4 0 0 0 .2-4.8 4 4 0 0 0-7.5-1.3A3.1 3.1 0 0 0 4.3 12.5Z" style="fill:none;stroke:rgb(168, 116, 15);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="440" y="280" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Caddy</text>
+        <text x="440" y="296" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">TLS, Reverse Proxy</text>
+        </g>
+        <g id="node-api" tabindex="0" role="button" aria-label="Focus FastAPI-API, Commands, Auth, Suche, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>FastAPI-API · Commands, Auth, Suche · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="600" y="110" width="150" height="64" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="600" y="110" width="150" height="64" rx="6" stroke-width="1.5" style="fill:rgba(27, 23, 20, 0.05);stroke:rgb(74, 64, 54);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(606 116) scale(0.6875)" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="675" y="140" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">FastAPI-API</text>
+        <text x="675" y="156" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">Commands, Auth, Suche</text>
+        </g>
+        <g id="node-sync" tabindex="0" role="button" aria-label="Focus PowerSync, Sync Streams, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>PowerSync · Sync Streams · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="600" y="250" width="150" height="64" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="600" y="250" width="150" height="64" rx="6" stroke-width="1.5" style="fill:rgba(27, 23, 20, 0.05);stroke:rgb(74, 64, 54);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(606 256) scale(0.6875)" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="675" y="280" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">PowerSync</text>
+        <text x="675" y="296" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">Sync Streams</text>
+        </g>
+        <g id="node-zitadel" tabindex="0" role="button" aria-label="Focus Zitadel v4, Login v2, OIDC, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Zitadel v4 · Login v2, OIDC · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="600" y="400" width="150" height="64" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="600" y="400" width="150" height="64" rx="6" stroke-width="1.5" style="fill:rgba(168, 50, 74, 0.09);stroke:rgb(168, 50, 74);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(606 406) scale(0.6875)" style="fill:none;stroke:rgb(168, 50, 74);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z" style="fill:none;stroke:rgb(168, 50, 74);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+            <path d="m5.8 8 1.5 1.5 3-3" style="fill:none;stroke:rgb(168, 50, 74);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="675" y="430" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Zitadel v4</text>
+        <text x="675" y="446" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">Login v2, OIDC</text>
+        </g>
+        <g id="node-worker" tabindex="0" role="button" aria-label="Focus Worker, Outbox, Zustellung, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Worker · Outbox, Zustellung · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="850" y="110" width="150" height="64" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="850" y="110" width="150" height="64" rx="6" stroke-width="1.5" style="fill:rgba(27, 23, 20, 0.05);stroke:rgb(74, 64, 54);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(856 116) scale(0.6875)" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5" style="fill:none;stroke:rgb(74, 64, 54);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="925" y="140" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Worker</text>
+        <text x="925" y="156" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">Outbox, Zustellung</text>
+        </g>
+        <g id="node-pg" tabindex="0" role="button" aria-label="Focus PostgreSQL 17, ParadeDB, RLS, BM25, Vereinsserver (Docker Compose, ein Server pro Verein)" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>PostgreSQL 17 · ParadeDB, RLS, BM25 · Vereinsserver (Docker Compose, ein Server pro Verein)</title>
+          <rect x="850" y="246" width="150" height="72" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="850" y="246" width="150" height="72" rx="6" stroke-width="1.5" style="fill:rgba(46, 98, 130, 0.1);stroke:rgb(46, 98, 130);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(856 252) scale(0.6875)" style="fill:none;stroke:rgb(46, 98, 130);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <ellipse cx="8" cy="4" rx="5" ry="2" style="fill:none;stroke:rgb(46, 98, 130);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></ellipse>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2" style="fill:none;stroke:rgb(46, 98, 130);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="925" y="280" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">PostgreSQL 17</text>
+        <text x="925" y="296" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">ParadeDB, RLS, BM25</text>
+        </g>
+        <g id="node-mail" tabindex="0" role="button" aria-label="Focus Mail-Server, SMTP, Architecture component" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Mail-Server · SMTP · Architecture component</title>
+          <rect x="1080" y="70" width="160" height="60" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="1080" y="70" width="160" height="60" rx="6" stroke-width="1.5" style="fill:rgba(94, 86, 77, 0.08);stroke:rgb(122, 112, 100);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(1086 76) scale(0.6875)" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></rect>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="1160" y="98" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Mail-Server</text>
+        <text x="1160" y="114" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">SMTP</text>
+        </g>
+        <g id="node-webpush" tabindex="0" role="button" aria-label="Focus Web Push, Browser-Dienste, Architecture component" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Web Push · Browser-Dienste · Architecture component</title>
+          <rect x="1080" y="160" width="160" height="60" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="1080" y="160" width="160" height="60" rx="6" stroke-width="1.5" style="fill:rgba(94, 86, 77, 0.08);stroke:rgb(122, 112, 100);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(1086 166) scale(0.6875)" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></rect>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="1160" y="188" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Web Push</text>
+        <text x="1160" y="204" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">Browser-Dienste</text>
+        </g>
+        <g id="node-gateway" tabindex="0" role="button" aria-label="Focus Push-Gateway, APNs / FCM (später), Architecture component" aria-pressed="false" style="fill:rgb(0, 0, 0);">
+          <title>Push-Gateway · APNs / FCM (später) · Architecture component</title>
+          <rect x="1080" y="250" width="160" height="60" rx="6" style="fill:rgb(255, 253, 249);"></rect>
+          <rect x="1080" y="250" width="160" height="60" rx="6" stroke-width="1.5" style="fill:rgba(94, 86, 77, 0.08);stroke:rgb(122, 112, 100);stroke-width:1.5px;"></rect>
+          <g aria-hidden="true" transform="translate(1086 256) scale(0.6875)" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;opacity:0.76;">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></rect>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5" style="fill:none;stroke:rgb(122, 112, 100);stroke-width:1.35px;stroke-linecap:round;stroke-linejoin:round;"></path>
+          </g>
+          <text x="1160" y="278" font-size="11" font-weight="600" text-anchor="middle" style="fill:rgb(27, 23, 20);font-size:11px;font-weight:600;text-anchor:middle;">Push-Gateway</text>
+        <text x="1160" y="294" font-size="9" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:9px;font-weight:400;text-anchor:middle;">APNs / FCM (später)</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="246.6" y="252" width="86.8" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="290" y="262" font-size="8" text-anchor="middle" style="fill:rgb(74, 64, 54);font-size:8px;font-weight:400;text-anchor:middle;">Commands (HTTPS)</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="518.8" y="255" width="72.4" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="555" y="265" font-size="8" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:400;text-anchor:middle;">Sync (Stream)</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="538" y="340.5" width="34" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="555" y="350.5" font-size="8" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:400;text-anchor:middle;">Login</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="747.4" y="178" width="53.199999999999996" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="774" y="188" font-size="8" text-anchor="middle" style="fill:rgb(74, 64, 54);font-size:8px;font-weight:400;text-anchor:middle;">SQL (RLS)</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="768.6" y="262" width="62.8" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="800" y="272" font-size="8" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:400;text-anchor:middle;">Replikation</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="952.6" y="202" width="38.8" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="972" y="212" font-size="8" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:400;text-anchor:middle;">Outbox</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="383.2" y="318" width="139.6" height="14" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="453" y="328" font-size="8" text-anchor="middle" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:400;text-anchor:middle;">/.well-known/clubforge.json</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="14" y="226" width="139.6" height="16" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="18" y="239" font-size="9" font-weight="600" style="fill:rgb(168, 50, 74);font-size:9px;font-weight:600;">Gerät: iOS, Android, Web</text>
+        </g>
+        <g style="fill:rgb(0, 0, 0);">
+          <rect x="344" y="90" width="296.2" height="16" rx="3" style="fill:rgb(255, 253, 249);"></rect>
+          <text x="348" y="103" font-size="9" font-weight="600" style="fill:rgb(168, 116, 15);font-size:9px;font-weight:600;">Vereinsserver (Docker Compose, ein Server pro Verein)</text>
+        </g>
+        <g role="toolbar" aria-label="Semantic legend" style="fill:rgb(0, 0, 0);">
+          <text x="40" y="534" font-size="12" font-weight="650" style="fill:rgb(27, 23, 20);font-size:12px;font-weight:650;">Legende</text>
+          <g role="button" tabindex="0" aria-label="Inspect App, 1 node" aria-pressed="false" aria-haspopup="dialog" aria-controls="semantic-lens" aria-expanded="false" style="fill:rgb(0, 0, 0);"><rect aria-hidden="true" x="35.00" y="538.30" width="66.00" height="24" rx="4" style="fill:rgba(0, 0, 0, 0);stroke:rgba(0, 0, 0, 0);stroke-width:1.4px;"></rect>
+            <rect x="40" y="545" width="16" height="10" rx="2.5" stroke-width="1" style="fill:rgba(217, 84, 12, 0.1);stroke:rgb(217, 84, 12);stroke-width:1px;"></rect>
+            <text x="62" y="554" font-size="10" font-weight="500" style="fill:rgb(94, 86, 77);font-size:10px;font-weight:500;">App</text>
+          <g aria-hidden="true" style="fill:rgb(0, 0, 0);"><rect x="83.00" y="543.30" width="14.00" height="14" rx="7" style="fill:rgb(255, 253, 249);stroke:rgb(226, 232, 240);stroke-width:1px;"></rect><text x="90.00" y="552.80" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:700;text-anchor:middle;">1</text></g></g>
+          <g role="button" tabindex="-1" aria-label="Inspect Dienst, 4 nodes" aria-pressed="false" aria-haspopup="dialog" aria-controls="semantic-lens" aria-expanded="false" style="fill:rgb(0, 0, 0);"><rect aria-hidden="true" x="115.00" y="538.30" width="83.99" height="24" rx="4" style="fill:rgba(0, 0, 0, 0);stroke:rgba(0, 0, 0, 0);stroke-width:1.4px;"></rect>
+            <rect x="120" y="545" width="16" height="10" rx="2.5" stroke-width="1" style="fill:rgba(27, 23, 20, 0.05);stroke:rgb(74, 64, 54);stroke-width:1px;"></rect>
+            <text x="142" y="554" font-size="10" font-weight="500" style="fill:rgb(94, 86, 77);font-size:10px;font-weight:500;">Dienst</text>
+          <g aria-hidden="true" style="fill:rgb(0, 0, 0);"><rect x="180.99" y="543.30" width="14.00" height="14" rx="7" style="fill:rgb(255, 253, 249);stroke:rgb(226, 232, 240);stroke-width:1px;"></rect><text x="187.99" y="552.80" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:700;text-anchor:middle;">4</text></g></g>
+          <g role="button" tabindex="-1" aria-label="Inspect Datenbank, 1 node" aria-pressed="false" aria-haspopup="dialog" aria-controls="semantic-lens" aria-expanded="false" style="fill:rgb(0, 0, 0);"><rect aria-hidden="true" x="210.00" y="538.30" width="101.97" height="24" rx="4" style="fill:rgba(0, 0, 0, 0);stroke:rgba(0, 0, 0, 0);stroke-width:1.4px;"></rect>
+            <rect x="215" y="545" width="16" height="10" rx="2.5" stroke-width="1" style="fill:rgba(46, 98, 130, 0.1);stroke:rgb(46, 98, 130);stroke-width:1px;"></rect>
+            <text x="237" y="554" font-size="10" font-weight="500" style="fill:rgb(94, 86, 77);font-size:10px;font-weight:500;">Datenbank</text>
+          <g aria-hidden="true" style="fill:rgb(0, 0, 0);"><rect x="293.97" y="543.30" width="14.00" height="14" rx="7" style="fill:rgb(255, 253, 249);stroke:rgb(226, 232, 240);stroke-width:1px;"></rect><text x="300.97" y="552.80" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:700;text-anchor:middle;">1</text></g></g>
+          <g role="button" tabindex="-1" aria-label="Inspect Proxy, 1 node" aria-pressed="false" aria-haspopup="dialog" aria-controls="semantic-lens" aria-expanded="false" style="fill:rgb(0, 0, 0);"><rect aria-hidden="true" x="320.00" y="538.30" width="77.99" height="24" rx="4" style="fill:rgba(0, 0, 0, 0);stroke:rgba(0, 0, 0, 0);stroke-width:1.4px;"></rect>
+            <rect x="325" y="545" width="16" height="10" rx="2.5" stroke-width="1" style="fill:rgba(176, 122, 20, 0.1);stroke:rgb(168, 116, 15);stroke-width:1px;"></rect>
+            <text x="347" y="554" font-size="10" font-weight="500" style="fill:rgb(94, 86, 77);font-size:10px;font-weight:500;">Proxy</text>
+          <g aria-hidden="true" style="fill:rgb(0, 0, 0);"><rect x="379.99" y="543.30" width="14.00" height="14" rx="7" style="fill:rgb(255, 253, 249);stroke:rgb(226, 232, 240);stroke-width:1px;"></rect><text x="386.99" y="552.80" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:700;text-anchor:middle;">1</text></g></g>
+          <g role="button" tabindex="-1" aria-label="Inspect Login, 1 node" aria-pressed="false" aria-haspopup="dialog" aria-controls="semantic-lens" aria-expanded="false" style="fill:rgb(0, 0, 0);"><rect aria-hidden="true" x="410.00" y="538.30" width="77.99" height="24" rx="4" style="fill:rgba(0, 0, 0, 0);stroke:rgba(0, 0, 0, 0);stroke-width:1.4px;"></rect>
+            <rect x="415" y="545" width="16" height="10" rx="2.5" stroke-width="1" style="fill:rgba(168, 50, 74, 0.09);stroke:rgb(168, 50, 74);stroke-width:1px;"></rect>
+            <text x="437" y="554" font-size="10" font-weight="500" style="fill:rgb(94, 86, 77);font-size:10px;font-weight:500;">Login</text>
+          <g aria-hidden="true" style="fill:rgb(0, 0, 0);"><rect x="469.99" y="543.30" width="14.00" height="14" rx="7" style="fill:rgb(255, 253, 249);stroke:rgb(226, 232, 240);stroke-width:1px;"></rect><text x="476.99" y="552.80" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:700;text-anchor:middle;">1</text></g></g>
+          <g role="button" tabindex="-1" aria-label="Inspect extern / später, 3 nodes" aria-pressed="false" aria-haspopup="dialog" aria-controls="semantic-lens" aria-expanded="false" style="fill:rgb(0, 0, 0);"><rect aria-hidden="true" x="500.00" y="538.30" width="137.96" height="24" rx="4" style="fill:rgba(0, 0, 0, 0);stroke:rgba(0, 0, 0, 0);stroke-width:1.4px;"></rect>
+            <rect x="505" y="545" width="16" height="10" rx="2.5" stroke-width="1" style="fill:rgba(94, 86, 77, 0.08);stroke:rgb(122, 112, 100);stroke-width:1px;"></rect>
+            <text x="527" y="554" font-size="10" font-weight="500" style="fill:rgb(94, 86, 77);font-size:10px;font-weight:500;">extern / später</text>
+          <g aria-hidden="true" style="fill:rgb(0, 0, 0);"><rect x="619.96" y="543.30" width="14.00" height="14" rx="7" style="fill:rgb(255, 253, 249);stroke:rgb(226, 232, 240);stroke-width:1px;"></rect><text x="626.96" y="552.80" style="fill:rgb(94, 86, 77);font-size:8px;font-weight:700;text-anchor:middle;">3</text></g></g>
+        </g>
+      </svg>
