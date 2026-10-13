@@ -24,10 +24,15 @@
       <p class="notice" id="state" hidden></p>
       <a class="btn" id="open-app" href="#" hidden>In der App öffnen</a>
       <a class="btn ghost" id="open-web" href="#" hidden>Im Browser öffnen</a>
+      <figure class="join-qr" id="qr" hidden>
+        <svg id="qr-svg" role="img" aria-label="QR-Code dieser Einladung"></svg>
+        <figcaption>Mit dem Handy scannen</figcaption>
+      </figure>
     </div>
     <p class="join-note" id="note">Einen Einladungslink bekommt ihr von eurem Verein. Er sieht so aus: <code>…/join/?host=app.euer-verein.example</code>. Mehr über das Projekt auf der <a href="../">Startseite</a>.</p>
   </div>
 </main>
+<script src="qrcode.js"></script>
 <script src="join.js"></script>
 </body>
 </html>
