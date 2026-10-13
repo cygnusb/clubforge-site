@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https:; connect-src https:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>Verein beitreten – clubforge</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="join">
+  <div class="join-card" id="card">
+    <div class="join-head" id="head">
+      <div id="logo" class="mark" aria-hidden="true">c</div>
+      <h1 id="name">clubforge</h1>
+      <p id="host" hidden></p>
+    </div>
+    <div class="join-body" id="body">
+      <p id="intro">clubforge ist die Vereins-App zum Selbsthosten. Diese Seite öffnet die Einladung eines Vereins.</p>
+      <p class="notice" id="state" hidden></p>
+      <a class="btn" id="open-app" href="#" hidden>In der App öffnen</a>
+      <a class="btn ghost" id="open-web" href="#" hidden>Im Browser öffnen</a>
+    </div>
+    <p class="join-note" id="note">Einen Einladungslink bekommt ihr von eurem Verein. Er sieht so aus: <code>…/join/?host=app.euer-verein.example</code>. Mehr über das Projekt auf der <a href="../">Startseite</a>.</p>
+  </div>
+</main>
+<script src="join.js"></script>
+</body>
+</html>
