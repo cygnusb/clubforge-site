@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Betrieb – clubforge</title>
+<meta name="description" content="So betreibt ein Verein clubforge auf einem eigenen Server: Voraussetzungen, Kosten, Installation mit einem Befehl, Backups und Updates.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../config.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="#ablauf">Ablauf</a>
+      <a class="hide-s" href="#voraussetzungen">Voraussetzungen</a>
+      <a class="hide-s" href="#kosten">Kosten</a>
+      <a class="hide-s" href="#danach">Danach</a>
+      <a data-repo="" data-label="Quellcode" href="#danach" hidden>Quellcode</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Betrieb: <em>euer Server</em> in einem Abend</h1>
+      <p class="lead">Ein kleiner Server, drei Namen im DNS, ein Befehl. Das Zertifikat kommt automatisch von Let's Encrypt, Backups sind verschlüsselt, Sicherheitsupdates laufen von allein.</p>
+      <div class="btn-row">
+        <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Die Anleitung lesen">Die Anleitung liegt im Quellcode (folgt mit dem Pilot)</span>
+        <a class="btn ghost" href="../">Zurück zur Übersicht</a>
+      </div>
+    </div>
+    <pre><span class="c"># frischer Server, Debian 12/13 oder Ubuntu 24.04</span>
+sudo deploy/install.sh \
+  --app app.mein-verein.example \
+  --sync sync.mein-verein.example \
+  --login login.mein-verein.example \
+  --email vorstand@mein-verein.example \
+  --club "Mein Verein" --ref v0.1.0
+
+<span class="c"># danach die erste Admin-Person</span>
+deploy/admin.sh vorstand@mein-verein.example Vera Vorstand</pre>
+  </div>
+</section>
+
+<section id="ablauf" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Der Ablauf</h2>
+      <p class="lead">Fünf Schritte, davon dauert der erste Bau der Web-App am längsten (10 bis 20 Minuten).</p>
+    </div>
+    <ol class="roadmap">
+      <li class="done"><small>1</small><strong>Server mieten</strong><span>4 GB Arbeitsspeicher, EU-Standort. Bei Hetzner ab etwa 5 € im Monat.</span></li>
+      <li class="done"><small>2</small><strong>Drei Namen setzen</strong><span><code>app.</code>, <code>sync.</code> und <code>login.</code> Ihrer Domain zeigen auf die IP des Servers.</span></li>
+      <li class="done"><small>3</small><strong>Installieren</strong><span>Installer per SSH, cloud-init oder eine OpenTofu-Vorlage für Hetzner, AWS oder Google Cloud.</span></li>
+      <li class="done"><small>4</small><strong>Erste Person anlegen</strong><span><code>admin.sh</code> legt Mitglied und Anmeldung an, das Einmalpasswort wird beim ersten Login geändert.</span></li>
+      <li class="done"><small>5</small><strong>Backup-Schlüssel sichern</strong><span>In den Passwortmanager des Vereins, für zwei Personen. Ohne ihn sind Backups nicht lesbar.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="voraussetzungen">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Was ihr braucht</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Einen Server</h3><p>Linux (Debian 12/13 oder Ubuntu 24.04), x86_64 oder arm64, mindestens 2 vCPU und 4 GB RAM, 40 GB Platte, feste IPv4-Adresse.</p></div>
+      <div class="card"><h3>Eine Domain</h3><p>Drei Einträge setzen können. Die Namen sind frei wählbar, aber nach der Installation fest.</p></div>
+      <div class="card"><h3>Offene Ports</h3><p>22 (SSH), 80 und 443. Port 80 braucht Let's Encrypt zur Prüfung des Zertifikats.</p></div>
+      <div class="card"><h3>Mail (optional)</h3><p>Ein SMTP-Zugang für E-Mail-Benachrichtigungen. Ohne ihn funktionieren App und Push trotzdem.</p></div>
+      <div class="card"><h3>Speicher für Kopien (optional)</h3><p>S3-kompatibler Objektspeicher (Hetzner, AWS, Google) für Backup-Kopien außerhalb des Servers.</p></div>
+      <div class="card"><h3>Einen Passwortmanager</h3><p>Für Backup-Schlüssel und die <code>.env</code>, mit Zugriff für zwei Personen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kosten" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Was es kostet</h2>
+      <p class="lead">Richtwerte, Stand Herbst 2026. Preise vor der Bestellung beim Anbieter prüfen.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Hetzner Cloud</h3><p>CAX11 oder CX22: etwa 4 bis 6 € im Monat. Hauptweg, Standorte in Deutschland und Finnland, Auftragsverarbeitung in der Konsole.</p></div>
+      <div class="card"><h3>AWS</h3><p>EC2 t4g.medium mit Elastic IP: etwa 25 bis 35 € im Monat, Region Frankfurt.</p></div>
+      <div class="card"><h3>Google Cloud</h3><p>e2-medium mit statischer IP: etwa 25 bis 35 € im Monat, Region Frankfurt.</p></div>
+      <div class="card"><h3>Sonstiges</h3><p>Domain etwa 10 bis 15 € im Jahr. Zertifikat und Software kosten nichts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="danach">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Und danach?</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Backups</h3><p>Täglich, verschlüsselt, 30 Tage aufbewahrt, auf Wunsch zusätzlich im Objektspeicher. Mit einem Befehl lässt sich ein Restore testen.</p></div>
+      <div class="card"><h3>Updates</h3><p>Sicherheitsupdates des Systems automatisch. Neue clubforge-Versionen mit <code>update.sh</code>: Backup, Bau, Migration, Prüfung, Rückweg.</p></div>
+      <div class="card"><h3>Überwachung</h3><p><code>check.sh</code> prüft DNS, Zertifikat, alle Endpunkte und das letzte Backup. Dazu ein externer Check und ein Backup-Herzschlag.</p></div>
+      <div class="card"><h3>Datenschutz</h3><p>Auftragsverarbeitung mit dem Hoster, Serverstandort in der EU, verschlüsselte Backups. Die Anleitung liefert die Checkliste.</p></div>
+    </div>
+    <div class="btn-row">
+      <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Alle Betriebs-Seiten im Quellcode">Alle Betriebs-Seiten folgen mit dem Quellcode</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later</span>
+    <span><span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="../join/">Einladungsseite</a></span>
+  </div>
+</footer>
+</body>
+</html>

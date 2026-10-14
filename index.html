@@ -9,6 +9,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 <script src="config.js" defer></script>
+<script src="version.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="clubforge – die Vereins-App zum Selbsthosten">
 <meta property="og:description" content="Termine, Zusagen, Gruppen, Chats. Offline-fähig, Open Source, jeder Verein betreibt seinen eigenen Server.">
@@ -157,15 +158,19 @@ https://cygnusb.github.io/clubforge-site/join/?host=<b>app.verein-a.example</b>
   <div class="wrap split">
     <div>
       <h2>So betreibt ihr es</h2>
-      <p class="lead">Ein Linux-Server mit Docker, ein Hostname und ein TLS-Zertifikat genügen. Alles andere bringt das Compose-Projekt mit.</p>
-      <p>Eine Installation braucht etwas technisches Geschick; wer im Verein Server betreibt, schafft das in einem Abend. Anleitung und Konfiguration veröffentlichen wir zusammen mit dem Quellcode; das Repository wird mit dem Pilot geöffnet.</p>
-      <div class="btn-row"><span class="btn off" data-repo="#schnellstart" data-label="Zur Anleitung">Anleitung folgt mit dem Quellcode</span></div>
+      <p class="lead">Ein kleiner Server, drei Namen im DNS, ein Befehl. Zertifikat, Backups und Sicherheitsupdates richtet der Installer ein.</p>
+      <p>Das geht ab etwa 5 € im Monat und braucht etwas technisches Geschick; wer im Verein Server betreibt, schafft das in einem Abend. Vorlagen für Hetzner, AWS und Google Cloud liegen bei, die Anleitung ist für Ehrenamtliche geschrieben.</p>
+      <div class="btn-row">
+        <a class="btn" href="betrieb/">Betrieb im Detail</a>
+        <span class="btn ghost off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Anleitung im Quellcode">Anleitung folgt mit dem Quellcode</span>
+      </div>
     </div>
-    <pre><span class="c"># Zugangsdaten und Konfiguration erzeugen</span>
-deploy/gen-env.sh app.mein-verein.example
-
-<span class="c"># Stack starten</span>
-docker compose -f deploy/compose.yaml up -d --build</pre>
+    <pre><span class="c"># auf einem frischen Server (Debian/Ubuntu)</span>
+sudo deploy/install.sh \
+  --app app.mein-verein.example \
+  --sync sync.mein-verein.example \
+  --login login.mein-verein.example \
+  --email vorstand@mein-verein.example</pre>
   </div>
 </section>
 
@@ -173,7 +178,7 @@ docker compose -f deploy/compose.yaml up -d --build</pre>
   <div class="wrap">
     <div class="sec-head">
       <h2>Pilotphase: wächst mit dem ersten Verein</h2>
-      <p class="lead">clubforge ist in Entwicklung und läuft in einem Pilotverein. Die Grundfunktionen stehen, die Details ändern sich noch.</p>
+      <p class="lead">clubforge ist in Entwicklung und läuft in einem Pilotverein. Die Grundfunktionen stehen, die Details ändern sich noch.<span data-version-line hidden> Aktuelle Version: <strong data-version></strong>.</span></p>
     </div>
     <ol class="roadmap">
       <li class="done"><small>Fertig</small><strong>Kern</strong><span>Termine, Serien, Zusagen, Warteliste, Gruppen, Chats, Suche, Profil und Verzeichnis, Benachrichtigungen.</span></li>
@@ -187,7 +192,7 @@ docker compose -f deploy/compose.yaml up -d --build</pre>
 
 <footer>
   <div class="wrap">
-    <span>clubforge · AGPL-3.0-or-later</span>
+    <span>clubforge <span data-version></span>· AGPL-3.0-or-later</span>
     <span><span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="join/">Einladungsseite</a></span>
   </div>
 </footer>
