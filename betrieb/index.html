@@ -18,6 +18,7 @@
       <a class="hide-s" href="#ablauf">Ablauf</a>
       <a class="hide-s" href="#voraussetzungen">Voraussetzungen</a>
       <a class="hide-s" href="#kosten">Kosten</a>
+      <a class="hide-s" href="#erprobt">Erprobt</a>
       <a class="hide-s" href="#danach">Danach</a>
       <a data-repo="" data-label="Quellcode" href="#danach" hidden>Quellcode</a>
     </nav>
@@ -29,22 +30,25 @@
   <div class="wrap">
     <div>
       <h1>Betrieb: <em>euer Server</em> in einem Abend</h1>
-      <p class="lead">Ein kleiner Server, drei Namen im DNS, ein Befehl. Das Zertifikat kommt automatisch von Let's Encrypt, Backups sind verschlüsselt, Sicherheitsupdates laufen von allein.</p>
+      <p class="lead">Ein kleiner Server, drei Namen im DNS, ein Befehl: mit Vereinsname, Logo und Farben, am Ende mit erster Admin-Person. Das Zertifikat kommt automatisch von Let's Encrypt, Backups sind verschlüsselt, Sicherheitsupdates laufen von allein.</p>
       <div class="btn-row">
         <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Die Anleitung lesen">Die Anleitung liegt im Quellcode (folgt mit dem Pilot)</span>
         <a class="btn ghost" href="../">Zurück zur Übersicht</a>
       </div>
     </div>
     <pre><span class="c"># frischer Server, Debian 12/13 oder Ubuntu 24.04</span>
-sudo deploy/install.sh \
+curl -fsSLO https://cygnusb.github.io/clubforge-site/install.sh
+curl -fsSL https://cygnusb.github.io/clubforge-site/install.sh.sha256
+sha256sum install.sh   <span class="c"># beide Prüfsummen vergleichen</span>
+sudo bash install.sh \
   --app app.mein-verein.example \
   --sync sync.mein-verein.example \
   --login login.mein-verein.example \
   --email vorstand@mein-verein.example \
-  --club "Mein Verein" --ref v0.1.0
-
-<span class="c"># danach die erste Admin-Person</span>
-deploy/admin.sh vorstand@mein-verein.example Vera Vorstand</pre>
+  --club "Mein Verein" --version 0.1.1 \
+  --logo https://mein-verein.example/logo-weiss.svg \
+  --primary '#117733' --dark '#0a2a14' \
+  --admin-first Vera --admin-last Vorstand</pre>
   </div>
 </section>
 
@@ -52,7 +56,7 @@ deploy/admin.sh vorstand@mein-verein.example Vera Vorstand</pre>
   <div class="wrap">
     <div class="sec-head">
       <h2>Der Ablauf</h2>
-      <p class="lead">Fünf Schritte, davon dauert der erste Bau der Web-App am längsten (10 bis 20 Minuten).</p>
+      <p class="lead">Fünf Schritte. Der Server zieht ein fertiges Image und baut nichts; der erste Start (Zertifikat, Anmeldedienst) dauert einige Minuten.</p>
     </div>
     <ol class="roadmap">
       <li class="done"><small>1</small><strong>Server mieten</strong><span>4 GB Arbeitsspeicher, EU-Standort. Bei Hetzner ab etwa 5 € im Monat.</span></li>
@@ -95,14 +99,29 @@ deploy/admin.sh vorstand@mein-verein.example Vera Vorstand</pre>
   </div>
 </section>
 
-<section id="danach">
+<section id="erprobt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Erprobt</h2>
+      <p class="lead">Auf echter Hardware getestet, nicht nur beschrieben.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Hetzner CAX11, 14.10.2026</h3><p>2 vCPU arm64, 4 GB RAM, Ubuntu 24.04, Falkenstein, mit der OpenTofu-Vorlage. Vom Booten bis zum grünen Check unter 20 Minuten, echte Let's-Encrypt-Zertifikate für alle drei Namen.</p></div>
+      <div class="card"><h3>Backup und Restore-Test</h3><p>Sechs verschlüsselte Dateien, 676 KB; der Restore-Test in einem Wegwerf-Container bestanden.</p></div>
+      <div class="card"><h3>Im Betrieb</h3><p>Etwa 1,2 von 3,8 GB Arbeitsspeicher und 22 % von 40 GB Platte belegt.</p></div>
+      <div class="card"><h3>Eigenes Design</h3><p>Name, Logo, Farben und Begriffe kommen beim Installieren mit und lassen sich später ohne Neuinstallation ändern; Web-App und Anmeldeseite folgen dem Verein.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="danach" class="alt">
   <div class="wrap">
     <div class="sec-head">
       <h2>Und danach?</h2>
     </div>
     <div class="grid">
       <div class="card"><h3>Backups</h3><p>Täglich, verschlüsselt, 30 Tage aufbewahrt, auf Wunsch zusätzlich im Objektspeicher. Mit einem Befehl lässt sich ein Restore testen.</p></div>
-      <div class="card"><h3>Updates</h3><p>Sicherheitsupdates des Systems automatisch. Neue clubforge-Versionen mit <code>update.sh</code>: Backup, Bau, Migration, Prüfung, Rückweg.</p></div>
+      <div class="card"><h3>Updates</h3><p>Sicherheitsupdates des Systems automatisch. Neue clubforge-Versionen mit <code>update.sh</code>: Backup, neues Image ziehen, Migration, Prüfung, Rückweg.</p></div>
       <div class="card"><h3>Überwachung</h3><p><code>check.sh</code> prüft DNS, Zertifikat, alle Endpunkte und das letzte Backup. Dazu ein externer Check und ein Backup-Herzschlag.</p></div>
       <div class="card"><h3>Datenschutz</h3><p>Auftragsverarbeitung mit dem Hoster, Serverstandort in der EU, verschlüsselte Backups. Die Anleitung liefert die Checkliste.</p></div>
     </div>
