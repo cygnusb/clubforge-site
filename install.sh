@@ -19,6 +19,8 @@
 #   --admin-first VORNAME --admin-last NACHNAME [--admin-email ADRESSE]   erste Admin-Person gleich anlegen (Standard: --email)
 #   --dir PFAD          Installationsverzeichnis (Standard /opt/clubforge)
 #   --smtp-host/--smtp-port/--smtp-user/--smtp-security/--smtp-from   Mailversand (Passwort: Umgebungsvariable CF_SMTP_PASSWORD)
+#   --s3-endpoint/--s3-region/--s3-bucket/--s3-access-key/--s3-prefix   Object Storage für Anhänge (Secret Key: Umgebungsvariable
+#                       CF_S3_SECRET_KEY; ohne --s3-endpoint gibt es keine Anhänge, siehe docs/betrieb/anhaenge.md)
 #   --age-recipient K   öffentlicher age-Schlüssel für Backups; ohne Angabe wird ein Schlüsselpaar erzeugt
 #   --restore DIR --identity KEY   statt Neuinstallation ein Backup einspielen (Umzug / Wiederherstellung)
 #   --skip-dns-check    DNS-Prüfung überspringen
@@ -36,6 +38,7 @@ git_mode=0
 brand_args=() admin_email="" admin_first="" admin_last="" brand_tmp=""
 [ -z "${CLUBFORGE_REPO:-}" ] || git_mode=1
 smtp_host="" smtp_port="" smtp_user="" smtp_security="" smtp_from="" age_recipient=""
+s3_endpoint="" s3_region="" s3_bucket="" s3_access_key="" s3_prefix=""
 restore="" identity="" skip_dns=0 no_start=0 yes=0 dry=0
 
 usage() { sed -n '2,30p' "$0" | sed 's/^# \{0,1\}//'; }
@@ -46,7 +49,7 @@ while [ $# -gt 0 ]; do
 	--skip-dns-check) skip_dns=1; shift; continue ;;
 	--no-start) no_start=1; shift; continue ;;
 	-h | --help) usage; exit 0 ;;
-	--app | --sync | --login | --email | --club | --ref | --repo | --version | --image | --dir | --short-name | --logo | --logo-light | --favicon | --primary | --dark | --accent | --signal | --primary-dark | --group-one | --group-other | --group-gender | --admin-email | --admin-first | --admin-last | --smtp-host | --smtp-port | --smtp-user | --smtp-security | --smtp-from | --age-recipient | --restore | --identity) ;;
+	--app | --sync | --login | --email | --club | --ref | --repo | --version | --image | --dir | --short-name | --logo | --logo-light | --favicon | --primary | --dark | --accent | --signal | --primary-dark | --group-one | --group-other | --group-gender | --admin-email | --admin-first | --admin-last | --smtp-host | --smtp-port | --smtp-user | --smtp-security | --smtp-from | --s3-endpoint | --s3-region | --s3-bucket | --s3-access-key | --s3-prefix | --age-recipient | --restore | --identity) ;;
 	*) echo "Unbekannte Option: $1" >&2; usage >&2; exit 2 ;;
 	esac
 	[ $# -ge 2 ] || { echo "Wert für $1 fehlt" >&2; exit 2; }
@@ -58,6 +61,8 @@ while [ $# -gt 0 ]; do
 	--short-name | --logo | --logo-light | --favicon | --primary | --dark | --accent | --signal | --primary-dark | --group-one | --group-other | --group-gender) brand_args+=("$1" "$2") ;;
 	--smtp-host) smtp_host="$2" ;; --smtp-port) smtp_port="$2" ;; --smtp-user) smtp_user="$2" ;;
 	--smtp-security) smtp_security="$2" ;; --smtp-from) smtp_from="$2" ;;
+	--s3-endpoint) s3_endpoint="$2" ;; --s3-region) s3_region="$2" ;; --s3-bucket) s3_bucket="$2" ;;
+	--s3-access-key) s3_access_key="$2" ;; --s3-prefix) s3_prefix="$2" ;;
 	--age-recipient) age_recipient="$2" ;; --restore) restore="$2" ;; --identity) identity="$2" ;;
 	esac
 	shift 2
@@ -283,6 +288,12 @@ else
 	[ -z "$smtp_security" ] || args+=(--smtp-security "$smtp_security")
 	[ -z "$smtp_from" ] || args+=(--smtp-from "$smtp_from")
 	export CF_SMTP_PASSWORD="${CF_SMTP_PASSWORD:-}"
+	[ -z "$s3_endpoint" ] || args+=(--s3-endpoint "$s3_endpoint")
+	[ -z "$s3_region" ] || args+=(--s3-region "$s3_region")
+	[ -z "$s3_bucket" ] || args+=(--s3-bucket "$s3_bucket")
+	[ -z "$s3_access_key" ] || args+=(--s3-access-key "$s3_access_key")
+	[ -z "$s3_prefix" ] || args+=(--s3-prefix "$s3_prefix")
+	export CF_S3_SECRET_KEY="${CF_S3_SECRET_KEY:-}"
 	# Logo-Dateien lesbar für den Benutzer clubforge bereitstellen (root-Verzeichnisse wie /root sind es nicht)
 	if [ ${#brand_args[@]} -gt 0 ]; then
 		brand_tmp="$(mktemp -d)"

@@ -69,6 +69,10 @@ section.alt { background: var(--bg2); }
 .card h3 { margin-bottom: .5rem; }
 .card p { margin: 0; color: var(--mute); font-size: .9875rem; }
 .card .ico { width: 2.25rem; height: 2.25rem; border-radius: .6rem; background: color-mix(in srgb, var(--ember) 16%, transparent); color: var(--ember); display: grid; place-items: center; margin-bottom: 1rem; font-size: 1.15rem; }
+.opt { display: inline-block; vertical-align: .2em; margin-left: .3rem; padding: .1rem .5rem; border: 1px solid var(--line); border-radius: 99px; font: 500 .7rem/1.4 var(--mono); letter-spacing: .04em; color: var(--mute); white-space: nowrap; }
+.lead .opt { margin-left: 0; vertical-align: .15em; }
+.group-title { font-size: clamp(1.25rem, 2.6vw, 1.6rem); margin: 2.5rem 0 1rem; }
+.sec-head + .group-title, .sec-head .group-title { margin-top: 0; }
 
 .split { display: grid; gap: 2.5rem; align-items: center; }
 @media (min-width: 62rem) { .split { grid-template-columns: 1fr 1fr; } .split.rev > :first-child { order: 2; } }
