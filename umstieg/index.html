@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umstieg auf clubforge – clubforge</title>
+<meta name="description" content="Schritt für Schritt von WhatsApp-Gruppen oder einer anderen Vereins-App zu clubforge: Verein einstellen, Mitglieder aus easyVerein oder einer CSV-Datei übernehmen, per Einladungslink einladen.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/umstieg/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../config.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Umstieg auf clubforge">
+<meta property="og:description" content="Von WhatsApp-Gruppen oder einer anderen Vereins-App zu clubforge, Schritt für Schritt.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/umstieg/">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="../#funktionen">Funktionen</a>
+      <a class="hide-s" href="../fragen/">Fragen</a>
+      <a class="hide-s" href="../betrieb/">Betrieb</a>
+      <a class="hide-s" href="../versionen/">Versionen</a>
+      <a class="nav-cta" href="../#anfangen">Loslegen</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Umstieg auf clubforge</h1>
+    <p class="lead">Ob der Verein heute über WhatsApp-Gruppen, Mails oder eine andere Vereins-App organisiert ist: So zieht ihr in Ruhe um, ohne dass jemand verloren geht.</p>
+  </div>
+</section>
+
+<section class="prose-sec">
+  <div class="wrap prose">
+    <div class="callout">
+      <p><strong>Vorweg:</strong> Chatverläufe und Termine aus WhatsApp, Spond oder anderen Apps übernimmt clubforge nicht automatisch. Die Mitgliederliste dagegen schon, aus easyVerein oder einer CSV-Datei. Plant deshalb einen Stichtag, ab dem Termine und Ankündigungen nur noch in clubforge stehen.</p>
+    </div>
+
+    <h2>1. Server einrichten</h2>
+    <p>Eine Person mit etwas Server-Erfahrung mietet einen kleinen Server und installiert clubforge mit einem Befehl. Vereinsname, Logo, Farben und die erste Admin-Person kommen dabei gleich mit. Dauer: etwa eine Stunde. Einzelheiten unter <a href="../betrieb/">Betrieb</a>.</p>
+
+    <h2>2. Den Verein einstellen</h2>
+    <p>Die erste Admin-Person meldet sich in der Web-App an und richtet unter <strong>Verwaltung</strong> ein, was der Verein braucht:</p>
+    <ul>
+      <li><strong>Begriffe</strong>: Heißen Gruppen bei euch „Team“, „Riege“ oder „Abteilung“, Termine „Training“? Stellt es hier ein, die App spricht dann eure Sprache.</li>
+      <li><strong>Funktionen</strong>: Mitfahrten, Umfragen, Neuigkeiten, Gäste, Direktnachrichten und mehr einzeln ein- oder ausschalten.</li>
+      <li><strong>Verhaltensregeln und Infoseiten</strong>, zum Beispiel Hallenordnung oder Ansprechpersonen.</li>
+      <li><strong>Standardwerte für Termine</strong>, etwa ein üblicher Anmeldeschluss.</li>
+    </ul>
+
+    <h2>3. Mitglieder übernehmen</h2>
+    <p>Wer in clubforge Mitglied ist, bestimmt eure Mitgliederverwaltung. Eingerichtet wird das in der Web-App unter <strong>Profil › Mitgliederquelle</strong>:</p>
+    <ul>
+      <li><strong>Aus easyVerein</strong>: In easyVerein einen API-Schlüssel mit Lesezugriff auf Mitglieder erzeugen, in clubforge eintragen und die Gruppen aus easyVerein den Abteilungen zuordnen. Danach gleicht clubforge stündlich ab: Neue kommen dazu, Ausgetretene verlieren den Zugang.</li>
+      <li><strong>Aus einer CSV-Datei</strong>: Vorlage herunterladen, mit eurer Mitgliederliste füllen (Pflicht sind eine eindeutige Nummer, Vor- und Nachname und E-Mail-Adresse; dazu Status, Eintrittsjahr, zweite Adresse und Abteilungen) und hochladen. Die Datei ist immer der vollständige Bestand.</li>
+      <li><strong>Von Hand</strong>: Für kleine Vereine oder einen Test legt die Server-Betreuung Personen einzeln an.</li>
+    </ul>
+    <p>Vor jeder Übernahme zeigt ein <strong>Probelauf</strong>, wer neu ist, wer sich ändert und wer den Zugang verlieren würde. Ein Schutz verhindert, dass versehentlich viele auf einmal ausgetragen werden.</p>
+    <p><strong>Wichtig:</strong> Jedes Mitglied braucht eine eigene E-Mail-Adresse. Teilen sich zwei aktive Mitglieder eine Familienadresse, kann sich damit niemand anmelden; der Bericht des Abgleichs zeigt solche Fälle.</p>
+
+    <h2>4. Gruppen und Termine anlegen</h2>
+    <ul>
+      <li>Eine Gruppe „Alle Mitglieder“ mit eigenem Kanal gibt es von Anfang an; jedes neue Mitglied ist automatisch darin. Vereinsweite Termine hängen daran.</li>
+      <li>Aus jeder WhatsApp-Gruppe wird eine <strong>Gruppe</strong>: offen, auf Anfrage oder privat, mit Kanal und Themen. Abteilungen aus der Mitgliederverwaltung füllen ihre Gruppen von selbst.</li>
+      <li>Regelmäßiges Training legt ihr einmal als <strong>Serientermin</strong> an, statt jede Woche „Wer kommt?“ zu fragen. Teilnehmerlimit, Warteliste, Anmeldeschluss und Gäste stellt ihr am Termin ein.</li>
+      <li>Wer schon eine Vereins-App mit Terminen nutzt, überträgt die kommenden Termine von Hand oder legt sie gleich als Serien neu an.</li>
+    </ul>
+
+    <h2>5. Alle einladen</h2>
+    <p>Zwei Wege, die sich ergänzen:</p>
+    <ul>
+      <li><strong>Willkommens-Mail</strong>: Mit „Neue Mitglieder einladen“ bei der Mitgliederquelle bekommt jedes neue Mitglied eine Mail mit Link. Darüber legt es Passkey oder Passwort fest. Dafür braucht der Server einen Mailzugang.</li>
+      <li><strong>Einladungslink</strong>: Der Link <code>…/clubforge-site/join/?host=app.euer-verein.example</code> zeigt Name und Logo eures Vereins und öffnet die App oder die Web-App des Vereins. Am Rechner zeigt die Seite einen QR-Code zum Scannen mit dem Handy. Den Link könnt ihr in die bisherige WhatsApp-Gruppe, in eine Mail oder als QR-Code an die Hallentür hängen.</li>
+    </ul>
+    <p>Solange es die Apps in den Stores noch nicht gibt, führt „Im Browser öffnen“ direkt zur Web-App eures Vereins, am Handy wie am Rechner.</p>
+
+    <h2>6. Gemeinsam umziehen</h2>
+    <ul>
+      <li><strong>Stichtag festlegen</strong> und ankündigen: Ab dann stehen Termine, Zusagen und Ankündigungen nur noch in clubforge.</li>
+      <li><strong>Übergangszeit</strong>: Die alte Gruppe bleibt eine Weile für Rückfragen, ihr postet dort aber nur noch Hinweise mit Link.</li>
+      <li><strong>Für Wenig-Nutzer</strong>: Die Mail-Zusammenfassung (täglich oder wöchentlich) und das Kalender-Abo für Apple-, Google- oder Outlook-Kalender halten auch die auf dem Laufenden, die selten in die App schauen. Was der Vorstand als „Wichtig“ markiert, geht ohnehin an alle per Mail.</li>
+      <li><strong>Ansprechperson</strong> benennen, die in den ersten Wochen bei Anmeldung und Einstellungen hilft. Die Einführung beim ersten Login erklärt das Wichtigste und lässt sich unter Profil jederzeit wieder aufrufen.</li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn" href="../betrieb/">Server einrichten</a>
+      <a class="btn ghost" href="../fragen/">Häufige Fragen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later</span>
+    <span><a href="../">Übersicht</a> · <a href="../fragen/">Fragen</a> · <a href="../betrieb/">Betrieb</a> · <a href="../join/">Einladungsseite</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span></span>
+  </div>
+</footer>
+</body>
+</html>

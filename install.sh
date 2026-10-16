@@ -15,7 +15,7 @@
 #   Vereinsmarke (Details und Beispiele: deploy/branding.sh --help; später änderbar mit deploy/branding.sh):
 #     --club NAME --short-name NAME --logo DATEI|https://… [--logo-light …] [--favicon …]
 #     --primary #rrggbb --dark #rrggbb --accent #rrggbb --signal #rrggbb --primary-dark #rrggbb
-#     --group-one Gruppe --group-other Gruppen --group-gender f
+#     --group-one Team --group-other Teams --group-gender n
 #   --admin-first VORNAME --admin-last NACHNAME [--admin-email ADRESSE]   erste Admin-Person gleich anlegen (Standard: --email)
 #   --dir PFAD          Installationsverzeichnis (Standard /opt/clubforge)
 #   --smtp-host/--smtp-port/--smtp-user/--smtp-security/--smtp-from   Mailversand (Passwort: Umgebungsvariable CF_SMTP_PASSWORD)

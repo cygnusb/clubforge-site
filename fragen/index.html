@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fragen von Vorständen – clubforge</title>
+<meta name="description" content="Was kostet clubforge, wie viel Arbeit macht es, wer kümmert sich, wenn jemand aufhört, wie steht es um Datenschutz, Ausfälle und die Apps in den Stores? Antworten für Vereinsvorstände.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/fragen/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../config.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="clubforge: Fragen von Vorständen">
+<meta property="og:description" content="Kosten, Aufwand, Übergabe, Datenschutz, Ausfälle und Store-Apps: Antworten für Vereinsvorstände.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/fragen/">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="../#funktionen">Funktionen</a>
+      <a class="hide-s" href="../umstieg/">Umstieg</a>
+      <a class="hide-s" href="../betrieb/">Betrieb</a>
+      <a class="hide-s" href="../versionen/">Versionen</a>
+      <a class="nav-cta" href="../#anfangen">Loslegen</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Fragen von Vorständen</h1>
+    <p class="lead">Die Fragen, die im Vorstand meist zuerst kommen, kurz beantwortet. Die Einzelheiten für die Person, die den Server betreut, stehen unter <a href="../betrieb/">Betrieb</a>.</p>
+  </div>
+</section>
+
+<section class="prose-sec">
+  <div class="wrap prose faq">
+    <h2>Kosten und Aufwand</h2>
+    <details open>
+      <summary>Was kostet clubforge?</summary>
+      <p>Die Software kostet nichts, es gibt keine Lizenz und keine Gebühr pro Mitglied. Ihr zahlt nur, was euer eigener Server braucht:</p>
+      <ul>
+        <li><strong>Server</strong> bei Hetzner Cloud: etwa 4 bis 6 € im Monat (2 Prozessorkerne, 4 GB Arbeitsspeicher). Bei AWS oder Google Cloud etwa 25 bis 35 € im Monat.</li>
+        <li><strong>Domain</strong>: etwa 10 bis 15 € im Jahr. Hat der Verein schon eine, reicht sie.</li>
+        <li><strong>Optional</strong>: Speicher für Fotos und Dateien bzw. für Sicherungskopien außerhalb des Servers, bei Hetzner ab etwa 5 € im Monat Grundpreis; Server-Backups des Anbieters etwa 1 € im Monat.</li>
+      </ul>
+      <p>Das sind Richtwerte (Stand Herbst 2026); vor der Bestellung beim Anbieter nachsehen. Zertifikat und alle Bausteine der Software sind kostenlos.</p>
+    </details>
+    <details>
+      <summary>Wie viel Zeit kostet es?</summary>
+      <ul>
+        <li><strong>Einrichten</strong>: etwa eine Stunde für jemanden, der schon einmal einen Server per SSH bedient hat. Das meiste davon sind Konto, Domain-Einträge und Warten; die Installation selbst dauert wenige Minuten.</li>
+        <li><strong>Im Alltag</strong>: Sicherheitsupdates des Systems und tägliche Backups laufen von selbst. Eine neue clubforge-Version spielt man mit einem Befehl ein, der vorher ein Backup macht und einen Rückweg hat.</li>
+        <li><strong>Regelmäßig</strong>: ab und zu nach einem Systemupdate neu starten, einmal im Quartal die Wiederherstellung eines Backups probeweise testen.</li>
+      </ul>
+      <p>Alles, was den Vereinsalltag betrifft (Gruppen, Begriffe, Logo, Funktionen, Regeln, Mitglieder), machen Admins in der App, ohne Server-Zugang.</p>
+    </details>
+    <details>
+      <summary>Braucht es dafür IT-Kenntnisse?</summary>
+      <p>Für den Server ja, etwas: Eine Person muss einen gemieteten Linux-Server per SSH bedienen und drei Einträge bei der Domain setzen können. Die Anleitung ist für Ehrenamtliche geschrieben, und es gibt Vorlagen für Hetzner, AWS und Google Cloud. Alternativ übernimmt das ein IT-Dienstleister. Für Vorstand, Trainer und Mitglieder braucht es keine Technik.</p>
+    </details>
+    <details>
+      <summary>Für wie viele Mitglieder reicht der kleine Server?</summary>
+      <p>Die empfohlene Größe (2 Prozessorkerne, 4 GB Arbeitsspeicher, 40 GB Platte) trägt einen Verein mit einigen hundert Mitgliedern. Größere Platten oder Server gibt es bei allen Anbietern im laufenden Betrieb.</p>
+    </details>
+
+    <h2>Verantwortung und Übergabe</h2>
+    <details>
+      <summary>Wer kümmert sich, wenn die Person aufhört, die den Server betreut?</summary>
+      <p>Damit das kein Problem wird, legt man es von Anfang an auf mehrere Schultern:</p>
+      <ul>
+        <li><strong>Zwei Personen</strong> haben Zugang zum Passwortmanager des Vereins. Dort liegen der Schlüssel für die Backups und die Zugangsdaten des Servers.</li>
+        <li><strong>Persönliche Zugänge</strong> zum Server für wenige Personen, mit einer Liste, wer Zugang hat. Geht jemand, werden der eigene Schlüssel entfernt und bei Bedarf die Passwörter gewechselt.</li>
+        <li><strong>Die Betriebsanleitung</strong> beschreibt Installation, Updates, Backups, Wiederherstellung und Fehlersuche Schritt für Schritt, so dass jemand Neues übernehmen kann.</li>
+        <li><strong>Umziehen</strong> geht auch: Ein Backup lässt sich auf einem neuen Server wiederherstellen, etwa bei einem Wechsel zu einem Dienstleister.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Wer ist für die Daten verantwortlich?</summary>
+      <p>Der Verein. Er betreibt den Server und ist im Sinne der DSGVO Verantwortlicher. Das Projekt clubforge stellt die Software bereit und sieht die Daten eurer Mitglieder nicht.</p>
+    </details>
+
+    <h2>Datenschutz</h2>
+    <details>
+      <summary>Wo liegen unsere Daten?</summary>
+      <p>Auf eurem eigenen Server, bei einem Anbieter und an einem Standort, den ihr wählt, zum Beispiel bei Hetzner in Deutschland. Es gibt keine zentrale Plattform, die Daten mehrerer Vereine sammelt. Fotos und Dateien liegen in eurem eigenen Speicher, Karten auf eurem Server.</p>
+      <p>Für Push-Mitteilungen bekommen die Dienste von Apple, Google bzw. Mozilla eine Geräteadresse und einen Kurztext. Mails gehen über den Mailanbieter, den ihr eintragt.</p>
+    </details>
+    <details>
+      <summary>Ist das DSGVO-konform?</summary>
+      <p>clubforge bringt vieles mit, was ihr dafür braucht; den Rahmen setzt der Verein:</p>
+      <ul>
+        <li><strong>In der App</strong>: Profilangaben gibt jede Person je Feld selbst frei. Datenexport und Löschanfrage gehen in der App. Nach dem Austritt wird der Zugang sofort gesperrt und die Person nach 30 Tagen anonymisiert. Feste Löschfristen setzt der Server selbst um. Kein Tracking, keine Werbung.</li>
+        <li><strong>Auf dem Server</strong>: Verbindungen sind verschlüsselt, Backups ebenfalls. Der Server liefert einen Standardtext für die Datenschutzseite, den ihr ergänzt.</li>
+        <li><strong>Beim Verein</strong>: einen Vertrag zur Auftragsverarbeitung mit dem Hoster (und ggf. Mail- und Speicheranbieter) abschließen, einen Serverstandort in der EU wählen, das Verzeichnis der Verarbeitungstätigkeiten ergänzen.<!-- ENTWURF: Hilfen dazu: <a href="../datenschutz-hilfe/">Datenschutz-Hilfen für Vereine</a>. --></li>
+      </ul>
+      <p>Das ist keine Rechtsberatung. Wenn euer Verein eine Datenschutzbeauftragte oder einen Datenschutzbeauftragten hat, gehört sie oder er in die Planung.</p>
+    </details>
+    <details>
+      <summary>Sind Nachrichten Ende-zu-Ende-verschlüsselt?</summary>
+      <p>Nein, bewusst nicht. Nachrichten werden verschlüsselt übertragen, liegen auf dem Server des Vereins aber lesbar, weil Suche, Melden und Moderation, Erwähnungen und Push-Inhalte den Text brauchen. Wer Zugang zum Server hat, kann sie lesen; deshalb gehört dieser Zugang in wenige Hände. Stattdessen gibt es selbstlöschende Nachrichten und verschlüsselte Backups.</p>
+    </details>
+
+    <h2>Ausfall und Sicherheit</h2>
+    <details>
+      <summary>Was passiert, wenn der Server ausfällt?</summary>
+      <p>Die Termine und Chats liegen auf den Geräten. Wer die App offen hat, sieht weiter alles und kann zusagen oder schreiben; das wird gesendet, sobald der Server wieder da ist. Neue Push-Mitteilungen und Mails kommen in dieser Zeit nicht.</p>
+      <p>Damit ein Ausfall auffällt, empfiehlt die Anleitung einen externen Check, der zwei Personen per Mail benachrichtigt, und eine Prüfung, die Dienste, Zertifikat, Backup und Platte bewertet.</p>
+    </details>
+    <details>
+      <summary>Wie sind die Daten gesichert?</summary>
+      <p>Jede Nacht entsteht ein verschlüsseltes Backup der Datenbanken und der Einstellungen. Es wird 30 Tage aufbewahrt und kann zusätzlich in einen Speicher außerhalb des Servers kopiert werden. Der Server kann die Backups schreiben, aber nicht lesen; den Schlüssel haben zwei Personen im Passwortmanager. Wiederherstellen geht auch auf einem neuen Server, und ein Probelauf zeigt, dass es klappt.</p>
+    </details>
+    <details>
+      <summary>Was passiert bei einem Update?</summary>
+      <p>Vor jedem Update macht das Skript ein Backup und merkt sich den alten Stand, so dass man zurück kann. Auf Wunsch kündigt die App die Wartung vorher auf allen Geräten an. Während der Wartung arbeitet die App weiter mit den Daten auf dem Gerät.</p>
+    </details>
+
+    <h2>Apps</h2>
+    <details>
+      <summary>Wann kommen die Apps für iPhone und Android?</summary>
+      <p>Daran wird gearbeitet. Die Apps entstehen aus demselben Code wie die Web-App; die Builds für die Stores und Tests auf echten Geräten stehen noch aus. Einen festen Termin gibt es nicht. Bis dahin läuft clubforge im Browser, am Handy wie am Rechner, mit Push-Mitteilungen im Browser.</p>
+    </details>
+    <details>
+      <summary>Was kosten die Konten in den App Stores, und brauchen wir eigene?</summary>
+      <p>Euer Verein braucht keine eigenen Store-Konten. Es gibt eine App für alle Vereine; jede Person verbindet sie per Einladungslink oder Adresse mit ihrem Verein. Die Store-Konten führt der Herausgeber der App. Zur Einordnung, was diese Konten kosten:</p>
+      <ul>
+        <li><strong>Apple Developer Program</strong> für Organisationen: 99 US-Dollar im Jahr; gemeinnützige Organisationen können bei Apple eine Gebührenbefreiung beantragen.</li>
+        <li><strong>Google Play Console</strong>: 25 US-Dollar einmalig.</li>
+      </ul>
+      <p>Eine eigene App unter dem Namen eures Vereins ist derzeit nicht vorgesehen; ob es das geben soll, ist noch offen.</p>
+    </details>
+    <details>
+      <summary>Gibt es die App auf Englisch?</summary>
+      <p>Noch nicht. Die Oberfläche ist heute nur auf Deutsch; Englisch ist geplant.</p>
+    </details>
+
+    <h2>Und sonst</h2>
+    <details>
+      <summary>Wie kommen unsere Mitglieder in die App?</summary>
+      <p>Die Mitgliederliste kommt aus easyVerein, aus einer CSV-Datei eurer Mitgliederverwaltung oder wird von Hand angelegt. Neue Mitglieder bekommen eine Willkommens-Mail; den Verein verbinden sie per Einladungslink. Schritt für Schritt auf der Seite <a href="../umstieg/">Umstieg</a>.</p>
+    </details>
+    <details>
+      <summary>Wie unterscheidet sich clubforge von anderen Vereins-Apps?</summary>
+      <p>Vor allem darin, dass jeder Verein seinen eigenen Server betreibt und die Software offen ist.<!-- ENTWURF: Eine neutrale Übersicht steht unter <a href="../vergleich/">Vergleich</a>. --></p>
+    </details>
+
+    <div class="btn-row">
+      <a class="btn" href="../betrieb/">Betrieb und Kosten im Detail</a>
+      <span class="btn ghost off" data-repo="/issues" data-label="Frage stellen">Kontakt folgt mit dem Quellcode</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later</span>
+    <span><a href="../">Übersicht</a> · <a href="../umstieg/">Umstieg</a> · <a href="../betrieb/">Betrieb</a> · <a href="../versionen/">Versionen</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span></span>
+  </div>
+</footer>
+</body>
+</html>

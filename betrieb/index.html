@@ -6,11 +6,26 @@
 <title>Betrieb – clubforge</title>
 <meta name="description" content="So betreibt ein Verein clubforge auf einem eigenen Server: Voraussetzungen, Kosten, Installation mit einem Befehl, Backups und Updates.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/betrieb/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="clubforge selbst betreiben">
+<meta property="og:description" content="Ein kleiner Server, drei Namen im DNS, ein Befehl: Voraussetzungen, Kosten, Installation, Backups und Updates.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="clubforge: Kalender und Termindetail der App mit Beispieldaten">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/betrieb/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../style.css">
 <script src="../config.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
@@ -20,12 +35,14 @@
       <a class="hide-s" href="#kosten">Kosten</a>
       <a class="hide-s" href="#erprobt">Erprobt</a>
       <a class="hide-s" href="#danach">Danach</a>
+      <a class="hide-s" href="#versionen">Versionen</a>
+      <a class="hide-s" href="#aufbau">Aufbau</a>
       <a data-repo="" data-label="Quellcode" href="#danach" hidden>Quellcode</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="inhalt">
 <section class="hero">
   <div class="wrap">
     <div>
@@ -60,7 +77,7 @@ sudo bash install.sh \
     </div>
     <ol class="roadmap">
       <li class="done"><small>1</small><strong>Server mieten</strong><span>4 GB Arbeitsspeicher, EU-Standort. Bei Hetzner ab etwa 5 € im Monat.</span></li>
-      <li class="done"><small>2</small><strong>Drei Namen setzen</strong><span><code>app.</code>, <code>sync.</code> und <code>login.</code> Ihrer Domain zeigen auf die IP des Servers.</span></li>
+      <li class="done"><small>2</small><strong>Drei Namen setzen</strong><span><code>app.</code>, <code>sync.</code> und <code>login.</code> eurer Domain zeigen auf die IP des Servers.</span></li>
       <li class="done"><small>3</small><strong>Installieren</strong><span>Installer per SSH, cloud-init oder eine OpenTofu-Vorlage für Hetzner, AWS oder Google Cloud.</span></li>
       <li class="done"><small>4</small><strong>Erste Person anlegen</strong><span><code>admin.sh</code> legt Mitglied und Anmeldung an, das Einmalpasswort wird beim ersten Login geändert.</span></li>
       <li class="done"><small>5</small><strong>Backup-Schlüssel sichern</strong><span>In den Passwortmanager des Vereins, für zwei Personen. Ohne ihn sind Backups nicht lesbar.</span></li>
@@ -127,11 +144,53 @@ sudo bash install.sh \
       <div class="card"><h3>Updates</h3><p>Sicherheitsupdates des Systems automatisch. Neue clubforge-Versionen mit <code>update.sh</code>: Backup, neues Image ziehen, Migration, Prüfung, Rückweg. Auf Wunsch kündigt es die Wartung vorher in der App an; Einstellungen und Kartenkacheln bleiben.</p></div>
       <div class="card"><h3>Überwachung</h3><p><code>check.sh</code> prüft DNS, Zertifikat, alle Endpunkte und das letzte Backup. Dazu ein externer Check und ein Backup-Herzschlag.</p></div>
       <div class="card"><h3>Datenschutz</h3><p>Auftragsverarbeitung mit dem Hoster, Serverstandort in der EU, verschlüsselte Backups. Löschanfragen und Datenexporte kommen über die App, Fristen setzt der Server selbst um. Die Anleitung liefert die Checkliste.</p></div>
-      <div class="card"><h3>Im Verein einstellen</h3><p>Funktionen, Begriffe, Logo und Farben, Verhaltensregeln und Infoseiten pflegen Admins im Admin-Bereich der Web-App, ohne den Server anzufassen.</p></div>
+      <div class="card"><h3>Im Verein einstellen</h3><p>Funktionen, Begriffe, Logo und Farben, Verhaltensregeln und Infoseiten pflegen Admins in der Verwaltung der App, ohne den Server anzufassen.</p></div>
     </div>
     <div class="btn-row">
       <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Alle Betriebs-Seiten im Quellcode">Alle Betriebs-Seiten folgen mit dem Quellcode</span>
     </div>
+  </div>
+</section>
+
+<section id="versionen">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Welche App passt zu welchem Server?</h2>
+      <p class="lead">Jeder Verein aktualisiert seinen Server zu eigener Zeit, die App ist eine für alle. Damit das zusammenpasst, gelten feste Regeln.</p>
+    </div>
+    <div class="prose">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Server-Version</th><th scope="col">Web-App</th><th scope="col">Verlangt mindestens App</th></tr></thead>
+          <tbody>
+            <tr><td>0.2.0</td><td>0.2.0, kommt vom eigenen Server</td><td>0.1.0</td></tr>
+            <tr><td>0.1.0, 0.1.1</td><td>dieselbe Version, kommt vom eigenen Server</td><td>0.1.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul>
+        <li><strong>Die Web-App</strong> liefert der Server selbst aus. Sie hat immer seine Version und passt deshalb immer.</li>
+        <li><strong>Die Apps aus den Stores</strong> (sobald es sie gibt) unterstützen ab Version 1.0 Server der eigenen und der vorigen Hauptversion: App 2.x spricht mit Servern 1.x und 2.x.</li>
+        <li><strong>Mindestversion:</strong> Jeder Server nennt die älteste App, mit der er noch arbeitet. Ist eine App älter, zeigt sie „Bitte App aktualisieren“, statt falsch zu arbeiten. Die Mindestversion steigt nur, wenn es wirklich nötig ist, nicht mit jedem Update.</li>
+        <li><strong>Vor 1.0</strong> können sich zwischen kleinen Versionen (0.1 → 0.2) noch Dinge ändern. Hinweise dazu stehen bei jeder Version unter <a href="../versionen/">Versionen</a> und in der Update-Anleitung.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="aufbau" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>So hängt es zusammen</h2>
+      <p class="lead">Lesen geht immer aus der lokalen Datenbank auf dem Gerät. Änderungen laufen als Commands zum Server, und der Sync verteilt das Ergebnis wieder an alle Geräte. Alle Dienste laufen auf dem Server des Vereins, aus einem gemeinsamen Image für alle Vereine; eigene Werkzeuge binden sich von außen über Dienstkonten und Webhooks an.</p>
+    </div>
+    <figure>
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="../img/architektur-dunkel.svg">
+        <img class="arch" src="../img/architektur-hell.svg" width="1300" height="570" alt="Architektur: Die Expo-App mit lokaler SQLite-Datenbank spricht über Caddy mit FastAPI-API, PowerSync und Zitadel; Worker und PostgreSQL liegen auf dem Vereinsserver, Mail, Web Push und später ein Push-Gateway sind externe Dienste." loading="lazy" decoding="async">
+      </picture>
+      <figcaption>Gerät, Vereinsserver und externe Dienste. Gestrichelt: folgt später.</figcaption>
+    </figure>
   </div>
 </section>
 </main>
@@ -139,7 +198,7 @@ sudo bash install.sh \
 <footer>
   <div class="wrap">
     <span>clubforge · AGPL-3.0-or-later</span>
-    <span><span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="../join/">Einladungsseite</a></span>
+    <span><a href="../">Übersicht</a> · <a href="../fragen/">Fragen</a> · <a href="../umstieg/">Umstieg</a><!-- ENTWURF: · <a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a> --> · <a href="../versionen/">Versionen</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="../join/">Einladungsseite</a> · <a href="../konto-loeschen/">Konto löschen</a></span>
   </div>
 </footer>
 </body>

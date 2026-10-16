@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="de">
+  <title>clubforge: neue Versionen</title>
+  <subtitle>Neue Funktionen, Änderungen und Fehlerbehebungen der Vereins-App clubforge</subtitle>
+  <id>https://cygnusb.github.io/clubforge-site/versionen/feed.xml</id>
+  <link rel="self" type="application/atom+xml" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
+  <updated>2026-10-16T12:00:00Z</updated>
+  <author><name>clubforge</name></author>
+  <entry>
+    <title>clubforge 0.2.1</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.2.1</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.2.1"/>
+    <updated>2026-10-16T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kalender erklärt, welche Termine er zeigt:&lt;/strong&gt; Oben im Kalender steht „Du siehst Termine des Vereins und deiner Gruppen (N)“ mit „Weitere Gruppen entdecken“. Das öffnet eine Liste der offenen und „auf Anfrage“-Gruppen, denen man direkt dort beitritt oder eine Anfrage schickt, ohne den Tab zu wechseln; nach dem Sync erscheinen die neuen Termine, auch wenn der Beitritt offline begonnen wurde. Der Hinweis lässt sich wegklicken (je Gerät). Ohne eigene Gruppen oder bei nur wenigen Terminen bleibt eine Erklärung mit Knopf stehen; gibt es nichts zum Beitreten, erscheint kein Hinweis. Private Gruppen werden nie vorgeschlagen, die Rechte bleiben unverändert.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terminvorschau offener Gruppen:&lt;/strong&gt; Offene und „auf Anfrage“-Gruppen können in ihren Einstellungen (Info) ihre Termine allen Mitgliedern des Vereins als Vorschau zeigen; Standard ist aus, private Gruppen können es nicht. Im Kalender stehen Vorschauen gestrichelt mit „Vorschau“ und der Gruppe, nur mit Titel und Zeit, für die nächsten 90 Tage. Ein Tipp öffnet eine Seite mit „Beitreten“ bzw. „Anfragen“; danach steht der echte Termin mit Ort und Details im Kalender, ohne doppelten Eintrag. Ort, Beschreibung, Zusagen und Teilnehmende sieht weiterhin nur, wer Mitglied ist. Über „Termine anderer Gruppen zeigen“ im Kalender lassen sich Vorschauen je Gerät ausblenden. Für Vorschauen gibt es keine Benachrichtigungen und keinen Eintrag im Kalender-Abo, in der Mail-Zusammenfassung oder im Google-Kalender.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Termin direkt am Tag anlegen:&lt;/strong&gt; In der Wochenansicht des Kalenders hat jeder Tag ein „+“, das das Formular mit diesem Tag öffnet (für alle, die Termine anlegen dürfen).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Geändert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ein Link auf einen Termin, den man nicht sehen darf, erklärt jetzt, dass Termine einer Gruppe nur ihre Mitglieder sehen, und bietet das Beitreten an. Welche Gruppe es ist, verrät die Seite nicht.&lt;/li&gt;
+&lt;li&gt;Die Einführung sagt beim Schritt „Gruppen entdecken“, dass der Kalender Termine weiterer Gruppen erst nach dem Beitritt zeigt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Datum und Uhrzeit auswählen statt eintippen:&lt;/strong&gt; Überall, wo bisher ein Tag als &lt;code&gt;JJJJ-MM-TT&lt;/code&gt; oder eine Uhrzeit als Text einzugeben war, öffnet sich jetzt die Auswahl des Geräts bzw. Browsers: im Termin-Formular und beim Bearbeiten eines einzelnen Termins, bei Terminvorschlägen in Umfragen und deren Frist, bei Neuigkeiten (anheften bis, zeitgesteuert veröffentlichen), bei Mitfahrten, bei der Ruhezeit und bei Wartungsfenstern. Unter jedem Feld steht der Wert mit Wochentag, z. B. „Sa., 17. Okt. 2026“ und „19:30 Uhr“.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Termine mit Ende statt Dauer:&lt;/strong&gt; Statt einer Dauer in Minuten wählt man, wann der Termin endet; die Dauer steht darunter. Ein Ende vor dem Beginn oder mehr als 14 Tage danach wird gleich am Feld gemeldet.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sinnvolle Vorgaben:&lt;/strong&gt; Ein neuer Termin beginnt heute zur nächsten vollen Stunde, das Ende folgt dem Beginn. Fristen, Anheften und Veröffentlichungszeitpunkte lassen keine vergangenen Tage zu; „Ganztägig“, „Keine Frist“ oder „Nicht anheften“ setzen ein Feld wieder zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Neutrale Grundbegriffe als Standard:&lt;/strong&gt; Ohne eigene Einstellung heißen Gruppen jetzt „Gruppe“ bzw. „Gruppen“ statt „Rudel“, in App, Mails, Benachrichtigungen, Fehlermeldungen und der Verwaltung der Integrationen. Auch der Testverein nutzt die neutralen Begriffe. &lt;strong&gt;Für Betreibende:&lt;/strong&gt; Wer „Rudel“ (oder einen anderen Begriff) behalten will, setzt ihn im Admin-Bereich unter Verwaltung › Verein › Begriffe oder bei der Installation mit &lt;code&gt;--group-one Rudel --group-other Rudel --group-gender n&lt;/code&gt; (&lt;code&gt;deploy/branding.sh&lt;/code&gt;, schreibt &lt;code&gt;CLUB_GROUP_*&lt;/code&gt; in &lt;code&gt;deploy/.env&lt;/code&gt;). Ein dort schon gesetzter Begriff gilt unverändert weiter.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Eine Reaktion pro Person:&lt;/strong&gt; Auf eine Nachricht oder eine Neuigkeit reagiert jede Person mit höchstens einem Emoji. Ein anderes ersetzt das bisherige, ein zweiter Tipp auf dasselbe nimmt es zurück. Ein Wechsel benachrichtigt nicht noch einmal. Bisherige Mehrfach-Reaktionen werden beim Update auf die jüngste reduziert.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Verständlichere Oberfläche:&lt;/strong&gt; - &lt;strong&gt;Begriffe:&lt;/strong&gt; Die Begriffe des Vereins gelten jetzt auch dort, wo bisher fest „Termin“, „Mitglied“, „Abteilung“, „Kanal“ oder „Thema“ stand, etwa in den Reitern einer Gruppe, bei „Chat zum Termin“, „Termin anlegen“, in Filtern und Leerzuständen, in den Einstellungen der Benachrichtigungen, in Mails und in den Hilfetexten der Verwaltung. - &lt;strong&gt;Rückfrage:&lt;/strong&gt; Endgültige Aktionen fragen einmal nach: Ort löschen, Rolle löschen, Termin löschen, Wartung absagen und Google-Kalender-Zuordnung entfernen. Verlassen, Archivieren und Entfernen auf der Seite einer Gruppe fragen genauso nach, mit „Abbrechen“. - &lt;strong&gt;Farbauswahl:&lt;/strong&gt; Die Vereinsfarben lassen sich im Browser mit einer Farbauswahl wählen, nicht nur als Code eintippen. - &lt;strong&gt;Protokoll:&lt;/strong&gt; Das Protokoll der Verwaltung zeigt je Änderung „Feld: vorher → nachher“ statt Rohdaten. Auch Aktionen rund um Integrationen, Google-Kalender, Mitgliederquelle und Löschanfragen haben jetzt deutsche Namen. - &lt;strong&gt;Kleinigkeiten:&lt;/strong&gt; Gruppen mit einer Person zeigen „1 Mitglied“. Die Änderungen der Freigaben im Profil tragen den Zeitpunkt wie überall („Fr., 16.10., 09:55 Uhr“). - &lt;strong&gt;Herkunft von Integrationen:&lt;/strong&gt; Karten, Abschnitte und Menüeinträge einer Integration nennen den Namen des Dienstkontos („Integration „Hallenbelegung““) statt des technischen Namespace; Umbenennen wirkt sofort. Weitere Angaben des Kontos kommen nicht aufs Gerät (Migration 0033). - &lt;strong&gt;Gruppen ohne Abteilung&lt;/strong&gt; stehen unter „Für alle Abteilungen“ statt „Abteilungsübergreifend“; das passt zu jedem eigenen Begriff für Abteilungen. - &lt;strong&gt;Status:&lt;/strong&gt; Die Mitgliederliste zeigt den Status als „aktiv“ bzw. „ausgetreten“. - &lt;strong&gt;Passende Tastaturen:&lt;/strong&gt; Am Handy öffnet sich die passende Tastatur, für Zahlen (Plätze, Anzahl), Telefon, E-Mail und Adressen. E-Mail- und Adressfelder schreiben nicht mehr automatisch groß. - &lt;strong&gt;Suche:&lt;/strong&gt; Die Suche zeigt „Suche läuft …“, solange sie wartet, statt vorschnell „Nichts gefunden“. - &lt;strong&gt;Screenreader:&lt;/strong&gt; Die Pfeilknöpfe zum Sortieren haben eine Beschriftung, z. B. „Triathlon nach oben“.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ort löschen:&lt;/strong&gt; Nutzt ein Termin, den der Admin selbst nicht sieht, den Ort, sagt die App jetzt ebenfalls „Der Ort wird verwendet; archivieren statt löschen“ statt einer allgemeinen Konfliktmeldung.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Meldungen sagen, was daraus wurde:&lt;/strong&gt; Online wartet der Melde-Dialog kurz auf den Server und zeigt dann „Danke“ oder den Grund, etwa „Heute sind keine weiteren Meldungen möglich (Tageslimit)“, statt immer „Danke“. Offline sagt er „Die Meldung wird gesendet, sobald du online bist“; lehnt der Server sie später ab, erscheint ein Hinweis. Was man schon gemeldet hat, erkennt die App und sagt es gleich. Eine abgelehnte Meldung hält die übrigen Änderungen nicht mehr auf (bisher wartete die Warteschlange bis zum Ende des Tageslimits), und „außerdem blockieren“ gilt auch dann.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fehlermeldungen:&lt;/strong&gt; Bei ungültigen Eingaben zeigt die App einen verständlichen Hinweis statt einer technischen Fehlerliste oder „Fehler 500“. Das gilt auch beim Datenexport.&lt;/li&gt;
+&lt;li&gt;Zeitgesteuerte Neuigkeiten und „anheften bis“ richten sich jetzt nach der Uhrzeit des Vereins, nicht nach der Zeitzone des Geräts, auf dem sie geschrieben werden.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;deploy/gen-env.sh&lt;/code&gt; gab beim Anlegen der &lt;code&gt;.env&lt;/code&gt; die Meldung „legal: Kommando nicht gefunden“ aus (Backticks in einem Kommentar). Die erzeugte &lt;code&gt;.env&lt;/code&gt; war davon nicht betroffen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Erster Start auf einem Gerät:&lt;/strong&gt; Bis die Daten zum ersten Mal geladen sind, zeigt der Kalender „Deine Daten werden geladen …“ statt „keine Termine“. Danach erschien gelegentlich die Begrüßung, obwohl man die Einführung schon erledigt hatte; das passiert nicht mehr.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Löschfrist für das Protokoll der Commands&lt;/strong&gt; (bekannte Einschränkung aus 0.2.0): Der Server merkt sich die Antwort auf eine Änderung aus der App nur noch 30 Tage, danach nur Status und Fehlercode. Den Eintrag selbst (wer wann welche Art von Änderung geschickt hat) löscht er nach 180 Tagen, so lange gilt eine Anmeldung höchstens. Bei der Anonymisierung ehemaliger Mitglieder fallen ihre Einträge sofort weg. Eine Änderung, die länger als diese Frist auf einem Gerät gewartet hat, übernimmt der Server nicht mehr: Die App zeigt „Diese Änderung war zu lange nicht übertragen und wurde verworfen.“ So kann eine alte Wiederholung nie doppelt wirken.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Bekannte Einschränkungen&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Native Builds für iOS und Android und Tests auf echten Geräten stehen weiter aus. Die neue Datumsauswahl ist in den Apps deshalb nur per Typprüfung abgesichert; im Browser ist sie getestet.&lt;/li&gt;
+&lt;li&gt;Hetzner Object Storage und Google-Kalender sind nur gegen Test-Dienste geprüft.&lt;/li&gt;
+&lt;li&gt;Die App gibt es nur auf Deutsch.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.2.0</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.2.0</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.2.0"/>
+    <updated>2026-10-16T12:00:00Z</updated>
+    <content type="html">&lt;p&gt;Eine große Erweiterung für den Vereinsalltag: Mitfahrten, Umfragen, Neuigkeiten, Anhänge und Karten, Moderation, eine Verwaltung für Vereins-Admins, der Abgleich mit easyVerein, Datenschutz-Funktionen und Integrationen. Vor dem Update bitte Von 0.1.x auf 0.2.0 lesen.&lt;/p&gt;
+&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;h3&gt;Mitfahrten&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fahrten zum Termin.&lt;/strong&gt; Wer mit dem Auto fährt, bietet im Termin freie Plätze an: Abfahrt, Treffpunkt (frei oder ein Vereinsort), Plätze, Notiz und Rückfahrt; dabei lässt sich gleich zusagen. Andere sehen die Belegung („1 von 3 frei“), steigen mit einem Tipp zu oder wieder aus, auch offline; ist die Fahrt inzwischen voll, sagt die App das. Wer fährt, kann die Fahrt ändern, Mitfahrende entfernen und mit Grund absagen.&lt;/li&gt;
+&lt;li&gt;Wird der Termin abgesagt, sind seine Fahrten als „Termin abgesagt“ gekennzeichnet und leben wieder auf, wenn die Absage zurückgenommen wird. Wer fährt oder mitfährt, sieht den Termin weiter, auch nach dem Verlassen der Gruppe.&lt;/li&gt;
+&lt;li&gt;Ist die Teilnehmerliste eingeschränkt, sehen nur Verantwortliche und die Person, die fährt, wer mitfährt; die Belegung sehen alle. Bei einer Person, die man blockiert hat oder von der man blockiert ist, fährt man nicht mit.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hinweis in der Terminliste:&lt;/strong&gt; „Du fährst bei … mit, 07:30 ab …“, „Du fährst, 2 Mitfahrende“ oder die freien Plätze.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fahrt-Chat&lt;/strong&gt; für die Person, die fährt, und die Mitfahrenden. Wer aussteigt, sieht neue Nachrichten nicht mehr; wer neu zusteigt, liest den bisherigen Verlauf.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Benachrichtigungen:&lt;/strong&gt; neue Fahrt (an Zugesagte ohne Fahrt), jemand steigt zu oder aus (an die Person, die fährt), Fahrt geändert sowie Fahrt abgesagt oder aus der Fahrt entfernt (an die Mitfahrenden, kurz vor der Abfahrt mit hoher Priorität).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Umfragen und Terminfindung&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Umfragen&lt;/strong&gt; in Kanälen, Themen, Event-Chats, Fahrt-Chats und Direktnachrichten, angelegt über das Symbol neben dem Eingabefeld: Einfach- oder Mehrfachauswahl (2–20 Optionen), optional anonym, mit Frist, „Mitglieder dürfen Optionen ergänzen“ und Ergebnissen sofort, nach der eigenen Stimme oder nach dem Ende. Abgestimmt wird direkt in der Nachricht, auch offline; die Stimme lässt sich bis zur Frist ändern. Wer die Umfrage angelegt hat, kann sie beenden und wieder öffnen. In Kanal und Thema braucht es das Recht „Umfragen anlegen“.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terminfindung&lt;/strong&gt; mit Datum, Datum und Zeit oder Zeitspanne, Antworten Ja / Wenn nötig / Nein, Ergebnis-Matrix und markierter bester Option. „Termin anlegen“ öffnet das Termin-Formular vorbelegt und kann alle mit „Ja“ direkt als „Dabei“ vormerken (sie werden benachrichtigt).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Offene Umfragen&lt;/strong&gt; auf der Startseite: Umfragen, bei denen man noch nicht abgestimmt hat.&lt;/li&gt;
+&lt;li&gt;Benachrichtigungen „Neue Umfrage in abonnierter Unterhaltung“ und „Umfrage-Erinnerung“ (24 Stunden vor der Frist an alle, die noch nicht abgestimmt haben).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Neuigkeiten&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ankündigungen&lt;/strong&gt; an den Verein oder an eine oder mehrere Gruppen: Wer darf (Vorstand für den ganzen Verein, Gruppen-Admins für ihre Gruppe), schreibt Titel und Text (fett, kursiv, Links, Listen, Überschriften) – sofort, als Entwurf oder zu einem festen Zeitpunkt. Optionen: oben anheften bis zu einem Datum, Kommentare erlauben, „Wichtig“.&lt;/li&gt;
+&lt;li&gt;Die Startseite zeigt die angehefteten und die neuesten drei, „Alle Neuigkeiten“ lässt sich nach Gruppe filtern; Mitglieder reagieren mit Emojis und kommentieren. Neuigkeiten erscheinen in der Suche.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;„Wichtig“&lt;/strong&gt; dürfen nur Vereinsrollen mit Freigabe (Vorstand) setzen, nach der Rückfrage „An N Personen senden?“. Die Mail mit dem ganzen Text geht dann an alle in der Zielgruppe, auch an Personen, die Mails abgeschaltet haben.&lt;/li&gt;
+&lt;li&gt;Nach dem Veröffentlichen bleibt die Zielgruppe fest. Fehlt zum geplanten Zeitpunkt das Recht, bleibt die Neuigkeit ein Entwurf und die Glocke sagt Bescheid. Benachrichtigung „Neue Neuigkeit“ per Push und Glocke.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Gäste&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;„+ Gast“ zur Zusage&lt;/strong&gt;, wenn ein Termin Gäste erlaubt: mit Namen und optionaler Notiz („Probetraining“), höchstens so viele wie eingestellt. Gäste zählen zum Limit („12 von 16 dabei, davon 2 Gäste“) und stehen in der Teilnehmerliste als „Gast von …“. Wer absagt, nimmt seine Gäste mit; von der Warteliste rückt nach, wer mit seinen Gästen in die freien Plätze passt. Gästenamen werden drei Monate nach dem Termin entfernt.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Anhänge, Strecken und Karten&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Anhänge&lt;/strong&gt; (optional, braucht Object Storage): Bilder und Dateien (PDF, Office, ZIP, GPX) in Nachrichten (bis 10), an Terminen und Events (bis 10) und an Neuigkeiten (bis 10 Bilder, 20 Anhänge); Bilder bis 10 MB und 25 Megapixel, andere Dateien bis 20 MB. Bilder erscheinen als Vorschau, ein Tipp öffnet sie groß; PDF-Anhänge zeigen ihre erste Seite. Nachrichten dürfen nur aus Anhängen bestehen („📷 Foto“ bzw. „📎 Datei“ in Chat-Liste und Benachrichtigung).&lt;/li&gt;
+&lt;li&gt;In der App für iOS und Android: Foto aufnehmen, aus der Mediathek wählen (iPhone-Fotos im HEIC-Format kommen als JPEG an) oder eine Datei aus der Dateien-App anhängen. Ohne Netz zeigen Bilder einen Platzhalter und Dateien einen Hinweis; war eine Datei beim Senden nicht mehr da (lange offline), kommt der Text trotzdem an.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Profilbild:&lt;/strong&gt; im Profil hochladen oder entfernen; es erscheint in Listen und im Verzeichnis. Profilbilder ausgetretener Mitglieder sind nicht mehr zu sehen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Strecken (GPX) an Terminen:&lt;/strong&gt; Distanz, Höhenmeter, Rundkurs, Linie und Höhenprofil direkt im Termin, auch offline. Wer hochlädt, erfährt, ob die Datei Zeitstempel enthält, und kann Start und Ziel (je 300 m) ausblenden; Zeitstempel, Puls und Gerätedaten speichert der Server nicht. Strecken eines Termins ersetzen die des Events. Benachrichtigung „Strecke hinzugefügt oder geändert“ an alle mit Zusage (Push nur, wenn der Termin in weniger als 24 Stunden beginnt).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Karten&lt;/strong&gt; (optional, vom Server des Vereins): Strecken auf einer Karte mit Start, Ziel und Zoom auf die ganze Strecke, auf Wunsch im Vollbild; ein Tipp ins Höhenprofil zeigt die Stelle samt Distanz und Höhe. Am Termin zeigt eine kleine Karte den Vereinsort, bei Mitfahrten den Treffpunkt; „Route planen“ öffnet die Karten-App des Geräts. Kein fremder Kartendienst sieht, wer was anschaut. Ohne Netz bleibt die Linie ohne Hintergrund. In den Apps für iOS und Android braucht die Karte eine neue App-Version.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vereinsort im Termin-Formular:&lt;/strong&gt; Beim Anlegen und Bearbeiten lässt sich ein Vereinsort wählen (der Freitext „Ort“ bleibt möglich); der Termin zeigt dann die Karte und „Route planen“.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Moderation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inhalte melden:&lt;/strong&gt; Nachrichten (auch Umfragen, Fahrt-Chats und Kommentare), Neuigkeiten, Profile und Bilder (aus der Großansicht) lassen sich melden: Grund wählen, optional ein Text und „Person außerdem blockieren“, auch offline. Der Inhalt ist danach für einen selbst zugeklappt; melden drei Personen dieselbe Nachricht, ist sie bis zur Entscheidung für alle zugeklappt („Wird geprüft“). Die gemeldete Person erfährt nicht, wer gemeldet hat. Höchstens 10 Meldungen am Tag.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prüfen und entscheiden:&lt;/strong&gt; Meldungen aus Kanälen, Themen, Event-Chats und Neuigkeiten einer Gruppe prüfen deren Admins auf der Gruppenseite, alles andere die Vereins-Admins in der Verwaltung („Meldungen und Verhaltensregeln“). Nach 48 Stunden geht eine offene Meldung zusätzlich an die Vereins-Admins, ebenso alle Meldungen aus einer Gruppe ohne andere aktive Admins. Wer gemeldet wurde, prüft Meldungen gegen sich nie, auch nicht als Admin.&lt;/li&gt;
+&lt;li&gt;Die Prüfansicht zeigt den Inhalt mit seinen Anhängen (auch nach Ablauf selbstlöschender Nachrichten und ohne Leserecht für die Unterhaltung), Kontext in Gruppen, Gründe und frühere bestätigte Meldungen. Der Text entfernter Inhalte bleibt höchstens 30 Tage im Beleg der Meldung.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Entscheidungen&lt;/strong&gt; mit Begründung: verwerfen, Inhalt entfernen („Von der Moderation entfernt“; Anhänge gehen mit, bei Profilen das Profilbild; eine entfernte Neuigkeit lässt sich danach nur noch löschen), verwarnen, Schreibsperre für 1, 7 oder 30 Tage (in der Gruppe oder vereinsweit; in der Gruppe gilt sie auch beim Bearbeiten, im Event-Chat und für Kommentare zu Neuigkeiten der Gruppe) und App-Zugang sperren. Eine App-Sperre beendet Anmeldung, Sitzungen, Kalender-Abo und Synchronisation sofort; Push und Mail gibt es danach keine mehr (bis auf die Mail über die Sperre selbst). Die Mitgliedschaft bleibt unberührt. Jede Entscheidung steht im Protokoll.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Verhaltensregeln&lt;/strong&gt; pflegen die Vereins-Admins; alle bestätigen sie vor dem ersten Schreiben und nach jeder neuen Fassung (bis dahin nur lesen). Regeln und Kontakt stehen unter Profil › Hilfe &amp;amp; Regeln, eigene Meldungen mit Ergebnis unter Profil › Meine Meldungen.&lt;/li&gt;
+&lt;li&gt;Benachrichtigungen „Neue Meldung“, „Meldung seit 48 h offen“, „Ergebnis meiner Meldung“ und „Inhalt entfernt, Verwarnung oder Sperre“, ohne den gemeldeten Inhalt in Push und Mail.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Wartung und Hinweise&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Vereins-Admins kündigen eine &lt;strong&gt;Wartung&lt;/strong&gt; an (Verwaltung › Wartung und Hinweise oder &lt;code&gt;deploy/maintenance.sh&lt;/code&gt;), auf Wunsch mit Eintrag in der Glocke, der Änderungen und Absagen folgt. Die Geräte zeigen ab 48 Stunden vorher einen Hinweis und während der Wartung „Wartungsarbeiten im Gange“, auch ohne Verbindung; Änderungen warten so lange in der Warteschlange.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Systemhinweise&lt;/strong&gt; für alle mit Text, Stufe und Ablauf.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Verwaltung für Vereins-Admins&lt;/h3&gt;
+&lt;p&gt;Im Web in der Seitenleiste, in der App unter Profil › Verwaltung:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Verein:&lt;/strong&gt; Name, Kurzname, Farben und Logos (bis 512 KB) sowie die Begriffe für Gruppe, Abteilung, Mitglied, Termin, Kanal und Thema mit grammatischem Geschlecht („Gruppe“ statt „Rudel“, „Training“ statt „Termin“). Die Apps übernehmen Marke und Begriffe beim nächsten Laden; Farben und Logos im PNG-, JPEG- oder WebP-Format gehen auch an die Anmeldeseite (sichtbar nach spätestens etwa einer Stunde). SVG-Logos prüft der Server über eine Positivliste (keine Skripte, Editor-Daten oder Verweise nach außen).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Module:&lt;/strong&gt; Mitfahrten, Umfragen, Neuigkeiten, Anhänge, Gäste, Direktnachrichten, Verzeichnis, Kalender-Abo, Integrationen und Google-Kalender lassen sich je Verein ein- und ausschalten. Ausgeschaltet verschwinden sie aus der App und der Server lehnt sie ab; Daten bleiben erhalten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inhalte:&lt;/strong&gt; Infoseiten (Markdown) und Links (https) für Seitenleiste und Profil.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standards:&lt;/strong&gt; Erinnerung, Anmeldeschluss, Warteliste und Gäste für neue Termine; Standardkanäle der Benachrichtigungen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Profil und Sportarten:&lt;/strong&gt; welche Profilfelder angeboten werden und welche Sportarten zur Auswahl stehen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mitglieder:&lt;/strong&gt; Suche, Status, letzte Anmeldung, Vereinsrollen, Vereins-Admin (die letzte Admin-Person bleibt), alle Sitzungen beenden, App sperren und entsperren (mit Grund; Vereins-Admins erst nach Entzug des Rechts; Entsperren zeigt vorher alle offenen Sperren, auch aus Meldungen). Gibt es nur eine aktive Vereins-Admin-Person, warnt die Verwaltung: Meldungen gegen sie könnte sonst niemand prüfen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Struktur:&lt;/strong&gt; Abteilungen (Name, Reihenfolge, zugeordnete Gruppen) und Vereinsrollen (auch „darf Wichtig senden“).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Orte&lt;/strong&gt; anlegen, ändern, archivieren und, solange kein Termin und keine Fahrt sie nutzt, löschen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche:&lt;/strong&gt; Synonyme („rad“ findet auch „Fahrrad“) und Neuindizierung im Hintergrund mit Statusanzeige.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Löschanfragen&lt;/strong&gt; von Mitgliedern mit der Zahl offener Anfragen (siehe Datenschutz).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protokoll:&lt;/strong&gt; jede Änderung in der Verwaltung, an Wartung und Hinweisen und in der Moderation mit Person, Zeit, Stand vorher und nachher; Filter nach Bereich und Zeitraum. Einträge bleiben zwei Jahre.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Mitgliederquelle (easyVerein oder CSV)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Vereins-Admins richten unter Verwaltung › Mitgliederquelle ein, woher die Mitglieder kommen. easyVerein wird stündlich und auf Knopfdruck abgeglichen; eine CSV-Datei (Vorlage zum Herunterladen) wird nach einem Probelauf übernommen.&lt;/li&gt;
+&lt;li&gt;Der Abgleich legt Mitglieder an, gleicht Namen, Adressen, Eintrittsjahr und Gruppen der Abteilungen an und deaktiviert Ausgetretene sofort (Sitzungen enden). Vor dem ersten Einschalten und vor jeder CSV-Übernahme ist ein Probelauf mit Vorschau Pflicht. Würden mehr als 5 % der Mitglieder deaktiviert, bricht der Lauf ab, bis ein Admin die Zahl bestätigt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Konflikte:&lt;/strong&gt; Mehrdeutiges (geteilte Adressen, unklare Zuordnung, abgelehnte Anmeldungen) und einzelne Mitglieder, die sich nicht übernehmen ließen, erscheinen als Konflikt, der Rest des Laufs gilt. Eine abgelehnte Anmeldung lässt sich einem Mitglied zuordnen. Benachrichtigung „Abgleich-Konflikt oder -Fehler“ an die Vereins-Admins (Mail und Glocke).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Konten in Zitadel:&lt;/strong&gt; Neue Mitglieder bekommen ein Konto mit bestätigter Adresse und auf Wunsch eine Willkommens-Mail; Adressänderungen werden übernommen, Ausgetretene gesperrt und bei Wiedereintritt entsperrt. Ein schon vorhandenes Konto mit derselben Adresse wird nur übernommen, wenn es zum Mitglied gehört, sonst entsteht ein Konflikt.&lt;/li&gt;
+&lt;li&gt;Der easyVerein-Schlüssel liegt verschlüsselt in der Datenbank und wird vom Server selbst erneuert; nach einer neuen easyVerein-Adresse ist ein neuer Schlüssel nötig.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Datenschutz&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Konto und Daten löschen&lt;/strong&gt; (Vorgabe der App-Stores): Profil › Konto und Daten löschen erklärt, dass das Konto zur Mitgliedschaft gehört, und schickt auf Wunsch eine Löschanfrage an die Vereins-Admins (Mail und Glocke), optional mit dem Wunsch, auch die Inhalte der eigenen Nachrichten zu löschen. Die Anfrage lässt sich zurückziehen. Admins bearbeiten sie unter Verwaltung › Löschanfragen. Öffentliche Seite &lt;code&gt;/konto-loeschen&lt;/code&gt; ohne Anmeldung für Google Play.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anonymisierung 30 Tage nach dem Austritt:&lt;/strong&gt; Das Mitglied wird zu „Ehemaliges Mitglied“. Gelöscht werden Profil, Profilbild, Adressen, Einstellungen, Gruppen, Sanktionen, Daten von Integrationen zur Person, Geräte und das Zitadel-Konto, dazu künftige Zusagen und Mitfahrten (Verantwortliche, Fahrer:in und Mitfahrende werden benachrichtigt, von der Warteliste rückt nach). Nachrichten bleiben ohne Namen; mit Löschwunsch auch ohne Inhalt, ohne Anhänge und ohne eigene Umfragen. Eigene Meldungen bleiben ohne Kommentar. Wer innerhalb der 30 Tage wieder eintritt, behält alles; wer später wiederkommt, beginnt mit einem neuen Profil.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Meine Daten herunterladen:&lt;/strong&gt; ZIP mit JSON (Profil, Zusagen, eigene Nachrichten, Reaktionen, Stimmen, Mitfahrten, Neuigkeiten, Einstellungen, Geräte, eigene Meldungen, Daten von Integrationen zur Person und eine Liste der eigenen Dateien ohne deren Inhalt), ohne Inhalte anderer. Kleine Exporte sind sofort fertig, große melden sich in der Glocke; der Link gilt 48 Stunden, höchstens drei Exporte am Tag.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Datenschutzseite&lt;/strong&gt; &lt;code&gt;/datenschutz&lt;/code&gt; mit neutralem Standardtext aus der Vereinskonfiguration (Kontakt, Anschrift) oder Weiterleitung auf die Seite des Vereins; verlinkt im Profil und auf der Anmeldeseite.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aufbewahrungsfristen:&lt;/strong&gt; Glocke und Zustellaufträge nach 90 Tagen, abgelaufene Sitzungen nach 90 Tagen, erledigte Konflikte der Mitgliederquelle nach 30 Tagen. Zusagen gibt es 24 Monate nach dem Termin nur noch als Zählung; danach nimmt der Server auch keine neuen mehr an. Verzeichnis der Fristen in docs/betrieb/datenschutz.md.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integrationen (optional)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Vereins-Admins legen unter Verwaltung › Integrationen &lt;strong&gt;Dienstkonten&lt;/strong&gt; für externe Werkzeuge an: mit Rechten (Termine lesen, Mitglieder mit ihren freigegebenen Feldern lesen, Benachrichtigungen senden, eigene Daten schreiben), auf Wunsch auf eine Gruppe beschränkt, mit Tokens, die nur einmal angezeigt werden, ablaufen und sich widerrufen lassen, und mit einer Grenze für Anfragen pro Minute.&lt;/li&gt;
+&lt;li&gt;Werkzeuge legen über die Integrations-API eigene &lt;strong&gt;Karten&lt;/strong&gt; auf die Startseite, Abschnitte in Termine und Einträge ins Menü (festes Format mit Titel, Text, Kennzahlen, Liste, Link und Knopf). Mitglieder sehen sie auch offline; ein Knopfdruck geht auch offline raus und landet beim Werkzeug.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Webhooks&lt;/strong&gt; melden ausgewählte Ereignisse (Termine, Zusagen, Neuigkeiten, Gruppen-Mitgliedschaften) signiert an eine öffentliche https-Adresse, mit Wiederholung, Abschalten nach anhaltenden Fehlern und Zustell-Log.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grenzen:&lt;/strong&gt; Private Gruppen bleiben für Dienstkonten unsichtbar. Zusagen zu Terminen mit eingeschränkter Teilnehmerliste melden Webhooks nur als Zählung; App-gesperrte Personen fehlen in der Mitgliederliste. Benachrichtigungen haben ein eigenes Kontingent (6 je Stunde, an den ganzen Verein 2 am Tag). Eigene Daten je Werkzeug höchstens 5000 Einträge und 2 MB; Knöpfe höchstens 10 Mal pro Minute; Links in Karten nur per https. Alles Schreiben steht im Protokoll. Anleitung mit Beispiel: docs/integrationen.md.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Google-Kalender (optional)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Termine an den Verein gehen automatisch in einen gemeinsamen Google-Kalender des Vereins, Termine offener Gruppen nur in Kalender, die der Gruppe oder ihrer Abteilung ausdrücklich zugeordnet sind; private Termine und Namen von Teilnehmenden nie. Beim Ausschalten lässt sich alles Übertragene aus Google entfernen. Einrichtung durch Vereins-Admins in der Verwaltung, Anleitung in docs/betrieb/google-kalender.md.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Mail-Zusammenfassung, Einführung und Weiteres&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mail-Zusammenfassung:&lt;/strong&gt; täglich (morgens) oder wöchentlich (montags) die nächsten Termine mit der eigenen Antwort, neue Termine der eigenen Gruppen, Neuigkeiten, Mitfahrten, offene Umfragen und ungelesene Nachrichten je Unterhaltung. Ohne Inhalt geht keine Mail raus; Texte selbstlöschender Nachrichten und ausgeschaltete Module stehen nie darin. Einstellbar unter Profil › Benachrichtigungen (Standard: wöchentlich), abbestellbar direkt aus der Mail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Einführung beim ersten Login:&lt;/strong&gt; Begrüßung, Gruppen entdecken und beitreten, Benachrichtigungen erlauben, Verhaltensregeln bestätigen (falls nötig) und Mail-Zusammenfassung wählen. Jeder Schritt lässt sich überspringen; unter Profil › „Einführung erneut ansehen“ jederzeit wieder aufrufbar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Teilnehmerliste exportieren:&lt;/strong&gt; Verantwortliche eines Termins und Admins seiner Gruppen laden im Termin eine CSV-Datei für Excel (Name, Status, Warteliste, Kommentar, Gäste als „Gast von …“, Mitfahrt). Nur online; jeder Export wird protokolliert.&lt;/li&gt;
+&lt;li&gt;Benachrichtigung „Zusage entfernt (Mitglied ausgetreten)“ an die Verantwortlichen eines Termins.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Geändert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Die Anmeldung erkennt ein Mitglied an jeder seiner Adressen aus der Mitgliederquelle (dienstlich, privat, Workspace), nicht nur an der ersten. Passt eine Adresse auf mehrere Mitglieder, wird die Anmeldung abgelehnt und als Konflikt gemeldet, außer genau eines davon ist aktiv.&lt;/li&gt;
+&lt;li&gt;Die Sportarten im Profil kommen aus der Verwaltung statt aus dem Code. Bestehende Installationen behalten beim Update die bisherige Liste; eine neue Installation startet ohne Sportarten.&lt;/li&gt;
+&lt;li&gt;Ist der Server nicht erreichbar, warten die Apps mit wachsenden Pausen, statt im Takt neu zu senden.&lt;/li&gt;
+&lt;li&gt;Die Web-App merkt sich die zuletzt angemeldete Person: Beim Neuladen ohne Server zeigt sie die lokalen Daten statt der Anmeldung (wie die App).&lt;/li&gt;
+&lt;li&gt;Wird ein Mitglied von Hand auf „ausgetreten“ gesetzt, zählt das Austrittsdatum ab dann (Grundlage der Anonymisierung).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wird das Teilnehmerlimit eines Termins erhöht, rücken Wartende jetzt nach.&lt;/li&gt;
+&lt;li&gt;Bei Terminen mit „Teilnehmerliste nur für Verantwortliche“ griff das Teilnehmerlimit nicht, die Warteliste rückte nicht nach und die Belegung zeigte falsche Zahlen, wenn ein Mitglied ohne Verantwortung zu- oder absagte.&lt;/li&gt;
+&lt;li&gt;Ohne Standard für den Anmeldeschluss ließ sich kein Termin anlegen. Der Server nimmt jetzt auch einen leeren Anmeldeschluss an (ältere Apps schicken ihn) und setzt dann den Vereinsstandard bzw. keinen.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Sicherheit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Adressen aus der Mitgliederquelle sehen nur die Person selbst und Vereins-Admins.&lt;/li&gt;
+&lt;li&gt;Eine zweite Anmeldung, die nur über die Adresse zu einem Mitglied mit schon hinterlegter Anmeldung passt, wird abgelehnt (Admins können sie zuordnen). Ein vorhandenes Zitadel-Konto übernimmt die Mitgliederquelle nur, wenn es zur Person gehört. Eine neue easyVerein-Adresse verwirft den gespeicherten Schlüssel, damit er nicht an eine andere Adresse geht.&lt;/li&gt;
+&lt;li&gt;Download-Links des Datenexports sowie Kalender-Abo- und Abmelde-Links stehen nicht mehr im Zugriffslog des Servers.&lt;/li&gt;
+&lt;li&gt;Datenbankfunktionen mit erweiterten Rechten dürfen nur noch die Dienste aufrufen, die sie brauchen.&lt;/li&gt;
+&lt;li&gt;Anhänge: Der Server prüft den Dateityp am Inhalt, nicht am Namen, und entfernt Ortsangaben und andere Metadaten aus Fotos. GPX-Dateien speichert er nur neu geschrieben, Dateien, die nur GPX heißen, lehnt er ab; Dateien außer Fotos kommen immer als Download. Dateinamen bekommen die Endung des erkannten Typs, unsichtbare Richtungszeichen fallen weg. Je Person höchstens 50 noch nicht angehängte Uploads bzw. 200 MB am Tag.&lt;/li&gt;
+&lt;li&gt;PDF-Vorschauen entstehen in einem abgeschotteten Dienst ohne Netz und ohne Zugangsdaten; Karten kommen nur vom eigenen Server.&lt;/li&gt;
+&lt;li&gt;Der Merker für den SMTP-Zugang von Zitadel verrät das Passwort nicht mehr (HMAC statt einfachem Hash).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Bekannte Einschränkungen&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Native Builds für iOS und Android und Tests auf echten Geräten stehen noch aus.&lt;/li&gt;
+&lt;li&gt;Hetzner Object Storage und Google-Kalender sind nur gegen Test-Dienste geprüft.&lt;/li&gt;
+&lt;li&gt;Das Protokoll der Commands (&lt;code&gt;command_log&lt;/code&gt;) hat noch keine Löschfrist.&lt;/li&gt;
+&lt;li&gt;Die App gibt es nur auf Deutsch.&lt;/li&gt;
+&lt;li&gt;Meldungen laufen über die Warteschlange: Lehnt der Server eine Meldung ab (schon gemeldet, Tageslimit erreicht), zeigt die App trotzdem „Danke“.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.1.1</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.1.1</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.1.1"/>
+    <updated>2026-10-14T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Geändert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fertige Images statt Bau auf dem Vereinsserver.&lt;/strong&gt; Server, Web-App und Betriebsdateien liegen in einem Image (&lt;code&gt;docker.io/cygnusbn/clubforge&lt;/code&gt;, auch als &lt;code&gt;ghcr.io/cygnusb/clubforge&lt;/code&gt;; &lt;code&gt;linux/amd64&lt;/code&gt; und &lt;code&gt;linux/arm64&lt;/code&gt;). Der Installer holt es per &lt;code&gt;--version&lt;/code&gt;, ohne Git und ohne Zugang zum Repository; &lt;code&gt;update.sh&lt;/code&gt; zieht neue Versionen, übernimmt die Betriebsdateien aus dem Image (eigene &lt;code&gt;.env&lt;/code&gt;, &lt;code&gt;caddy/extra/&lt;/code&gt; und eigenes Branding bleiben) und kennt &lt;code&gt;--rollback&lt;/code&gt;. &lt;code&gt;install.sh&lt;/code&gt; steht auf der Projektseite samt Prüfsumme (kein &lt;code&gt;curl | bash&lt;/code&gt; nötig). Der Weg über Git (&lt;code&gt;--ref&lt;/code&gt;, &lt;code&gt;--repo&lt;/code&gt;) bleibt für Entwickler.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Eine Web-App für jeden Verein.&lt;/strong&gt; Name, Farben, Logo, Favicon und Begriffe liest die Web-App zur Laufzeit aus dem Instanz-Manifest des Servers; bis es da ist (erster Besuch), zeigt sie einen neutralen Ladezustand statt eines falschen Designs. Seitentitel, Themenfarbe und Tab-Symbol folgen dem Verein. Logos und Favicon liegen in &lt;code&gt;deploy/branding/&lt;/code&gt; und werden von dort ausgeliefert (&lt;code&gt;CLUB_LOGO&lt;/code&gt;, neu &lt;code&gt;CLUB_FAVICON&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vereinsmarke und erste Admin-Person beim Installieren.&lt;/strong&gt; &lt;code&gt;install.sh&lt;/code&gt;, &lt;code&gt;cloud-init.yaml&lt;/code&gt; und die OpenTofu-Vorlagen nehmen Name, Kurzname, Logos (Datei oder https-Adresse), Favicon, Farben, Begriff für Gruppen und die erste Admin-Person entgegen: ein Befehl (oder eine &lt;code&gt;terraform.tfvars&lt;/code&gt;) bis zum laufenden Vereinsserver. Dieselben Werte prägen Web-App, App und die Zitadel-Anmeldeseite. Nachträglich ändern mit &lt;code&gt;deploy/branding.sh&lt;/code&gt;, ohne Neuinstallation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;restore.sh&lt;/code&gt; nimmt ohne Angabe das neueste Backup.&lt;/li&gt;
+&lt;li&gt;Der Standard-Projektname ist &lt;code&gt;clubforge&lt;/code&gt; (vorher &lt;code&gt;clubforge-spike&lt;/code&gt;), lokale Images heißen &lt;code&gt;clubforge:dev&lt;/code&gt; und &lt;code&gt;clubforge-e2e:dev&lt;/code&gt;. Bestehende Installationen behalten den in &lt;code&gt;.env&lt;/code&gt; gesetzten &lt;code&gt;COMPOSE_PROJECT_NAME&lt;/code&gt; und damit ihre Volumes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cloud-init.yaml&lt;/code&gt; und die OpenTofu-Vorlagen holen kein Git mehr: &lt;code&gt;clubforge_version&lt;/code&gt;, &lt;code&gt;clubforge_image&lt;/code&gt;, &lt;code&gt;install_url&lt;/code&gt; und &lt;code&gt;install_sha256&lt;/code&gt; ersetzen &lt;code&gt;repo_url&lt;/code&gt; und &lt;code&gt;ref&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;install.sh&lt;/code&gt; brach beim Erzeugen des Backup-Schlüssels ohne Meldung ab (gefunden beim Test auf einer Hetzner-VM).&lt;/li&gt;
+&lt;li&gt;Push-Nachrichten schlugen auf Instanzen mit Port in der Adresse fehl, wenn kein &lt;code&gt;CF_VAPID_SUBJECT&lt;/code&gt; gesetzt war.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.1.0</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.1.0</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.1.0"/>
+    <updated>2026-10-14T12:00:00Z</updated>
+    <content type="html">&lt;p&gt;Erste Fassung für den Pilotbetrieb. Funktionen und Schnittstellen können sich noch ändern.&lt;/p&gt;
+&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Termine und Serien&lt;/strong&gt; mit Zusage, Absage und „vielleicht“, Warteliste, Anmeldeschluss und Teilnehmerlimit; Serientermine mit Ausnahmen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gruppen&lt;/strong&gt; („Rudel“, im Verein frei benennbar) und Abteilungen: offen, auf Anfrage oder privat, mit Mitgliedern, Verantwortlichen und eigenen Terminen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chats&lt;/strong&gt;: Gruppen- und Terminchats mit Themen, Direktnachrichten, Erwähnungen, Lesestand und Blockieren; selbstlöschende Nachrichten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Benachrichtigungen&lt;/strong&gt; per Push (App und Browser), E-Mail und Glocke; je Person und Ereignis einstellbar, mit Ruhezeit und Erinnerungen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mitgliederverzeichnis und Profil&lt;/strong&gt;: Angaben wie Telefon oder Strava, pro Feld freigegeben für niemanden, die eigene Gruppe oder alle.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche&lt;/strong&gt; über Termine, Chats und Mitglieder.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kalender-Abo&lt;/strong&gt; (iCal) für Apple, Google und Outlook Kalender, wahlweise nur eigene Zusagen oder alle Termine.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Offline zuerst&lt;/strong&gt;: Die App liest aus einer lokalen Datenbank; Änderungen werden gesendet, sobald eine Verbindung besteht. Rechte werden in der Datenbank erzwungen, nicht nur in der Oberfläche.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mehrere Vereine in einer App&lt;/strong&gt;: Verein per Adresse oder Einladungslink verbinden und wechseln; jeder Verein betreibt seinen eigenen Server mit eigenem Aussehen, Logo und Begriffen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web-Ansicht&lt;/strong&gt; mit Seitenleiste und dieselbe Oberfläche für iOS, Android und Browser, hell und dunkel.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anmeldung&lt;/strong&gt; über Zitadel (OIDC) im Vereinsdesign.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Über die App&lt;/strong&gt; im Profil: Version der App und des Servers, Lizenz, Hinweis „Bitte App aktualisieren“, wenn ein Verein eine neuere App verlangt.&lt;/li&gt;
+&lt;li&gt;Projektwebseite mit Einladungsseite; Versionsauskunft des Servers unter &lt;code&gt;/api/v1/version&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Bekannte Einschränkungen&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mitglieder werden noch von Hand angelegt (&lt;code&gt;deploy/admin.sh --member&lt;/code&gt;); der Abgleich mit easyVerein folgt.&lt;/li&gt;
+&lt;li&gt;Der Installer ist bisher nur im Trockenlauf und lokal getestet, noch nicht auf einem frischen Cloud-Server.&lt;/li&gt;
+&lt;li&gt;Native Push-Nachrichten (APNs/FCM) und Store-Builds fehlen noch; Push gibt es im Browser.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+</feed>

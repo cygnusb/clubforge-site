@@ -1,3 +1,7 @@
+# Die Seite liegt unter /clubforge-site/ (GitHub Pages). Suchmaschinen lesen robots.txt nur im Wurzelverzeichnis
+# einer Domain; diese Datei greift erst, wenn die Seite auf einer eigenen Domain liegt. Die Einladungsseite (join/)
+# und die 404-Seite schließen sich per <meta name="robots" content="noindex"> selbst aus.
 User-agent: *
 Allow: /
-Disallow: /join/
+
+Sitemap: https://cygnusb.github.io/clubforge-site/sitemap.xml

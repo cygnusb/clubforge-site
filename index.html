@@ -3,21 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>clubforge – die Vereins-App zum Selbsthosten</title>
-<meta name="description" content="clubforge ist eine offline-fähige Vereins-App mit Terminen, Zusagen und Warteliste, Gruppen, Chats, Mitfahrten, Umfragen und Neuigkeiten. Open Source, ein Server pro Verein.">
+<title>clubforge – die Vereins-App für euren eigenen Server</title>
+<meta name="description" content="clubforge ist eine kostenlose Vereins-App: Termine mit Zu- und Absagen, Gruppen, Chats, Mitfahrten, Umfragen und Neuigkeiten, auch ohne Netz. Euer Verein betreibt sie auf einem eigenen Server ab etwa 5 € im Monat.">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/">
+<link rel="alternate" type="application/atom+xml" title="clubforge: neue Versionen" href="versionen/feed.xml">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 <script src="config.js" defer></script>
 <script src="version.js" defer></script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="clubforge – die Vereins-App zum Selbsthosten">
-<meta property="og:description" content="Termine, Zusagen, Gruppen, Chats, Mitfahrten, Umfragen. Offline-fähig, Open Source, jeder Verein betreibt seinen eigenen Server.">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="clubforge – die Vereins-App für euren eigenen Server">
+<meta property="og:description" content="Termine, Zusagen, Gruppen, Chats, Mitfahrten, Umfragen. Offline-fähig, Open Source und kostenlos; jeder Verein betreibt seinen eigenen Server.">
 <meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="clubforge: Kalender und Termindetail der App mit Beispieldaten">
 <meta property="og:url" content="https://cygnusb.github.io/clubforge-site/">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-cal" viewBox="0 0 24 24"><path d="M5 5h14v15H5zM5 10h14M9 3v4M15 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -44,33 +54,76 @@
   <div class="wrap">
     <a class="brand" href="./"><img src="favicon.svg" alt="" width="28" height="28">clubforge</a>
     <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="#tour">Ansehen</a>
       <a class="hide-s" href="#funktionen">Funktionen</a>
-      <a class="hide-s" href="#vereine">Mehrere Vereine</a>
-      <a class="hide-s" href="#aufbau">Aufbau</a>
-      <a class="hide-s" href="#betrieb">Betrieb</a>
+      <a class="hide-s" href="fragen/">Fragen</a>
+      <a class="hide-s" href="umstieg/">Umstieg</a>
       <a class="hide-s" href="#stand">Stand</a>
-      <a data-repo="" data-label="Quellcode" href="#stand" hidden>Quellcode</a>
+      <a class="hide-s" data-repo="" data-label="Quellcode" href="#stand" hidden>Quellcode</a>
+      <a class="nav-cta" href="#anfangen">Loslegen</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="inhalt">
 <section class="hero">
   <div class="wrap">
     <div>
       <h1>Eure App. <em>Euer Server.</em> Euer Verein.</h1>
-      <p class="lead">clubforge bringt Termine mit Zu- und Absagen, Gruppen, Chats, Mitfahrten, Umfragen und Neuigkeiten in eine App für iPhone, Android und Browser. Sie funktioniert auch ohne Netz, und die Daten bleiben auf dem Server eures Vereins.</p>
+      <p class="lead">clubforge ist die App für euren Verein: Termine mit Zu- und Absagen, Gruppen und Chats, Mitfahrten, Umfragen und Neuigkeiten an einem Ort, auch im Funkloch. Die Software ist kostenlos; ihr braucht nur einen eigenen Server ab etwa 5&nbsp;€ im Monat, und die Daten bleiben bei eurem Verein.</p>
       <div class="btn-row">
-        <a class="btn" href="#betrieb">So betreibt ihr es</a>
-        <span class="btn ghost off" data-repo="" data-label="Quellcode ansehen">Quellcode folgt mit dem Pilot</span>
+        <a class="btn" href="#anfangen">So fangt ihr an</a>
+        <a class="btn ghost" href="#tour">Ansehen</a>
       </div>
-      <div class="badges" aria-label="Eckdaten"><span>AGPL-3.0</span><span>iOS · Android · Web</span><span>offline-fähig</span><span>Pilotphase</span></div>
+      <div class="badges" aria-label="Eckdaten"><span>kostenlos · Open Source</span><span>im Browser auf jedem Gerät</span><span>offline-fähig</span><span>Pilotphase</span></div>
     </div>
     <div class="phones" aria-label="Beispielansichten der App">
-      <div class="phone"><img src="img/app-kalender-hell.webp" width="560" height="1212" alt="Kalender mit Terminen und Zusagen in der App" fetchpriority="high"></div>
-      <div class="phone"><img src="img/app-termin-dunkel.webp" width="560" height="1212" alt="Termindetail mit Zusage, Warteliste und Teilnehmenden im dunklen Design"></div>
-      <div class="phone"><img src="img/app-chats-hell.webp" width="560" height="1212" alt="Chatliste mit Termin- und Gruppenchats" loading="lazy"></div>
+      <div class="phone"><img src="img/app-kalender-hell.webp" width="560" height="1212" alt="Kalender der App mit Terminen, Zusagen und einer Terminvorschau (Beispieldaten)" fetchpriority="high" decoding="async"></div>
+      <div class="phone"><img src="img/app-termin-dunkel.webp" width="560" height="1212" alt="Termin im dunklen Design mit Antwort, Zusagen und Anmeldeschluss" decoding="async"></div>
+      <div class="phone"><img src="img/app-chats-hell.webp" width="560" height="1212" alt="Chatliste mit Termin- und Gruppenchats" loading="lazy" decoding="async"></div>
     </div>
+  </div>
+</section>
+
+<section id="kurz" class="alt" aria-labelledby="kurz-titel">
+  <div class="wrap">
+    <h2 id="kurz-titel" class="visually-hidden">Auf einen Blick</h2>
+    <div class="grid three">
+      <article class="card glance"><small>Was ist das?</small><h3>Eine App für den ganzen Verein</h3><p>Mitglieder sehen ihre Termine, sagen zu oder ab, schreiben in Gruppen und bekommen Neuigkeiten. Vorstand und Trainer sehen sofort, wer kommt.</p></article>
+      <article class="card glance"><small>Was kostet es?</small><h3>Die Software nichts</h3><p>clubforge ist Open Source und kostenlos, ohne Werbung und ohne Lizenzgebühr pro Mitglied. Ihr zahlt nur euren Server: ab etwa 5&nbsp;€ im Monat, dazu die Domain.</p></article>
+      <article class="card glance"><small>Wie fangt ihr an?</small><h3>Ein Abend mit etwas Technik</h3><p>Jemand im Verein, der einen Server einrichten kann, installiert clubforge mit einem Befehl. Danach pflegen Admins alles in der App, ohne Technik.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="tour">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>So sieht es aus</h2>
+      <p class="lead">Vier Dinge, die Mitglieder jede Woche tun. Die Bilder zeigen einen Beispielverein mit erfundenen Daten.</p>
+    </div>
+    <ol class="tour">
+      <li>
+        <div class="phone"><picture><source media="(prefers-color-scheme: dark)" srcset="img/app-termin-dunkel.webp"><img src="img/app-termin-hell.webp" width="560" height="1212" alt="Termin mit den Knöpfen Dabei, Vielleicht und Nicht dabei, darunter Zusagen und Anmeldeschluss" loading="lazy" decoding="async"></picture></div>
+        <h3>Zusagen</h3>
+        <p>Im Termin mit einem Tipp zusagen, absagen oder „vielleicht“ sagen. Ist er voll, rückt ihr von der Warteliste automatisch nach.</p>
+      </li>
+      <li>
+        <div class="phone"><picture><source media="(prefers-color-scheme: dark)" srcset="img/tour-mitfahrt-dunkel.webp"><img src="img/tour-mitfahrt-hell.webp" width="560" height="1212" alt="Termin mit einer angebotenen Mitfahrt: Abfahrt am Treffpunkt Brunnen, ein freier Platz, Knopf Mitfahren" loading="lazy" decoding="async"></picture></div>
+        <h3>Mitfahren</h3>
+        <p>Wer fährt, bietet freie Plätze an. Ihr steigt mit einem Tipp zu und sprecht euch im Fahrt-Chat ab.</p>
+      </li>
+      <li>
+        <div class="phone"><picture><source media="(prefers-color-scheme: dark)" srcset="img/tour-umfrage-dunkel.webp"><img src="img/tour-umfrage-hell.webp" width="560" height="1212" alt="Umfrage mit Mehrfachauswahl zur Unterkunft im Trainingslager, direkt im Chat eines Themas" loading="lazy" decoding="async"></picture></div>
+        <h3>Abstimmen</h3>
+        <p>Umfragen direkt im Chat, mit einer oder mehreren Antworten, auf Wunsch anonym und mit Frist.</p>
+      </li>
+      <li>
+        <div class="phone"><picture><source media="(prefers-color-scheme: dark)" srcset="img/tour-neuigkeit-dunkel.webp"><img src="img/tour-neuigkeit-hell.webp" width="560" height="1212" alt="Startseite mit Neuigkeiten: eine angeheftete, als wichtig markierte Einladung zur Mitgliederversammlung und weitere Ankündigungen" loading="lazy" decoding="async"></picture></div>
+        <h3>Auf dem Laufenden bleiben</h3>
+        <p>Neuigkeiten des Vereins und der eigenen Gruppen stehen oben auf der Startseite. Was der Vorstand als wichtig markiert, kommt zusätzlich per Mail.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -78,61 +131,53 @@
   <div class="wrap">
     <div class="sec-head">
       <h2>Alles, was ein Verein im Alltag braucht</h2>
-      <p class="lead">Was mit <span class="opt">optional</span> markiert ist, braucht einen zusätzlichen Dienst oder etwas Einrichtung. Ohne ihn läuft alles andere genauso; einzelne Funktionen schalten Admins im Verein ein und aus.</p>
+      <p class="lead">Was mit <span class="opt">optional</span> markiert ist, braucht etwas Einrichtung. Ohne läuft alles andere genauso; einzelne Funktionen schalten Admins für den Verein ein und aus.</p>
     </div>
     <h3 class="group-title">Im Vereinsleben</h3>
     <div class="grid">
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h3>Termine und Serien</h3><p>Einzeltermine und Wiederholungen. Mitglieder sagen mit einem Tipp zu, ab oder „vielleicht“, wo erlaubt auch mit Gast. Ist ein Termin voll, rücken Wartelisten automatisch nach.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-grp"/></svg></div><h3>Gruppen mit Kanälen</h3><p>Abteilungen, Trainingsgruppen oder Orga-Teams: offen, auf Anfrage oder privat. Jede Gruppe hat eigene Termine, Mitglieder und Themen.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-chat"/></svg></div><h3>Chats</h3><p>Direktnachrichten, Gruppen- und Terminchats mit Erwähnungen. Nachrichten können sich nach einer festgelegten Zeit selbst löschen.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-car"/></svg></div><h3>Mitfahrten</h3><p>Wer zum Termin fährt, bietet freie Plätze an. Andere steigen mit einem Tipp zu, die Fahrt hat ihren eigenen Chat.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-poll"/></svg></div><h3>Umfragen und Terminfindung</h3><p>Abstimmen direkt im Chat, auch anonym oder mit Frist. Bei der Terminfindung wird aus der besten Option gleich ein Termin.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-news"/></svg></div><h3>Neuigkeiten</h3><p>Ankündigungen an den ganzen Verein oder einzelne Gruppen, geplant oder angeheftet. „Wichtig“ geht auf Wunsch des Vorstands an alle auch per Mail.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h4>Termine und Serien</h4><p>Einzeltermine und Wiederholungen. Mitglieder sagen mit einem Tipp zu, ab oder „vielleicht“, wo erlaubt auch mit Gast. Ist ein Termin voll, rückt die Warteliste automatisch nach.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-grp"/></svg></div><h4>Gruppen und Abteilungen</h4><p>Trainingsgruppen, Abteilungen oder Orga-Teams: offen, auf Anfrage oder privat. Jede Gruppe hat ihre Termine, Mitglieder, einen Kanal und Themen.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-chat"/></svg></div><h4>Chats</h4><p>Direktnachrichten, Gruppen- und Terminchats mit Erwähnungen. Nachrichten können sich nach einer festgelegten Zeit selbst löschen.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-car"/></svg></div><h4>Mitfahrten</h4><p>Wer zum Termin fährt, bietet freie Plätze an. Andere steigen mit einem Tipp zu, die Fahrt hat ihren eigenen Chat.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-poll"/></svg></div><h4>Umfragen und Terminfindung</h4><p>Abstimmen direkt im Chat, auch anonym oder mit Frist. Bei der Terminfindung wird aus der besten Option gleich ein Termin.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-news"/></svg></div><h4>Neuigkeiten</h4><p>Ankündigungen an den ganzen Verein oder einzelne Gruppen, geplant oder angeheftet. Wichtiges geht auf Wunsch an alle auch per Mail.</p></article>
     </div>
     <h3 class="group-title">Unterwegs und auf dem Laufenden</h3>
     <div class="grid">
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-bell"/></svg></div><h3>Benachrichtigungen</h3><p>Push, E-Mail und Glocke. Jede Person stellt selbst ein, was sie wann bekommt, mit Ruhezeiten, Erinnerungen und einer Mail-Zusammenfassung täglich oder wöchentlich.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-off"/></svg></div><h3>Offline zuerst</h3><p>Die App liest aus einer lokalen Datenbank und ist sofort da. Zusagen und Nachrichten warten ohne Netz und gehen automatisch raus, sobald es wieder Verbindung gibt.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-clip"/></svg></div><h3>Anhänge und Strecken <span class="opt">optional</span></h3><p>Fotos, PDFs und GPX-Strecken an Nachrichten, Terminen und Neuigkeiten. Strecken mit Distanz und Höhenprofil, Fotos ohne Ortsangaben. Braucht einen S3-kompatiblen Speicher.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-map"/></svg></div><h3>Karten <span class="opt">optional</span></h3><p>Strecken und Treffpunkte auf einer Karte, mit „Route planen“. Die Kartenkacheln eurer Region liegen auf dem eigenen Server, kein fremder Kartendienst schaut mit.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-hand"/></svg></div><h3>Guter Einstieg</h3><p>Beim ersten Login führt eine kurze Einführung durch Gruppen zum Mitmachen, Mitteilungen und Verhaltensregeln. Überspringen geht jederzeit.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-lock"/></svg></div><h3>Datenschutz eingebaut</h3><p>Rechte werden in der Datenbank erzwungen. Profilfelder gibt jede Person einzeln frei, Löschanfrage und Datenexport gehen in der App, nach dem Austritt wird anonymisiert. Keine Werbung, keine Tracker.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-bell"/></svg></div><h4>Benachrichtigungen</h4><p>Push, E-Mail und Glocke. Jede Person stellt selbst ein, was sie wann bekommt, mit Ruhezeiten, Erinnerungen und einer Mail-Zusammenfassung täglich oder wöchentlich.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-off"/></svg></div><h4>Auch ohne Netz</h4><p>Termine und Chats liegen auf dem Gerät und sind sofort da; im Funkloch arbeitet die App weiter. Zusagen und Nachrichten gehen automatisch raus, sobald es wieder Verbindung gibt.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-clip"/></svg></div><h4>Fotos, Dateien und Strecken <span class="opt">optional</span></h4><p>Fotos, PDFs und GPX-Strecken an Nachrichten, Terminen und Neuigkeiten; Strecken mit Distanz und Höhenprofil, Fotos ohne Ortsangaben. Braucht einen Online-Speicher für Dateien.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-map"/></svg></div><h4>Karten <span class="opt">optional</span></h4><p>Strecken und Treffpunkte auf einer Karte, mit „Route planen“. Die Karte eurer Region liegt auf dem eigenen Server, kein fremder Kartendienst schaut mit.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-hand"/></svg></div><h4>Guter Einstieg</h4><p>Beim ersten Login führt eine kurze Einführung durch Gruppen zum Mitmachen, Mitteilungen und Verhaltensregeln. Überspringen geht jederzeit.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h4>Kalender abonnieren <span class="opt">optional</span></h4><p>Mitglieder holen ihre Termine in Apple-, Google- oder Outlook-Kalender. Mit Google Workspace landen Vereinstermine auf Wunsch automatisch im Google-Kalender des Vereins.</p></article>
     </div>
     <h3 class="group-title">Für Vorstand und Admins</h3>
     <div class="grid">
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-gear"/></svg></div><h3>Admin-Bereich</h3><p>Funktionen ein- und ausschalten, eigene Begriffe („Gruppe“, „Abteilung“, „Training“), Logo und Farben, Profilfelder, Infoseiten. Jede Änderung steht im Protokoll.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-flag"/></svg></div><h3>Moderation und Regeln</h3><p>Mitglieder melden Inhalte, Gruppen- und Vereins-Admins entscheiden: entfernen, verwarnen, Schreibsperre. Verhaltensregeln bestätigt jede Person vor dem ersten Schreiben.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-tool"/></svg></div><h3>Wartung ankündigen</h3><p>Ein Hinweis erscheint vorher auf allen Geräten, während der Wartung arbeitet die App offline weiter. Dazu Hinweise an alle, mit Ablaufdatum.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-sync"/></svg></div><h3>Mitglieder abgleichen <span class="opt">optional</span></h3><p>Die Mitgliederliste kommt aus easyVerein oder einer CSV-Datei, mit Probelauf und Schutz vor versehentlichem Massen-Austritt. Neue Mitglieder bekommen ihren Zugang per Mail.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h3>Kalender nach außen <span class="opt">optional</span></h3><p>Mitglieder abonnieren ihre Termine in Apple, Google oder Outlook. Wer Google Workspace nutzt, lässt Vereinstermine automatisch in die Google-Kalender des Vereins übertragen.</p></article>
-      <article class="card"><div class="ico"><svg width="20" height="20"><use href="#i-link"/></svg></div><h3>Integrationen von außen <span class="opt">optional</span></h3><p>Eigene Werkzeuge des Vereins, etwa eine Hallenbelegung, schreiben über ein Dienstkonto Daten in die App und empfangen signierte Webhooks. Der Code läuft außerhalb des Vereinsservers.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-gear"/></svg></div><h4>Verwaltung in der App</h4><p>Funktionen ein- und ausschalten, eigene Begriffe, Logo und Farben, Profilfelder, Infoseiten und Standardwerte für Termine. Jede Änderung steht im Protokoll.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-flag"/></svg></div><h4>Moderation und Regeln</h4><p>Mitglieder melden Inhalte, Gruppen- und Vereins-Admins entscheiden: entfernen, verwarnen, Schreibsperre. Verhaltensregeln bestätigt jede Person vor dem ersten Schreiben.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-tool"/></svg></div><h4>Hinweise und Wartung</h4><p>Hinweise an alle, mit Ablaufdatum. Eine Wartung erscheint vorher auf allen Geräten; währenddessen arbeitet die App ohne Netz weiter.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-sync"/></svg></div><h4>Mitgliederliste übernehmen <span class="opt">optional</span></h4><p>Die Mitglieder kommen aus easyVerein oder einer CSV-Datei, mit Probelauf und Schutz vor versehentlichem Massen-Austritt. Neue Mitglieder bekommen ihren Zugang per Mail.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-lock"/></svg></div><h4>Datenschutz eingebaut</h4><p>Profilangaben gibt jede Person selbst frei. Löschanfrage und Datenexport gehen in der App, nach dem Austritt wird anonymisiert. Keine Werbung, keine Tracker.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-link"/></svg></div><h4>Eigene Werkzeuge anbinden <span class="opt">optional</span></h4><p>Was der Verein schon hat, etwa eine Hallenbelegung, kann Daten in der App zeigen: auf der Startseite, im Termin oder im Menü. Das richtet jemand mit Programmierkenntnissen ein.</p></article>
     </div>
   </div>
 </section>
 
-<section id="ansichten">
+<section id="eigenes">
   <div class="wrap split">
     <div>
-      <h2>Ein Code, drei Plattformen</h2>
-      <p class="lead">Dieselbe App läuft auf iPhone, Android und im Browser. Am Desktop wird aus der Tab-Leiste eine Seitenleiste, am Handy bleibt alles in Daumenreichweite. Hell und dunkel folgen dem System.</p>
+      <h2>Sieht aus wie euer Verein, spricht wie euer Verein</h2>
+      <p class="lead">Name, Logo und Farben stellt ihr in der Verwaltung ein. Auch die Begriffe sind frei wählbar: Gruppe, Abteilung, Mitglied, Termin, Kanal und Thema heißen in der App so, wie ihr sie im Verein nennt.</p>
       <ul class="check">
-        <li>Kalender als Liste oder Woche</li>
-        <li>Zusagen mit Wartelisten-Anzeige und Anmeldeschluss</li>
-        <li>Teilnehmerliste, Terminchat und Erinnerungen an einem Ort</li>
+        <li>Aus „Gruppe“ wird „Riege“, „Team“ oder „Rudel“, aus „Termin“ „Training“</li>
+        <li>Nur die Funktionen, die ihr braucht; der Rest ist ausgeblendet</li>
+        <li>Änderungen gelten sofort auf allen Geräten, ohne neue App</li>
       </ul>
     </div>
     <figure>
-      <div class="shot"><img src="img/web-termin-hell.webp" width="1600" height="1000" alt="Termindetail in der Web-Ansicht mit Seitenleiste" loading="lazy"></div>
-      <figcaption>Web-Ansicht am Desktop (Beispieldaten)</figcaption>
+      <div class="shot"><img src="img/web-termin-hell.webp" width="1600" height="1000" alt="Termin in der Web-Ansicht am Rechner mit Seitenleiste, Antwort und Mitfahrten" loading="lazy" decoding="async"></div>
+      <figcaption>Am Rechner mit Seitenleiste, am Handy mit Tab-Leiste. Hell und dunkel folgen dem Gerät.</figcaption>
     </figure>
-  </div>
-  <div class="wrap" style="margin-top:3rem">
-    <div class="duo">
-      <figure class="phone"><img src="img/app-rudel-hell.webp" width="560" height="1212" alt="Gruppenübersicht" loading="lazy"></figure>
-      <figure class="phone"><img src="img/app-kalender-dunkel.webp" width="560" height="1212" alt="Kalender im dunklen Design" loading="lazy"></figure>
-      <figure class="phone"><img src="img/app-mitglieder-hell.webp" width="560" height="1212" alt="Mitgliederverzeichnis" loading="lazy"></figure>
-    </div>
-    <p style="text-align:center;color:var(--mute);font-size:.875rem;margin-top:1rem">Browser-Ansicht in Handygröße mit Beispieldaten. Aufnahmen aus den nativen iOS- und Android-Apps folgen mit den Store-Versionen.</p>
   </div>
 </section>
 
@@ -140,79 +185,87 @@
   <div class="wrap split">
     <div>
       <h2>Jeder Verein hat seinen eigenen Server</h2>
-      <p class="lead">Wer in mehreren Vereinen aktiv ist, installiert die App einmal und wählt den Verein per Einladungslink oder Adresse. Name, Logo und Farben kommen vom Server des Vereins.</p>
-      <p>Es gibt keine zentrale Plattform, die eure Daten sammelt. Euer Verein entscheidet, wo der Server steht, wer Zugriff hat und wie lange Daten bleiben.</p>
+      <p class="lead">Es gibt keine zentrale Plattform, die eure Daten sammelt. Euer Verein entscheidet, wo der Server steht, wer Zugriff hat und wie lange Daten bleiben.</p>
+      <p>Wer in mehreren Vereinen aktiv ist, braucht trotzdem nur eine App: Den Verein wählt man per Einladungslink oder Adresse, Name, Logo und Farben kommen vom Server des Vereins.</p>
     </div>
     <div class="hosts" aria-label="Schema: eine App, mehrere Vereinsserver">
 <i># eine App auf dem Handy</i><br>
-├─ <b>app.verein-a.example</b> <i>→ Server von Verein A</i><br>
-├─ <b>app.verein-b.example</b> <i>→ Server von Verein B</i><br>
-└─ <b>app.verein-c.example</b> <i>→ Server von Verein C</i><br>
+├─ <b>app.verein-a.example</b> <i>→ Verein A</i><br>
+├─ <b>app.verein-b.example</b> <i>→ Verein B</i><br>
+└─ <b>app.verein-c.example</b> <i>→ Verein C</i><br>
 <br>
 <i># Einladungslink</i><br>
-https://cygnusb.github.io/clubforge-site/join/?host=<b>app.verein-a.example</b>
+…/clubforge-site/join/?host=<b>app.verein-a.example</b>
     </div>
   </div>
   <div class="wrap" style="margin-top:3rem">
     <div class="sec-head">
-      <h3 class="group-title">Eine App, ein Image, keine Bastelversionen</h3>
-      <p>Es gibt eine App für alle Vereine und ein geprüftes Server-Image, das jeder Verein unverändert betreibt. Keine vereinseigenen App-Builds, keine Plugins im Server: So bekommt jeder Verein mit jedem Update dasselbe getestete Produkt, und die Rechteprüfung gilt überall gleich. Was ein Verein anders haben will, kommt auf einem von drei Wegen:</p>
+      <h3 class="group-title">Eine App, ein Server-Paket, für alle gleich</h3>
+      <p>Alle Vereine nutzen dieselbe App und dasselbe geprüfte Server-Paket. Es gibt keine vereinseigenen Sonderversionen: Jeder Verein bekommt mit jedem Update dasselbe getestete Produkt. Was ihr anders haben wollt, geht auf einem von drei Wegen:</p>
     </div>
-    <div class="grid">
-      <article class="card"><h3>Einstellungen</h3><p>Name, Logo, Farben, Begriffe, Profilfelder, Sportarten, Infoseiten, Links und Standardwerte pflegen Admins im Admin-Bereich. Die App übernimmt sie sofort, ohne neuen Build.</p></article>
-      <article class="card"><h3>Module</h3><p>Mitfahrten, Umfragen, Neuigkeiten, Anhänge, Gäste, Direktnachrichten, Verzeichnis, Kalender: alles im zentralen Image, je Verein schaltbar. Neue Funktionen kommen über das Hauptprojekt zu allen.</p></article>
-      <article class="card"><h3>Integrationen von außen</h3><p>Eigenes läuft beim Verein oder einem Dienstleister und spricht über Dienstkonten und Webhooks mit dem Server. Die App zeigt die Daten in festen Bausteinen: Karte auf der Startseite, Abschnitt im Termin, Menüeintrag.</p></article>
+    <div class="grid three">
+      <article class="card"><h4>Einstellungen</h4><p>Name, Logo, Farben, Begriffe, Profilfelder, Sportarten, Infoseiten, Links und Standardwerte pflegen Admins in der Verwaltung.</p></article>
+      <article class="card"><h4>Module</h4><p>Mitfahrten, Umfragen, Neuigkeiten, Anhänge, Gäste, Direktnachrichten, Verzeichnis und Kalender sind dabei und je Verein schaltbar. Neues kommt mit dem nächsten Update zu allen.</p></article>
+      <article class="card"><h4>Anbindungen</h4><p>Eigene Werkzeuge laufen beim Verein oder einem Dienstleister und zeigen ihre Daten an festen Stellen in der App.</p></article>
     </div>
   </div>
 </section>
 
-<section id="aufbau">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>So hängt es zusammen</h2>
-      <p class="lead">Lesen geht immer aus der lokalen Datenbank auf dem Gerät. Änderungen laufen als Commands zum Server, und der Sync verteilt das Ergebnis wieder an alle Geräte. Jeder Verein betreibt diese Dienste auf seinem eigenen Server.</p>
-    </div>
-    <figure>
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="img/architektur-dunkel.svg">
-        <img class="arch" src="img/architektur-hell.svg" width="1300" height="570" alt="Architektur: Die Expo-App mit lokaler SQLite-Datenbank spricht über Caddy mit FastAPI-API, PowerSync und Zitadel; Worker und PostgreSQL liegen auf dem Vereinsserver, Mail, Web Push und später ein Push-Gateway sind externe Dienste." loading="lazy">
-      </picture>
-      <figcaption>Gerät, Vereinsserver und externe Dienste. Gestrichelt: folgt später.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="datenschutz" class="alt">
+<section id="datenschutz">
   <div class="wrap">
     <div class="sec-head">
       <h2>Offen, prüfbar, unter eurer Kontrolle</h2>
-      <p class="lead">clubforge steht unter der GNU Affero General Public License (AGPL-3.0-or-later). Ihr dürft es nutzen, anpassen und weitergeben; Änderungen an gehosteten Versionen müssen offen bleiben.</p>
+      <p class="lead">clubforge steht unter der Open-Source-Lizenz AGPL-3.0. Ihr dürft es nutzen, anpassen und weitergeben; Änderungen an betriebenen Versionen müssen offen bleiben.</p>
     </div>
-    <div class="grid">
-      <article class="card"><h3>Keine Fremdanbieter nötig</h3><p>Datenbank, Anmeldung, Sync und Suche laufen in euren Containern. Für Push-Mitteilungen werden nur die offiziellen Dienste der Gerätehersteller genutzt.</p></article>
-      <article class="card"><h3>Anmeldung über OIDC</h3><p>Zitadel stellt Login, Passwort-Zurücksetzen und Mehrfaktor bereit. Bestehende Identitätsdienste lassen sich anbinden.</p></article>
-      <article class="card"><h3>Daten bleiben beim Verein</h3><p>Dateien liegen in eurem Objektspeicher, Kartenkacheln auf eurem Server, Backups verschlüsselt. Google-Kalender und Integrationen sind freiwillig und bekommen nur, was ihr freigebt.</p></article>
+    <div class="grid three">
+      <article class="card"><h3>Keine Fremdanbieter nötig</h3><p>Anmeldung, Datenbank, Suche und Abgleich laufen auf eurem Server. Für Push-Mitteilungen werden nur die Dienste der Browser- und Gerätehersteller genutzt.</p></article>
+      <article class="card"><h3>Sichere Anmeldung</h3><p>Mit Passkey oder Passwort, Passwort zurücksetzen per Mail. Die Anmeldeseite trägt Logo und Farben des Vereins.</p></article>
+      <article class="card"><h3>Daten bleiben beim Verein</h3><p>Wer was sehen darf, prüft der Server bei jedem Zugriff. Dateien und Karten liegen in eurem Speicher, Sicherungen sind verschlüsselt. Google-Kalender und Anbindungen sind freiwillig.</p></article>
     </div>
   </div>
 </section>
 
-<section id="betrieb">
+<section id="anfangen" class="alt">
   <div class="wrap split">
     <div>
-      <h2>So betreibt ihr es</h2>
-      <p class="lead">Ein kleiner Server, drei Namen im DNS, ein Befehl. Zertifikat, Backups und Sicherheitsupdates richtet der Installer ein.</p>
-      <p>Das geht ab etwa 5 € im Monat und braucht etwas technisches Geschick; wer im Verein Server betreibt, schafft das in einem Abend. Vorlagen für Hetzner, AWS und Google Cloud liegen bei, die Anleitung ist für Ehrenamtliche geschrieben.</p>
+      <h2>So fangt ihr an</h2>
+      <p class="lead">Ihr braucht einen kleinen Server, eine Domain und eine Person, die sich mit Servern auskennt, etwa aus dem Verein oder von einem IT-Dienstleister.</p>
+      <ol class="steps">
+        <li><strong>Server mieten</strong> in der EU, ab etwa 5&nbsp;€ im Monat.</li>
+        <li><strong>Drei Adressen</strong> eurer Domain auf den Server zeigen lassen.</li>
+        <li><strong>Installieren</strong> mit einem Befehl: Vereinsname, Logo, Farben und erste Admin-Person kommen gleich mit. Sicherungen und Updates richtet der Installer ein.</li>
+        <li><strong>Mitglieder einladen</strong>, von Hand, per CSV oder aus easyVerein. Wie der Umstieg gelingt, steht unter <a href="umstieg/">Umstieg</a>.</li>
+      </ol>
       <div class="btn-row">
-        <a class="btn" href="betrieb/">Betrieb im Detail</a>
-        <span class="btn ghost off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Anleitung im Quellcode">Anleitung folgt mit dem Quellcode</span>
+        <a class="btn" href="betrieb/">Betrieb und Kosten im Detail</a>
+        <span class="btn ghost off" data-repo="/issues" data-label="Fragen stellen">Kontakt folgt mit dem Quellcode</span>
       </div>
     </div>
-    <pre><span class="c"># auf einem frischen Server (Debian/Ubuntu)</span>
-sudo deploy/install.sh \
-  --app app.mein-verein.example \
-  --sync sync.mein-verein.example \
-  --login login.mein-verein.example \
-  --email vorstand@mein-verein.example</pre>
+    <div class="card price">
+      <h3>Was es kostet</h3>
+      <dl>
+        <div><dt>Software</dt><dd>kostenlos</dd></div>
+        <div><dt>Server</dt><dd>ab ca. 5&nbsp;€ / Monat</dd></div>
+        <div><dt>Domain</dt><dd>ca. 10–15&nbsp;€ / Jahr</dd></div>
+        <div><dt>Optional: Speicher für Fotos und Sicherungskopien</dt><dd>wenige Euro / Monat</dd></div>
+      </dl>
+      <p>Richtwerte, Stand Herbst 2026. Keine Kosten pro Mitglied.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mehr">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Bevor ihr entscheidet</h2>
+    </div>
+    <div class="more-links">
+      <a class="card" href="fragen/"><h3>Fragen von Vorständen</h3><p>Kosten, Aufwand, Übergabe, Datenschutz, Ausfälle und die Apps in den Stores.</p></a>
+      <a class="card" href="umstieg/"><h3>Umstieg</h3><p>Von WhatsApp-Gruppen oder einer anderen App zu clubforge, Schritt für Schritt.</p></a>
+      <a class="card" href="versionen/"><h3>Was ist neu</h3><p>Neue Funktionen, Änderungen und Fehlerbehebungen je Version, auch als Feed.</p></a>
+      <!-- ENTWURF: <a class="card" href="vergleich/"><h3>Vergleich</h3><p>clubforge neben WhatsApp, Spond, easyVerein-App und Heja, nach nachprüfbaren Kriterien.</p></a> -->
+      <!-- ENTWURF: <a class="card" href="datenschutz-hilfe/"><h3>Datenschutz-Hilfen</h3><p>Vorlagen für Datenschutzerklärung und Verarbeitungsverzeichnis, Löschfristen erklärt.</p></a> -->
+    </div>
   </div>
 </section>
 
@@ -220,15 +273,18 @@ sudo deploy/install.sh \
   <div class="wrap">
     <div class="sec-head">
       <h2>Pilotphase: wächst mit dem ersten Verein</h2>
-      <p class="lead">clubforge ist in Entwicklung und läuft in einem Pilotverein. Die Funktionen für den Vereinsalltag stehen, die Details ändern sich noch.<span data-version-line hidden> Aktuelle Version: <strong data-version></strong>.</span></p>
+      <p class="lead">clubforge läuft in einem Pilotverein. Die Funktionen für den Vereinsalltag stehen, Details ändern sich noch.<span data-version-line hidden> Aktuelle Version: <strong data-version></strong></span></p>
     </div>
     <ol class="roadmap">
-      <li class="done"><small>Fertig</small><strong>Kern</strong><span>Termine, Serien, Zusagen, Warteliste, Gruppen, Chats, Suche, Profil und Verzeichnis, Benachrichtigungen.</span></li>
-      <li class="done"><small>Fertig</small><strong>Offline und Sync</strong><span>Lokale Datenbank, Command-Warteschlange, Rechte in der Datenbank erzwungen.</span></li>
-      <li class="done"><small>Fertig</small><strong>Vereinsalltag</strong><span>Mitfahrten, Umfragen, Neuigkeiten, Anhänge und Strecken, Karten, Moderation, Admin-Bereich, Mitgliederquelle, Datenschutz-Funktionen, Integrationen von außen.</span></li>
-      <li class="now"><small>In Arbeit</small><strong>Pilotbetrieb</strong><span>Mehrere Vereine in einer App, Einladungslinks, Store-Veröffentlichung für iOS und Android.</span></li>
-      <li><small>Geplant</small><strong>Danach</strong><span>Englische Oberfläche und Verbesserungen aus dem Pilot.</span></li>
+      <li class="done"><small>Fertig in 0.1</small><strong>Kern</strong><span>Termine, Zusagen, Warteliste, Gruppen, Chats, Benachrichtigungen, Arbeiten ohne Netz; eine App für mehrere Vereine mit Einladungslinks.</span></li>
+      <li class="done"><small>Fertig in 0.2</small><strong>Vereinsalltag</strong><span>Mitfahrten, Umfragen, Neuigkeiten, Gäste, Anhänge und Karten, Moderation, Verwaltung, Mitgliederliste, Datenschutz, Anbindungen.</span></li>
+      <li class="now"><small>In Arbeit</small><strong>Apps in den Stores</strong><span>Apps für iPhone und Android aus demselben Code; Tests auf echten Geräten stehen noch aus. Bis dahin läuft clubforge im Browser, am Handy wie am Rechner.</span></li>
+      <li><small>Geplant</small><strong>Danach</strong><span>Englische Oberfläche (heute nur Deutsch) und Verbesserungen aus dem Pilot.</span></li>
     </ol>
+    <div class="btn-row">
+      <a class="btn ghost" href="versionen/">Was ist neu: alle Versionen</a>
+      <span class="btn ghost off" data-repo="" data-label="Quellcode ansehen">Quellcode folgt mit dem Pilot</span>
+    </div>
   </div>
 </section>
 </main>
@@ -236,7 +292,7 @@ sudo deploy/install.sh \
 <footer>
   <div class="wrap">
     <span>clubforge <span data-version></span>· AGPL-3.0-or-later</span>
-    <span><span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="join/">Einladungsseite</a> · <a href="konto-loeschen/">Konto löschen</a></span>
+    <span><a href="betrieb/">Betrieb</a> · <a href="fragen/">Fragen</a> · <a href="umstieg/">Umstieg</a><!-- ENTWURF: · <a href="vergleich/">Vergleich</a> · <a href="datenschutz-hilfe/">Datenschutz-Hilfen</a> --> · <a href="versionen/">Versionen</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="join/">Einladungsseite</a> · <a href="konto-loeschen/">Konto löschen</a></span>
   </div>
 </footer>
 </body>
