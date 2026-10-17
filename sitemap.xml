@@ -61,6 +61,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/anleitung/"/>
   </url>
   <url>
+    <loc>https://cygnusb.github.io/clubforge-site/einrichten/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/einrichten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/einrichten/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/einrichten/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/einrichten/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/einrichten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/einrichten/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/einrichten/"/>
+  </url>
+  <url>
     <loc>https://cygnusb.github.io/clubforge-site/versionen/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/versionen/"/>

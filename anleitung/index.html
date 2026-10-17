@@ -27,6 +27,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../style.css">
 <script src="../config.js" defer></script>
+<script src="../copy.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
@@ -56,7 +57,7 @@
 <section class="prose-sec">
   <div class="wrap prose">
 <div class="callout">
-<p><strong>Zwei Wege:</strong> Auf einem schon gemieteten Server installiert ihr per SSH (Schritte 2 bis 4). Bei Hetzner Cloud kann stattdessen eine <a href="#hetzner">OpenTofu-Vorlage</a> Server, Firewall und DNS gleich mit anlegen. Danach geht es für beide mit Schritt 5 weiter.</p>
+<p><strong>Zwei Wege:</strong> Auf einem schon gemieteten Server installiert ihr per SSH (Schritte 2 bis 4). Bei Hetzner Cloud kann stattdessen eine <a href="#hetzner">OpenTofu-Vorlage</a> Server, Firewall und DNS gleich mit anlegen. Danach geht es für beide mit Schritt 5 weiter. Die Befehle mit euren Angaben stellt der <a href="../einrichten/">Einrichtungs-Assistent</a> zusammen.</p>
 <p>Die Beispiele nutzen die Namen <code>app.</code>, <code>sync.</code> und <code>login.mein-verein.example</code>. Setzt überall eure eigenen Namen ein. Was ihr an Server, Domain und Diensten braucht und was es kostet, steht auf der Seite <a href="../betrieb/#voraussetzungen">Betrieb</a>.</p>
 </div>
 
@@ -226,9 +227,8 @@ CF_S3_ENDPOINT=https://fsn1.your-objectstorage.com
 CF_S3_REGION=fsn1
 CF_S3_BUCKET=mein-verein-anhaenge
 CF_S3_ACCESS_KEY=…
-CF_S3_SECRET_KEY=…
-
-cd /opt/clubforge/deploy
+CF_S3_SECRET_KEY=…</pre>
+<pre>cd /opt/clubforge/deploy
 docker compose up -d --force-recreate api worker
 sudo -u clubforge ./check.sh                       <span class="c"># Abschnitt "Anhänge"</span></pre>
 
@@ -270,7 +270,7 @@ sudo -u clubforge ./check.sh                       <span class="c"># Abschnitt "
     <nav class="foot" id="seiten" aria-label="Alle Seiten">
       <div><p class="foot-h">Kennenlernen</p><ul><li><a href="../">Übersicht</a></li><li><a href="../#tour">Ansehen</a></li><li><a href="../#funktionen">Funktionen</a></li><li><a href="../#stand">Stand</a></li></ul></div>
       <div><p class="foot-h">Entscheiden</p><ul><li><a href="../fragen/">Fragen</a></li><li><a href="../umstieg/">Umstieg</a></li><li><a href="../vergleich/">Vergleich</a></li><li><a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a></li></ul></div>
-      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/" aria-current="page">Anleitung</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
+      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/" aria-current="page">Anleitung</a></li><li><a href="../einrichten/">Assistent</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
       <div><p class="foot-h">Für Mitglieder</p><ul><li><a href="../join/">Einladungsseite</a></li><li><a href="../konto-loeschen/">Konto löschen</a></li></ul></div>
     </nav>
     <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>

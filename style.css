@@ -123,6 +123,11 @@ ul.check li::before { content: ""; position: absolute; left: 0; top: .55em; widt
 
 pre { background: #1b1714; color: #f3ece1; border-radius: .9rem; padding: 1.25rem 1.5rem; overflow-x: auto; font: .875rem/1.7 var(--mono); margin: 0 0 1rem; }
 pre .c { color: #a89b89; }
+/* Kopier-Knopf (copy.js): oben rechts über dem Block, der Block macht oben Platz, damit nichts verdeckt wird */
+.code { position: relative; margin: 0 0 1rem; min-width: 0; }
+.code pre { margin: 0; padding-top: 2.75rem; }
+.code .copy { position: absolute; top: .55rem; right: .6rem; padding: .3rem .7rem; border: 1px solid rgb(243 236 225 / .25); border-radius: .45rem; background: rgb(243 236 225 / .08); color: #f3ece1; font: 600 .75rem/1.2 var(--sans); cursor: pointer; }
+.code .copy:hover { background: rgb(243 236 225 / .18); }
 code { font-family: var(--mono); font-size: .92em; }
 
 .roadmap { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); list-style: none; padding: 0; margin: 0; }
@@ -203,8 +208,47 @@ tr:last-child td { border-bottom: 0; }
 th { font-weight: 650; background: var(--bg2); }
 table.wide { min-width: 54rem; }
 table.wide th[scope="row"] { position: sticky; left: 0; z-index: 1; min-width: 8.5rem; }
+/* Vergleich: clubforge-Spalte leicht hervorgehoben; schmal steht jede Zeile untereinander (Beschriftung aus data-label) */
+table.compare th[scope="row"] { width: 10rem; }
+table.compare td.us { background: color-mix(in srgb, var(--ember) 7%, var(--card)); }
+@media (max-width: 48rem) {
+  table.compare thead { display: none; }
+  table.compare, table.compare tbody, table.compare tr, table.compare th, table.compare td { display: block; width: auto; }
+  table.compare tr { padding: .4rem 0 .7rem; border-bottom: 1px solid var(--line); }
+  table.compare tr:last-child { border-bottom: 0; }
+  table.compare th[scope="row"] { background: none; border: 0; padding: .5rem .9rem .3rem; font-size: 1rem; }
+  table.compare td { display: grid; grid-template-columns: 5.5rem 1fr; gap: .75rem; border: 0; padding: .3rem .9rem; }
+  table.compare td.us { margin: 0 .5rem; padding-inline: .4rem; border-radius: .4rem; }
+  table.compare td::before { content: attr(data-label); font-weight: 650; color: var(--mute); }
+}
 .callout { border-left: 4px solid var(--ember); background: var(--card); border-radius: .4rem; padding: 1rem 1.2rem; margin: 0 0 1.5rem; }
 .callout p:last-child { margin-bottom: 0; }
+/* Einrichtungs-Assistent: Formular links, Befehle rechts (ab 64rem nebeneinander, die Befehle bleiben im Blick) */
+.assist-wrap { display: grid; gap: 2.5rem; }
+@media (min-width: 64rem) { .assist-wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; } .assist-out { position: sticky; top: 4.5rem; max-height: calc(100vh - 5.5rem); overflow-y: auto; } }
+.assist fieldset { border: 1px solid var(--line); border-radius: .9rem; background: var(--card); padding: 1rem 1.2rem 1.2rem; margin: 0 0 1.25rem; min-width: 0; }
+.assist legend { font: 700 1.15rem var(--serif); padding: 0 .4rem; }
+.assist .hint, .assist-out .hint { color: var(--mute); font-size: .9rem; margin: 0 0 .75rem; }
+.assist .field { display: grid; gap: .3rem; margin: 0 0 .8rem; min-width: 0; }
+.assist label { font-weight: 600; font-size: .9375rem; }
+.assist input:not([type="radio"]), .assist select { width: 100%; min-width: 0; font: inherit; font-size: 1rem; padding: .5rem .65rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--bg); color: var(--ink); }
+.assist input:focus-visible, .assist select:focus-visible { outline: 3px solid var(--glow); outline-offset: 1px; }
+.assist [aria-invalid="true"] { border-color: #c0392b; }
+.assist .field-err { color: #c0392b; font-size: .85rem; min-height: 0; }
+.assist .field-err:empty { display: none; }
+.assist .cols2, .assist .cols3 { display: grid; gap: 0 1rem; }
+@media (min-width: 36rem) { .assist .cols2 { grid-template-columns: 1fr 1fr; } .assist .cols3 { grid-template-columns: 1fr 1fr 1fr; } .assist .field.wide { grid-column: 1 / -1; } }
+.assist details { border-top: 1px solid var(--line); padding: .7rem 0 0; margin: .7rem 0 0; }
+.assist summary { cursor: pointer; font-weight: 600; margin-bottom: .6rem; }
+.assist .choices { display: grid; gap: .6rem; }
+.assist .choice { display: flex; gap: .7rem; align-items: flex-start; padding: .7rem .8rem; border: 1px solid var(--line); border-radius: .7rem; cursor: pointer; font-weight: 400; }
+.assist .choice:has(input:checked) { border-color: var(--ember); background: color-mix(in srgb, var(--ember) 7%, var(--card)); }
+.assist .choice input { margin-top: .3rem; accent-color: var(--ember); }
+.assist .choice small { display: block; color: var(--mute); font-size: .875rem; }
+.assist .color { display: flex; gap: .5rem; align-items: center; }
+.assist .swatch { flex: none; width: 2rem; height: 2rem; border-radius: .4rem; border: 1px solid var(--line); }
+.assist-out h3 { margin-top: 1.25rem; }
+.assist-out #errors ul { margin: .4rem 0 0; }
 .template { background: var(--card); border: 1px dashed var(--line); border-radius: .8rem; padding: 1rem 1.2rem; margin: 0 0 1.5rem; }
 .template p:last-child, .template ul:last-child { margin-bottom: 0; }
 

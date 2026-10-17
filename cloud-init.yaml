@@ -1,0 +1,92 @@
+#cloud-config
+# clubforge auf einem frischen Server einrichten (cloud-init user-data, für alle Anbieter nutzbar).
+# Debian 12/13 oder Ubuntu 24.04. Die Werte im Block "Einstellungen" anpassen, den Rest unverändert lassen.
+# Vor dem Start: DNS-Einträge für die drei Namen auf die öffentliche IP des Servers setzen (siehe docs/betrieb/dns.md);
+# sonst bricht die Installation bei der DNS-Prüfung ab (Protokoll: /var/log/clubforge-install.log).
+#
+# Der Server holt das Installationsskript von der Projektwebseite und das fertige Image aus der Registry; er braucht
+# weder Git noch Zugangsdaten zum Repository.
+# Hinweis: user-data ist auf dem Server und beim Anbieter lesbar. Hier keine Passwörter eintragen; ein SMTP-Passwort
+# und den Secret Key des Object Storage (CF_S3_SECRET_KEY) nach der Installation in /opt/clubforge/deploy/.env ergänzen
+# und danach `docker compose up -d` ausführen.
+write_files:
+  - path: /root/clubforge-install.sh
+    permissions: "0700"
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+      exec > >(tee -a /var/log/clubforge-install.log) 2>&1
+
+      # ---- Einstellungen -------------------------------------------------------------------------
+      APP_HOST="app.mein-verein.example"
+      SYNC_HOST="sync.mein-verein.example"
+      LOGIN_HOST="login.mein-verein.example"
+      ADMIN_EMAIL="admin@mein-verein.example"
+      CLUB_NAME="Mein Verein"
+      # Version (z. B. 0.1.0, ohne v); leer = neueste
+      VERSION=""
+      # Image ohne Tag; leer = docker.io/cygnusbn/clubforge (Alternative: ghcr.io/cygnusb/clubforge)
+      IMAGE=""
+      # Installationsskript und seine Prüfsumme. Wer die Prüfsumme selbst festlegen will (aus dem GitHub-Release oder
+      # per Download und sha256sum geprüft), trägt sie bei INSTALL_SHA256 ein.
+      INSTALL_URL="https://cygnusb.github.io/clubforge-site/install.sh"
+      INSTALL_SHA256=""
+      # Vereinsmarke (alles optional, später änderbar mit /opt/clubforge/deploy/branding.sh): Logos als https-Adresse (SVG/PNG, bis 2 MB),
+      # Farben als #rrggbb, Begriff für Gruppen
+      LOGO=""            # Logo für dunklen Grund (weiß/hell)
+      LOGO_LIGHT=""      # Logo für hellen Grund (dunkel), z. B. Anmeldeseite
+      FAVICON=""
+      COLOR_PRIMARY=""   # z. B. #117733
+      COLOR_DARK=""      # Kopfzeile, weißer Text muss lesbar sein
+      COLOR_ACCENT=""
+      GROUP_ONE=""       # z. B. Gruppe
+      GROUP_OTHER=""     # z. B. Gruppen
+      GROUP_GENDER=""    # m, f oder n
+      # Erste Admin-Person gleich anlegen (E-Mail = ADMIN_EMAIL); das Einmalpasswort steht danach in /root/clubforge-erste-anmeldung.txt
+      ADMIN_FIRST=""
+      ADMIN_LAST=""
+      # Öffentlicher age-Schlüssel (age1…) für Backups; leer = ein Schlüsselpaar wird erzeugt und liegt in /root/clubforge-backup-key.txt
+      AGE_RECIPIENT=""
+      # Object Storage für Anhänge (S3-kompatibel, docs/betrieb/anhaenge.md). Leer = keine Anhänge, alles andere läuft.
+      # Eigener Bucket oder Präfix, getrennt von den Backups. Den Secret Key nicht hier eintragen (siehe Hinweis oben).
+      S3_ENDPOINT=""     # z. B. https://fsn1.your-objectstorage.com
+      S3_REGION=""       # z. B. fsn1
+      S3_BUCKET=""
+      S3_ACCESS_KEY=""
+      S3_PREFIX=""       # optional
+      # --------------------------------------------------------------------------------------------
+
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get update -qq
+      apt-get install -y -qq ca-certificates curl
+      cd /root
+      curl -fsSL -o install.sh "$INSTALL_URL"
+      if [ -n "$INSTALL_SHA256" ]; then
+        echo "$INSTALL_SHA256  install.sh" | sha256sum -c -
+      else
+        curl -fsSL -o install.sh.sha256 "$INSTALL_URL.sha256"
+        echo "$(cut -d' ' -f1 install.sh.sha256)  install.sh" | sha256sum -c -
+      fi
+      args=(--yes --app "$APP_HOST" --sync "$SYNC_HOST" --login "$LOGIN_HOST" --email "$ADMIN_EMAIL" --club "$CLUB_NAME")
+      [ -z "$VERSION" ] || args+=(--version "$VERSION")
+      [ -z "$IMAGE" ] || args+=(--image "$IMAGE")
+      [ -z "$LOGO" ] || args+=(--logo "$LOGO")
+      [ -z "$LOGO_LIGHT" ] || args+=(--logo-light "$LOGO_LIGHT")
+      [ -z "$FAVICON" ] || args+=(--favicon "$FAVICON")
+      [ -z "$COLOR_PRIMARY" ] || args+=(--primary "$COLOR_PRIMARY")
+      [ -z "$COLOR_DARK" ] || args+=(--dark "$COLOR_DARK")
+      [ -z "$COLOR_ACCENT" ] || args+=(--accent "$COLOR_ACCENT")
+      [ -z "$GROUP_ONE" ] || args+=(--group-one "$GROUP_ONE")
+      [ -z "$GROUP_OTHER" ] || args+=(--group-other "$GROUP_OTHER")
+      [ -z "$GROUP_GENDER" ] || args+=(--group-gender "$GROUP_GENDER")
+      [ -z "$ADMIN_FIRST" ] || args+=(--admin-first "$ADMIN_FIRST" --admin-last "$ADMIN_LAST")
+      [ -z "$AGE_RECIPIENT" ] || args+=(--age-recipient "$AGE_RECIPIENT")
+      if [ -n "$S3_ENDPOINT" ]; then
+        args+=(--s3-endpoint "$S3_ENDPOINT" --s3-bucket "$S3_BUCKET" --s3-access-key "$S3_ACCESS_KEY")
+        [ -z "$S3_REGION" ] || args+=(--s3-region "$S3_REGION")
+        [ -z "$S3_PREFIX" ] || args+=(--s3-prefix "$S3_PREFIX")
+      fi
+      exec bash /root/install.sh "${args[@]}"
+
+runcmd:
+  - [/root/clubforge-install.sh]

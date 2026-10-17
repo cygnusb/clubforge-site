@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vergleich mit anderen Lösungen – clubforge</title>
-<meta name="description" content="clubforge neben WhatsApp, Spond, der easyVerein-App und Heja: nachprüfbare Kriterien wie Selbst-Hosting, wo die Daten liegen, Open Source und Kostenmodell.">
+<meta name="description" content="clubforge neben WhatsApp, Spond und Heja: nachprüfbare Kriterien wie Betrieb, wo die Daten liegen, Open Source und Kosten; dazu, wie clubforge mit easyVerein zusammenspielt.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="clubforge">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="clubforge im Vergleich">
-<meta property="og:description" content="Selbst-Hosting, Daten, Open Source und Kostenmodell im Überblick.">
+<meta property="og:description" content="Betrieb, Daten, Open Source und Kosten im Überblick.">
 <meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
 <meta property="og:url" content="https://cygnusb.github.io/clubforge-site/vergleich/">
 </head>
@@ -45,7 +45,7 @@
 <section class="hero page-head">
   <div class="wrap">
     <h1>clubforge im Vergleich</h1>
-    <p class="lead">Viele Vereine organisieren sich heute mit WhatsApp oder einer Vereins- bzw. Team-App. Jede Lösung hat ihre Stärken. Diese Übersicht stellt nur Kriterien nebeneinander, die sich nachprüfen lassen, damit ihr selbst abwägen könnt.</p>
+    <p class="lead">Viele Vereine organisieren sich heute mit WhatsApp oder einer Team-App. Jede Lösung hat ihre Stärken. Diese Übersicht stellt nur Kriterien nebeneinander, die sich nachprüfen lassen, damit ihr selbst abwägen könnt.</p>
     <p class="meta-row">Stand: 16. Oktober 2026. Angaben zu anderen Anbietern nach deren eigenen Seiten; Preise und Funktionen ändern sich, bitte dort nachsehen.</p>
   </div>
 </section>
@@ -53,37 +53,37 @@
 <section class="prose-sec">
   <div class="wrap">
     <div class="table-wrap">
-      <table class="wide">
+      <table class="compare">
         <thead>
-          <tr><th scope="col">Kriterium</th><th scope="col">clubforge</th><th scope="col">WhatsApp</th><th scope="col">Spond</th><th scope="col">easyVerein-App</th><th scope="col">Heja</th></tr>
+          <tr><th scope="col">Kriterium</th><th scope="col">clubforge</th><th scope="col">WhatsApp</th><th scope="col">Spond</th><th scope="col">Heja</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Wofür gedacht</th><td>Vereins-App: Termine, Gruppen, Chats, Mitfahrten, Umfragen, Neuigkeiten</td><td>Messenger</td><td>Organisation von Teams, Gruppen und Vereinen</td><td>App zur Vereinsverwaltung easyVerein</td><td>Team-App</td></tr>
-          <tr><th scope="row">Wer betreibt es</th><td>der Verein selbst, auf eigenem Server (oder ein Dienstleister in seinem Auftrag)</td><td>der Anbieter</td><td>der Anbieter</td><td>der Anbieter</td><td>der Anbieter</td></tr>
-          <tr><th scope="row">Selbst betreiben möglich</th><td>ja</td><td>nein</td><td>nein</td><td>nein</td><td>nein</td></tr>
-          <tr><th scope="row">Wo die Daten liegen</th><td>auf dem Server des Vereins, Standort frei wählbar</td><td>beim Anbieter</td><td>beim Anbieter</td><td>beim Anbieter, Server in Deutschland (laut Anbieter)</td><td>beim Anbieter</td></tr>
-          <tr><th scope="row">Open Source</th><td>ja (AGPL-3.0)</td><td>nein</td><td>nein</td><td>nein</td><td>nein</td></tr>
-          <tr><th scope="row">Kostenmodell</th><td>Software kostenlos; der Verein zahlt seinen Server (ab ca. 5&nbsp;€ im Monat)</td><td>kostenlos für Nutzende</td><td>App kostenlos (laut Anbieter); Zahlungsfunktionen siehe Anbieter</td><td>Lizenz der Vereinsverwaltung nach Mitgliederzahl, Mitglieder-App inklusive (laut Anbieter)</td><td>Grundversion kostenlos, Abos „Team Pro“ und „Team Pro Max“ (laut Anbieter)</td></tr>
-          <tr><th scope="row">Arbeiten ohne Netz</th><td>ja: Termine und Chats liegen auf dem Gerät, Änderungen gehen später raus</td><td>siehe Anbieter</td><td>siehe Anbieter</td><td>siehe Anbieter</td><td>siehe Anbieter</td></tr>
-          <tr><th scope="row">Apps in den Stores</th><td>in Arbeit; heute im Browser</td><td>ja</td><td>ja</td><td>ja</td><td>ja</td></tr>
-          <tr><th scope="row">Technischer Aufwand für den Verein</th><td>Server einrichten und pflegen (etwa eine Stunde zum Start, danach Updates per Befehl)</td><td>kein eigener Server nötig</td><td>kein eigener Server nötig</td><td>kein eigener Server nötig</td><td>kein eigener Server nötig</td></tr>
+          <tr><th scope="row">Wofür gedacht</th><td class="us" data-label="clubforge">Vereins-App: Termine, Gruppen, Chats, Mitfahrten, Umfragen, Neuigkeiten</td><td data-label="WhatsApp">Messenger</td><td data-label="Spond">Organisation von Teams, Gruppen und Vereinen</td><td data-label="Heja">Team-App</td></tr>
+          <tr><th scope="row">Wer betreibt es, wo liegen die Daten</th><td class="us" data-label="clubforge">der Verein, auf eigenem Server mit frei gewähltem Standort (auch über einen Dienstleister)</td><td data-label="WhatsApp">der Anbieter, auf seinen Servern</td><td data-label="Spond">der Anbieter, auf seinen Servern</td><td data-label="Heja">der Anbieter, auf seinen Servern</td></tr>
+          <tr><th scope="row">Open Source</th><td class="us" data-label="clubforge">ja (AGPL-3.0)</td><td data-label="WhatsApp">nein</td><td data-label="Spond">nein</td><td data-label="Heja">nein</td></tr>
+          <tr><th scope="row">Kosten</th><td class="us" data-label="clubforge">Software kostenlos; der Verein zahlt seinen Server (ab ca. 5&nbsp;€ im Monat)</td><td data-label="WhatsApp">kostenlos</td><td data-label="Spond">App kostenlos; Zahlungsfunktionen siehe Anbieter</td><td data-label="Heja">Grundversion kostenlos, Abos „Team Pro“ und „Team Pro Max“</td></tr>
+          <tr><th scope="row">Aufwand für den Verein</th><td class="us" data-label="clubforge">Server einrichten (etwa eine Stunde) und pflegen, Updates per Befehl</td><td data-label="WhatsApp">keiner</td><td data-label="Spond">keiner</td><td data-label="Heja">keiner</td></tr>
+          <tr><th scope="row">Apps in den Stores</th><td class="us" data-label="clubforge">in Arbeit; heute im Browser</td><td data-label="WhatsApp">ja</td><td data-label="Spond">ja</td><td data-label="Heja">ja</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="prose">
+      <h2>Und easyVerein?</h2>
+      <p>easyVerein und andere Programme zur Vereinsverwaltung kümmern sich um Mitglieder, Beiträge und Finanzen. clubforge ersetzt sie nicht, sondern ergänzt sie um die Kommunikation im Vereinsalltag: Es übernimmt die Mitgliederliste aus easyVerein (oder aus einer CSV-Datei) und gleicht sie stündlich ab. Wer ein- oder austritt, ist so auch in der App dabei oder nicht mehr. Wie das geht, steht unter <a href="../umstieg/">Umstieg</a>.</p>
+
       <h2>Wie man das liest</h2>
       <ul>
         <li><strong>clubforge passt</strong>, wenn der Verein seine Daten selbst in der Hand haben will, offene Software bevorzugt und jemanden hat, der einen kleinen Server betreut (selbst oder über einen Dienstleister).</li>
         <li><strong>Ein fertiger Dienst passt</strong>, wenn niemand einen Server betreuen soll und der Verein dem Anbieter die Daten anvertrauen möchte.</li>
-        <li><strong>Kombinieren</strong> geht auch: clubforge übernimmt die Mitgliederliste aus easyVerein und gleicht sie stündlich ab. Termine lassen sich als Kalender-Abo in andere Kalender holen.</li>
+        <li><strong>Was clubforge außerdem kann</strong>, etwa Arbeiten ohne Netz (Termine und Chats liegen auf dem Gerät) oder Mitfahrten zu Terminen, steht bei den <a href="../#funktionen">Funktionen</a>. Termine lassen sich als Kalender-Abo in andere Kalender holen.</li>
       </ul>
 
       <h2>Quellen</h2>
       <ul>
         <li>Spond: <a href="https://help.spond.com/en/articles/25998-spond-is-free-to-download-and-use">Hilfe-Center, „Spond is free to download and use“</a></li>
-        <li>easyVerein: <a href="https://easyverein.com/">Startseite des Anbieters</a> (Preis nach Mitgliederzahl, Mitglieder-App, Serverstandort)</li>
         <li>Heja: <a href="https://help.heja.io/en/articles/3727834-heja-free-vs-team-pro-or-max">Hilfe-Center, „Heja free vs Team Pro or Max“</a></li>
+        <li>easyVerein: <a href="https://easyverein.com/">Startseite des Anbieters</a></li>
         <li>clubforge: <a href="../betrieb/">Betrieb und Kosten</a>, <a href="../versionen/">Versionen</a></li>
       </ul>
     </div>
@@ -96,7 +96,7 @@
     <nav class="foot" id="seiten" aria-label="Alle Seiten">
       <div><p class="foot-h">Kennenlernen</p><ul><li><a href="../">Übersicht</a></li><li><a href="../#tour">Ansehen</a></li><li><a href="../#funktionen">Funktionen</a></li><li><a href="../#stand">Stand</a></li></ul></div>
       <div><p class="foot-h">Entscheiden</p><ul><li><a href="../fragen/">Fragen</a></li><li><a href="../umstieg/">Umstieg</a></li><li><a href="../vergleich/" aria-current="page">Vergleich</a></li><li><a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a></li></ul></div>
-      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/">Anleitung</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
+      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/">Anleitung</a></li><li><a href="../einrichten/">Assistent</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
       <div><p class="foot-h">Für Mitglieder</p><ul><li><a href="../join/">Einladungsseite</a></li><li><a href="../konto-loeschen/">Konto löschen</a></li></ul></div>
     </nav>
     <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>

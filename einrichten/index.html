@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Einrichtungs-Assistent – clubforge</title>
+<meta name="description" content="Den Installationsbefehl für clubforge zusammenstellen: per SSH, in der Hetzner-Konsole (cloud-init) oder mit OpenTofu. Alles bleibt im Browser.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/einrichten/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/einrichten/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/einrichten/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/einrichten/">
+<script src="../lang.js"></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="clubforge einrichten: der Assistent">
+<meta property="og:description" content="Namen, Marke und Admin eintragen, Befehle kopieren: per SSH, Hetzner-Konsole oder OpenTofu.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="clubforge: Kalender und Termindetail der App mit Beispieldaten">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/einrichten/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../config.js" defer></script>
+<script src="../copy.js" defer></script>
+<script src="../einrichten/assistent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="../#funktionen">Funktionen</a>
+      <a class="hide-s" href="../fragen/">Fragen</a>
+      <a class="hide-s" href="../umstieg/">Umstieg</a>
+      <a class="hide-s" href="../betrieb/">Betrieb</a>
+      <a class="show-s" href="#seiten">Menü</a>
+      <a class="nav-cta" href="../#anfangen">Loslegen</a>
+      <span class="lang" role="group" aria-label="Sprache"><span aria-current="page" lang="de">DE</span> <a href="../en/einrichten/" hreflang="en" lang="en">EN</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Einrichtungs-Assistent</h1>
+    <p class="lead">Tragt ein, was euren Verein ausmacht; der Assistent stellt die Befehle für die Installation zusammen, zum Kopieren. Alles bleibt in diesem Browser, und Passwörter fragt er nie ab.</p>
+    <p class="meta-row">Lieber im Terminal? <code>sudo bash install.sh</code> ohne weitere Angaben fragt dasselbe auf dem Server ab. Schritt für Schritt erklärt: <a href="../anleitung/">Anleitung</a>.</p>
+  </div>
+</section>
+<section class="prose-sec">
+  <div class="wrap assist-wrap">
+<form id="assist" class="assist" novalidate>
+  <fieldset>
+    <legend>1. Weg</legend>
+    <div class="choices">
+      <label class="choice"><input type="radio" name="route" value="ssh" checked><span><strong>Eigener Server per SSH</strong><small>Ein Server mit Debian oder Ubuntu läuft schon, bei einem beliebigen Anbieter.</small></span></label>
+      <label class="choice"><input type="radio" name="route" value="console"><span><strong>Hetzner-Konsole</strong><small>Server im Browser anlegen, der Rest geht von selbst. Keine Werkzeuge nötig.</small></span></label>
+      <label class="choice"><input type="radio" name="route" value="tofu"><span><strong>Hetzner mit OpenTofu</strong><small>Server, Firewall und DNS legt eine Vorlage vom eigenen Rechner aus an.</small></span></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Namen</legend>
+    <p class="hint">Drei Adressen eurer Domain zeigen auf den Server. Sie lassen sich später nicht mehr ändern.</p>
+    <div class="field"><label for="domain">Domain des Vereins</label><input id="domain" autocomplete="off" spellcheck="false" placeholder="mein-verein.de"><small class="field-err" id="domain_err"></small></div>
+    <details>
+      <summary>Namen anpassen (Standard: app., sync., login.)</summary>
+      <div class="cols3">
+        <div class="field"><label for="app">App</label><input id="app" autocomplete="off" spellcheck="false"><small class="field-err" id="app_err"></small></div>
+        <div class="field"><label for="sync">Synchronisation</label><input id="sync" autocomplete="off" spellcheck="false"><small class="field-err" id="sync_err"></small></div>
+        <div class="field"><label for="login">Anmeldung</label><input id="login" autocomplete="off" spellcheck="false"><small class="field-err" id="login_err"></small></div>
+      </div>
+    </details>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Verein</legend>
+    <div class="cols2">
+      <div class="field"><label for="club">Name des Vereins</label><input id="club" autocomplete="organization" placeholder="Mein Verein"><small class="field-err" id="club_err"></small></div>
+      <div class="field"><label for="email">E-Mail der Administration</label><input id="email" type="email" autocomplete="email" placeholder="vorstand@mein-verein.de"><small class="field-err" id="email_err"></small></div>
+      <div class="field"><label for="admin_first">Erste Admin-Person: Vorname</label><input id="admin_first" autocomplete="given-name" placeholder="leer = später anlegen"><small class="field-err" id="admin_first_err"></small></div>
+      <div class="field"><label for="admin_last">Nachname</label><input id="admin_last" autocomplete="family-name"><small class="field-err" id="admin_last_err"></small></div>
+      <div class="field"><label for="version">Version</label><input id="version" autocomplete="off" spellcheck="false" placeholder="leer = neueste"><small class="field-err" id="version_err"></small></div>
+    </div>
+    <p class="hint">Die erste Admin-Person meldet sich mit der E-Mail der Administration an.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>4. Optional</legend>
+    <details>
+      <summary>Logo und Farben</summary>
+      <p class="hint">Später jederzeit in der App änderbar.</p>
+      <div class="cols2">
+        <div class="field"><label for="logo">Logo für dunklen Grund (https://…)</label><input id="logo" type="url" spellcheck="false" placeholder="https://mein-verein.de/logo-weiss.svg"><small class="field-err" id="logo_err"></small></div>
+        <div class="field"><label for="logo_light">Logo für hellen Grund (https://…)</label><input id="logo_light" type="url" spellcheck="false" placeholder="https://mein-verein.de/logo-dunkel.svg"><small class="field-err" id="logo_light_err"></small></div>
+      </div>
+      <div class="cols3">
+        <div class="field"><label for="primary">Hauptfarbe</label><span class="color"><span class="swatch" id="primary_sw"></span><input id="primary" spellcheck="false" placeholder="#117733"></span><small class="field-err" id="primary_err"></small></div>
+        <div class="field"><label for="dark">Dunkle Farbe (Kopfzeile)</label><span class="color"><span class="swatch" id="dark_sw"></span><input id="dark" spellcheck="false" placeholder="#0a2a14"></span><small class="field-err" id="dark_err"></small></div>
+        <div class="field"><label for="accent">Akzentfarbe</label><span class="color"><span class="swatch" id="accent_sw"></span><input id="accent" spellcheck="false" placeholder="#88ccaa"></span><small class="field-err" id="accent_err"></small></div>
+      </div>
+    </details>
+    <details>
+      <summary>Eigener Begriff statt „Gruppe“</summary>
+      <div class="cols3">
+        <div class="field"><label for="group_one">Einzahl</label><input id="group_one" placeholder="Team"><small class="field-err" id="group_one_err"></small></div>
+        <div class="field"><label for="group_other">Mehrzahl</label><input id="group_other" placeholder="Teams"><small class="field-err" id="group_other_err"></small></div>
+        <div class="field"><label for="group_gender">Artikel</label><select id="group_gender"><option value="f">die</option><option value="m">der</option><option value="n">das</option></select></div>
+      </div>
+    </details>
+    <details>
+      <summary>Mailversand (SMTP)</summary>
+      <p class="hint">Ohne verschickt der Server keine Mails; App und Push laufen trotzdem. Port 587 nehmen, viele Anbieter sperren 25 und 465. Das Passwort gebt ihr erst auf dem Server ein.</p>
+      <div class="cols2">
+        <div class="field"><label for="smtp_host">SMTP-Server</label><input id="smtp_host" spellcheck="false" placeholder="smtp.example.org"><small class="field-err" id="smtp_host_err"></small></div>
+        <div class="field"><label for="smtp_user">Benutzername</label><input id="smtp_user" spellcheck="false" autocomplete="off"><small class="field-err" id="smtp_user_err"></small></div>
+        <div class="field"><label for="smtp_port">Port</label><input id="smtp_port" inputmode="numeric" placeholder="587"><small class="field-err" id="smtp_port_err"></small></div>
+        <div class="field"><label for="smtp_security">Verschlüsselung</label><select id="smtp_security"><option value="starttls">STARTTLS</option><option value="ssl">SSL/TLS</option><option value="none">keine</option></select></div>
+        <div class="field wide"><label for="smtp_from">Absender</label><input id="smtp_from"><small class="field-err" id="smtp_from_err"></small></div>
+      </div>
+    </details>
+    <details>
+      <summary>Speicher für Anhänge (S3)</summary>
+      <p class="hint">Für Fotos, Dateien und GPX-Strecken, z. B. Hetzner Object Storage. Eigener, privater Bucket, nicht der der Backups. Den Secret Key gebt ihr erst auf dem Server ein.</p>
+      <div class="cols2">
+        <div class="field"><label for="s3_endpoint">Endpunkt</label><input id="s3_endpoint" spellcheck="false" placeholder="https://fsn1.your-objectstorage.com"><small class="field-err" id="s3_endpoint_err"></small></div>
+        <div class="field"><label for="s3_region">Region</label><input id="s3_region" spellcheck="false" placeholder="fsn1"><small class="field-err" id="s3_region_err"></small></div>
+        <div class="field"><label for="s3_bucket">Bucket</label><input id="s3_bucket" spellcheck="false" placeholder="mein-verein-anhaenge"><small class="field-err" id="s3_bucket_err"></small></div>
+        <div class="field"><label for="s3_access_key">Access Key</label><input id="s3_access_key" spellcheck="false" autocomplete="off"><small class="field-err" id="s3_access_key_err"></small></div>
+        <div class="field"><label for="s3_prefix">Präfix (optional)</label><input id="s3_prefix" spellcheck="false"><small class="field-err" id="s3_prefix_err"></small></div>
+      </div>
+    </details>
+    <details>
+      <summary>Eigener Backup-Schlüssel</summary>
+      <p class="hint">Ohne Angabe erzeugt der Installer einen. Am saubersten: auf dem eigenen Rechner <code>age-keygen -o schluessel.txt</code>, den geheimen Teil in den Passwortmanager, hier nur den öffentlichen eintragen.</p>
+      <div class="field"><label for="age">Öffentlicher Schlüssel (age1…)</label><input id="age" spellcheck="false" autocomplete="off"><small class="field-err" id="age_err"></small></div>
+    </details>
+  </fieldset>
+
+  <fieldset id="f-hetzner" hidden>
+    <legend>5. Hetzner</legend>
+    <div class="cols2">
+      <div class="field"><label for="server_type">Servertyp</label><select id="server_type"><option value="cax11">CAX11 (arm64, 2 vCPU, 4 GB)</option><option value="cx22">CX22 (x86, 2 vCPU, 4 GB)</option></select></div>
+      <div class="field"><label for="location">Standort</label><select id="location"><option value="fsn1">Falkenstein (fsn1)</option><option value="nbg1">Nürnberg (nbg1)</option><option value="hel1">Helsinki (hel1)</option></select></div>
+    </div>
+    <div id="f-tofu" hidden>
+      <div class="field"><label for="ssh_key">Öffentlicher SSH-Schlüssel</label><input id="ssh_key" spellcheck="false" autocomplete="off" placeholder="ssh-ed25519 AAAA… name@rechner"><small class="field-err" id="ssh_key_err"></small></div>
+      <div class="cols2">
+        <div class="field"><label for="ssh_cidrs">SSH nur von (leer = überall)</label><input id="ssh_cidrs" spellcheck="false" placeholder="203.0.113.7/32"><small class="field-err" id="ssh_cidrs_err"></small></div>
+        <div class="field"><label for="dns_zone">Zone in Hetzner DNS (optional)</label><input id="dns_zone" spellcheck="false" placeholder="mein-verein.de"><small class="field-err" id="dns_zone_err"></small></div>
+      </div>
+    </div>
+  </fieldset>
+  <p><button type="button" class="btn ghost" id="reset">Formular leeren</button></p>
+</form>
+
+<div class="assist-out prose">
+  <h2>Eure Befehle</h2>
+  <div id="errors" class="callout" aria-live="polite"></div>
+  <div id="outputs" hidden>
+
+  <div id="out-ssh">
+    <h3>1. Auf dem Server: Installer laden und prüfen</h3>
+    <pre>curl -fsSLO https://cygnusb.github.io/clubforge-site/install.sh
+curl -fsSL  https://cygnusb.github.io/clubforge-site/install.sh.sha256
+sha256sum install.sh     <span class="c"># muss mit der angezeigten Summe übereinstimmen</span></pre>
+    <div id="ssh-secrets" hidden>
+      <h3>2. Passwörter verdeckt eingeben</h3>
+      <p>Diesen Block allein einfügen und die Passwörter eintippen; sie erscheinen nicht und landen nirgends gespeichert.</p>
+      <pre id="o-ssh-secrets"></pre>
+    </div>
+    <h3>Installieren</h3>
+    <pre id="o-ssh"></pre>
+    <p>Danach: <code>https://</code> plus die App-Adresse öffnen und mit dem Einmalpasswort anmelden, Backup-Schlüssel sichern (<a href="../anleitung/#schluessel">Anleitung, Schritt 5</a>).</p>
+  </div>
+
+  <div id="out-console" hidden>
+    <h3>1. Projekt und feste IP</h3>
+    <p>Bei <a href="https://console.hetzner.cloud/">console.hetzner.cloud</a> ein eigenes Projekt anlegen und den Vertrag zur Auftragsverarbeitung abschließen. Unter <strong>Primary IPs</strong> eine IPv4-Adresse am Standort <span id="o-console-location"></span> anlegen.</p>
+    <h3>2. DNS</h3>
+    <p>Die drei A-Einträge auf diese IP setzen und prüfen, bevor der Server startet:</p>
+    <pre id="o-dig-console"></pre>
+    <h3>3. Server erstellen</h3>
+    <p>Standort wie die IP, Image <strong>Ubuntu 24.04</strong>, Typ <strong id="o-console-type"></strong>, als öffentliche IPv4 die Primary IP von eben, euren SSH-Schlüssel. Optional eine Firewall mit eingehend 22, 80 und 443. In das Feld <strong>Cloud config</strong> kommt dieser Inhalt:</p>
+    <p id="cloudinit-err" class="notice" hidden></p>
+    <div id="cloudinit-ok"><pre id="o-cloudinit"></pre></div>
+    <h3>4. Zusehen und Zugangsdaten abholen</h3>
+    <pre>ssh root@&lt;ipv4&gt; tail -f /var/log/clubforge-install.log     <span class="c"># bis zum Bericht von check.sh</span>
+ssh root@&lt;ipv4&gt; cat /root/clubforge-erste-anmeldung.txt
+ssh root@&lt;ipv4&gt; cat /root/clubforge-backup-key.txt        <span class="c"># in den Passwortmanager</span>
+ssh root@&lt;ipv4&gt; rm /root/clubforge-erste-anmeldung.txt /root/clubforge-backup-key.txt</pre>
+    <p>Bricht die Installation wegen DNS ab: Einträge korrigieren, dann <code>ssh root@&lt;ipv4&gt; /root/clubforge-install.sh</code>.</p>
+    <div id="after-console" hidden>
+      <h3>5. Nach der Installation: Passwörter in die Einstellungen</h3>
+      <p>Mail und den Secret Key für Anhänge nimmt cloud-init nicht mit, damit sie nicht beim Anbieter lesbar sind. In <code>/opt/clubforge/deploy/.env</code> ergänzen, Platzhalter ersetzen:</p>
+      <pre id="o-after-console"></pre>
+      <pre>cd /opt/clubforge/deploy &amp;&amp; docker compose up -d --force-recreate api worker</pre>
+    </div>
+  </div>
+
+  <div id="out-tofu" hidden>
+    <h3>1. Token und Vorlage</h3>
+    <p>Bei <a href="https://console.hetzner.cloud/">console.hetzner.cloud</a> ein eigenes Projekt anlegen, Vertrag zur Auftragsverarbeitung abschließen, unter <strong>Sicherheit › API-Tokens</strong> ein Token mit Lesen und Schreiben erzeugen. Auf dem eigenen Rechner (mit <a href="https://opentofu.org/docs/intro/install/">OpenTofu</a> und Docker):</p>
+    <pre>export TF_VAR_hcloud_token='…'     <span class="c"># Token einsetzen, nur im Terminal</span></pre>
+    <pre id="o-tofu-get"></pre>
+    <h3>2. terraform.tfvars</h3>
+    <p>Als <code>terraform.tfvars</code> im Verzeichnis <code>hetzner</code> speichern (Servertyp <span id="o-tofu-type"></span>):</p>
+    <pre id="o-tfvars"></pre>
+    <h3>3. Feste IP und DNS</h3>
+    <pre>tofu init
+tofu apply -target=hcloud_primary_ip.v4
+tofu output ipv4</pre>
+    <p>Die drei A-Einträge auf diese IP setzen (mit Zone in Hetzner DNS geschieht das im nächsten Schritt von selbst) und prüfen:</p>
+    <pre id="o-dig-tofu"></pre>
+    <h3>4. Server anlegen</h3>
+    <pre>tofu plan
+tofu apply
+$(tofu output -raw installationsprotokoll)    <span class="c"># Fortschritt bis zum Bericht von check.sh</span></pre>
+    <h3>5. Zugangsdaten abholen</h3>
+    <pre>ssh root@$(tofu output -raw ipv4) cat /root/clubforge-erste-anmeldung.txt
+ssh root@$(tofu output -raw ipv4) cat /root/clubforge-backup-key.txt    <span class="c"># in den Passwortmanager</span>
+ssh root@$(tofu output -raw ipv4) rm /root/clubforge-erste-anmeldung.txt /root/clubforge-backup-key.txt</pre>
+    <div id="after-tofu" hidden>
+      <h3>6. Nach der Installation: Passwörter in die Einstellungen</h3>
+      <p>Mail und den Secret Key für Anhänge in <code>/opt/clubforge/deploy/.env</code> ergänzen, Platzhalter ersetzen:</p>
+      <pre id="o-after-tofu"></pre>
+      <pre>cd /opt/clubforge/deploy &amp;&amp; docker compose up -d --force-recreate api worker</pre>
+    </div>
+  </div>
+  </div>
+  <p class="hint">Die Angaben merkt sich nur dieser Browser, damit ihr später weitermachen könnt. „Formular leeren“ löscht sie.</p>
+</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="foot" id="seiten" aria-label="Alle Seiten">
+      <div><p class="foot-h">Kennenlernen</p><ul><li><a href="../">Übersicht</a></li><li><a href="../#tour">Ansehen</a></li><li><a href="../#funktionen">Funktionen</a></li><li><a href="../#stand">Stand</a></li></ul></div>
+      <div><p class="foot-h">Entscheiden</p><ul><li><a href="../fragen/">Fragen</a></li><li><a href="../umstieg/">Umstieg</a></li><li><a href="../vergleich/">Vergleich</a></li><li><a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a></li></ul></div>
+      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/">Anleitung</a></li><li><a href="../einrichten/" aria-current="page">Assistent</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
+      <div><p class="foot-h">Für Mitglieder</p><ul><li><a href="../join/">Einladungsseite</a></li><li><a href="../konto-loeschen/">Konto löschen</a></li></ul></div>
+    </nav>
+    <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>
+  </div>
+</footer>
+</body>
+</html>

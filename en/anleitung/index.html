@@ -27,6 +27,7 @@
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../style.css">
 <script src="../../config.js" defer></script>
+<script src="../../copy.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#inhalt">Skip to content</a>
@@ -56,7 +57,7 @@
 <section class="prose-sec">
   <div class="wrap prose">
 <div class="callout">
-<p><strong>Two routes:</strong> on a server you already rent, you install over SSH (steps 2 to 4). On Hetzner Cloud, an <a href="#hetzner">OpenTofu template</a> can create the server, firewall, and DNS for you instead. Both continue with step 5.</p>
+<p><strong>Two routes:</strong> on a server you already rent, you install over SSH (steps 2 to 4). On Hetzner Cloud, an <a href="#hetzner">OpenTofu template</a> can create the server, firewall, and DNS for you instead. Both continue with step 5. The <a href="../einrichten/">setup assistant</a> puts together the commands with your details.</p>
 <p>The examples use the names <code>app.</code>, <code>sync.</code>, and <code>login.your-club.example</code>. Use your own names everywhere. What you need in terms of server, domain, and services, and what it costs, is on the <a href="../betrieb/#voraussetzungen">Operations</a> page.</p>
 </div>
 
@@ -226,9 +227,8 @@ CF_S3_ENDPOINT=https://fsn1.your-objectstorage.com
 CF_S3_REGION=fsn1
 CF_S3_BUCKET=your-club-attachments
 CF_S3_ACCESS_KEY=…
-CF_S3_SECRET_KEY=…
-
-cd /opt/clubforge/deploy
+CF_S3_SECRET_KEY=…</pre>
+<pre>cd /opt/clubforge/deploy
 docker compose up -d --force-recreate api worker
 sudo -u clubforge ./check.sh                       <span class="c"># section on attachments</span></pre>
 
@@ -270,7 +270,7 @@ sudo -u clubforge ./check.sh                       <span class="c"># section on 
     <nav class="foot" id="seiten" aria-label="All pages">
       <div><p class="foot-h">Discover</p><ul><li><a href="../">Overview</a></li><li><a href="../#tour">See it</a></li><li><a href="../#funktionen">Features</a></li><li><a href="../#stand">Status</a></li></ul></div>
       <div><p class="foot-h">Decide</p><ul><li><a href="../fragen/">Questions</a></li><li><a href="../umstieg/">Switching</a></li><li><a href="../vergleich/">Comparison</a></li><li><a href="../datenschutz-hilfe/">Privacy helpers</a></li></ul></div>
-      <div><p class="foot-h">Run it</p><ul><li><a href="../#anfangen">Get started</a></li><li><a href="../betrieb/">Operations</a></li><li><a href="../anleitung/" aria-current="page">Installation guide</a></li><li><a href="../versionen/">Versions</a></li><li><span data-repo="" data-label="Source code">Source code follows</span></li></ul></div>
+      <div><p class="foot-h">Run it</p><ul><li><a href="../#anfangen">Get started</a></li><li><a href="../betrieb/">Operations</a></li><li><a href="../anleitung/" aria-current="page">Installation guide</a></li><li><a href="../einrichten/">Setup assistant</a></li><li><a href="../versionen/">Versions</a></li><li><span data-repo="" data-label="Source code">Source code follows</span></li></ul></div>
       <div><p class="foot-h">For members</p><ul><li><a href="../join/">Invitation page</a></li><li><a href="../konto-loeschen/">Delete account</a></li></ul></div>
     </nav>
     <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>

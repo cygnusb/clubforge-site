@@ -27,6 +27,7 @@
 #   --no-start          alles vorbereiten, aber den Stack nicht starten
 #   --yes               keine Rückfragen (z. B. cloud-init)
 #   --dry-run           nur anzeigen, was getan würde
+# Ohne --app/--sync/--login/--email fragt der Installer im Terminal alles ab (Fragemodus: sudo bash install.sh).
 # Entwickler: --ref TAG und --repo URL holen den Code stattdessen per Git (Standard: https://github.com/cygnusb/clubforge.git)
 # und bauen das Image auf dem Server.
 set -euo pipefail
@@ -41,7 +42,7 @@ smtp_host="" smtp_port="" smtp_user="" smtp_security="" smtp_from="" age_recipie
 s3_endpoint="" s3_region="" s3_bucket="" s3_access_key="" s3_prefix=""
 restore="" identity="" skip_dns=0 no_start=0 yes=0 dry=0
 
-usage() { sed -n '2,30p' "$0" | sed 's/^# \{0,1\}//'; }
+usage() { sed -n '2,32p' "$0" | sed 's/^# \{0,1\}//'; }
 while [ $# -gt 0 ]; do
 	case "$1" in
 	--dry-run) dry=1; shift; continue ;;
@@ -107,6 +108,194 @@ else
 	[ -z "$version" ] || [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)?$ ]] || die "Ungültige Version: $version (erwartet x.y.z)"
 	[[ "$image" =~ ^[a-z0-9.-]+(:[0-9]+)?(/[a-z0-9._-]+)+$ ]] || die "Ungültiger Image-Name: $image (ohne Tag, z. B. docker.io/cygnusbn/clubforge)"
 fi
+
+# dns_check: zeigen die drei Namen auf diesen Server? Rückgabe 1, wenn einer fehlt oder woandershin zeigt
+dns_check() {
+	local h ips bad=0
+	[ -n "${my_ip:-}" ] || my_ip="$(curl -4 -fsS -m 6 https://api.ipify.org 2>/dev/null || true)"
+	for h in "$app" "$sync" "$login"; do
+		ips="$(getent ahostsv4 "$h" 2>/dev/null | awk '{print $1}' | sort -u | tr '\n' ' ' || true)"
+		if [ -z "$ips" ]; then echo "  $h: kein A-Eintrag"; bad=1
+		elif [ -n "$my_ip" ] && [[ " $ips" != *" $my_ip "* ]]; then echo "  $h: zeigt auf $ips, dieser Server ist $my_ip"; bad=1
+		else echo "  $h: $ips"; fi
+	done
+	return "$bad"
+}
+
+# ---- Fragemodus
+# Ohne Namen und E-Mail fragt der Installer im Terminal nach (nie mit --yes, also nie unter cloud-init). Gelesen wird von
+# /dev/tty, damit es auch mit umgeleiteter Eingabe geht. Die Prüfungen entsprechen gen-env.sh und branding.sh: Ein Tippfehler
+# soll hier auffallen, nicht erst nach der Docker-Installation. Geändert wird erst nach dem „ja“ zur Zusammenfassung.
+valid_host() { [[ "$1" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$ ]]; }
+valid_email() { [[ "$1" =~ ^[^[:space:]@\"]+@[^[:space:]@\"]+\.[^[:space:]@\"]+$ ]]; }
+valid_text() { case "$1" in *\"* | *$'\n'* | *'$'* | *\\*) return 1 ;; esac; }
+valid_color() { [[ "$1" =~ ^#[0-9a-fA-F]{6}$ ]]; }
+valid_version() { [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)?$ ]]; }
+valid_logo() { [[ "${1,,}" =~ ^https://[^[:space:]\"\$\\]+\.(svg|png|webp|jpg|jpeg)$ ]] || { [ -f "$1" ] && valid_text "$1"; }; }
+valid_gender() { [[ "$1" =~ ^[mfn]$ ]]; }
+valid_port() { [[ "$1" =~ ^[0-9]{1,5}$ ]]; }
+valid_security() { [[ "$1" =~ ^(none|starttls|ssl)$ ]]; }
+valid_s3_endpoint() { [[ "$1" =~ ^https?://[A-Za-z0-9.-]+(:[0-9]+)?$ ]]; }
+valid_s3() { [[ "$1" =~ ^[A-Za-z0-9._/-]+$ ]]; }
+valid_age() { [[ "$1" =~ ^age1[0-9a-z]{58}$ ]]; }
+# wie gen-env.sh: Passwort ohne ', Secret Key ohne ' " $ und Leerzeichen
+bad_smtp_password() { [[ "$1" == *"'"* ]]; }
+bad_s3_secret() { [[ "$1" =~ [\'\"\$[:space:]] ]]; }
+req() { [ -n "$2" ] && "$1" "$2"; }
+opt() { [ -z "$2" ] || "$1" "$2"; }
+# frage <Variable> <Frage> <Vorgabe> <Prüfung, z. B. "req valid_host"> <Hinweis bei Fehler>
+frage() {
+	local a
+	while :; do
+		if [ -n "$3" ]; then printf '%s [%s]: ' "$2" "$3" >/dev/tty; else printf '%s: ' "$2" >/dev/tty; fi
+		IFS= read -r a </dev/tty || die "Eingabe abgebrochen"
+		a="${a:-$3}"
+		# shellcheck disable=SC2086 # $4 ist absichtlich „Art Prüffunktion“
+		if $4 "$a"; then printf -v "$1" '%s' "$a"; return 0; fi
+		printf '  %s\n' "$5" >/dev/tty
+	done
+}
+# jein <Frage> <j|n>: Rückgabe 0 bei ja
+jein() {
+	local a
+	while :; do
+		if [ "$2" = j ]; then printf '%s [J/n]: ' "$1" >/dev/tty; else printf '%s [j/N]: ' "$1" >/dev/tty; fi
+		IFS= read -r a </dev/tty || die "Eingabe abgebrochen"
+		case "${a:-$2}" in j | J | ja | Ja | y | Y | yes) return 0 ;; n | N | nein | Nein | no) return 1 ;; esac
+	done
+}
+# geheim <Variable> <Frage> <Prüfung auf verbotene Zeichen>: verdeckte Eingabe, zweimal zur Kontrolle
+geheim() {
+	local a b
+	while :; do
+		printf '%s (Eingabe unsichtbar): ' "$2" >/dev/tty
+		IFS= read -rs a </dev/tty || die "Eingabe abgebrochen"
+		printf '\nNoch einmal: ' >/dev/tty
+		IFS= read -rs b </dev/tty || die "Eingabe abgebrochen"
+		printf '\n' >/dev/tty
+		if [ -z "$a" ]; then echo "  Leer – bitte eingeben (oder Strg+C)" >/dev/tty
+		elif [ "$a" != "$b" ]; then echo "  Die Eingaben stimmen nicht überein" >/dev/tty
+		elif "$3" "$a"; then echo "  Enthält ein nicht erlaubtes Zeichen" >/dev/tty
+		else printf -v "$1" '%s' "$a"; return 0; fi
+	done
+}
+# quote: Wert für die Befehlszeile in einfachen Anführungszeichen, wo nötig
+quote() { if [[ "$1" =~ ^[A-Za-z0-9._@:/+=-]+$ ]]; then printf '%s' "$1"; else printf "'%s'" "${1//\'/\'\\\'\'}"; fi; }
+
+wizard() {
+	local domain="" b v ok
+	cat >/dev/tty <<-'EOF'
+
+		clubforge einrichten
+		Ein paar Fragen, dann richtet der Installer alles ein. Vorgaben in [Klammern] mit Enter übernehmen.
+		Geändert wird erst, wenn ihr am Ende mit „ja“ bestätigt. Abbrechen jederzeit mit Strg+C.
+
+		Namen. Drei Adressen eurer Domain zeigen auf diesen Server; sie lassen sich später nicht mehr ändern.
+	EOF
+	while :; do
+		frage domain "Domain des Vereins (z. B. mein-verein.de)" "" "req valid_host" "Nur Kleinbuchstaben, Ziffern, Punkt und Bindestrich, ohne https:// und Pfad"
+		frage app "Adresse der App" "app.$domain" "req valid_host" "Ungültiger Name"
+		frage sync "Adresse der Synchronisation" "sync.$domain" "req valid_host" "Ungültiger Name"
+		frage login "Adresse der Anmeldung" "login.$domain" "req valid_host" "Ungültiger Name"
+		{ [ "$app" != "$sync" ] && [ "$app" != "$login" ] && [ "$sync" != "$login" ]; } && break
+		echo "  App, Synchronisation und Anmeldung brauchen drei verschiedene Namen." >/dev/tty
+	done
+	printf '\nDNS-Prüfung (A-Einträge auf diesen Server):\n' >/dev/tty
+	while ! dns_check >/dev/tty; do
+		printf 'Einträge setzen oder warten (neue Einträge brauchen einige Minuten).\nEnter = erneut prüfen, w = ohne Prüfung weiter: ' >/dev/tty
+		IFS= read -r v </dev/tty || die "Eingabe abgebrochen"
+		if [ "$v" = w ]; then
+			skip_dns=1
+			echo "  Weiter ohne DNS: Das Zertifikat holt der Server erst, wenn die Namen stimmen." >/dev/tty
+			break
+		fi
+	done
+
+	printf '\nVerein\n' >/dev/tty
+	frage email "E-Mail-Adresse der Administration (Let's Encrypt, Hinweise, Anmeldung der ersten Admin-Person)" "" "req valid_email" "Keine gültige E-Mail-Adresse"
+	frage club "Name des Vereins" "" "req valid_text" "Bitte angeben, ohne \" \$ \\"
+	frage version "Version (leer = neueste, empfohlen ist eine feste wie 0.2.1)" "$version" "opt valid_version" "Form x.y.z, z. B. 0.2.1"
+	if jein "Logo und Farben jetzt festlegen? (später in der App änderbar)" n; then
+		for b in "--logo:Logo für dunklen Grund, weiß oder hell (https://…, SVG/PNG/WebP/JPEG)" "--logo-light:Logo für hellen Grund, dunkel (https://…)"; do
+			frage v "${b#*:}" "" "opt valid_logo" "https-Adresse auf .svg, .png, .webp oder .jpg (oder eine Datei auf dem Server)"
+			[ -z "$v" ] || brand_args+=("${b%%:*}" "$v")
+		done
+		for b in "--primary:Hauptfarbe" "--dark:Dunkle Farbe für Kopfzeile und Anmeldung (weißer Text muss lesbar sein)" "--accent:Akzentfarbe"; do
+			frage v "${b#*:} (#rrggbb, leer = Standard)" "" "opt valid_color" "Farbe der Form #rrggbb, z. B. #117733"
+			[ -z "$v" ] || brand_args+=("${b%%:*}" "$v")
+		done
+	fi
+	if jein "Eigener Begriff statt Gruppe (z. B. Team, Abteilung)?" n; then
+		frage v "Einzahl" "" "req valid_text" "Bitte angeben"; brand_args+=(--group-one "$v")
+		frage v "Mehrzahl" "" "req valid_text" "Bitte angeben"; brand_args+=(--group-other "$v")
+		frage v "Geschlecht (m, f oder n, für der/die/das)" "" "req valid_gender" "m, f oder n"; brand_args+=(--group-gender "$v")
+	fi
+	if jein "Erste Admin-Person ($email) gleich anlegen?" j; then
+		frage admin_first "Vorname" "" "req valid_text" "Bitte angeben"
+		frage admin_last "Nachname" "" "req valid_text" "Bitte angeben"
+	fi
+
+	printf '\nOptionale Dienste (alles auch später in /opt/clubforge/deploy/.env)\n' >/dev/tty
+	if jein "Mailversand (SMTP) einrichten? Ohne verschickt der Server keine Mails, App und Push laufen trotzdem" n; then
+		frage smtp_host "SMTP-Server" "" "req valid_host" "Name des Servers, z. B. smtp.example.org"
+		frage smtp_port "Port" "587" "req valid_port" "Zahl, meist 587"
+		frage smtp_security "Verschlüsselung (starttls, ssl oder none)" "starttls" "req valid_security" "starttls, ssl oder none"
+		frage smtp_user "Benutzername (leer = ohne Anmeldung)" "" "opt valid_text" "Ohne \" \$ \\"
+		[ -z "$smtp_user" ] || { geheim CF_SMTP_PASSWORD "SMTP-Passwort (ohne ')" bad_smtp_password; export CF_SMTP_PASSWORD; }
+		frage smtp_from "Absender" "$club <noreply@$domain>" "req valid_text" "Ohne \" \$ \\"
+	fi
+	if jein "Speicher für Anhänge (S3, z. B. Hetzner Object Storage) einrichten? Ohne gibt es keine Anhänge" n; then
+		frage s3_endpoint "Endpunkt" "https://fsn1.your-objectstorage.com" "req valid_s3_endpoint" "Form https://name.example.org"
+		frage s3_region "Region" "fsn1" "req valid_s3" "Buchstaben, Ziffern, . _ - /"
+		frage s3_bucket "Bucket (eigener Bucket, nicht der der Backups)" "" "req valid_s3" "Buchstaben, Ziffern, . _ - /"
+		frage s3_access_key "Access Key" "" "req valid_s3" "Buchstaben, Ziffern, . _ - /"
+		geheim CF_S3_SECRET_KEY "Secret Key" bad_s3_secret
+		export CF_S3_SECRET_KEY
+		frage s3_prefix "Präfix im Bucket (leer = keins)" "" "opt valid_s3" "Buchstaben, Ziffern, . _ - /"
+	fi
+	if jein "Eigenen öffentlichen Backup-Schlüssel (age1…) eintragen? Sonst erzeugt der Installer einen und zeigt den geheimen Teil einmal an" n; then
+		frage age_recipient "Öffentlicher Schlüssel" "" "req valid_age" "Form age1… (62 Zeichen), aus age-keygen"
+	fi
+
+	# Zusammenfassung und derselbe Aufruf ohne Rückfragen (ohne Passwörter), zum Aufheben
+	local cmd=(sudo bash install.sh --app "$app" --sync "$sync" --login "$login" --email "$email" --club "$club")
+	[ -z "$version" ] || cmd+=(--version "$version")
+	cmd+=("${brand_args[@]}")
+	[ -z "$admin_first" ] || cmd+=(--admin-first "$admin_first" --admin-last "$admin_last")
+	for v in smtp_host smtp_port smtp_security smtp_user smtp_from s3_endpoint s3_region s3_bucket s3_access_key s3_prefix age_recipient; do
+		[ -z "${!v}" ] || cmd+=("--${v//_/-}" "${!v}")
+	done
+	[ "$skip_dns" = 0 ] || cmd+=(--skip-dns-check)
+	cat >/dev/tty <<-EOF
+
+		Zusammenfassung
+		  App, Sync, Anmeldung: $app, $sync, $login
+		  Verein: $club, Administration: $email
+		  Version: ${version:-neueste}
+		  Erste Admin-Person: $([ -n "$admin_first" ] && echo "$admin_first $admin_last" || echo "später mit admin.sh")
+		  Mail: ${smtp_host:-nein}, Anhänge (S3): ${s3_bucket:-nein}
+		  Backup-Schlüssel: $([ -n "$age_recipient" ] && echo "eigener" || echo "wird erzeugt und einmal angezeigt")
+
+		Derselbe Aufruf ohne Rückfragen (Passwörter über CF_SMTP_PASSWORD und CF_S3_SECRET_KEY):
+	EOF
+	ok=""
+	for v in "${cmd[@]}"; do ok+="${ok:+ }$(quote "$v")"; done
+	printf '  %s\n\n' "$ok" >/dev/tty
+	jein "Mit diesen Angaben installieren?" j || die "Abgebrochen – nichts geändert"
+}
+
+if [ -z "$restore" ] && [ "$yes" = 0 ] && [ -z "$app$sync$login$email" ]; then
+	{ : </dev/tty; } 2>/dev/null || die "Ohne Angaben fragt der Installer im Terminal nach; hier gibt es keins. --app, --sync, --login und --email angeben (siehe --help)"
+	if [ -f "$dir/deploy/.env" ]; then
+		# Zweiter Lauf: die Einstellungen stehen schon fest
+		env_val() { sed -n "s/^$1=//p" "$dir/deploy/.env" | head -n 1 | tr -d '"'; }
+		app="$(env_val APP_HOST)" sync="$(env_val SYNC_HOST)" login="$(env_val LOGIN_HOST)" email="$(env_val ACME_EMAIL)"
+		[ -n "$version" ] || version="$(env_val CLUBFORGE_VERSION)"
+		echo "$dir/deploy/.env gibt es schon; Namen und Einstellungen kommen von dort ($app, $sync, $login)."
+	else
+		wizard
+	fi
+fi
 if [ -z "$restore" ]; then
 	for v in app sync login email; do [ -n "${!v}" ] || die "--$v fehlt (siehe --help)"; done
 	{ [ -z "$admin_first" ] && [ -z "$admin_last" ]; } || { [ -n "$admin_first" ] && [ -n "$admin_last" ]; } || die "--admin-first und --admin-last gehören zusammen"
@@ -126,14 +315,9 @@ run apt-get install -y -qq ca-certificates curl gnupg ufw unattended-upgrades ag
 
 log "DNS"
 if [ -z "$restore" ] && [ "$skip_dns" = 0 ]; then
-	my_ip="$(curl -4 -fsS -m 6 https://api.ipify.org 2>/dev/null || true)"
+	my_ip=""
 	bad=0
-	for h in "$app" "$sync" "$login"; do
-		ips="$(getent ahostsv4 "$h" 2>/dev/null | awk '{print $1}' | sort -u | tr '\n' ' ' || true)"
-		if [ -z "$ips" ]; then echo "  $h: kein A-Eintrag"; bad=1
-		elif [ -n "$my_ip" ] && [[ " $ips" != *" $my_ip "* ]]; then echo "  $h: zeigt auf $ips, dieser Server ist $my_ip"; bad=1
-		else echo "  $h: $ips"; fi
-	done
+	dns_check || bad=1
 	if [ "$bad" = 1 ]; then
 		if [ "$dry" = 1 ]; then warn "DNS stimmt noch nicht (im Trockenlauf nur Hinweis)"
 		else die "DNS stimmt nicht. Einträge setzen und warten (oder mit --skip-dns-check fortfahren, dann holt Caddy das Zertifikat erst später)."; fi
@@ -263,14 +447,14 @@ else
 			keyfile="$(mktemp)"
 			age-keygen >"$keyfile"
 			age_recipient="$(age-keygen -y "$keyfile")"
-			if [ "$yes" = 0 ] && [ -t 0 ]; then
+			if [ "$yes" = 0 ] && { : </dev/tty; } 2>/dev/null; then
 				echo
 				echo "Geheimer Schlüssel für die Backups. Jetzt in den Passwortmanager des Vereins kopieren (zwei Personen)."
 				echo "Ohne diesen Schlüssel lassen sich Backups NICHT entschlüsseln; er wird nicht auf dem Server gespeichert."
 				echo "------------------------------------------------------------------"
 				grep AGE-SECRET-KEY "$keyfile"
 				echo "------------------------------------------------------------------"
-				read -r -p "Gespeichert? Mit 'ja' fortfahren: " answer
+				read -r -p "Gespeichert? Mit 'ja' fortfahren: " answer </dev/tty
 				[ "$answer" = ja ] || { rm -f "$keyfile"; die "Abgebrochen – nichts weiter geändert"; }
 				rm -f "$keyfile"
 			else
@@ -378,7 +562,7 @@ if [ -n "$admin_first" ] && [ -z "$restore" ] && [ "$no_start" = 0 ]; then
 		admin_out="$(mktemp)"
 		if runuser -u clubforge -- "$dir/deploy/admin.sh" "$admin_email" "$admin_first" "$admin_last" >"$admin_out" 2>&1; then
 			admin_done=1
-			if [ "$yes" = 0 ] && [ -t 0 ]; then
+			if [ "$yes" = 0 ] && { : </dev/tty; } 2>/dev/null; then
 				cat "$admin_out"
 				rm -f "$admin_out"
 			else
