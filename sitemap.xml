@@ -72,10 +72,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/versionen/feed.xml"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
   </url>
-  <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/vergleich/</loc></url> -->
-  <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/en/vergleich/</loc></url> -->
-  <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/</loc></url> -->
-  <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/</loc></url> -->
+  <url><loc>https://cygnusb.github.io/clubforge-site/vergleich/</loc></url>
+  <url><loc>https://cygnusb.github.io/clubforge-site/en/vergleich/</loc></url>
+  <url><loc>https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/</loc></url>
+  <url><loc>https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/</loc></url>
   <url>
     <loc>https://cygnusb.github.io/clubforge-site/konto-loeschen/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/konto-loeschen/"/>

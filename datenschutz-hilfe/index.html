@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz-Hilfen für Vereine – clubforge</title>
+<meta name="description" content="Vorlagen zum Anpassen für Vereine, die clubforge betreiben: Bausteine für die Datenschutzerklärung der Vereins-App, ein Eintrag für das Verzeichnis der Verarbeitungstätigkeiten und die Löschfristen verständlich erklärt. Keine Rechtsberatung.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/">
+<script src="../lang.js"></script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../config.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="clubforge: Datenschutz-Hilfen für Vereine">
+<meta property="og:description" content="Vorlagen zum Anpassen: Datenschutzerklärung, Verzeichnis der Verarbeitungstätigkeiten, Löschfristen. Keine Rechtsberatung.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="../#tour">Ansehen</a>
+      <a class="hide-s" href="../#funktionen">Funktionen</a>
+      <a class="hide-s" href="../fragen/">Fragen</a>
+      <a class="hide-s" href="../umstieg/">Umstieg</a>
+      <a class="hide-s" href="../betrieb/">Betrieb</a>
+      <a class="hide-s" href="../versionen/">Versionen</a>
+      <a class="hide-s" data-repo="" data-label="Quellcode" href="../#stand" hidden>Quellcode</a>
+      <a class="nav-cta" href="../#anfangen">Loslegen</a>
+      <span class="lang" role="group" aria-label="Sprache"><span aria-current="page" lang="de">DE</span> <a href="../en/datenschutz-hilfe/" hreflang="en" lang="en">EN</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Datenschutz-Hilfen für Vereine</h1>
+    <p class="lead">Bausteine für Vereine, die clubforge auf ihrem eigenen Server betreiben: für die Datenschutzerklärung der Vereins-App, für das Verzeichnis der Verarbeitungstätigkeiten und eine verständliche Übersicht der Löschfristen.</p>
+  </div>
+</section>
+
+<section class="prose-sec">
+  <div class="wrap prose">
+    <div class="callout">
+      <p><strong>Keine Rechtsberatung, sondern eine Vorlage zum Anpassen.</strong> Die Texte beschreiben, was die Software clubforge tut. Was euer Verein zusätzlich tut (welcher Hoster, welcher Mailanbieter, welche Funktionen eingeschaltet sind), müsst ihr selbst ergänzen und prüfen. Verantwortlich im Sinne der DSGVO ist der Verein. Hat er eine Datenschutzbeauftragte oder einen Datenschutzbeauftragten, gehört sie oder er dazu.</p>
+    </div>
+
+    <h2>Was schon da ist</h2>
+    <ul>
+      <li><strong>Datenschutzseite in der App.</strong> Der Server liefert unter <code>/datenschutz</code> einen neutralen Standardtext mit Verantwortlichem, Zwecken, Rechtsgrundlagen, Empfängern, Fristen und Rechten. Die App verlinkt ihn im Profil und auf der Anmeldeseite. Kontakt und Anschrift des Vereins trägt die Server-Betreuung ein; Angaben in eckigen Klammern (etwa der Hoster) ergänzt der Verein. Alternativ leitet die Seite auf eine eigene Datenschutzerklärung des Vereins weiter.</li>
+      <li><strong>Seite „Konto und Daten löschen“</strong> unter <code>/konto-loeschen</code>, öffentlich und ohne Anmeldung.</li>
+      <li><strong>Auskunft</strong>: Jedes Mitglied lädt seine Daten in der App selbst herunter (Profil › Meine Daten herunterladen).</li>
+    </ul>
+    <p>Die Bausteine unten helfen, wenn ihr eine eigene Datenschutzerklärung schreibt oder die Standardseite ergänzt.</p>
+
+    <h2 id="erklaerung">Bausteine für die Datenschutzerklärung</h2>
+    <p>Texte in eckigen Klammern ersetzt ihr. Bausteine für Funktionen, die ihr nicht nutzt, lasst ihr weg.</p>
+
+    <h3>Grundlage</h3>
+    <div class="template">
+      <p><strong>Geltungsbereich.</strong> Diese Hinweise gelten für die App und die Web-App des [Vereinsname] unter [app.euer-verein.example]. Sie ergänzen die Datenschutzinformation des Vereins zur Mitgliedschaft.</p>
+      <p><strong>Verantwortlich</strong> ist der [Vereinsname, Anschrift]. Kontakt für Datenschutzfragen: [Adresse].</p>
+      <p><strong>Betrieb.</strong> Die App läuft auf einem Server, den der Verein bei [Name des Hosting-Anbieters] in [Standort, z. B. Deutschland] betreibt. Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung. Die Software clubforge ist Open Source; ihre Entwickler haben keinen Zugriff auf die Daten des Vereins.</p>
+      <p><strong>Kein Tracking.</strong> Die App enthält keine Werbung und keine Analyse- oder Tracking-Dienste.</p>
+    </div>
+
+    <h3>Welche Daten, wozu, auf welcher Grundlage</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Daten</th><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
+        <tbody>
+          <tr><td>Name, E-Mail-Adressen, Status, Eintrittsjahr, Abteilungen aus der Mitgliederverwaltung</td><td>Anmeldung, Verzeichnis, Gruppen</td><td>Mitgliedschaft (Art. 6 Abs. 1 lit. b DSGVO)</td></tr>
+          <tr><td>Termine, Zusagen, Mitfahrten, Nachrichten, Umfragen, Neuigkeiten</td><td>Training und Vereinsleben organisieren</td><td>Mitgliedschaft (Art. 6 Abs. 1 lit. b DSGVO)</td></tr>
+          <tr><td>Freiwillige Profilangaben (z. B. Telefon, Geburtstag)</td><td>Austausch unter Mitgliedern</td><td>Einwilligung je Feld, jederzeit widerrufbar (Art. 6 Abs. 1 lit. a DSGVO)</td></tr>
+          <tr><td>Push-Benachrichtigungen</td><td>Hinweise aufs Gerät</td><td>Einwilligung über die Berechtigung des Geräts</td></tr>
+          <tr><td>Sitzungen, Geräte, Protokoll von Verwaltungsaktionen</td><td>Sicherheit und Nachvollziehbarkeit</td><td>Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO)</td></tr>
+          <tr><td>Namen von Gästen, die ein Mitglied zu einem Termin anmeldet</td><td>Teilnehmerliste des Termins</td><td>[vom Verein festzulegen]</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Wer die Daten sieht</h3>
+    <div class="template">
+      <ul>
+        <li>Mitglieder sehen, was zu ihren Gruppen, Terminen und Unterhaltungen gehört. Freiwillige Profilangaben sieht nur, wen die Person je Feld auswählt (niemand, die eigene Gruppe oder alle).</li>
+        <li>Admins des Vereins bzw. einer Gruppe, soweit es ihre Aufgabe erfordert, etwa beim Prüfen gemeldeter Inhalte.</li>
+        <li>Der Hosting-Anbieter [Name] als Auftragsverarbeiter.</li>
+        <li>Für Push-Benachrichtigungen erhalten die Dienste von Apple, Google bzw. Mozilla eine Geräteadresse und einen Kurztext.</li>
+        <li>E-Mails verschickt der Verein über [Name des Mailanbieters].</li>
+      </ul>
+      <p>Nachrichten sind nicht Ende-zu-Ende-verschlüsselt. Sie werden verschlüsselt übertragen und liegen auf dem Server des Vereins.</p>
+    </div>
+
+    <h3>Bausteine für eingeschaltete Funktionen</h3>
+    <div class="template">
+      <p><strong>Fotos, Dateien und Strecken.</strong> Anhänge liegen im Speicher des Vereins bei [Name des Speicheranbieters, Standort]; mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung. Der Server entfernt aus Fotos Aufnahmeort, Zeit und Geräteangaben und aus GPX-Dateien Zeitstempel, Herzfrequenz und ähnliche Sensordaten. Ein Anhang bleibt so lange gespeichert wie der Beitrag, an dem er hängt[; gelöschte Dateien hält der Speicher noch bis zu [Frist der Lebenszyklus-Regel] vor].</p>
+    </div>
+    <div class="template">
+      <p><strong>Karten.</strong> Karten kommen vom Server des Vereins; kein fremder Kartendienst erfährt, wer welche Strecke oder welchen Ort ansieht. Erst „Route planen“ übergibt die Koordinaten des Ziels an die Karten-App des Geräts.</p>
+    </div>
+    <div class="template">
+      <p><strong>Selbstlöschende Nachrichten.</strong> Nachrichten mit Ablaufzeit werden spätestens eine Stunde nach Ablauf auf dem Server gelöscht. In den verschlüsselten Datensicherungen sind sie bis zu 30 Tage länger enthalten.</p>
+    </div>
+    <div class="template">
+      <p><strong>Mitgliederverwaltung.</strong> Name, Eintrittsjahr, Status, E-Mail-Adressen und Abteilungen übernimmt die App aus [easyVerein / der Mitgliederverwaltung des Vereins]. Diese Angaben lassen sich in der App nicht ändern; Berichtigungen laufen über die Mitgliederverwaltung.</p>
+    </div>
+    <div class="template">
+      <p><strong>Kalender-Abo.</strong> Wer seine Termine abonniert, bekommt einen persönlichen Link, den der eigene Kalender (z. B. von Apple, Google oder Microsoft) regelmäßig abruft. In der App lässt sich jederzeit ein neuer Link erzeugen; der alte wird dann ungültig.</p>
+    </div>
+    <div class="template">
+      <p><strong>Google-Kalender des Vereins.</strong> Termine, die für den ganzen Verein oder offene Gruppen gedacht sind, überträgt die App in Kalender des Vereins bei Google Workspace: Titel, Zeit, Ort, eine gekürzte Beschreibung und ein Link. Wer zugesagt hat, Kommentare, Gäste, Mitfahrten, Nachrichten und andere Angaben über Personen werden nie übertragen. [Ist der Kalender öffentlich oder auf der Vereinswebseite eingebunden, sind diese Termine öffentlich.]</p>
+    </div>
+    <div class="template">
+      <p><strong>Anbindungen.</strong> Werkzeuge des Vereins, etwa [Hallenbelegung], lesen über eine Schnittstelle Termine und von Mitgliedern nur die Profilangaben, die für alle Mitglieder freigegeben sind, und zeigen eigene Daten in der App an. Private Gruppen sehen sie nicht. Betrieben werden sie von [Verein bzw. Dienstleister].</p>
+    </div>
+
+    <h3>Speicherdauer und Rechte</h3>
+    <div class="template">
+      <p><strong>Wie lange.</strong> Nach dem Austritt wird der Zugang sofort gesperrt und die Person nach 30 Tagen anonymisiert. Nachrichten bleiben ohne Namen erhalten, auf Wunsch auch ohne Inhalt. Weitere Fristen: Glocke 90 Tage, gelöschte Nachrichten 30 Tage, Zusagen 24 Monate nach dem Termin (danach nur noch Zählungen), Gästenamen 3 Monate nach dem Termin, Meldungen 12 Monate nach Abschluss, Protokoll der Verwaltung 2 Jahre, Sitzungen 90 Tage nach Ablauf, Datensicherungen 30 Tage.</p>
+      <p><strong>Deine Rechte.</strong> Auskunft und Datenübertragbarkeit: in der App unter Profil › Meine Daten herunterladen. Berichtigung: Profilangaben selbst in der App, Name und Adresse über die Mitgliederverwaltung. Löschung: in der App unter Profil › Konto und Daten löschen oder beim Verein. Widerruf: Freigaben und Benachrichtigungen jederzeit im Profil. Beschwerde bei einer Aufsichtsbehörde für den Datenschutz, z. B. der des Bundeslandes, in dem der Verein seinen Sitz hat.</p>
+    </div>
+
+    <h2 id="verzeichnis">Eintrag für das Verzeichnis der Verarbeitungstätigkeiten</h2>
+    <p>Das Verzeichnis nach Art. 30 DSGVO führt der Verein. Dieser Eintrag beschreibt die Vereins-App; die Zeilen in eckigen Klammern hängen von euren Entscheidungen ab.</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><th scope="row">Bezeichnung</th><td>Vereins-App (Software clubforge, betrieben auf eigenem Server)</td></tr>
+          <tr><th scope="row">Verantwortlich</th><td>[Vereinsname, Anschrift, vertretungsberechtigter Vorstand]; Datenschutzbeauftragte(r): [falls vorhanden]</td></tr>
+          <tr><th scope="row">Zwecke</th><td>Organisation von Training und Vereinsleben: Termine und Zusagen, Gruppen, Nachrichten, Mitfahrten, Umfragen, Neuigkeiten, Mitgliederverzeichnis, Benachrichtigungen; Sicherheit und Nachvollziehbarkeit des Betriebs</td></tr>
+          <tr><th scope="row">Betroffene Personen</th><td>Mitglieder, ehemalige Mitglieder (bis zur Anonymisierung), von Mitgliedern angemeldete Gäste (nur Name und Notiz)</td></tr>
+          <tr><th scope="row">Datenkategorien</th><td>Stammdaten aus der Mitgliederverwaltung (Name, E-Mail-Adressen, Status, Eintrittsjahr, Abteilungen); freiwillige Profilangaben; Termine, Zusagen, Mitfahrten; Nachrichten, Umfragen, Neuigkeiten, Anhänge; Einstellungen; Geräte- und Push-Adressen; Sitzungen; Protokoll der Verwaltung und Moderation</td></tr>
+          <tr><th scope="row">Rechtsgrundlagen</th><td>Art. 6 Abs. 1 lit. b (Mitgliedschaft), lit. a (freiwillige Profilangaben, Push), lit. f (Sicherheit, Protokoll) DSGVO</td></tr>
+          <tr><th scope="row">Empfänger</th><td>Hosting-Anbieter [Name] (Auftragsverarbeitung); Mailanbieter [Name]; [Speicheranbieter für Anhänge und Sicherungskopien]; Push-Dienste von Apple, Google, Mozilla (Geräteadresse und Kurztext); [Google Workspace, falls Google-Kalender genutzt]; [Betreiber von Anbindungen]</td></tr>
+          <tr><th scope="row">Drittländer</th><td>[Serverstandort, z. B. Deutschland]. [Bei US-Anbietern: Grundlage der Übermittlung, z. B. Standardvertragsklauseln.] Push-Dienste der Plattformen: [prüfen und eintragen]</td></tr>
+          <tr><th scope="row">Löschfristen</th><td>siehe <a href="#fristen">Übersicht unten</a>; der Server setzt sie selbst um</td></tr>
+          <tr><th scope="row">Technische und organisatorische Maßnahmen</th><td>Verschlüsselte Übertragung (HTTPS mit HSTS); Rechte prüft der Server bei jedem Zugriff; tägliche verschlüsselte Datensicherung, Schlüssel nicht auf dem Server, aufbewahrt bei zwei Personen; Server-Zugang nur per SSH-Schlüssel und für wenige benannte Personen; Firewall; automatische Sicherheitsupdates; Protokoll der Verwaltungs- und Moderationsaktionen; Wiederherstellung regelmäßig getestet [Protokoll ablegen]. [Datenträgerverschlüsselung des Servers: richtet der Installer nicht ein; beim Anbieter bzw. von Hand ergänzen und hier eintragen.]</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="fristen">Löschfristen, verständlich erklärt</h2>
+    <p>Diese Fristen setzt der Server selbst um; niemand muss dafür etwas von Hand löschen. Die Aufgaben laufen regelmäßig, meist stündlich.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Was</th><th>Wie lange</th></tr></thead>
+        <tbody>
+          <tr><td>Zugang nach dem Austritt (Anmeldung, Push, Kalender-Abo)</td><td>endet sofort</td></tr>
+          <tr><td>Ehemalige Mitglieder</td><td>30 Tage nach dem Austritt anonymisiert: aus der Person wird „Ehemaliges Mitglied“; Profil, Adressen, Einstellungen, Gruppen, künftige Zusagen und Mitfahrten, Geräte und Anmeldekonto sind weg. Nachrichten bleiben ohne Namen, auf Wunsch ohne Inhalt. Wer innerhalb der 30 Tage wieder eintritt, verliert nichts.</td></tr>
+          <tr><td>Zusagen</td><td>24 Monate nach dem Termin; danach bleiben nur Zahlen, ohne Namen</td></tr>
+          <tr><td>Namen von Gästen</td><td>3 Monate nach dem Termin</td></tr>
+          <tr><td>Gelöschte Nachrichten</td><td>der Text wird noch 30 Tage vorgehalten, dann gelöscht</td></tr>
+          <tr><td>Selbstlöschende Nachrichten</td><td>spätestens 1 Stunde nach Ablauf; in Datensicherungen bis zu 30 Tage länger</td></tr>
+          <tr><td>Glocke (Mitteilungen in der App)</td><td>90 Tage</td></tr>
+          <tr><td>Sitzungen (angemeldete Geräte)</td><td>90 Tage nach Ablauf bzw. Abmeldung</td></tr>
+          <tr><td>Meldungen von Inhalten</td><td>12 Monate nach Abschluss</td></tr>
+          <tr><td>Schreibsperren und Verwarnungen</td><td>12 Monate nach Ablauf</td></tr>
+          <tr><td>Protokoll der Verwaltung</td><td>2 Jahre</td></tr>
+          <tr><td>Löschanfragen</td><td>2 Jahre nach Erledigung (als Nachweis)</td></tr>
+          <tr><td>Datenexporte</td><td>Download 48 Stunden abrufbar, der Eintrag 30 Tage</td></tr>
+          <tr><td>Abgleich mit der Mitgliederverwaltung</td><td>hochgeladene CSV-Datei 7 Tage, Berichte 1 Jahr</td></tr>
+          <tr><td>Daten von Anbindungen</td><td>nach dem Löschen sofort weg von den Geräten, endgültig nach 30 Tagen</td></tr>
+          <tr><td>Mail-Zusammenfassung</td><td>der Inhalt wird nach dem Versand geleert</td></tr>
+          <tr><td>Server-Logs</td><td>14 Tage</td></tr>
+          <tr><td>Datensicherungen</td><td>30 Tage, danach überschrieben</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Noch ohne feste Frist</strong> ist das interne Protokoll der Ereignisse und Befehle des Servers. Das steht so auch in den bekannten Einschränkungen der aktuellen Version; nehmt es bis dahin in eure Hinweise auf.</p>
+    <p><strong>Löschanfrage im Ablauf:</strong> Ein Mitglied stellt sie in der App, die Vereins-Admins bekommen Bescheid. Sie tragen die Person in der Mitgliederverwaltung aus und markieren die Anfrage als erledigt; der Zugang endet mit dem nächsten Abgleich, 30 Tage später anonymisiert der Server von selbst.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later · Vorlage, keine Rechtsberatung</span>
+    <span><a href="../">Übersicht</a> · <a href="../fragen/">Fragen</a> · <a href="../betrieb/">Betrieb</a> · <a href="../konto-loeschen/">Konto löschen</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span></span>
+  </div>
+</footer>
+</body>
+</html>

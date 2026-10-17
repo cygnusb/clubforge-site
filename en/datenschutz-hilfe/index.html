@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy helpers for clubs – clubforge</title>
+<meta name="description" content="Templates to adapt for clubs that run clubforge: building blocks for the club app’s privacy notice, an entry for the record of processing activities, and the deletion periods explained. Not legal advice.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/">
+<script src="../../lang.js"></script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../config.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="clubforge: privacy helpers for clubs">
+<meta property="og:description" content="Templates to adapt: privacy notice, record of processing activities, deletion periods. Not legal advice.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/">
+</head>
+<body>
+<a class="skip" href="#inhalt">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Main">
+      <a class="hide-s" href="../#tour">See it</a>
+      <a class="hide-s" href="../#funktionen">Features</a>
+      <a class="hide-s" href="../fragen/">Questions</a>
+      <a class="hide-s" href="../umstieg/">Switching</a>
+      <a class="hide-s" href="../betrieb/">Operations</a>
+      <a class="hide-s" href="../versionen/">Versions</a>
+      <a class="hide-s" data-repo="" data-label="Source code" href="../#stand" hidden>Source code</a>
+      <a class="nav-cta" href="../#anfangen">Get started</a>
+      <span class="lang" role="group" aria-label="Language"><a href="../../datenschutz-hilfe/" hreflang="de" lang="de">DE</a> <span aria-current="page" lang="en">EN</span></span>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Privacy helpers for clubs</h1>
+    <p class="lead">Building blocks for clubs that run clubforge on their own server: for the club app’s privacy notice, for the record of processing activities, and a plain overview of the deletion periods.</p>
+  </div>
+</section>
+
+<section class="prose-sec">
+  <div class="wrap prose">
+    <div class="callout">
+      <p><strong>Not legal advice, a template to adapt.</strong> The texts describe what the clubforge software does. What your club does on top of that (which host, which mail provider, which features are on) you have to add and check yourselves. The controller under the GDPR is the club. If it has a data protection officer, they belong in this.</p>
+    </div>
+
+    <h2>What is already there</h2>
+    <ul>
+      <li><strong>A privacy page in the app.</strong> The server serves a neutral standard text at <code>/datenschutz</code>, with the controller, purposes, legal bases, recipients, periods, and rights. The app links it in the profile and on the login page. The person running the server enters the club’s contact and address; the club fills in anything in square brackets (such as the host). Or the page can forward to a privacy notice of the club’s own.</li>
+      <li><strong>A “delete account and data” page</strong> at <code>/konto-loeschen</code>, public and without signing in.</li>
+      <li><strong>Access</strong>: each member downloads their own data in the app (Profile › Download my data).</li>
+    </ul>
+    <p>The building blocks below help when you write your own privacy notice or complete the standard page.</p>
+
+    <h2 id="erklaerung">Building blocks for the privacy notice</h2>
+    <p>Replace the text in square brackets. Leave out building blocks for features you do not use.</p>
+
+    <h3>Basis</h3>
+    <div class="template">
+      <p><strong>Scope.</strong> These notes apply to the app and the web app of [club name] at [app.your-club.example]. They add to the club’s privacy information about membership.</p>
+      <p><strong>Controller</strong> is [club name, address]. Contact for privacy questions: [address].</p>
+      <p><strong>Operation.</strong> The app runs on a server the club operates with [hosting provider] in [location, e.g. Germany]. There is a data processing agreement with the provider. The clubforge software is open source; its developers have no access to the club’s data.</p>
+      <p><strong>No tracking.</strong> The app contains no advertising and no analytics or tracking services.</p>
+    </div>
+
+    <h3>Which data, for what, on which basis</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Data</th><th>Purpose</th><th>Legal basis</th></tr></thead>
+        <tbody>
+          <tr><td>Name, email addresses, status, year joined, sections from the membership system</td><td>Sign-in, directory, groups</td><td>Membership (Art. 6 (1) (b) GDPR)</td></tr>
+          <tr><td>Events, responses, rides, messages, polls, news</td><td>Organizing practice and club life</td><td>Membership (Art. 6 (1) (b) GDPR)</td></tr>
+          <tr><td>Optional profile details (for example phone, birthday)</td><td>Contact among members</td><td>Consent per field, withdrawable at any time (Art. 6 (1) (a) GDPR)</td></tr>
+          <tr><td>Push notifications</td><td>Notices on the device</td><td>Consent through the device permission</td></tr>
+          <tr><td>Sessions, devices, log of admin actions</td><td>Security and accountability</td><td>Legitimate interest (Art. 6 (1) (f) GDPR)</td></tr>
+          <tr><td>Names of guests a member registers for an event</td><td>The event’s participant list</td><td>[for the club to decide]</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Who sees the data</h3>
+    <div class="template">
+      <ul>
+        <li>Members see what belongs to their groups, events, and conversations. Optional profile details are seen only by whoever the person picks for each field (nobody, their own group, or everyone).</li>
+        <li>Admins of the club or of a group, as far as their task requires, for example when reviewing reported content.</li>
+        <li>The hosting provider [name] as a processor.</li>
+        <li>For push notifications, the services of Apple, Google, or Mozilla receive a device address and a short text.</li>
+        <li>The club sends email through [email provider].</li>
+      </ul>
+      <p>Messages are not end-to-end encrypted. They are encrypted in transit and stored on the club’s server.</p>
+    </div>
+
+    <h3>Building blocks for features you have turned on</h3>
+    <div class="template">
+      <p><strong>Photos, files, and tracks.</strong> Attachments sit in the club’s storage at [storage provider, location]; there is a data processing agreement with the provider. The server removes place, time, and device details from photos, and timestamps, heart rate, and similar sensor data from GPX files. An attachment is kept as long as the post it belongs to[; deleted files stay in storage for up to [lifecycle rule period]].</p>
+    </div>
+    <div class="template">
+      <p><strong>Maps.</strong> Maps come from the club’s server; no outside map service learns who looks at which track or place. Only “plan a route” passes the destination’s coordinates to the device’s maps app.</p>
+    </div>
+    <div class="template">
+      <p><strong>Self-deleting messages.</strong> Messages with an expiry are deleted on the server at most one hour after they expire. They remain in the encrypted backups for up to 30 days longer.</p>
+    </div>
+    <div class="template">
+      <p><strong>Membership system.</strong> The app takes name, year joined, status, email addresses, and sections from [easyVerein / the club’s membership system]. These details cannot be changed in the app; corrections go through the membership system.</p>
+    </div>
+    <div class="template">
+      <p><strong>Calendar subscription.</strong> Whoever subscribes to their events gets a personal link that their own calendar (for example from Apple, Google, or Microsoft) fetches regularly. A new link can be created in the app at any time; the old one then stops working.</p>
+    </div>
+    <div class="template">
+      <p><strong>The club’s Google Calendar.</strong> Events meant for the whole club or for open groups are copied by the app into the club’s calendars in Google Workspace: title, time, place, a shortened description, and a link. Who said yes, comments, guests, rides, messages, and other details about people are never copied. [If the calendar is public or embedded on the club website, these events are public.]</p>
+    </div>
+    <div class="template">
+      <p><strong>Integrations.</strong> Tools of the club, such as [hall schedule], read events through an interface and, of members, only the profile details released to all members, and show their own data in the app. They do not see private groups. They are run by [club or contractor].</p>
+    </div>
+
+    <h3>How long, and your rights</h3>
+    <div class="template">
+      <p><strong>How long.</strong> After someone leaves, access is blocked at once and the person is anonymized after 30 days. Messages stay without a name, and without content if that was requested. Further periods: the bell 90 days, deleted messages 30 days, responses 24 months after the event (only counts after that), guest names 3 months after the event, reports 12 months after they are closed, the admin log 2 years, sessions 90 days after they end, backups 30 days.</p>
+      <p><strong>Your rights.</strong> Access and portability: in the app under Profile › Download my data. Correction: profile details yourself in the app, name and address through the membership system. Erasure: in the app under Profile › Delete account and data, or with the club. Withdrawal: releases and notifications at any time in the profile. A complaint to a data protection authority, for example the one of the state where the club has its seat.</p>
+    </div>
+
+    <h2 id="verzeichnis">An entry for the record of processing activities</h2>
+    <p>The club keeps the record under Art. 30 GDPR. This entry describes the club app; the rows in square brackets depend on your decisions.</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><th scope="row">Name</th><td>Club app (clubforge software, run on our own server)</td></tr>
+          <tr><th scope="row">Controller</th><td>[club name, address, board members authorized to represent the club]; data protection officer: [if you have one]</td></tr>
+          <tr><th scope="row">Purposes</th><td>Organizing practice and club life: events and responses, groups, messages, rides, polls, news, member directory, notifications; security and accountability of operations</td></tr>
+          <tr><th scope="row">People concerned</th><td>Members, former members (until anonymization), guests registered by members (name and note only)</td></tr>
+          <tr><th scope="row">Categories of data</th><td>Master data from the membership system (name, email addresses, status, year joined, sections); optional profile details; events, responses, rides; messages, polls, news, attachments; settings; device and push addresses; sessions; log of admin and moderation</td></tr>
+          <tr><th scope="row">Legal bases</th><td>Art. 6 (1) (b) (membership), (a) (optional profile details, push), (f) (security, log) GDPR</td></tr>
+          <tr><th scope="row">Recipients</th><td>Hosting provider [name] (processor); email provider [name]; [storage provider for attachments and backup copies]; push services of Apple, Google, Mozilla (device address and short text); [Google Workspace, if you use Google Calendar]; [operator of integrations]</td></tr>
+          <tr><th scope="row">Third countries</th><td>[server location, e.g. Germany]. [For US providers: the transfer basis, e.g. standard contractual clauses.] Platform push services: [check and fill in]</td></tr>
+          <tr><th scope="row">Deletion periods</th><td>see the <a href="#fristen">overview below</a>; the server applies them itself</td></tr>
+          <tr><th scope="row">Technical and organizational measures</th><td>Encrypted transport (HTTPS with HSTS); the server checks permissions on every access; a daily encrypted backup, the key not on the server, kept by two people; server access only by SSH key and for a few named people; firewall; automatic security updates; a log of admin and moderation actions; restore tested regularly [keep a record]. [Disk encryption of the server: the installer does not set this up; add it at the provider or by hand, and record it here.]</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="fristen">Deletion periods, in plain language</h2>
+    <p>The server applies these periods itself; nobody has to delete anything by hand for them. The jobs run regularly, usually every hour.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>What</th><th>How long</th></tr></thead>
+        <tbody>
+          <tr><td>Access after leaving (sign-in, push, calendar subscription)</td><td>ends at once</td></tr>
+          <tr><td>Former members</td><td>anonymized 30 days after leaving: the person becomes “Former member”; profile, addresses, settings, groups, future responses and rides, devices, and the login account are gone. Messages stay without a name, and without content if that was requested. Anyone who rejoins within the 30 days loses nothing.</td></tr>
+          <tr><td>Responses</td><td>24 months after the event; after that only numbers remain, without names</td></tr>
+          <tr><td>Names of guests</td><td>3 months after the event</td></tr>
+          <tr><td>Deleted messages</td><td>the text is kept for another 30 days, then deleted</td></tr>
+          <tr><td>Self-deleting messages</td><td>at most 1 hour after expiry; in backups for up to 30 days longer</td></tr>
+          <tr><td>The bell (notices in the app)</td><td>90 days</td></tr>
+          <tr><td>Sessions (signed-in devices)</td><td>90 days after they end or after sign-out</td></tr>
+          <tr><td>Reports of content</td><td>12 months after they are closed</td></tr>
+          <tr><td>Mutes and warnings</td><td>12 months after they end</td></tr>
+          <tr><td>Admin log</td><td>2 years</td></tr>
+          <tr><td>Deletion requests</td><td>2 years after they are done (as a record)</td></tr>
+          <tr><td>Data exports</td><td>the download is available for 48 hours, the entry for 30 days</td></tr>
+          <tr><td>Sync with the membership system</td><td>an uploaded CSV file for 7 days, reports for 1 year</td></tr>
+          <tr><td>Data from integrations</td><td>gone from devices as soon as it is deleted, gone for good after 30 days</td></tr>
+          <tr><td>Email digest</td><td>the content is cleared after it is sent</td></tr>
+          <tr><td>Server logs</td><td>14 days</td></tr>
+          <tr><td>Backups</td><td>30 days, then overwritten</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Still without a fixed period</strong> is the server’s internal log of events and commands. That is also listed in the known limitations of the current version; mention it in your notes until then.</p>
+    <p><strong>A deletion request, step by step:</strong> a member files it in the app, and the club admins are told. They remove the person in the membership system and mark the request done; access ends with the next sync, and 30 days later the server anonymizes on its own.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later · template, not legal advice</span>
+    <span><a href="../">Overview</a> · <a href="../fragen/">Questions</a> · <a href="../betrieb/">Operations</a> · <a href="../konto-loeschen/">Delete account</a> · <span data-repo="" data-label="Source code">Source code follows</span></span>
+  </div>
+</footer>
+</body>
+</html>
