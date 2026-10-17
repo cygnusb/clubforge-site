@@ -31,13 +31,11 @@
   <div class="wrap">
     <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
     <nav class="main" aria-label="Hauptnavigation">
-      <a class="hide-s" href="../#tour">Ansehen</a>
       <a class="hide-s" href="../#funktionen">Funktionen</a>
       <a class="hide-s" href="../fragen/">Fragen</a>
       <a class="hide-s" href="../umstieg/">Umstieg</a>
       <a class="hide-s" href="../betrieb/">Betrieb</a>
-      <a class="hide-s" href="../versionen/">Versionen</a>
-      <a class="hide-s" data-repo="" data-label="Quellcode" href="../#stand" hidden>Quellcode</a>
+      <a class="show-s" href="#seiten">Menü</a>
       <a class="nav-cta" href="../#anfangen">Loslegen</a>
       <span class="lang" role="group" aria-label="Sprache"><span aria-current="page" lang="de">DE</span> <a href="../en/versionen/" hreflang="en" lang="en">EN</a></span>
     </nav>
@@ -275,8 +273,13 @@
 
 <footer>
   <div class="wrap">
-    <span>clubforge · AGPL-3.0-or-later · Seite erzeugt aus CHANGELOG.md</span>
-    <span><a href="../">Übersicht</a> · <a href="../fragen/">Fragen</a> · <a href="../betrieb/">Betrieb</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span></span>
+    <nav class="foot" id="seiten" aria-label="Alle Seiten">
+      <div><p class="foot-h">Kennenlernen</p><ul><li><a href="../">Übersicht</a></li><li><a href="../#tour">Ansehen</a></li><li><a href="../#funktionen">Funktionen</a></li><li><a href="../#stand">Stand</a></li></ul></div>
+      <div><p class="foot-h">Entscheiden</p><ul><li><a href="../fragen/">Fragen</a></li><li><a href="../umstieg/">Umstieg</a></li><li><a href="../vergleich/">Vergleich</a></li><li><a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a></li></ul></div>
+      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/">Anleitung</a></li><li><a href="../versionen/" aria-current="page">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
+      <div><p class="foot-h">Für Mitglieder</p><ul><li><a href="../join/">Einladungsseite</a></li><li><a href="../konto-loeschen/">Konto löschen</a></li></ul></div>
+    </nav>
+    <span class="foot-meta">clubforge · AGPL-3.0-or-later · Seite erzeugt aus CHANGELOG.md</span>
   </div>
 </footer>
 </body>

@@ -34,13 +34,11 @@
   <div class="wrap">
     <a class="brand" href="../"><img src="../../favicon.svg" alt="" width="28" height="28">clubforge</a>
     <nav class="main" aria-label="Main">
-      <a class="hide-s" href="../#tour">See it</a>
       <a class="hide-s" href="../#funktionen">Features</a>
       <a class="hide-s" href="../fragen/">Questions</a>
       <a class="hide-s" href="../umstieg/">Switching</a>
-      <a class="hide-s" href="../betrieb/">Operations</a>
-      <a class="hide-s" href="../versionen/">Versions</a>
-      <a class="hide-s" data-repo="" data-label="Source code" href="../#stand" hidden>Source code</a>
+      <a class="hide-s" href="../betrieb/" aria-current="page">Operations</a>
+      <a class="show-s" href="#seiten">Menu</a>
       <a class="nav-cta" href="../#anfangen">Get started</a>
       <span class="lang" role="group" aria-label="Language"><a href="../../betrieb/" hreflang="de" lang="de">DE</a> <span aria-current="page" lang="en">EN</span></span>
     </nav>
@@ -54,7 +52,7 @@
       <h1>Operations: <em>your server</em> in one evening</h1>
       <p class="lead">A small server, three DNS names, one command: with the club name, logo, and colors, and the first admin at the end. The certificate comes from Let’s Encrypt automatically, backups are encrypted, and security updates run on their own.</p>
       <div class="btn-row">
-        <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Read the guide">The guide is in the source code (it follows with the pilot)</span>
+        <a class="btn" href="../anleitung/">To the installation guide</a>
         <a class="btn ghost" href="../">Back to the overview</a>
       </div>
     </div>
@@ -67,7 +65,7 @@ sudo bash install.sh \
   --sync sync.mein-verein.example \
   --login login.mein-verein.example \
   --email vorstand@mein-verein.example \
-  --club "Mein Verein" --version 0.2.0 \
+  --club "Mein Verein" --version 0.2.1 \
   --logo https://mein-verein.example/logo-weiss.svg \
   --primary '#117733' --dark '#0a2a14' \
   --admin-first Vera --admin-last Vorstand</pre>
@@ -152,7 +150,7 @@ sudo bash install.sh \
       <div class="card"><h3>Settings in the club</h3><p>Admins look after features, words, logo and colors, the code of conduct, and info pages in the app’s admin area, without touching the server.</p></div>
     </div>
     <div class="btn-row">
-      <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="All operations pages in the source code">All operations pages follow with the source code</span>
+      <a class="btn" href="../anleitung/">Step by step: the installation guide</a>
     </div>
   </div>
 </section>
@@ -168,6 +166,7 @@ sudo bash install.sh \
         <table>
           <thead><tr><th scope="col">Server version</th><th scope="col">Web app</th><th scope="col">Requires at least app</th></tr></thead>
           <tbody>
+            <tr><td>0.2.1</td><td>0.2.1, served by your own server</td><td>0.1.0</td></tr>
             <tr><td>0.2.0</td><td>0.2.0, served by your own server</td><td>0.1.0</td></tr>
             <tr><td>0.1.0, 0.1.1</td><td>the same version, served by your own server</td><td>0.1.0</td></tr>
           </tbody>
@@ -202,8 +201,13 @@ sudo bash install.sh \
 
 <footer>
   <div class="wrap">
-    <span>clubforge · AGPL-3.0-or-later</span>
-    <span><a href="../">Overview</a> · <a href="../fragen/">Questions</a> · <a href="../umstieg/">Switching</a> · <a href="../datenschutz-hilfe/">Privacy helpers</a> · <a href="../versionen/">Versions</a> · <span data-repo="" data-label="Source code">Source code follows</span> · <a href="../join/">Invitation page</a> · <a href="../konto-loeschen/">Delete account</a></span>
+    <nav class="foot" id="seiten" aria-label="All pages">
+      <div><p class="foot-h">Discover</p><ul><li><a href="../">Overview</a></li><li><a href="../#tour">See it</a></li><li><a href="../#funktionen">Features</a></li><li><a href="../#stand">Status</a></li></ul></div>
+      <div><p class="foot-h">Decide</p><ul><li><a href="../fragen/">Questions</a></li><li><a href="../umstieg/">Switching</a></li><li><a href="../vergleich/">Comparison</a></li><li><a href="../datenschutz-hilfe/">Privacy helpers</a></li></ul></div>
+      <div><p class="foot-h">Run it</p><ul><li><a href="../#anfangen">Get started</a></li><li><a href="../betrieb/" aria-current="page">Operations</a></li><li><a href="../anleitung/">Installation guide</a></li><li><a href="../versionen/">Versions</a></li><li><span data-repo="" data-label="Source code">Source code follows</span></li></ul></div>
+      <div><p class="foot-h">For members</p><ul><li><a href="../join/">Invitation page</a></li><li><a href="../konto-loeschen/">Delete account</a></li></ul></div>
+    </nav>
+    <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>
   </div>
 </footer>
 </body>

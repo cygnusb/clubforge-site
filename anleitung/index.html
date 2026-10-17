@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installationsanleitung – clubforge</title>
+<meta name="description" content="clubforge auf dem eigenen Server installieren, Schritt für Schritt: DNS, Installer, Backup-Schlüssel, erste Anmeldung, Updates und Fehlerbehebung.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/anleitung/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/anleitung/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/anleitung/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/anleitung/">
+<script src="../lang.js"></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="clubforge installieren: die Anleitung">
+<meta property="og:description" content="Vom gemieteten Server zum laufenden Vereinsserver: DNS, Installer, Backup-Schlüssel, erste Anmeldung.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="clubforge: Kalender und Termindetail der App mit Beispieldaten">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/anleitung/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../config.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Hauptnavigation">
+      <a class="hide-s" href="../#funktionen">Funktionen</a>
+      <a class="hide-s" href="../fragen/">Fragen</a>
+      <a class="hide-s" href="../umstieg/">Umstieg</a>
+      <a class="hide-s" href="../betrieb/">Betrieb</a>
+      <a class="show-s" href="#seiten">Menü</a>
+      <a class="nav-cta" href="../#anfangen">Loslegen</a>
+      <span class="lang" role="group" aria-label="Sprache"><span aria-current="page" lang="de">DE</span> <a href="../en/anleitung/" hreflang="en" lang="en">EN</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Installations&shy;anleitung</h1>
+    <p class="lead">Schritt für Schritt vom gemieteten Server zum laufenden Vereinsserver mit Zertifikat, Backup und erster Admin-Person. Etwas Technik-Erfahrung (SSH, DNS-Einträge setzen) genügt; die Installation selbst dauert wenige Minuten.</p>
+    <p class="meta-row"><a href="#vorbereiten">Vorbereiten</a> · <a href="#dns">DNS</a> · <a href="#laden">Installer laden</a> · <a href="#installieren">Installieren</a> · <a href="#hetzner">Hetzner mit OpenTofu</a> · <a href="#schluessel">Backup-Schlüssel</a> · <a href="#anmelden">Anmelden</a> · <a href="#danach">Danach</a> · <a href="#probleme">Wenn es hakt</a></p>
+  </div>
+</section>
+<section class="prose-sec">
+  <div class="wrap prose">
+<div class="callout">
+<p><strong>Zwei Wege:</strong> Auf einem schon gemieteten Server installiert ihr per SSH (Schritte 2 bis 4). Bei Hetzner Cloud kann stattdessen eine <a href="#hetzner">OpenTofu-Vorlage</a> Server, Firewall und DNS gleich mit anlegen. Danach geht es für beide mit Schritt 5 weiter.</p>
+<p>Die Beispiele nutzen die Namen <code>app.</code>, <code>sync.</code> und <code>login.mein-verein.example</code>. Setzt überall eure eigenen Namen ein. Was ihr an Server, Domain und Diensten braucht und was es kostet, steht auf der Seite <a href="../betrieb/#voraussetzungen">Betrieb</a>.</p>
+</div>
+
+<h2 id="vorbereiten">1. Vorbereiten</h2>
+<p>Ein frischer Server mit Debian 12/13 oder Ubuntu 24.04 (x86_64 oder arm64), mindestens 2 vCPU, 4 GB Arbeitsspeicher und 40 GB Platte, mit fester IPv4-Adresse und Standort in der EU. Bei Hetzner reicht ein CAX11 oder CX22. Den Vertrag zur Auftragsverarbeitung schließt ihr in der Konsole des Anbieters ab.</p>
+<p>Vorher im Verein entscheiden:</p>
+<ul>
+<li><strong>Die drei Namen.</strong> Sie lassen sich nach der Installation nicht mehr ändern, ohne die Anmeldung neu einzurichten (alle Anmeldungen gingen verloren, die Vereinsdaten nicht).</li>
+<li><strong>Wer den Server betreut</strong> (SSH-Zugang) und <strong>wer den Backup-Schlüssel hat</strong>: zwei Personen, über einen gemeinsamen Passwortmanager.</li>
+<li><strong>Die Vereinsmarke</strong>: Name, Logo als SVG oder PNG unter einer https-Adresse, zwei bis drei Farben (<code>#rrggbb</code>) und auf Wunsch ein eigener Begriff für Gruppen. Alles lässt sich später in der App ändern.</li>
+<li><strong>Die Version.</strong> Für den Vereinsbetrieb eine feste Version wählen, aktuell <code>0.2.1</code>. Was sich je Version ändert, steht unter <a href="../versionen/">Versionen</a>.</li>
+</ul>
+
+<h2 id="dns">2. DNS-Einträge setzen</h2>
+<p>Bei der Domain des Vereins drei A-Einträge setzen, alle auf die IPv4-Adresse des Servers, während der Einrichtung mit TTL 300:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th scope="col">Name (Typ A)</th><th scope="col">Inhalt</th></tr></thead>
+<tbody>
+<tr><td><code>app.mein-verein.example</code></td><td>Web-App und API</td></tr>
+<tr><td><code>sync.mein-verein.example</code></td><td>Synchronisation</td></tr>
+<tr><td><code>login.mein-verein.example</code></td><td>Anmeldung</td></tr>
+</tbody>
+</table>
+</div>
+<p>Vom eigenen Rechner prüfen; jede Zeile muss die IP des Servers zeigen (neue Einträge brauchen einige Minuten, selten bis zu einer Stunde):</p>
+<pre>dig +short app.mein-verein.example
+dig +short sync.mein-verein.example
+dig +short login.mein-verein.example</pre>
+<ul>
+<li><strong>Keinen AAAA-Eintrag</strong> setzen, solange ihr nicht sicher seid. Let's Encrypt prüft bevorzugt über IPv6; zeigt der Eintrag ins Leere, kommt kein Zertifikat. Alles funktioniert über IPv4.</li>
+<li>Ein <strong>CAA-Eintrag</strong> auf der Domain muss Let's Encrypt erlauben (<code>0 issue "letsencrypt.org"</code>), falls es einen gibt.</li>
+<li>Hinter einem <strong>Proxy oder CDN</strong> (etwa Cloudflare mit orangener Wolke) klappt das Zertifikat nicht: die Einträge auf „nur DNS“ stellen.</li>
+</ul>
+
+<h2 id="laden">3. Installer laden und prüfen</h2>
+<p>Per SSH auf dem Server anmelden. Das Installationsskript liegt auf dieser Webseite. Erst laden und prüfen, dann ausführen, kein blindes <code>curl | bash</code>:</p>
+<pre>curl -fsSLO https://cygnusb.github.io/clubforge-site/install.sh
+curl -fsSL  https://cygnusb.github.io/clubforge-site/install.sh.sha256
+sha256sum install.sh     <span class="c"># muss mit der angezeigten Summe übereinstimmen</span>
+less install.sh          <span class="c"># wer will: lesen, es ist ein Shell-Skript</span></pre>
+<p>Die Prüfsumme erkennt Übertragungsfehler, schützt aber nicht vor einer manipulierten Webseite. Wer mehr Sicherheit will, liest das Skript oder vergleicht mit der Prüfsumme am Release. Der Server baut nichts und braucht kein Git: Der Installer zieht ein fertiges Image (<code>docker.io/cygnusbn/clubforge</code>, alternativ <code>ghcr.io/cygnusb/clubforge</code>).</p>
+
+<h2 id="installieren">4. Installieren</h2>
+<p>Ein Befehl richtet alles ein, gleich mit Vereinsmarke und erster Admin-Person. Mit <code>--dry-run</code> davor zeigt er nur, was er tun würde:</p>
+<pre>sudo bash install.sh \
+  --app app.mein-verein.example \
+  --sync sync.mein-verein.example \
+  --login login.mein-verein.example \
+  --email vorstand@mein-verein.example \
+  --club "Mein Verein" --version 0.2.1 \
+  --logo https://mein-verein.example/logo-weiss.svg \
+  --logo-light https://mein-verein.example/logo-dunkel.svg \
+  --primary '#117733' --dark '#0a2a14' --accent '#88ccaa' \
+  --admin-first Vera --admin-last Vorstand</pre>
+<p>Was der Installer tut, jeweils nur, wenn es noch nicht so ist (ein zweiter Aufruf ist gefahrlos):</p>
+<ol>
+<li>Prüft System, Arbeitsspeicher und DNS.</li>
+<li>Installiert Docker aus dem offiziellen Repository und stellt die Log-Rotation ein.</li>
+<li>Richtet die Firewall ein: eingehend nur 22, 80 und 443.</li>
+<li>Schaltet automatische Sicherheitsupdates ein.</li>
+<li>Legt den Benutzer <code>clubforge</code> an, zieht das Image und entpackt die Betriebsdateien nach <code>/opt/clubforge/deploy</code>.</li>
+<li>Erzeugt die Einstellungen mit Zufalls-Geheimnissen (<code>/opt/clubforge/deploy/.env</code>) und einen Schlüssel für die Backups.</li>
+<li>Richtet das tägliche Backup ein (03:15 Uhr).</li>
+<li>Startet alles und prüft das Ergebnis. Der erste Start dauert einige Minuten, vor allem die Anmeldung und das Zertifikat.</li>
+</ol>
+<p>Weitere Angaben, alle optional: <code>--favicon</code>, ein eigener Begriff für Gruppen (<code>--group-one Team --group-other Teams --group-gender n</code>), Mail (<code>--smtp-host</code>, <code>--smtp-port</code>, <code>--smtp-user</code>, <code>--smtp-security</code>, <code>--smtp-from</code>; das Passwort in der Umgebungsvariablen <code>CF_SMTP_PASSWORD</code>), ein selbst erzeugter Backup-Schlüssel (<code>--age-recipient</code>, siehe unten) und Speicher für Anhänge (<code>--s3-*</code>, siehe <a href="#danach">Danach</a>). <code>bash install.sh --help</code> listet alle.</p>
+<p>Die <code>.env</code> enthält alle Geheimnisse des Servers. Sie ist Teil jedes Backups; nie weitergeben, nie einchecken.</p>
+
+<h2 id="hetzner">Oder: Hetzner Cloud mit OpenTofu</h2>
+<p>Statt die Schritte 2 bis 4 von Hand zu machen, legt eine OpenTofu-Vorlage bei Hetzner alles in einem Zug an: Server, Firewall (22, 80, 443), feste IPv4- und IPv6-Adresse und auf Wunsch die DNS-Einträge. Der Server installiert sich beim ersten Start selbst, mit Vereinsmarke und erster Admin-Person. Erprobt auf einem CAX11: von <code>tofu apply</code> bis zum grünen Check etwa 2,5 Minuten. Auf dem eigenen Rechner braucht ihr ein Terminal, einen SSH-Schlüssel (<code>ssh-keygen -t ed25519</code>), <a href="https://opentofu.org/docs/intro/install/">OpenTofu</a> und Docker, um die Vorlage aus dem Image zu holen.</p>
+<h3>Konto, Projekt, API-Token</h3>
+<ol>
+<li>Bei <a href="https://console.hetzner.cloud/">console.hetzner.cloud</a> ein Konto anlegen und ein <strong>eigenes Projekt</strong> für clubforge erstellen. Object Storage für Backup-Kopien später am besten in einem zweiten Projekt.</li>
+<li>Im Projekt unter <strong>Sicherheit › API-Tokens</strong> ein Token mit Lesen und Schreiben anlegen. Es erscheint nur einmal.</li>
+<li>Den Vertrag zur Auftragsverarbeitung in der Konsole abschließen.</li>
+</ol>
+<pre>export TF_VAR_hcloud_token='…'     <span class="c"># nur im Terminal, nicht in eine Datei schreiben</span></pre>
+<h3>Vorlage holen und ausfüllen</h3>
+<pre>cid=$(docker create docker.io/cygnusbn/clubforge:0.2.1)
+docker cp "$cid:/opt/clubforge/deploy/cloud" ./clubforge-cloud &amp;&amp; docker rm "$cid"
+cd clubforge-cloud/hetzner
+cp terraform.tfvars.example terraform.tfvars
+$EDITOR terraform.tfvars</pre>
+<p>Ein ausgefülltes Beispiel:</p>
+<pre>app_host          = "app.mein-verein.example"
+sync_host         = "sync.mein-verein.example"
+login_host        = "login.mein-verein.example"
+admin_email       = "vorstand@mein-verein.example"
+club_name         = "Mein Verein"
+ssh_public_key    = "ssh-ed25519 AAAA… name@rechner"
+ssh_allowed_cidrs = ["203.0.113.7/32"]       <span class="c"># nur eure Adresse darf per SSH</span>
+clubforge_version = "0.2.1"
+<span class="c"># server_type = "cax11"   location = "fsn1"   dns_zone = "mein-verein.example"</span>
+<span class="c"># age_recipient = "age1…"  (selbst erzeugter Backup-Schlüssel, siehe Schritt 5)</span>
+
+logo          = "https://mein-verein.example/logo-weiss.svg"
+logo_light    = "https://mein-verein.example/logo-dunkel.svg"
+color_primary = "#117733"
+color_dark    = "#0a2a14"
+color_accent  = "#88ccaa"
+admin_first   = "Vera"
+admin_last    = "Vorstand"</pre>
+<p>Ohne <code>ssh_allowed_cidrs</code> ist SSH aus dem ganzen Internet erreichbar. Standard ist ein CAX11 (arm64) in Falkenstein; <code>server_type = "cx22"</code> nimmt Intel, <code>location</code> auch <code>nbg1</code> oder <code>hel1</code>. Optional: <code>server_backups = true</code> (Images des ganzen Servers von Hetzner, +20 %; ersetzt nicht das verschlüsselte Backup) und <code>volume_size_gb</code> für ein Zusatz-Volume.</p>
+<h3>Erst die feste IP, dann DNS</h3>
+<p>Damit die Namen beim ersten Start schon auflösen, entsteht die IP zuerst:</p>
+<pre>tofu init
+tofu apply -target=hcloud_primary_ip.v4
+tofu output ipv4</pre>
+<p>Die drei A-Einträge wie in <a href="#dns">Schritt 2</a> auf diese IP setzen und mit <code>dig</code> prüfen. Liegt die Domain in Hetzner DNS im selben Projekt, setzt ihr stattdessen <code>dns_zone</code>; dann legt der nächste Schritt die Einträge selbst an.</p>
+<h3>Server anlegen</h3>
+<pre>tofu plan                                 <span class="c"># in Ruhe lesen: Server, Firewall, IPs</span>
+tofu apply
+$(tofu output -raw installationsprotokoll)   <span class="c"># Fortschritt verfolgen</span></pre>
+<p>Der Server lädt <code>install.sh</code> von dieser Webseite, prüft die Prüfsumme, zieht das Image und richtet alles ein. Am Ende des Protokolls steht der Bericht von <code>check.sh</code>. Bricht die Installation wegen DNS ab: Einträge korrigieren und auf dem Server <code>sudo /root/clubforge-install.sh</code> erneut starten.</p>
+<h3>Zugangsdaten abholen</h3>
+<pre>ssh root@&lt;ipv4&gt; cat /root/clubforge-erste-anmeldung.txt   <span class="c"># Einmalpasswort der ersten Admin-Person</span>
+ssh root@&lt;ipv4&gt; cat /root/clubforge-backup-key.txt        <span class="c"># ohne age_recipient: in den Passwortmanager</span>
+ssh root@&lt;ipv4&gt; rm /root/clubforge-erste-anmeldung.txt /root/clubforge-backup-key.txt</pre>
+<p><code>tofu output naechste_schritte</code> fasst das zusammen. Weiter geht es mit <a href="#schluessel">Schritt 5</a> und <a href="#anmelden">Schritt 6</a>. Ein späteres <code>tofu apply</code> baut den laufenden Server nicht neu; Einstellungen ändert ihr danach in der <code>.env</code> auf dem Server. <code>tofu destroy</code> entfernt Server, IPs, Firewall, Volume und DNS-Einträge der Vorlage, vorher die Backups sichern.</p>
+
+<h2 id="schluessel">5. Backup-Schlüssel sichern</h2>
+<p>Backups werden verschlüsselt. Der Server kennt nur den öffentlichen Schlüssel; er kann Backups schreiben, aber nicht lesen. Den <strong>geheimen</strong> Schlüssel (<code>AGE-SECRET-KEY-1…</code>) braucht ihr, um ein Backup zurückzuspielen. Ohne ihn sind alle Backups wertlos.</p>
+<ul>
+<li><strong>Interaktiv</strong> zeigt der Installer ihn einmal an. In den Passwortmanager des Vereins (zwei Personen), erst dann mit <code>ja</code> bestätigen.</li>
+<li><strong>Ohne Rückfrage</strong> (<code>--yes</code>, cloud-init) liegt er in <code>/root/clubforge-backup-key.txt</code>: kopieren, in den Passwortmanager legen, Datei löschen. <code>check.sh</code> erinnert daran, solange sie da ist.</li>
+<li><strong>Am saubersten</strong>: selbst erzeugen und nur den öffentlichen Teil mitgeben. Dann entsteht auf dem Server keine Schlüsseldatei.</li>
+</ul>
+<pre><span class="c"># auf dem eigenen Rechner</span>
+age-keygen -o schluessel.txt     <span class="c"># zeigt "Public key: age1…"; schluessel.txt in den Passwortmanager</span>
+sudo bash install.sh … --age-recipient age1…</pre>
+
+<h2 id="anmelden">6. Anmelden und prüfen</h2>
+<p>Mit <code>--admin-first</code> und <code>--admin-last</code> gibt es die erste Admin-Person schon. Ihr Einmalpasswort steht am Ende der Ausgabe, ohne Rückfrage in <code>/root/clubforge-erste-anmeldung.txt</code> (nach dem Weitergeben löschen). Ohne diese Angaben legt ihr sie jetzt an:</p>
+<pre>sudo -u clubforge /opt/clubforge/deploy/admin.sh vorstand@mein-verein.example Vera Vorstand</pre>
+<ol>
+<li><code>https://app.mein-verein.example</code> öffnen: Name, Farben und Logo des Vereins sind schon da.</li>
+<li>Mit E-Mail-Adresse und Einmalpasswort anmelden; die Anmeldung verlangt sofort ein neues Passwort.</li>
+<li>Die Person ist Vereins-Admin und richtet alles Weitere in der Web-App ein, unter <strong>Profil › Verwaltung</strong>: Gruppen, Funktionen, Begriffe, Marke, Verhaltensregeln, Mitgliederquelle (easyVerein oder CSV).</li>
+</ol>
+<p>Den Zustand des Servers prüft jederzeit ein Befehl. Erwartet sind <code>OK</code> bei Diensten, DNS, Zertifikat, Endpunkten, Backup und Platte:</p>
+<pre>sudo -u clubforge /opt/clubforge/deploy/check.sh</pre>
+
+<h2 id="danach">7. Danach</h2>
+<h3>Backups und Restore-Test</h3>
+<p>Das Backup läuft täglich, verschlüsselt, 30 Tage aufbewahrt, nach <code>/var/backups/clubforge/</code>. Ein Backup auf demselben Server schützt nicht vor dessen Verlust: Mit <code>BACKUP_S3_*</code> in der <code>.env</code> geht jedes zusätzlich in einen S3-Speicher, am besten in einem anderen Projekt als der Server. Einmal gleich nach der Installation und dann vierteljährlich zurückspielen, in einem Wegwerf-Container, ohne den Betrieb zu berühren:</p>
+<pre>cd /opt/clubforge/deploy
+sudo -u clubforge ./backup.sh                      <span class="c"># sofort ein Backup</span>
+install -m 600 /dev/null /dev/shm/age-key.txt &amp;&amp; nano /dev/shm/age-key.txt   <span class="c"># Schlüssel aus dem Passwortmanager</span>
+./restore.sh --identity /dev/shm/age-key.txt --verify
+shred -u /dev/shm/age-key.txt</pre>
+<p>Erwartet ist „Restore-Test bestanden“ mit Zahlen für Mitglieder, Termine und Nachrichten.</p>
+
+<h3>Updates</h3>
+<p>Sicherheitsupdates des Systems laufen von allein; steht <code>/var/run/reboot-required</code> da, in einem ruhigen Moment neu starten. Neue clubforge-Versionen spielt ein Befehl ein: Backup, neues Image, Datenbank aktualisieren, Prüfung. Mit <code>--announce</code> sehen die Mitglieder die Wartung vorher in der App.</p>
+<pre>cd /opt/clubforge/deploy
+sudo -u clubforge ./update.sh --version 0.2.1 --announce 10m</pre>
+<p>Hinweise zu jeder Version stehen unter <a href="../versionen/">Versionen</a>.</p>
+
+<h3>Mail</h3>
+<p>Ohne SMTP-Zugang verschickt der Server keine Mails; App und Push funktionieren trotzdem. Die Werte <code>CF_SMTP_HOST</code>, <code>CF_SMTP_PORT</code>, <code>CF_SMTP_USER</code>, <code>CF_SMTP_PASSWORD</code>, <code>CF_SMTP_SECURITY</code> (<code>starttls</code> oder <code>ssl</code>) und <code>CF_MAIL_FROM</code> in die <code>.env</code> eintragen, dann <code>docker compose up -d api worker</code> in <code>/opt/clubforge/deploy</code>. Port 587 nehmen: Viele Cloud-Anbieter sperren Port 25 (teils auch 465), bei Hetzner sind beide für neue Konten gesperrt.</p>
+
+<h3>Anhänge (optional)</h3>
+<p>Für Fotos, Dateien und GPX-Strecken braucht es einen eigenen, privaten Bucket bei einem S3-Anbieter, z. B. Hetzner Object Storage, getrennt von den Backups. Ohne ihn läuft alles, nur ohne Anhänge.</p>
+<pre><span class="c"># in /opt/clubforge/deploy/.env</span>
+CF_S3_ENDPOINT=https://fsn1.your-objectstorage.com
+CF_S3_REGION=fsn1
+CF_S3_BUCKET=mein-verein-anhaenge
+CF_S3_ACCESS_KEY=…
+CF_S3_SECRET_KEY=…
+
+cd /opt/clubforge/deploy
+docker compose up -d --force-recreate api worker
+sudo -u clubforge ./check.sh                       <span class="c"># Abschnitt "Anhänge"</span></pre>
+
+<h3>Karten (optional)</h3>
+<p>Die Kartenkacheln eurer Region liegen auf dem eigenen Server. Ein Befehl lädt sie und schaltet die Karten ein; <code>--dry-run</code> zeigt nur die Größe. Baden-Württemberg (<code>bw</code>) braucht etwa 1 GB, Deutschland (<code>de</code>) etwa 7,4 GB, mit Alpenraum (<code>de-alpen</code>) etwa 9,9 GB; mit <code>--maxzoom 14</code> gut die Hälfte.</p>
+<pre>cd /opt/clubforge/deploy
+./maps.sh --region bw --dry-run
+./maps.sh --region bw</pre>
+
+<h3>Überwachung</h3>
+<p>Ein externer Dienst (Uptime Kuma, healthchecks.io o. ä.) ruft alle fünf Minuten <code>https://app.mein-verein.example/api/v1/readyz</code> auf und mailt bei Ausfall an zwei Personen. Mit <code>BACKUP_HEARTBEAT_URL</code> in der <code>.env</code> meldet jedes erfolgreiche Backup sich dort; bleibt die Meldung aus, gibt es Alarm.</p>
+
+<h2 id="probleme">8. Wenn es hakt</h2>
+<p>Erster Schritt immer <code>check.sh</code>; was rot ist, im Log des Dienstes ansehen: <code>docker compose logs --tail=100 &lt;dienst&gt;</code> in <code>/opt/clubforge/deploy</code>.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th scope="col">Symptom</th><th scope="col">Lösung</th></tr></thead>
+<tbody>
+<tr><td>Installer meldet „DNS stimmt nicht“</td><td>Einträge mit <code>dig</code> prüfen, warten, den Installer erneut starten; er setzt fort.</td></tr>
+<tr><td>Zertifikatsfehler im Browser</td><td>Port 80 und 443 müssen auch in der Firewall des Anbieters offen sein (<code>curl -I http://app.mein-verein.example</code> muss <code>308</code> liefern). AAAA-Eintrag und Proxy prüfen. Nach vielen Fehlversuchen sperrt Let's Encrypt etwa eine Stunde.</td></tr>
+<tr><td>Dienste werden beendet („Killed“)</td><td>Weniger als 4 GB Arbeitsspeicher: größeren Server wählen.</td></tr>
+<tr><td>„Image … nicht abrufbar“</td><td>Version prüfen; mit <code>--image ghcr.io/cygnusb/clubforge</code> die andere Registry nehmen.</td></tr>
+<tr><td>Anmeldung: „Kein aktives Mitglied mit dieser Adresse“</td><td><code>admin.sh</code> (bzw. <code>admin.sh --member</code>) mit derselben Adresse aufrufen.</td></tr>
+<tr><td>Passwort vergessen</td><td>In der Verwaltung der Anmeldung (<code>https://login.mein-verein.example/ui/console</code>, Benutzer <code>zitadel-admin</code>, Passwort <code>ZITADEL_ADMIN_PASSWORD</code> aus der <code>.env</code>) ein neues setzen.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Weitere Wege führen zum selben Ergebnis: cloud-init (der Server richtet sich beim ersten Start selbst ein, bei jedem Anbieter) und OpenTofu-Vorlagen wie die für Hetzner auch für AWS und Google Cloud. Beide stecken im Image, unter <code>/opt/clubforge/deploy/cloud/</code> und <code>/opt/clubforge/deploy/cloud-init.yaml</code>; auf den eigenen Rechner holt sie <code>docker create docker.io/cygnusbn/clubforge:0.2.1</code> mit <code>docker cp</code>.</p>
+<div class="btn-row">
+  <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Die ausführliche Betriebsanleitung">Die ausführliche Betriebsanleitung folgt mit dem Quellcode</span>
+  <a class="btn ghost" href="../betrieb/">Zurück zu Betrieb</a>
+</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="foot" id="seiten" aria-label="Alle Seiten">
+      <div><p class="foot-h">Kennenlernen</p><ul><li><a href="../">Übersicht</a></li><li><a href="../#tour">Ansehen</a></li><li><a href="../#funktionen">Funktionen</a></li><li><a href="../#stand">Stand</a></li></ul></div>
+      <div><p class="foot-h">Entscheiden</p><ul><li><a href="../fragen/">Fragen</a></li><li><a href="../umstieg/">Umstieg</a></li><li><a href="../vergleich/">Vergleich</a></li><li><a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a></li></ul></div>
+      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/">Betrieb</a></li><li><a href="../anleitung/" aria-current="page">Anleitung</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
+      <div><p class="foot-h">Für Mitglieder</p><ul><li><a href="../join/">Einladungsseite</a></li><li><a href="../konto-loeschen/">Konto löschen</a></li></ul></div>
+    </nav>
+    <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -48,9 +48,16 @@ nav.main a.nav-cta:hover { color: var(--ember-ink); filter: brightness(1.07); }
 .lang > a:hover, nav.main .lang > a:hover { color: var(--ink); background: var(--bg2); }
 .lang a:focus-visible { outline-offset: 1px; }
 .lang [aria-current="page"] { background: var(--ink); color: var(--bg); }
-@media (max-width: 40rem) { nav.main { gap: .75rem; } nav.main a.hide-s { display: none; } }
-/* Sehr schmal (320 px): Marke, Loslegen und Sprachwahl passen nicht in eine Zeile, die Navigation rückt darunter */
-@media (max-width: 24rem) { header.top .wrap { flex-wrap: wrap; row-gap: .25rem; padding-block: .5rem; } nav.main { margin-left: auto; } }
+nav.main a[aria-current="page"] { color: var(--link); }
+nav.main a.show-s { display: none; }
+/* Tablet: vier Seiten, Loslegen und Sprachwahl in einer Zeile; alle weiteren Seiten stehen in der Fußzeile */
+@media (max-width: 56rem) { nav.main { gap: .9rem; } }
+/* Handy: statt der Seiten ein Sprung zur Seitenübersicht in der Fußzeile */
+@media (max-width: 42rem) { nav.main { gap: .75rem; } nav.main a.hide-s { display: none; } nav.main a.show-s { display: inline; } }
+/* Schmales Handy: die Marke nur als Zeichen, damit Menü, Loslegen und Sprachwahl in eine Zeile passen */
+@media (max-width: 26rem) { .brand { font-size: 0; gap: 0; } }
+/* Sehr schmal (320 px): auch so passt es nicht in eine Zeile, die Navigation rückt darunter */
+@media (max-width: 21rem) { header.top .wrap { flex-wrap: wrap; row-gap: .25rem; padding-block: .5rem; } nav.main { margin-left: auto; } }
 .skip { position: absolute; left: 1rem; top: -3rem; z-index: 20; padding: .5rem 1rem; border-radius: .5rem; background: var(--card); color: var(--ink); }
 .skip:focus { top: .5rem; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -126,9 +133,16 @@ code { font-family: var(--mono); font-size: .92em; }
 .roadmap small { font: .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
 .roadmap span { display: block; color: var(--mute); font-size: .95rem; margin-top: .3rem; }
 
-footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--mute); font-size: .9rem; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
+footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; color: var(--mute); font-size: .9rem; }
 footer a { color: inherit; }
+/* Seitenübersicht: auf allen Seiten gleich, in Gruppen; Spalten brechen von vier auf zwei um */
+nav.foot { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1.5rem 2rem; scroll-margin-top: 4.5rem; }
+nav.foot .foot-h { margin: 0 0 .5rem; color: var(--ink); font-weight: 650; }
+nav.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; }
+nav.foot a { text-decoration: none; }
+nav.foot a:hover { color: var(--link); text-decoration: underline; }
+nav.foot a[aria-current="page"] { color: var(--ink); font-weight: 650; }
+.foot-meta { display: block; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 
 /* Einladungsseite */
 .join { min-height: 100svh; display: grid; place-items: center; padding: 1.5rem 1rem; }

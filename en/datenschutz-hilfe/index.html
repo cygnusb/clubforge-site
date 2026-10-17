@@ -30,13 +30,11 @@
   <div class="wrap">
     <a class="brand" href="../"><img src="../../favicon.svg" alt="" width="28" height="28">clubforge</a>
     <nav class="main" aria-label="Main">
-      <a class="hide-s" href="../#tour">See it</a>
       <a class="hide-s" href="../#funktionen">Features</a>
       <a class="hide-s" href="../fragen/">Questions</a>
       <a class="hide-s" href="../umstieg/">Switching</a>
       <a class="hide-s" href="../betrieb/">Operations</a>
-      <a class="hide-s" href="../versionen/">Versions</a>
-      <a class="hide-s" data-repo="" data-label="Source code" href="../#stand" hidden>Source code</a>
+      <a class="show-s" href="#seiten">Menu</a>
       <a class="nav-cta" href="../#anfangen">Get started</a>
       <span class="lang" role="group" aria-label="Language"><a href="../../datenschutz-hilfe/" hreflang="de" lang="de">DE</a> <span aria-current="page" lang="en">EN</span></span>
     </nav>
@@ -186,8 +184,13 @@
 
 <footer>
   <div class="wrap">
-    <span>clubforge · AGPL-3.0-or-later · template, not legal advice</span>
-    <span><a href="../">Overview</a> · <a href="../fragen/">Questions</a> · <a href="../betrieb/">Operations</a> · <a href="../konto-loeschen/">Delete account</a> · <span data-repo="" data-label="Source code">Source code follows</span></span>
+    <nav class="foot" id="seiten" aria-label="All pages">
+      <div><p class="foot-h">Discover</p><ul><li><a href="../">Overview</a></li><li><a href="../#tour">See it</a></li><li><a href="../#funktionen">Features</a></li><li><a href="../#stand">Status</a></li></ul></div>
+      <div><p class="foot-h">Decide</p><ul><li><a href="../fragen/">Questions</a></li><li><a href="../umstieg/">Switching</a></li><li><a href="../vergleich/">Comparison</a></li><li><a href="../datenschutz-hilfe/" aria-current="page">Privacy helpers</a></li></ul></div>
+      <div><p class="foot-h">Run it</p><ul><li><a href="../#anfangen">Get started</a></li><li><a href="../betrieb/">Operations</a></li><li><a href="../anleitung/">Installation guide</a></li><li><a href="../versionen/">Versions</a></li><li><span data-repo="" data-label="Source code">Source code follows</span></li></ul></div>
+      <div><p class="foot-h">For members</p><ul><li><a href="../join/">Invitation page</a></li><li><a href="../konto-loeschen/">Delete account</a></li></ul></div>
+    </nav>
+    <span class="foot-meta">clubforge · AGPL-3.0-or-later · template, not legal advice</span>
   </div>
 </footer>
 </body>

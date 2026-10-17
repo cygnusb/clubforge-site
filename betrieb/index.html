@@ -34,13 +34,11 @@
   <div class="wrap">
     <a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">clubforge</a>
     <nav class="main" aria-label="Hauptnavigation">
-      <a class="hide-s" href="../#tour">Ansehen</a>
       <a class="hide-s" href="../#funktionen">Funktionen</a>
       <a class="hide-s" href="../fragen/">Fragen</a>
       <a class="hide-s" href="../umstieg/">Umstieg</a>
-      <a class="hide-s" href="../betrieb/">Betrieb</a>
-      <a class="hide-s" href="../versionen/">Versionen</a>
-      <a class="hide-s" data-repo="" data-label="Quellcode" href="../#stand" hidden>Quellcode</a>
+      <a class="hide-s" href="../betrieb/" aria-current="page">Betrieb</a>
+      <a class="show-s" href="#seiten">Menü</a>
       <a class="nav-cta" href="../#anfangen">Loslegen</a>
       <span class="lang" role="group" aria-label="Sprache"><span aria-current="page" lang="de">DE</span> <a href="../en/betrieb/" hreflang="en" lang="en">EN</a></span>
     </nav>
@@ -54,7 +52,7 @@
       <h1>Betrieb: <em>euer Server</em> in einem Abend</h1>
       <p class="lead">Ein kleiner Server, drei Namen im DNS, ein Befehl: mit Vereinsname, Logo und Farben, am Ende mit erster Admin-Person. Das Zertifikat kommt automatisch von Let's Encrypt, Backups sind verschlüsselt, Sicherheitsupdates laufen von allein.</p>
       <div class="btn-row">
-        <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Die Anleitung lesen">Die Anleitung liegt im Quellcode (folgt mit dem Pilot)</span>
+        <a class="btn" href="../anleitung/">Zur Installationsanleitung</a>
         <a class="btn ghost" href="../">Zurück zur Übersicht</a>
       </div>
     </div>
@@ -67,7 +65,7 @@ sudo bash install.sh \
   --sync sync.mein-verein.example \
   --login login.mein-verein.example \
   --email vorstand@mein-verein.example \
-  --club "Mein Verein" --version 0.2.0 \
+  --club "Mein Verein" --version 0.2.1 \
   --logo https://mein-verein.example/logo-weiss.svg \
   --primary '#117733' --dark '#0a2a14' \
   --admin-first Vera --admin-last Vorstand</pre>
@@ -152,7 +150,7 @@ sudo bash install.sh \
       <div class="card"><h3>Im Verein einstellen</h3><p>Funktionen, Begriffe, Logo und Farben, Verhaltensregeln und Infoseiten pflegen Admins in der Verwaltung der App, ohne den Server anzufassen.</p></div>
     </div>
     <div class="btn-row">
-      <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Alle Betriebs-Seiten im Quellcode">Alle Betriebs-Seiten folgen mit dem Quellcode</span>
+      <a class="btn" href="../anleitung/">Schritt für Schritt: die Installationsanleitung</a>
     </div>
   </div>
 </section>
@@ -168,6 +166,7 @@ sudo bash install.sh \
         <table>
           <thead><tr><th scope="col">Server-Version</th><th scope="col">Web-App</th><th scope="col">Verlangt mindestens App</th></tr></thead>
           <tbody>
+            <tr><td>0.2.1</td><td>0.2.1, kommt vom eigenen Server</td><td>0.1.0</td></tr>
             <tr><td>0.2.0</td><td>0.2.0, kommt vom eigenen Server</td><td>0.1.0</td></tr>
             <tr><td>0.1.0, 0.1.1</td><td>dieselbe Version, kommt vom eigenen Server</td><td>0.1.0</td></tr>
           </tbody>
@@ -202,8 +201,13 @@ sudo bash install.sh \
 
 <footer>
   <div class="wrap">
-    <span>clubforge · AGPL-3.0-or-later</span>
-    <span><a href="../">Übersicht</a> · <a href="../fragen/">Fragen</a> · <a href="../umstieg/">Umstieg</a> · <a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a> · <a href="../versionen/">Versionen</a> · <span data-repo="" data-label="Quellcode">Quellcode folgt</span> · <a href="../join/">Einladungsseite</a> · <a href="../konto-loeschen/">Konto löschen</a></span>
+    <nav class="foot" id="seiten" aria-label="Alle Seiten">
+      <div><p class="foot-h">Kennenlernen</p><ul><li><a href="../">Übersicht</a></li><li><a href="../#tour">Ansehen</a></li><li><a href="../#funktionen">Funktionen</a></li><li><a href="../#stand">Stand</a></li></ul></div>
+      <div><p class="foot-h">Entscheiden</p><ul><li><a href="../fragen/">Fragen</a></li><li><a href="../umstieg/">Umstieg</a></li><li><a href="../vergleich/">Vergleich</a></li><li><a href="../datenschutz-hilfe/">Datenschutz-Hilfen</a></li></ul></div>
+      <div><p class="foot-h">Betreiben</p><ul><li><a href="../#anfangen">Loslegen</a></li><li><a href="../betrieb/" aria-current="page">Betrieb</a></li><li><a href="../anleitung/">Anleitung</a></li><li><a href="../versionen/">Versionen</a></li><li><span data-repo="" data-label="Quellcode">Quellcode folgt</span></li></ul></div>
+      <div><p class="foot-h">Für Mitglieder</p><ul><li><a href="../join/">Einladungsseite</a></li><li><a href="../konto-loeschen/">Konto löschen</a></li></ul></div>
+    </nav>
+    <span class="foot-meta">clubforge · AGPL-3.0-or-later</span>
   </div>
 </footer>
 </body>
