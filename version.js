@@ -1,7 +1,10 @@
 // Zeigt die aktuelle Version (version.json, von scripts/set-version.sh und site/publish.sh aus VERSION geschrieben).
+// Die Datei liegt neben diesem Skript, nicht neben der Seite: /en/… lädt version.js aus der Wurzel.
 // Ohne Datei oder bei Fehler bleibt alles ohne Versionsangabe.
 (function () {
-  fetch('version.json', { cache: 'no-cache' })
+  var script = document.currentScript;
+  var base = script && script.src ? script.src.replace(/[^/]*$/, '') : '';
+  fetch(base + 'version.json', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (v) {
       if (!v || !/^\d+\.\d+\.\d+$/.test(v.version)) return;

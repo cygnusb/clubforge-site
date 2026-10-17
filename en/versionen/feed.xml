@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>clubforge: new versions</title>
+  <subtitle>New features, changes, and fixes for the clubforge club app</subtitle>
+  <id>https://cygnusb.github.io/clubforge-site/en/versionen/feed.xml</id>
+  <link rel="self" type="application/atom+xml" href="https://cygnusb.github.io/clubforge-site/en/versionen/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/en/versionen/"/>
+  <updated>2026-10-16T12:00:00Z</updated>
+  <author><name>clubforge</name></author>
+  <entry>
+    <title>clubforge 0.2.1</title>
+    <id>https://cygnusb.github.io/clubforge-site/en/versionen/#v0.2.1</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/en/versionen/#v0.2.1"/>
+    <updated>2026-10-16T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Added&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The calendar explains which events it shows:&lt;/strong&gt; at the top it says “You see events of the club and of your groups (N)”, with “Discover more groups”. That opens a list of open groups and groups that are “on request”, which you can join or request right there, without changing tabs; after sync the new events appear, even if the join started offline. The notice can be dismissed (per device). With no groups of your own, or only a few events, an explanation with a button stays; if there is nothing to join, there is no notice. Private groups are never suggested, and the permissions stay the same.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event preview for open groups:&lt;/strong&gt; open groups and groups that are “on request” can, in their settings (Info), show their events to every member of the club as a preview; the default is off, and private groups cannot. In the calendar, previews are dashed, with “Preview” and the group, title and time only, for the next 90 days. A tap opens a page with “Join” or “Request”; after that the real event, with place and details, is in the calendar, without a duplicate. Place, description, responses, and participants are still visible only to members. “Show events from other groups” in the calendar can hide previews per device. Previews have no notifications and no entry in the calendar subscription, the email digest, or Google Calendar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create an event on the day itself:&lt;/strong&gt; in the calendar’s week view, each day has a “+” that opens the form with that day (for everyone who may create events).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A link to an event you are not allowed to see now explains that a group’s events are visible only to its members, and offers to join. The page does not say which group it is.&lt;/li&gt;
+&lt;li&gt;The introduction, at the step “Discover groups”, says that the calendar shows events of further groups only after you join.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pick a date and time instead of typing them:&lt;/strong&gt; wherever a day used to be entered as &lt;code&gt;YYYY-MM-DD&lt;/code&gt; or a time as text, the device or browser picker now opens: in the event form and when editing a single event, for suggested times in polls and their deadline, for news (pin until, publish on a schedule), for rides, for quiet hours, and for maintenance windows. Under each field the value is shown with the weekday, for example “Sat, 17 Oct 2026” and “19:30”.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Events with an end instead of a duration:&lt;/strong&gt; instead of a duration in minutes, you choose when the event ends; the duration is shown underneath. An end before the start, or more than 14 days after it, is reported on the field at once.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sensible defaults:&lt;/strong&gt; a new event starts today at the next full hour, and the end follows the start. Deadlines, pinning, and publish times do not allow past days; “All day”, “No deadline”, or “Don’t pin” resets a field.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Neutral default words:&lt;/strong&gt; with no custom setting, groups are now called “group” and “groups” instead of the previous default “Rudel”, in the app, emails, notifications, error messages, and the admin area for integrations. The test club uses the neutral words too. &lt;strong&gt;For operators:&lt;/strong&gt; to keep “Rudel” (or another word), set it in admin under Admin › Club › Words, or at install with &lt;code&gt;--group-one Rudel --group-other Rudel --group-gender n&lt;/code&gt; (&lt;code&gt;deploy/branding.sh&lt;/code&gt; writes &lt;code&gt;CLUB_GROUP_*&lt;/code&gt; into &lt;code&gt;deploy/.env&lt;/code&gt;). A word already set there stays as it is.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;One reaction per person:&lt;/strong&gt; on a message or a news item, each person reacts with at most one emoji. A different one replaces the old one, and a second tap on the same one takes it back. A change does not notify again. Existing multiple reactions are reduced to the newest one on update.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A clearer interface:&lt;/strong&gt; - &lt;strong&gt;Words:&lt;/strong&gt; the club’s words now also apply where “event”, “member”, “section”, “channel”, or “topic” used to be fixed, for example in a group’s tabs, “chat for the event”, “create event”, in filters and empty states, in notification settings, in emails, and in the admin help texts. - &lt;strong&gt;A check:&lt;/strong&gt; final actions ask once: delete a place, delete a role, delete an event, cancel maintenance, and remove a Google Calendar mapping. Leave, archive, and remove on a group’s page ask the same way, with “Cancel”. - &lt;strong&gt;Color picker:&lt;/strong&gt; the club colors can be chosen in the browser with a color picker, not only typed as a code. - &lt;strong&gt;Log:&lt;/strong&gt; the admin log shows each change as “field: before → after” instead of raw data. Actions around integrations, Google Calendar, the member source, and deletion requests now have plain names. - &lt;strong&gt;Small things:&lt;/strong&gt; a group with one person shows “1 member”. Changes to releases in the profile carry the time the same way as everywhere else (“Fri, 16 Oct, 09:55”). - &lt;strong&gt;Where an integration comes from:&lt;/strong&gt; cards, sections, and menu entries of an integration name the service account (“Integration “hall schedule””) instead of the technical namespace; renaming applies at once. Further details of the account do not go to the device (migration 0033). - &lt;strong&gt;Groups with no section&lt;/strong&gt; sit under “For every section” instead of “Across sections”; that fits any custom word for sections. - &lt;strong&gt;Status:&lt;/strong&gt; the member list shows the status as “active” or “left”. - &lt;strong&gt;The right keyboards:&lt;/strong&gt; on a phone the matching keyboard opens, for numbers (seats, counts), phone, email, and addresses. Email and address fields no longer capitalize automatically. - &lt;strong&gt;Search:&lt;/strong&gt; search shows “Searching …” while it waits, instead of “Nothing found” too soon. - &lt;strong&gt;Screen readers:&lt;/strong&gt; the arrow buttons for sorting have a label, for example “Triathlon up”.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Fixed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Delete a place:&lt;/strong&gt; if an event the admin cannot see themselves uses the place, the app now also says “The place is in use; archive it instead of deleting it”, instead of a general conflict message.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reports say what came of them:&lt;/strong&gt; online, the report dialog waits briefly for the server and then shows “Thanks” or the reason, for example “No more reports are possible today (daily limit)”, instead of always “Thanks”. Offline it says “The report will be sent once you are online”; if the server rejects it later, a notice appears. The app recognizes what you have already reported and says so at once. A rejected report no longer holds up the other changes (the queue used to wait until the end of the daily limit), and “also block” still applies then.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error messages:&lt;/strong&gt; for invalid input the app shows a plain notice instead of a technical error list or “Error 500”. The same applies to the data export.&lt;/li&gt;
+&lt;li&gt;Scheduled news and “pin until” now follow the club’s clock, not the time zone of the device they were written on.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;deploy/gen-env.sh&lt;/code&gt; printed “legal: command not found” when creating the &lt;code&gt;.env&lt;/code&gt; (backticks in a comment). The &lt;code&gt;.env&lt;/code&gt; it created was not affected.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;First start on a device:&lt;/strong&gt; until the data has loaded for the first time, the calendar shows “Your data is loading …” instead of “no events”. After that, the welcome sometimes appeared even though the introduction was already done; that no longer happens.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deletion period for the command log&lt;/strong&gt; (a known limitation from 0.2.0): the server remembers the answer to a change from the app for only 30 days, and after that only the status and the error code. It deletes the entry itself (who sent which kind of change, and when) after 180 days, which is as long as a sign-in lasts at most. When former members are anonymized, their entries go at once. A change that has waited on a device longer than this period is no longer accepted: the app shows “This change was not transferred for too long and was discarded.” An old repeat can never take effect twice.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Known limitations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Native builds for iOS and Android, and tests on real devices, are still outstanding. The new date picker is therefore only covered by type-checking in the apps; in the browser it is tested.&lt;/li&gt;
+&lt;li&gt;Hetzner Object Storage and Google Calendar have only been checked against test services.&lt;/li&gt;
+&lt;li&gt;The app is available in German only.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.2.0</title>
+    <id>https://cygnusb.github.io/clubforge-site/en/versionen/#v0.2.0</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/en/versionen/#v0.2.0"/>
+    <updated>2026-10-16T12:00:00Z</updated>
+    <content type="html">&lt;p&gt;A large addition for day-to-day club life: rides, polls, news, attachments and maps, moderation, an admin area for club admins, the sync with easyVerein, privacy features, and integrations. Before updating, read From 0.1.x to 0.2.0.&lt;/p&gt;
+&lt;h2&gt;Added&lt;/h2&gt;
+&lt;h3&gt;Rides&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Rides to the event.&lt;/strong&gt; Whoever is driving offers free seats in the event: departure, meeting point (free text or a club place), seats, a note, and a return trip; you can say yes at the same time. Others see how full it is (“1 of 3 free”), join or leave with one tap, including offline; if the ride has filled up in the meantime, the app says so. The driver can change the ride, remove passengers, and cancel with a reason.&lt;/li&gt;
+&lt;li&gt;If the event is cancelled, its rides are marked “event cancelled” and come back if the cancellation is withdrawn. The driver and the passengers keep seeing the event, even after leaving the group.&lt;/li&gt;
+&lt;li&gt;If the participant list is restricted, only the people in charge and the driver see who is riding along; everyone sees how full it is. You do not ride with a person you have blocked, or who has blocked you.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A note in the event list:&lt;/strong&gt; “You are riding with …, leaving at 07:30 from …”, “You are driving, 2 passengers”, or the free seats.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ride chat&lt;/strong&gt; for the driver and the passengers. Whoever leaves no longer sees new messages; whoever joins later can read the history so far.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notifications:&lt;/strong&gt; a new ride (to people who said yes and have no ride), someone joins or leaves (to the driver), ride changed, and ride cancelled or removed from the ride (to the passengers, with high priority shortly before departure).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Polls and finding a time&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Polls&lt;/strong&gt; in channels, topics, event chats, ride chats, and direct messages, created from the symbol next to the input: single or multiple choice (2–20 options), optionally anonymous, with a deadline, “members may add options”, and results immediately, after your own vote, or after the end. You vote right in the message, including offline; the vote can be changed until the deadline. Whoever created the poll can close it and open it again. In a channel and a topic you need the “create polls” permission.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Finding a time&lt;/strong&gt; with a date, a date and time, or a time span, answers Yes / If needed / No, a result matrix, and the best option marked. “Create event” opens the event form already filled in and can mark everyone who said “Yes” as “Going” (they are notified).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Open polls&lt;/strong&gt; on the home screen: polls you have not voted in yet.&lt;/li&gt;
+&lt;li&gt;Notifications “New poll in a conversation you follow” and “Poll reminder” (24 hours before the deadline, to everyone who has not voted).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;News&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Announcements&lt;/strong&gt; to the club or to one or more groups: whoever may (the board for the whole club, group admins for their group) writes a title and text (bold, italic, links, lists, headings) — at once, as a draft, or at a fixed time. Options: pin to the top until a date, allow comments, “Important”.&lt;/li&gt;
+&lt;li&gt;The home screen shows the pinned ones and the three newest. “All news” can be filtered by group; members react with emoji and comment. News appears in search.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;“Important”&lt;/strong&gt; may be set only by club roles with permission (the board), after the check “Send to N people?”. The email with the full text then goes to everyone in the audience, including people who have turned email off.&lt;/li&gt;
+&lt;li&gt;After publishing, the audience stays fixed. If the permission is missing at the scheduled time, the news stays a draft and the bell says so. Notification “New news item” by push and the bell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Guests&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;“+ Guest” on a response&lt;/strong&gt;, when an event allows guests: with a name and an optional note (“trial session”), at most as many as configured. Guests count toward the limit (“12 of 16 coming, including 2 guests”) and appear in the participant list as “guest of …”. Whoever says no takes their guests with them; the waitlist moves up the person whose guests fit the free seats. Guest names are removed three months after the event.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Attachments, tracks, and maps&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Attachments&lt;/strong&gt; (optional, needs Object Storage): images and files (PDF, Office, ZIP, GPX) in messages (up to 10), on events (up to 10), and on news (up to 10 images, 20 attachments); images up to 10 MB and 25 megapixels, other files up to 20 MB. Images appear as a preview, and a tap opens them large; PDF attachments show their first page. A message may consist only of attachments (“📷 Photo” or “📎 File” in the chat list and the notification).&lt;/li&gt;
+&lt;li&gt;In the iOS and Android app: take a photo, pick one from the library (iPhone photos in HEIC arrive as JPEG), or attach a file from the Files app. With no network, images show a placeholder and files a notice; if a file was already gone when sending (offline for a long time), the text still arrives.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Profile photo:&lt;/strong&gt; upload or remove it in the profile; it appears in lists and in the directory. Profile photos of members who have left are no longer visible.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tracks (GPX) on events:&lt;/strong&gt; distance, elevation gain, loop, line, and elevation profile right in the event, including offline. Whoever uploads learns whether the file contains timestamps, and can hide the start and the finish (300 m each); the server does not store timestamps, heart rate, or device data. An event’s tracks replace those of the series. Notification “Track added or changed” to everyone who said yes (push only if the event starts in less than 24 hours).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maps&lt;/strong&gt; (optional, from the club’s server): tracks on a map with start, finish, and zoom to the whole track, full screen if you want; a tap in the elevation profile shows the spot with distance and height. On the event, a small map shows the club place, and on rides the meeting point; “plan a route” opens the device’s maps app. No outside map service sees who looks at what. With no network the line stays, without a background. In the iOS and Android apps the map needs a new app version.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Club place in the event form:&lt;/strong&gt; when creating and editing, a club place can be chosen (the free-text “place” stays possible); the event then shows the map and “plan a route”.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Moderation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Report content:&lt;/strong&gt; messages (including polls, ride chats, and comments), news, profiles, and images (from the large view) can be reported: pick a reason, optionally a text, and “also block the person”, including offline. The content is then collapsed for you; if three people report the same message, it is collapsed for everyone until a decision (“Under review”). The person who was reported does not learn who reported them. At most 10 reports a day.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review and decide:&lt;/strong&gt; reports from a group’s channels, topics, event chats, and news are reviewed by that group’s admins on the group page. Everything else is reviewed by the club admins in admin (“Reports and code of conduct”). After 48 hours an open report also goes to the club admins, and so do all reports from a group with no other active admins. Whoever was reported never reviews reports against themselves, not even as an admin.&lt;/li&gt;
+&lt;li&gt;The review view shows the content with its attachments (even after a self-deleting message has expired, and without permission to read the conversation), context in groups, reasons, and earlier confirmed reports. The text of removed content stays in the report’s record for at most 30 days.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decisions&lt;/strong&gt; with a reason: dismiss, remove the content (“Removed by moderation”; attachments go with it, and for profiles the profile photo; a removed news item can afterwards only be deleted), warn, mute for 1, 7, or 30 days (in the group or club-wide; in the group it also applies when editing, in the event chat, and for comments on the group’s news), and block app access. An app block ends sign-in, sessions, the calendar subscription, and sync at once; there is no more push or email after that (except the email about the block itself). Membership is untouched. Every decision is in the log.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Code of conduct&lt;/strong&gt;: club admins maintain it; everyone confirms it before writing for the first time and after every new version (until then, reading only). The rules and a contact are under Profile › Help &amp;amp; rules, and your own reports with the outcome under Profile › My reports.&lt;/li&gt;
+&lt;li&gt;Notifications “New report”, “Report open for 48 h”, “Outcome of my report”, and “Content removed, warning, or block”, without the reported content in push and email.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Maintenance and notices&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Club admins announce &lt;strong&gt;maintenance&lt;/strong&gt; (Admin › Maintenance and notices, or &lt;code&gt;deploy/maintenance.sh&lt;/code&gt;), optionally with an entry in the bell that follows changes and cancellations. From 48 hours beforehand, devices show a notice, and during maintenance “Maintenance in progress”, even with no connection; changes wait in the queue until then.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;System notices&lt;/strong&gt; for everyone, with text, a level, and an end.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Admin for club admins&lt;/h3&gt;
+&lt;p&gt;On the web, in the sidebar; in the app under Profile › Admin:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Club:&lt;/strong&gt; name, short name, colors, and logos (up to 512 KB), and the words for group, section, member, event, channel, and topic, with grammatical gender (“group” instead of “Rudel”, “practice” instead of “event”). The apps take on the brand and the words at the next load; colors and logos in PNG, JPEG, or WebP also go to the login page (visible after about an hour at the latest). The server checks SVG logos against an allow-list (no scripts, editor data, or links to the outside).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modules:&lt;/strong&gt; rides, polls, news, attachments, guests, direct messages, the directory, the calendar subscription, integrations, and Google Calendar can be turned on and off per club. Turned off, they disappear from the app and the server rejects them; the data stays.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content:&lt;/strong&gt; info pages (Markdown) and links (https) for the sidebar and the profile.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Defaults:&lt;/strong&gt; reminder, signup deadline, waitlist, and guests for new events; the default notification channels.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Profile and sports:&lt;/strong&gt; which profile fields are offered, and which sports are available.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Members:&lt;/strong&gt; search, status, last sign-in, club roles, club admin (the last admin stays), end all sessions, block and unblock the app (with a reason; club admins only after the right is removed; unblocking first shows every open block, including from reports). If there is only one active club admin, admin warns: otherwise nobody could review reports against them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Structure:&lt;/strong&gt; sections (name, order, linked groups) and club roles (including “may send Important”).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Places:&lt;/strong&gt; create, change, archive, and, as long as no event and no ride uses them, delete.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search:&lt;/strong&gt; synonyms (“bike” also finds “bicycle”) and reindexing in the background, with a status.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deletion requests&lt;/strong&gt; from members, with the number of open requests (see Privacy).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Log:&lt;/strong&gt; every change in admin, to maintenance and notices, and in moderation, with the person, the time, and the state before and after; filter by area and period. Entries stay for two years.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Member source (easyVerein or CSV)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Club admins set under Admin › Member source where members come from. easyVerein is synced every hour and on demand; a CSV file (a template to download) is taken over after a dry run.&lt;/li&gt;
+&lt;li&gt;The sync creates members, matches names, addresses, year joined, and the groups of the sections, and deactivates people who have left at once (sessions end). Before the first switch-on and before every CSV import, a dry run with a preview is required. If more than 5% of members would be deactivated, the run stops until an admin confirms the number.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conflicts:&lt;/strong&gt; anything ambiguous (shared addresses, an unclear match, rejected sign-ins) and single members who could not be taken over appear as a conflict; the rest of the run counts. A rejected sign-in can be matched to a member. Notification “Sync conflict or error” to the club admins (email and the bell).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounts in Zitadel:&lt;/strong&gt; new members get an account with a confirmed address and, if you want, a welcome email; address changes are taken over, people who have left are blocked, and they are unblocked if they rejoin. An existing account with the same address is taken over only if it belongs to the member; otherwise a conflict is created.&lt;/li&gt;
+&lt;li&gt;The easyVerein key is stored encrypted in the database and is renewed by the server itself; after a new easyVerein address, a new key is required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Privacy&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Delete account and data&lt;/strong&gt; (an app-store requirement): Profile › Delete account and data explains that the account belongs to the membership, and on request sends a deletion request to the club admins (email and the bell), optionally with the wish to delete the content of your own messages too. The request can be withdrawn. Admins handle it under Admin › Deletion requests. Public page &lt;code&gt;/konto-loeschen&lt;/code&gt; without signing in, for Google Play.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anonymization 30 days after leaving:&lt;/strong&gt; the member becomes “Former member”. Deleted are the profile, profile photo, addresses, settings, groups, sanctions, integration data about the person, devices, and the Zitadel account, plus future responses and rides (the people in charge, the driver, and the passengers are notified, and the waitlist moves up). Messages stay without a name; with a deletion wish, also without content, without attachments, and without your own polls. Your own reports stay, without the comment. Whoever rejoins within the 30 days keeps everything; whoever comes back later starts with a new profile.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Download my data:&lt;/strong&gt; a ZIP with JSON (profile, responses, your own messages, reactions, votes, rides, news, settings, devices, your own reports, integration data about the person, and a list of your own files without their content), without other people’s content. Small exports are ready at once, large ones announce themselves in the bell; the link is valid for 48 hours, at most three exports a day.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Privacy page&lt;/strong&gt; &lt;code&gt;/datenschutz&lt;/code&gt; with a neutral standard text from the club configuration (contact, address), or a forward to the club’s page; linked in the profile and on the login page.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retention periods:&lt;/strong&gt; the bell and delivery jobs after 90 days, expired sessions after 90 days, finished conflicts of the member source after 30 days. Responses exist only as a count 24 months after the event; after that the server accepts no new ones either. The list of periods is in docs/betrieb/datenschutz.md.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integrations (optional)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Club admins create &lt;strong&gt;service accounts&lt;/strong&gt; for external tools under Admin › Integrations: with permissions (read events, read members with their released fields, send notifications, write their own data), optionally limited to one group, with tokens that are shown only once, expire, and can be revoked, and with a limit of requests per minute.&lt;/li&gt;
+&lt;li&gt;Tools put their own &lt;strong&gt;cards&lt;/strong&gt; on the home screen through the integration API, sections into events, and entries into the menu (a fixed format with title, text, figures, a list, a link, and a button). Members see them offline too; a button press goes out offline as well and arrives at the tool.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Webhooks&lt;/strong&gt; report selected events (events, responses, news, group memberships), signed, to a public https address, with retries, a switch-off after lasting errors, and a delivery log.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limits:&lt;/strong&gt; private groups stay invisible to service accounts. Responses to events with a restricted participant list are reported by webhooks only as a count; people blocked from the app are missing from the member list. Notifications have their own quota (6 per hour, to the whole club 2 a day). A tool’s own data is at most 5000 entries and 2 MB; buttons at most 10 times a minute; links in cards only over https. Every write is in the log. Guide with an example: docs/integrationen.md.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Google Calendar (optional)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Events for the club go automatically into a shared Google Calendar of the club. Events of open groups go only into calendars explicitly assigned to the group or its section; private events and names of participants never. When you turn it off, everything that was copied can be removed from Google. Set up by club admins in admin. Guide in docs/betrieb/google-kalender.md.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Email digest, introduction, and more&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email digest:&lt;/strong&gt; daily (in the morning) or weekly (on Mondays): the next events with your own response, new events of your own groups, news, rides, open polls, and unread messages per conversation. If there is nothing to say, no email goes out; text of self-deleting messages and modules that are off are never in it. Set under Profile › Notifications (default: weekly), and you can unsubscribe directly from the email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Introduction on the first login:&lt;/strong&gt; welcome, discover groups and join, allow notifications, confirm the code of conduct (if needed), and choose the email digest. Each step can be skipped; under Profile › “See the introduction again” it can be opened any time.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Export the participant list:&lt;/strong&gt; the people in charge of an event, and admins of its groups, download a CSV file for Excel in the event (name, status, waitlist, comment, guests as “guest of …”, ride). Online only; every export is logged.&lt;/li&gt;
+&lt;li&gt;Notification “Response removed (member left)” to the people in charge of an event.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Sign-in recognizes a member by any of their addresses from the member source (work, personal, Workspace), not only the first. If an address matches several members, sign-in is rejected and reported as a conflict, unless exactly one of them is active.&lt;/li&gt;
+&lt;li&gt;The sports in the profile come from admin instead of from the code. Existing installations keep the previous list on update; a new installation starts with no sports.&lt;/li&gt;
+&lt;li&gt;If the server cannot be reached, the apps wait with growing pauses, instead of sending again on a fixed beat.&lt;/li&gt;
+&lt;li&gt;The web app remembers the person who signed in last: on a reload with no server it shows the local data instead of the sign-in screen (like the app).&lt;/li&gt;
+&lt;li&gt;If a member is set to “left” by hand, the leaving date counts from then (the basis of anonymization).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Fixed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;If an event’s participant limit is raised, people on the waitlist now move up.&lt;/li&gt;
+&lt;li&gt;For events with “participant list only for the people in charge”, the participant limit did not apply, the waitlist did not move up, and the occupancy showed wrong numbers when a member without that responsibility said yes or no.&lt;/li&gt;
+&lt;li&gt;With no default for the signup deadline, no event could be created. The server now also accepts an empty signup deadline (older apps send one) and then uses the club default, or none.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Addresses from the member source are visible only to the person themselves and to club admins.&lt;/li&gt;
+&lt;li&gt;A second sign-in that matches a member with an existing sign-in only by the address is rejected (admins can match it). The member source takes over an existing Zitadel account only if it belongs to the person. A new easyVerein address discards the stored key, so it does not go to a different address.&lt;/li&gt;
+&lt;li&gt;Download links of the data export, and calendar-subscription and unsubscribe links, are no longer in the server’s access log.&lt;/li&gt;
+&lt;li&gt;Database functions with extended rights may be called only by the services that need them.&lt;/li&gt;
+&lt;li&gt;Attachments: the server checks the file type by the content, not by the name, and removes location and other metadata from photos. It stores GPX files only rewritten, and rejects files that are only called GPX; files other than photos always come as a download. File names get the extension of the detected type, and invisible direction characters are dropped. Per person, at most 50 uploads not yet attached, or 200 MB a day.&lt;/li&gt;
+&lt;li&gt;PDF previews are made in an isolated service with no network and no credentials; maps come only from your own server.&lt;/li&gt;
+&lt;li&gt;The marker for Zitadel’s SMTP access no longer reveals the password (HMAC instead of a plain hash).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Known limitations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Native builds for iOS and Android, and tests on real devices, are still outstanding.&lt;/li&gt;
+&lt;li&gt;Hetzner Object Storage and Google Calendar have only been checked against test services.&lt;/li&gt;
+&lt;li&gt;The command log (&lt;code&gt;command_log&lt;/code&gt;) does not have a deletion period yet.&lt;/li&gt;
+&lt;li&gt;The app is available in German only.&lt;/li&gt;
+&lt;li&gt;Reports go through the queue: if the server rejects a report (already reported, daily limit reached), the app still shows “Thanks”.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.1.1</title>
+    <id>https://cygnusb.github.io/clubforge-site/en/versionen/#v0.1.1</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/en/versionen/#v0.1.1"/>
+    <updated>2026-10-14T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Finished images instead of building on the club server.&lt;/strong&gt; Server, web app, and operations files are in one image (&lt;code&gt;docker.io/cygnusbn/clubforge&lt;/code&gt;, also as &lt;code&gt;ghcr.io/cygnusb/clubforge&lt;/code&gt;; &lt;code&gt;linux/amd64&lt;/code&gt; and &lt;code&gt;linux/arm64&lt;/code&gt;). The installer fetches it with &lt;code&gt;--version&lt;/code&gt;, without Git and without access to the repository; &lt;code&gt;update.sh&lt;/code&gt; pulls new versions, takes the operations files from the image (your own &lt;code&gt;.env&lt;/code&gt;, &lt;code&gt;caddy/extra/&lt;/code&gt;, and your own branding stay), and knows &lt;code&gt;--rollback&lt;/code&gt;. &lt;code&gt;install.sh&lt;/code&gt; is on the project site, with a checksum (no &lt;code&gt;curl | bash&lt;/code&gt; needed). The path through Git (&lt;code&gt;--ref&lt;/code&gt;, &lt;code&gt;--repo&lt;/code&gt;) stays for developers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;One web app for every club.&lt;/strong&gt; The web app reads the name, colors, logo, favicon, and words at runtime from the server’s instance manifest; until it is there (the first visit), it shows a neutral loading state instead of the wrong design. The page title, theme color, and tab icon follow the club. Logos and the favicon live in &lt;code&gt;deploy/branding/&lt;/code&gt; and are served from there (&lt;code&gt;CLUB_LOGO&lt;/code&gt;, new &lt;code&gt;CLUB_FAVICON&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Club brand and the first admin at install.&lt;/strong&gt; &lt;code&gt;install.sh&lt;/code&gt;, &lt;code&gt;cloud-init.yaml&lt;/code&gt;, and the OpenTofu templates take the name, short name, logos (file or https address), favicon, colors, the word for groups, and the first admin: one command (or a &lt;code&gt;terraform.tfvars&lt;/code&gt;) through to a running club server. The same values shape the web app, the app, and the Zitadel login page. Change them later with &lt;code&gt;deploy/branding.sh&lt;/code&gt;, without reinstalling.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;restore.sh&lt;/code&gt; takes the newest backup if you do not name one.&lt;/li&gt;
+&lt;li&gt;The default project name is &lt;code&gt;clubforge&lt;/code&gt; (previously &lt;code&gt;clubforge-spike&lt;/code&gt;). Local images are called &lt;code&gt;clubforge:dev&lt;/code&gt; and &lt;code&gt;clubforge-e2e:dev&lt;/code&gt;. Existing installations keep the &lt;code&gt;COMPOSE_PROJECT_NAME&lt;/code&gt; set in &lt;code&gt;.env&lt;/code&gt;, and so their volumes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cloud-init.yaml&lt;/code&gt; and the OpenTofu templates no longer fetch Git: &lt;code&gt;clubforge_version&lt;/code&gt;, &lt;code&gt;clubforge_image&lt;/code&gt;, &lt;code&gt;install_url&lt;/code&gt;, and &lt;code&gt;install_sha256&lt;/code&gt; replace &lt;code&gt;repo_url&lt;/code&gt; and &lt;code&gt;ref&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Fixed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;install.sh&lt;/code&gt; stopped while creating the backup key, with no message (found during a test on a Hetzner VM).&lt;/li&gt;
+&lt;li&gt;Push messages failed on instances with a port in the address when no &lt;code&gt;CF_VAPID_SUBJECT&lt;/code&gt; was set.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.1.0</title>
+    <id>https://cygnusb.github.io/clubforge-site/en/versionen/#v0.1.0</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/en/versionen/#v0.1.0"/>
+    <updated>2026-10-14T12:00:00Z</updated>
+    <content type="html">&lt;p&gt;First version for the pilot. Features and interfaces can still change.&lt;/p&gt;
+&lt;h2&gt;Added&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Events and series&lt;/strong&gt; with yes, no, and “maybe”, a waitlist, a signup deadline, and a participant limit; recurring events with exceptions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Groups&lt;/strong&gt; (“Rudel” in that version, freely renameable in the club) and sections: open, on request, or private, with members, people in charge, and their own events.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chats&lt;/strong&gt;: group chats and event chats with topics, direct messages, mentions, read state, and blocking; self-deleting messages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notifications&lt;/strong&gt; by push (app and browser), email, and the bell; settable per person and per kind of event, with quiet hours and reminders.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Member directory and profile&lt;/strong&gt;: details such as phone or Strava, released per field to nobody, your own group, or everyone.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search&lt;/strong&gt; across events, chats, and members.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calendar subscription&lt;/strong&gt; (iCal) for Apple, Google, and Outlook calendars, either only your own responses or all events.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Offline first&lt;/strong&gt;: the app reads from a local database; changes are sent as soon as there is a connection. Permissions are enforced in the database, not only in the interface.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Several clubs in one app&lt;/strong&gt;: connect a club by address or invitation link, and switch; each club runs its own server, with its own look, logo, and words.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web view&lt;/strong&gt; with a sidebar, and the same interface for iOS, Android, and the browser, light and dark.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sign-in&lt;/strong&gt; through Zitadel (OIDC), in the club’s design.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;About the app&lt;/strong&gt; in the profile: version of the app and of the server, license, and a “Please update the app” notice when a club requires a newer app.&lt;/li&gt;
+&lt;li&gt;Project website with an invitation page; the server’s version at &lt;code&gt;/api/v1/version&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Known limitations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Members are still created by hand (&lt;code&gt;deploy/admin.sh --member&lt;/code&gt;); the sync with easyVerein follows.&lt;/li&gt;
+&lt;li&gt;The installer has so far been tested only in a dry run and locally, not yet on a fresh cloud server.&lt;/li&gt;
+&lt;li&gt;Native push messages (APNs/FCM) and store builds are still missing; push exists in the browser.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+</feed>

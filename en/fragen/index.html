@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions from the board – clubforge</title>
+<meta name="description" content="What does clubforge cost, how much work is it, who takes over when someone stops, and what about privacy, outages, and the store apps? Answers for club boards.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/en/fragen/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/fragen/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/fragen/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/fragen/">
+<script src="../../lang.js"></script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../config.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="clubforge: questions from the board">
+<meta property="og:description" content="Cost, effort, handover, privacy, outages, and store apps: answers for club boards.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/en/fragen/">
+</head>
+<body>
+<a class="skip" href="#inhalt">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Main">
+      <span class="lang"><a href="../../fragen/" hreflang="de" lang="de">DE</a> <span aria-hidden="true">|</span> <span aria-current="page" lang="en">EN</span></span>
+      <a class="hide-s" href="../#funktionen">Features</a>
+      <a class="hide-s" href="../umstieg/">Switching</a>
+      <a class="hide-s" href="../betrieb/">Operations</a>
+      <a class="hide-s" href="../versionen/">Versions</a>
+      <a class="nav-cta" href="../#anfangen">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Questions from the board</h1>
+    <p class="lead">The questions a board usually asks first, answered briefly. The details for the person who looks after the server are under <a href="../betrieb/">Operations</a>.</p>
+  </div>
+</section>
+
+<section class="prose-sec">
+  <div class="wrap prose faq">
+    <h2>Cost and effort</h2>
+    <details open>
+      <summary>What does clubforge cost?</summary>
+      <p>The software costs nothing. There is no license and no fee per member. You only pay for what your own server needs:</p>
+      <ul>
+        <li><strong>Server</strong> on Hetzner Cloud: about 4 to 6 € a month (2 processor cores, 4 GB of memory). On AWS or Google Cloud, about 25 to 35 € a month.</li>
+        <li><strong>Domain</strong>: about 10 to 15 € a year. If the club already has one, that is enough.</li>
+        <li><strong>Optional</strong>: storage for photos and files, or for backup copies off the server, from about 5 € a month base price at Hetzner; the provider’s server backups about 1 € a month.</li>
+      </ul>
+      <p>These are rough figures (as of autumn 2026); check with the provider before you order. The certificate and every part of the software are free.</p>
+    </details>
+    <details>
+      <summary>How much time does it take?</summary>
+      <ul>
+        <li><strong>Setup</strong>: about an hour for someone who has used a server over SSH before. Most of that is the account, DNS records, and waiting; the install itself takes a few minutes.</li>
+        <li><strong>Day to day</strong>: system security updates and daily backups run on their own. A new clubforge version is installed with one command, which takes a backup first and has a way back.</li>
+        <li><strong>Now and then</strong>: restart after a system update from time to time, and once a quarter try restoring a backup.</li>
+      </ul>
+      <p>Everything about club life (groups, words, logo, features, rules, members) is done by admins in the app, without server access.</p>
+    </details>
+    <details>
+      <summary>Does it take IT skills?</summary>
+      <p>For the server, a little: someone has to use a rented Linux server over SSH and set three DNS records. The guide is written for volunteers, and there are templates for Hetzner, AWS, and Google Cloud. A contractor can do it instead. The board, coaches, and members do not need any of that.</p>
+    </details>
+    <details>
+      <summary>How many members does the small server hold?</summary>
+      <p>The recommended size (2 processor cores, 4 GB of memory, 40 GB disk) carries a club with a few hundred members. Larger disks or servers are available from every provider while the server is running.</p>
+    </details>
+
+    <h2>Responsibility and handover</h2>
+    <details>
+      <summary>Who takes over when the person looking after the server stops?</summary>
+      <p>So that this is not a problem, put it on more than one pair of shoulders from the start:</p>
+      <ul>
+        <li><strong>Two people</strong> have access to the club’s password manager. The backup key and the server credentials live there.</li>
+        <li><strong>Personal access</strong> to the server for a few people, with a list of who has access. When someone leaves, their key is removed and passwords are changed if needed.</li>
+        <li><strong>The operations guide</strong> describes install, updates, backups, restore, and troubleshooting step by step, so someone new can take over.</li>
+        <li><strong>Moving</strong> works too: a backup can be restored on a new server, for example when you switch to a contractor.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Who is responsible for the data?</summary>
+      <p>The club. It runs the server and is the controller under the GDPR. The clubforge project provides the software and does not see your members’ data.</p>
+    </details>
+
+    <h2>Privacy</h2>
+    <details>
+      <summary>Where is our data?</summary>
+      <p>On your own server, with a provider and in a location you choose. At Hetzner, the small ARM server (CAX11) runs in Falkenstein, Nuremberg, and Helsinki; AMD cloud servers are also available in Ashburn (Virginia), Hillsboro (Oregon), and Singapore. Object Storage exists only in Germany and Finland. For clubs in the EU, the European locations remain the recommendation. There is no central platform that collects data from several clubs. Photos and files sit in your own storage, maps on your server.</p>
+      <p>For push notifications, the services from Apple, Google, or Mozilla receive a device address and a short text. Email goes through the mail provider you enter. A server in Ashburn or Hillsboro is subject to US law; that is not “GDPR by default”.</p>
+    </details>
+    <details>
+      <summary>Is this GDPR-compliant?</summary>
+      <p>clubforge includes a lot of what you need; the club sets the frame:</p>
+      <ul>
+        <li><strong>In the app</strong>: each person chooses, field by field, who sees profile details. Data export and a deletion request are in the app. After someone leaves, access is blocked at once and the person is anonymized after 30 days. The server applies fixed deletion periods itself. No tracking, no ads.</li>
+        <li><strong>On the server</strong>: connections are encrypted, and so are backups. The server provides a standard text for the privacy page, which you complete.</li>
+        <li><strong>At the club</strong>: sign a data processing agreement with the host (and with the mail and storage providers, if you use them), choose a server location in the EU, and update the record of processing activities.<!-- ENTWURF: Helpers: <a href="../datenschutz-hilfe/">Privacy helpers for clubs</a>. --></li>
+      </ul>
+      <p>This is not legal advice. If your club has a data protection officer, they belong in the planning.</p>
+    </details>
+    <details>
+      <summary>Are messages end-to-end encrypted?</summary>
+      <p>No, on purpose. Messages are encrypted in transit, but they are readable on the club’s server, because search, reporting and moderation, mentions, and push text need the text. Anyone with access to the server can read them; that access belongs in few hands. Instead, there are self-deleting messages and encrypted backups.</p>
+    </details>
+
+    <h2>Outage and security</h2>
+    <details>
+      <summary>What happens if the server goes down?</summary>
+      <p>Events and chats are on the devices. Anyone who has the app open still sees everything and can respond or write; it is sent when the server is back. New push notifications and emails do not go out during that time.</p>
+      <p>So that an outage is noticed, the guide recommends an external check that emails two people, and a check that rates services, the certificate, the backup, and the disk.</p>
+    </details>
+    <details>
+      <summary>How is the data backed up?</summary>
+      <p>Every night an encrypted backup of the databases and settings is created. It is kept for 30 days and can also be copied to storage off the server. The server can write the backups but cannot read them; two people hold the key in the password manager. Restore also works on a new server, and a trial run shows that it works.</p>
+    </details>
+    <details>
+      <summary>What happens during an update?</summary>
+      <p>Before every update, the script takes a backup and remembers the old version, so you can go back. If you want, the app announces the maintenance on every device beforehand. During maintenance the app keeps working with the data on the device.</p>
+    </details>
+
+    <h2>Apps</h2>
+    <details>
+      <summary>When will the iPhone and Android apps arrive?</summary>
+      <p>That work is under way. The apps are built from the same code as the web app; the store builds and tests on real devices are still outstanding. There is no fixed date. Until then, clubforge runs in the browser, on a phone and on a computer, with push notifications in the browser.</p>
+    </details>
+    <details>
+      <summary>What do the app-store accounts cost, and do we need our own?</summary>
+      <p>Your club does not need its own store accounts. There is one app for every club; each person connects it to their club with an invitation link or an address. The publisher of the app holds the store accounts. For scale, what those accounts cost:</p>
+      <ul>
+        <li><strong>Apple Developer Program</strong> for organizations: 99 US dollars a year; nonprofits can apply to Apple for a fee waiver.</li>
+        <li><strong>Google Play Console</strong>: 25 US dollars once.</li>
+      </ul>
+      <p>A separate app under your club’s name is not planned at the moment; whether that should exist is still open.</p>
+    </details>
+    <details>
+      <summary>Is the app available in English?</summary>
+      <p>Not yet. The interface is German only today; English is planned. This website is available in English.</p>
+    </details>
+
+    <h2>And otherwise</h2>
+    <details>
+      <summary>How do our members get into the app?</summary>
+      <p>The member list comes from easyVerein, from a CSV file from your membership system, or is created by hand. New members get a welcome email; they connect the club with an invitation link. Step by step on the <a href="../umstieg/">Switching</a> page.</p>
+    </details>
+    <details>
+      <summary>How is clubforge different from other club apps?</summary>
+      <p>Mainly in that each club runs its own server and the software is open.<!-- ENTWURF: A neutral overview is under <a href="../vergleich/">Comparison</a>. --></p>
+    </details>
+
+    <div class="btn-row">
+      <a class="btn" href="../betrieb/">Operations and cost in detail</a>
+      <span class="btn ghost off" data-repo="/issues" data-label="Ask a question">Contact follows with the source code</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later</span>
+    <span><a href="../">Overview</a> · <a href="../umstieg/">Switching</a> · <a href="../betrieb/">Operations</a> · <a href="../versionen/">Versions</a> · <span data-repo="" data-label="Source code">Source code follows</span></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -50,17 +50,28 @@
     show('qr');
   }
 
+  var en = document.documentElement.lang === 'en';
+  var copy = en ? {
+    invalid: 'This invitation link is invalid. The part after “host=” must be a server name such as app.your-club.example, without https:// and without a path.',
+    invited: 'You have been invited to a club.',
+    note: 'The apps are not in the stores yet. Until then, “Open in the browser” works on every device, including as a home-screen shortcut.'
+  } : {
+    invalid: 'Dieser Einladungslink ist ungültig. Der Teil nach „host=“ muss ein Servername wie app.euer-verein.example sein, ohne https:// und ohne Pfad.',
+    invited: 'Du wurdest in einen Verein eingeladen.',
+    note: 'Die App ist noch nicht in den Stores. Bis dahin: „Im Browser öffnen“ funktioniert auf jedem Gerät, auch als Verknüpfung auf dem Homescreen.'
+  };
+
   var raw = new URLSearchParams(location.search).get('host');
   if (raw === null) return; // ohne host: nur die Erklärung
 
   var host = validHost(raw);
   if (!host) {
-    $('intro').textContent = 'Dieser Einladungslink ist ungültig. Der Teil nach „host=“ muss ein Servername wie app.euer-verein.example sein, ohne https:// und ohne Pfad.';
+    $('intro').textContent = copy.invalid;
     $('intro').className = 'err';
     return;
   }
 
-  $('intro').textContent = 'Du wurdest in einen Verein eingeladen.';
+  $('intro').textContent = copy.invited;
   $('name').textContent = host;
   $('host').textContent = host;
   show('host');
@@ -68,7 +79,7 @@
   $('open-web').href = 'https://' + host + '/';
   show('open-app');
   show('open-web');
-  $('note').textContent = 'Die App ist noch nicht in den Stores. Bis dahin: „Im Browser öffnen“ funktioniert auf jedem Gerät, auch als Verknüpfung auf dem Homescreen.';
+  $('note').textContent = copy.note;
 
   showQr(host);
 

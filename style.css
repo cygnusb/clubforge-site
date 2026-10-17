@@ -42,6 +42,10 @@ nav.main a { color: var(--ink); text-decoration: none; }
 nav.main a:hover { color: var(--link); }
 nav.main a.nav-cta { padding: .35rem .9rem; border-radius: .5rem; background: var(--ember); color: var(--ember-ink); font-weight: 650; }
 nav.main a.nav-cta:hover { color: var(--ember-ink); filter: brightness(1.07); }
+.lang { display: inline-flex; align-items: center; gap: .35rem; font: 600 .75rem/1 var(--mono); letter-spacing: .06em; color: var(--mute); white-space: nowrap; }
+.lang a { color: var(--mute); text-decoration: none; }
+.lang a:hover { color: var(--link); }
+.lang [aria-current="page"] { color: var(--ink); }
 @media (max-width: 40rem) { nav.main a.hide-s { display: none; } }
 .skip { position: absolute; left: 1rem; top: -3rem; z-index: 20; padding: .5rem 1rem; border-radius: .5rem; background: var(--card); color: var(--ink); }
 .skip:focus { top: .5rem; }

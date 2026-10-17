@@ -1,12 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cygnusb.github.io/clubforge-site/</loc></url>
-  <url><loc>https://cygnusb.github.io/clubforge-site/fragen/</loc></url>
-  <url><loc>https://cygnusb.github.io/clubforge-site/umstieg/</loc></url>
-  <url><loc>https://cygnusb.github.io/clubforge-site/betrieb/</loc></url>
-  <url><loc>https://cygnusb.github.io/clubforge-site/versionen/</loc></url>
-  <url><loc>https://cygnusb.github.io/clubforge-site/versionen/feed.xml</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/fragen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/fragen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/fragen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/fragen/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/fragen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/fragen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/fragen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/fragen/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/umstieg/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/umstieg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/umstieg/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/umstieg/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/umstieg/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/umstieg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/umstieg/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/umstieg/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/betrieb/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/betrieb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/betrieb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/betrieb/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/betrieb/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/betrieb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/betrieb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/betrieb/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/versionen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/versionen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/versionen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/versionen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/versionen/feed.xml</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/versionen/feed.xml"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/versionen/feed.xml</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/versionen/feed.xml"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
+  </url>
   <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/vergleich/</loc></url> -->
+  <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/en/vergleich/</loc></url> -->
   <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/datenschutz-hilfe/</loc></url> -->
-  <url><loc>https://cygnusb.github.io/clubforge-site/konto-loeschen/</loc></url>
+  <!-- ENTWURF: <url><loc>https://cygnusb.github.io/clubforge-site/en/datenschutz-hilfe/</loc></url> -->
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/konto-loeschen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/konto-loeschen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/konto-loeschen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/konto-loeschen/"/>
+  </url>
+  <url>
+    <loc>https://cygnusb.github.io/clubforge-site/en/konto-loeschen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/konto-loeschen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/konto-loeschen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/konto-loeschen/"/>
+  </url>
 </urlset>

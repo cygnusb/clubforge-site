@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Switching to clubforge – clubforge</title>
+<meta name="description" content="Step by step from WhatsApp groups or another club app to clubforge: set up the club, import members from easyVerein or a CSV file, and invite them with a link.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f1e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/en/umstieg/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/umstieg/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/umstieg/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/umstieg/">
+<script src="../../lang.js"></script>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../config.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="clubforge">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Switching to clubforge">
+<meta property="og:description" content="From WhatsApp groups or another club app to clubforge, step by step.">
+<meta property="og:image" content="https://cygnusb.github.io/clubforge-site/og.png">
+<meta property="og:url" content="https://cygnusb.github.io/clubforge-site/en/umstieg/">
+</head>
+<body>
+<a class="skip" href="#inhalt">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../../favicon.svg" alt="" width="28" height="28">clubforge</a>
+    <nav class="main" aria-label="Main">
+      <span class="lang"><a href="../../umstieg/" hreflang="de" lang="de">DE</a> <span aria-hidden="true">|</span> <span aria-current="page" lang="en">EN</span></span>
+      <a class="hide-s" href="../#funktionen">Features</a>
+      <a class="hide-s" href="../fragen/">Questions</a>
+      <a class="hide-s" href="../betrieb/">Operations</a>
+      <a class="hide-s" href="../versionen/">Versions</a>
+      <a class="nav-cta" href="../#anfangen">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+<section class="hero page-head">
+  <div class="wrap">
+    <h1>Switching to clubforge</h1>
+    <p class="lead">Whether the club runs on WhatsApp groups, email, or another club app today: this is how you move over calmly, without losing anyone.</p>
+  </div>
+</section>
+
+<section class="prose-sec">
+  <div class="wrap prose">
+    <div class="callout">
+      <p><strong>First:</strong> clubforge does not import chat history or events from WhatsApp, Spond, or other apps. It does import the member list, from easyVerein or a CSV file. Plan a cutover date after which events and announcements live only in clubforge.</p>
+    </div>
+
+    <h2>1. Set up the server</h2>
+    <p>Someone with a little server experience rents a small server and installs clubforge with one command. The club name, logo, colors, and the first admin come along with it. Time: about an hour. Details under <a href="../betrieb/">Operations</a>.</p>
+
+    <h2>2. Set up the club</h2>
+    <p>The first admin signs in to the web app and, under <strong>Admin</strong>, sets what the club needs:</p>
+    <ul>
+      <li><strong>Words</strong>: Do you call groups “team”, “squad”, or “section”, and events “practice”? Set it here, and the app uses your words.</li>
+      <li><strong>Features</strong>: Turn rides, polls, news, guests, direct messages, and more on or off one by one.</li>
+      <li><strong>Code of conduct and info pages</strong>, for example hall rules or who to contact.</li>
+      <li><strong>Defaults for events</strong>, such as a usual signup deadline.</li>
+    </ul>
+
+    <h2>3. Import members</h2>
+    <p>Your membership system decides who is a member in clubforge. Set that up in the web app under <strong>Profile › Member source</strong>:</p>
+    <ul>
+      <li><strong>From easyVerein</strong>: In easyVerein, create an API key with read access to members, enter it in clubforge, and map the easyVerein groups to your sections. clubforge then syncs every hour: new people are added, people who have left lose access.</li>
+      <li><strong>From a CSV file</strong>: Download the template, fill it with your member list (required: a unique number, first and last name, and email address; plus status, year joined, a second address, and sections), and upload it. The file is always the full list.</li>
+      <li><strong>By hand</strong>: For a small club or a trial, the person running the server adds people one by one.</li>
+    </ul>
+    <p>Before each import, a <strong>dry run</strong> shows who is new, who changes, and who would lose access. A safeguard stops a large number of people from being removed by accident.</p>
+    <p><strong>Important:</strong> Every member needs their own email address. If two active members share a family address, nobody can sign in with it; the sync report shows those cases.</p>
+
+    <h2>4. Create groups and events</h2>
+    <ul>
+      <li>A group called “All members”, with its own channel, exists from the start; every new member is in it automatically. Club-wide events hang off that group.</li>
+      <li>Each WhatsApp group becomes a <strong>group</strong>: open, on request, or private, with a channel and topics. Sections from the membership system fill their groups on their own.</li>
+      <li>Create regular practice once as a <strong>recurring event</strong>, instead of asking “who’s coming?” every week. Set the participant limit, waitlist, signup deadline, and guests on the event.</li>
+      <li>If you already use a club app that has events, copy the upcoming ones by hand, or create them again as series.</li>
+    </ul>
+
+    <h2>5. Invite everyone</h2>
+    <p>Two ways, and they work together:</p>
+    <ul>
+      <li><strong>Welcome email</strong>: “Invite new members” on the member source sends each new member an email with a link. They set a passkey or password from there. The server needs mail access for that.</li>
+      <li><strong>Invitation link</strong>: The link <code>…/clubforge-site/join/?host=app.your-club.example</code> shows your club’s name and logo and opens the app or the club’s web app. On a computer, the page shows a QR code to scan with a phone. Put the link in the old WhatsApp group, in an email, or as a QR code on the hall door.</li>
+    </ul>
+    <p>Until the store apps exist, “Open in the browser” goes straight to your club’s web app, on a phone and on a computer.</p>
+
+    <h2>6. Move over together</h2>
+    <ul>
+      <li><strong>Set a cutover date</strong> and announce it: from then on, events, responses, and announcements live only in clubforge.</li>
+      <li><strong>A transition period</strong>: the old group stays for a while for questions, but you only post pointers with a link there.</li>
+      <li><strong>For people who rarely open the app</strong>: the email digest (daily or weekly) and the calendar subscription for Apple, Google, or Outlook calendars keep them in the loop. Anything the board marks as “important” also goes to everyone by email.</li>
+      <li><strong>Name a contact</strong> who helps with sign-in and settings in the first weeks. The introduction on first login explains the essentials, and it can be opened again any time under Profile.</li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn" href="../betrieb/">Set up the server</a>
+      <a class="btn ghost" href="../fragen/">Common questions</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>clubforge · AGPL-3.0-or-later</span>
+    <span><a href="../">Overview</a> · <a href="../fragen/">Questions</a> · <a href="../betrieb/">Operations</a> · <a href="../join/">Invitation page</a> · <span data-repo="" data-label="Source code">Source code follows</span></span>
+  </div>
+</footer>
+</body>
+</html>

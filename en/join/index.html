@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https:; connect-src https:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>Join a club – clubforge</title>
+<link rel="canonical" href="https://cygnusb.github.io/clubforge-site/en/join/">
+<link rel="alternate" hreflang="de" href="https://cygnusb.github.io/clubforge-site/join/">
+<link rel="alternate" hreflang="en" href="https://cygnusb.github.io/clubforge-site/en/join/">
+<link rel="alternate" hreflang="x-default" href="https://cygnusb.github.io/clubforge-site/join/">
+<script src="../../lang.js"></script>
+<meta property="og:locale" content="en_US">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<main class="join">
+  <div class="join-card" id="card">
+    <div class="join-head" id="head">
+      <div id="logo" class="mark" aria-hidden="true">c</div>
+      <h1 id="name">clubforge</h1>
+      <p id="host" hidden></p>
+    </div>
+    <div class="join-body" id="body">
+      <nav class="lang" aria-label="Language"><a href="../../join/" hreflang="de" lang="de">DE</a> <span aria-hidden="true">|</span> <span aria-current="page" lang="en">EN</span></nav>
+      <p id="intro">clubforge is the self-hosted club app. This page opens a club’s invitation.</p>
+      <p class="notice" id="state" hidden></p>
+      <a class="btn" id="open-app" href="#" hidden>Open in the app</a>
+      <a class="btn ghost" id="open-web" href="#" hidden>Open in the browser</a>
+      <figure class="join-qr" id="qr" hidden>
+        <svg id="qr-svg" role="img" aria-label="QR code for this invitation"></svg>
+        <figcaption>Scan with your phone</figcaption>
+      </figure>
+    </div>
+    <p class="join-note" id="note">You get an invitation link from your club. It looks like this: <code>…/join/?host=app.your-club.example</code>. More about the project on the <a href="../">home page</a>.</p>
+  </div>
+</main>
+<script src="../../join/qrcode.js"></script>
+<script src="../../join/join.js"></script>
+</body>
+</html>
