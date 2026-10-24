@@ -66,7 +66,7 @@ sudo bash install.sh \
   --sync sync.mein-verein.example \
   --login login.mein-verein.example \
   --email vorstand@mein-verein.example \
-  --club "Mein Verein" --version 0.2.1 \
+  --club "Mein Verein" --version 0.4.0 \
   --logo https://mein-verein.example/logo-weiss.svg \
   --primary '#117733' --dark '#0a2a14' \
   --admin-first Vera --admin-last Vorstand</pre>
@@ -96,12 +96,13 @@ sudo bash install.sh \
     </div>
     <div class="grid">
       <div class="card"><h3>Einen Server</h3><p>Linux (Debian 12/13 oder Ubuntu 24.04), x86_64 oder arm64, mindestens 2 vCPU und 4 GB RAM, 40 GB Platte, feste IPv4-Adresse.</p></div>
-      <div class="card"><h3>Eine Domain</h3><p>Drei Einträge setzen können. Die Namen sind frei wählbar, aber nach der Installation fest.</p></div>
+      <div class="card"><h3>Eine Domain</h3><p>Drei Einträge setzen können. Die Namen sind frei wählbar und lassen sich später ändern; danach melden sich alle neu an.</p></div>
       <div class="card"><h3>Offene Ports</h3><p>22 (SSH), 80 und 443. Port 80 braucht Let's Encrypt zur Prüfung des Zertifikats.</p></div>
       <div class="card"><h3>Mail <span class="opt">optional</span></h3><p>Ein SMTP-Zugang für E-Mail-Benachrichtigungen. Ohne ihn funktionieren App und Push trotzdem.</p></div>
       <div class="card"><h3>Speicher für Kopien <span class="opt">optional</span></h3><p>S3-kompatibler Objektspeicher (Hetzner, AWS, Google) für Backup-Kopien außerhalb des Servers.</p></div>
       <div class="card"><h3>Speicher für Anhänge <span class="opt">optional</span></h3><p>Ein eigener S3-Bucket für Fotos, Dateien und GPX-Strecken, z. B. Hetzner Object Storage. Ohne ihn läuft alles, nur ohne Anhänge. PDF-Vorschauen rendert ein abgeschotteter Dienst ohne Netz auf eurem Server.</p></div>
       <div class="card"><h3>Platz für Karten <span class="opt">optional</span></h3><p>Die Kartenkacheln eurer Region liegen auf dem Server: Baden-Württemberg etwa 1&nbsp;GB, ganz Deutschland etwa 7,4&nbsp;GB. Ein Befehl lädt sie, Updates lassen sie in Ruhe; ohne sie zeigt die App Strecken als Linie.</p></div>
+      <div class="card"><h3>Suche nach Bedeutung <span class="opt">optional</span></h3><p>Ein kleines Sprachmodell auf dem Server (rund 130&nbsp;MB, beim Nachrechnen rund 550&nbsp;MB Arbeitsspeicher), eingerichtet mit einem Befehl. Kein Text geht an Dritte; ohne findet die Suche nach Wörtern.</p></div>
       <div class="card"><h3>Mitgliederliste <span class="opt">optional</span></h3><p>Ein API-Schlüssel für easyVerein oder eine CSV-Datei. Ohne sie legt ihr Mitglieder von Hand an.</p></div>
       <div class="card"><h3>Einen Passwortmanager</h3><p>Für Backup-Schlüssel und die <code>.env</code>, mit Zugriff für zwei Personen.</p></div>
     </div>
@@ -147,8 +148,8 @@ sudo bash install.sh \
       <div class="card"><h3>Backups</h3><p>Täglich, verschlüsselt, 30 Tage aufbewahrt, auf Wunsch zusätzlich im Objektspeicher. Mit einem Befehl lässt sich ein Restore testen.</p></div>
       <div class="card"><h3>Updates</h3><p>Sicherheitsupdates des Systems automatisch. Neue clubforge-Versionen mit <code>update.sh</code>: Backup, neues Image ziehen, Migration, Prüfung, Rückweg. Auf Wunsch kündigt es die Wartung vorher in der App an; Einstellungen und Kartenkacheln bleiben.</p></div>
       <div class="card"><h3>Überwachung</h3><p><code>check.sh</code> prüft DNS, Zertifikat, alle Endpunkte und das letzte Backup. Dazu ein externer Check und ein Backup-Herzschlag.</p></div>
-      <div class="card"><h3>Datenschutz</h3><p>Auftragsverarbeitung mit dem Hoster, Serverstandort in der EU, verschlüsselte Backups. Löschanfragen und Datenexporte kommen über die App, Fristen setzt der Server selbst um. Die Anleitung liefert die Checkliste.</p></div>
-      <div class="card"><h3>Im Verein einstellen</h3><p>Funktionen, Begriffe, Logo und Farben, Verhaltensregeln und Infoseiten pflegen Admins in der Verwaltung der App, ohne den Server anzufassen.</p></div>
+      <div class="card"><h3>Datenschutz</h3><p>Auftragsverarbeitung mit dem Hoster, Serverstandort in der EU, verschlüsselte Backups. Löschanfragen und Datenexporte kommen über die App, Fristen setzt der Server selbst um. Die Angaben für die Datenschutzseite pflegen Admins in der Verwaltung. Die Anleitung liefert die Checkliste.</p></div>
+      <div class="card"><h3>Im Verein einstellen</h3><p>Funktionen, Begriffe, Logo, Farben und Schrift, Verhaltensregeln, Infoseiten sowie Datenschutz und Impressum pflegen Admins in der Verwaltung der App, ohne den Server anzufassen.</p></div>
     </div>
     <div class="btn-row">
       <a class="btn" href="../anleitung/">Schritt für Schritt: die Installationsanleitung</a>
@@ -167,7 +168,9 @@ sudo bash install.sh \
         <table>
           <thead><tr><th scope="col">Server-Version</th><th scope="col">Web-App</th><th scope="col">Verlangt mindestens App</th></tr></thead>
           <tbody>
-            <tr><td>0.2.1</td><td>0.2.1, kommt vom eigenen Server</td><td>0.1.0</td></tr>
+            <tr><td>0.4.0</td><td>0.4.0, kommt vom eigenen Server</td><td>0.1.0</td></tr>
+            <tr><td>0.3.0</td><td>0.3.0, kommt vom eigenen Server</td><td>0.1.0</td></tr>
+            <tr><td>0.2.1 bis 0.2.4</td><td>dieselbe Version, kommt vom eigenen Server</td><td>0.1.0</td></tr>
             <tr><td>0.2.0</td><td>0.2.0, kommt vom eigenen Server</td><td>0.1.0</td></tr>
             <tr><td>0.1.0, 0.1.1</td><td>dieselbe Version, kommt vom eigenen Server</td><td>0.1.0</td></tr>
           </tbody>

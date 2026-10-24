@@ -68,7 +68,7 @@
 <li><strong>The three names.</strong> They cannot be changed after the installation without setting up sign-in again (all logins would be lost, the club data would not).</li>
 <li><strong>Who looks after the server</strong> (SSH access) and <strong>who holds the backup key</strong>: two people, through a shared password manager.</li>
 <li><strong>The club brand</strong>: name, a logo as SVG or PNG at an https address, two or three colors (<code>#rrggbb</code>), and optionally your own word for groups. All of it can be changed in the app later.</li>
-<li><strong>The version.</strong> For running a club, pick a fixed version, currently <code>0.2.1</code>. What changes with each version is under <a href="../versionen/">Versions</a>.</li>
+<li><strong>The version.</strong> For running a club, pick a fixed version, currently <code>0.4.0</code>. What changes with each version is under <a href="../versionen/">Versions</a>.</li>
 </ul>
 
 <h2 id="dns">2. Set the DNS records</h2>
@@ -108,11 +108,12 @@ less install.sh          <span class="c"># if you like: read it, it's a shell sc
   --sync sync.your-club.example \
   --login login.your-club.example \
   --email board@your-club.example \
-  --club "Your Club" --version 0.2.1 \
+  --club "Your Club" --version 0.4.0 \
   --logo https://your-club.example/logo-white.svg \
   --logo-light https://your-club.example/logo-dark.svg \
   --primary '#117733' --dark '#0a2a14' --accent '#88ccaa' \
   --admin-first Vera --admin-last Board</pre>
+<p>With no further options, <code>sudo bash install.sh</code> asks for everything step by step in the terminal and at the end shows the same call without questions, for you to keep.</p>
 <p>What the installer does, each step only if it isn't done yet (running it twice is safe):</p>
 <ol>
 <li>Checks the system, memory, and DNS.</li>
@@ -137,7 +138,7 @@ less install.sh          <span class="c"># if you like: read it, it's a shell sc
 </ol>
 <pre>export TF_VAR_hcloud_token='…'     <span class="c"># in the terminal only, never in a file</span></pre>
 <h3>Get and fill in the template</h3>
-<pre>cid=$(docker create docker.io/cygnusbn/clubforge:0.2.1)
+<pre>cid=$(docker create docker.io/cygnusbn/clubforge:0.4.0)
 docker cp "$cid:/opt/clubforge/deploy/cloud" ./clubforge-cloud &amp;&amp; docker rm "$cid"
 cd clubforge-cloud/hetzner
 cp terraform.tfvars.example terraform.tfvars
@@ -150,7 +151,7 @@ admin_email       = "board@your-club.example"
 club_name         = "Your Club"
 ssh_public_key    = "ssh-ed25519 AAAA… name@computer"
 ssh_allowed_cidrs = ["203.0.113.7/32"]       <span class="c"># only your address may use SSH</span>
-clubforge_version = "0.2.1"
+clubforge_version = "0.4.0"
 <span class="c"># server_type = "cax11"   location = "fsn1"   dns_zone = "your-club.example"</span>
 <span class="c"># age_recipient = "age1…"  (a backup key you created yourself, see step 5)</span>
 
@@ -196,7 +197,7 @@ sudo bash install.sh … --age-recipient age1…</pre>
 <ol>
 <li>Open <code>https://app.your-club.example</code>: the club's name, colors, and logo are already there.</li>
 <li>Sign in with the email address and the one-time password; sign-in asks for a new password right away.</li>
-<li>This person is a club admin and sets up everything else in the web app under <strong>Profile › Admin</strong>: groups, features, terms, brand, code of conduct, member source (easyVerein or CSV).</li>
+<li>This person is a club admin and sets up everything else in the web app under <strong>Profile › Admin</strong>: groups, features, terms, brand, code of conduct, privacy and imprint, member source (easyVerein or CSV).</li>
 </ol>
 <p>One command checks the server's state at any time. You want <code>OK</code> for services, DNS, certificate, endpoints, backup, and disk:</p>
 <pre>sudo -u clubforge /opt/clubforge/deploy/check.sh</pre>
@@ -214,7 +215,7 @@ shred -u /dev/shm/age-key.txt</pre>
 <h3>Updates</h3>
 <p>System security updates run on their own; if <code>/var/run/reboot-required</code> exists, reboot at a quiet moment. One command installs a new clubforge version: backup, new image, database update, check. With <code>--announce</code>, members see the maintenance in the app beforehand.</p>
 <pre>cd /opt/clubforge/deploy
-sudo -u clubforge ./update.sh --version 0.2.1 --announce 10m</pre>
+sudo -u clubforge ./update.sh --version 0.4.0 --announce 10m</pre>
 <p>Notes for each version are under <a href="../versionen/">Versions</a>.</p>
 
 <h3>Mail</h3>
@@ -238,6 +239,11 @@ sudo -u clubforge ./check.sh                       <span class="c"># section on 
 ./maps.sh --region bw --dry-run
 ./maps.sh --region bw</pre>
 
+<h3>Search by meaning (optional)</h3>
+<p>Search then also finds paraphrases, for example “annual meeting” finds the general assembly. A small language model computes this on your own server; no text goes to third parties. The command downloads the model (about 130 MB) and turns the service on; while it catches up on existing content it needs about 550 MB of memory. <code>check.sh</code> shows the progress, and it can be turned off under Admin › Search.</p>
+<pre>cd /opt/clubforge/deploy
+./embeddings.sh</pre>
+
 <h3>Monitoring</h3>
 <p>An external service (Uptime Kuma, healthchecks.io, or similar) calls <code>https://app.your-club.example/api/v1/readyz</code> every five minutes and emails two people when it fails. With <code>BACKUP_HEARTBEAT_URL</code> in the <code>.env</code>, every successful backup checks in there; if it stops, you get an alert.</p>
 
@@ -256,7 +262,7 @@ sudo -u clubforge ./check.sh                       <span class="c"># section on 
 </tbody>
 </table>
 </div>
-<p>Other routes lead to the same result: cloud-init (the server sets itself up on first boot, with any provider) and OpenTofu templates like the Hetzner one for AWS and Google Cloud too. Both are in the image, under <code>/opt/clubforge/deploy/cloud/</code> and <code>/opt/clubforge/deploy/cloud-init.yaml</code>; <code>docker create docker.io/cygnusbn/clubforge:0.2.1</code> with <code>docker cp</code> gets them onto your own computer.</p>
+<p>Other routes lead to the same result: cloud-init (the server sets itself up on first boot, with any provider) and OpenTofu templates like the Hetzner one for AWS and Google Cloud too. Both are in the image, under <code>/opt/clubforge/deploy/cloud/</code> and <code>/opt/clubforge/deploy/cloud-init.yaml</code>; <code>docker create docker.io/cygnusbn/clubforge:0.4.0</code> with <code>docker cp</code> gets them onto your own computer.</p>
 <div class="btn-row">
   <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="The full operations guide">The full operations guide follows with the source code</span>
   <a class="btn ghost" href="../betrieb/">Back to Operations</a>

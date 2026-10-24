@@ -5,8 +5,118 @@
   <id>https://cygnusb.github.io/clubforge-site/versionen/feed.xml</id>
   <link rel="self" type="application/atom+xml" href="https://cygnusb.github.io/clubforge-site/versionen/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/"/>
-  <updated>2026-10-16T12:00:00Z</updated>
+  <updated>2026-10-24T12:00:00Z</updated>
   <author><name>clubforge</name></author>
+  <entry>
+    <title>clubforge 0.4.0</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.4.0</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.4.0"/>
+    <updated>2026-10-24T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Testdaten „triathlon“:&lt;/strong&gt; Ein Seed-Thema für Vorführinstanzen mit rund 190 Mitgliedern, Trainingsgruppen, Liga- und Wettkampfterminen und zwei Jahren Vorlauf. Eigene Namen von Verein, Gruppen, Orten und Wettkämpfen kommen aus einer JSON-Datei auf dem Server (&lt;code&gt;CF_SEED_DATA&lt;/code&gt;, siehe docs/betrieb/testdaten.md).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche verfeinern:&lt;/strong&gt; Treffer vom Gerät stehen sofort da, Älteres liefert der Server darunter nach (offline nur die vom Gerät). Filter für Zeitraum (Heute, Diese Woche, Letzte 30 Tage … oder eigene Tage), Person und Gruppe; beim Tippen schlägt die Suche passende Filter vor („von tom“, „gestern“, „im März“, „Termine“), übernommen werden sie erst per Tipp. „Nach Datum“ ordnet nach Heute, Kommende und Vergangene; bei Terminen zählt der Einzeltermin im Zeitraum. Ohne Treffer bietet die Suche an, einen Filter zu lockern. Am Computer stehen die Filter links und die Vorschau des gewählten Treffers rechts, ↑ ↓ wählt, Enter öffnet. Filter und Sortierung stehen in der Adresse.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche springt zur Nachricht:&lt;/strong&gt; Ein Treffer in einem Chat öffnet die Unterhaltung an der gefundenen Nachricht und hebt sie hervor, auch wenn sie älter ist als das, was auf dem Gerät liegt (der Server lädt den Verlauf bis dorthin ohne Lücke). Liegt sie weit zurück, zeigt der Chat ab dort; „Zu den neuesten Nachrichten“ führt zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tablet-Ansicht:&lt;/strong&gt; Ab 700 px Breite stehen Chats, Gruppen und Mitglieder zweispaltig da, links die Liste, rechts die Unterhaltung, die Gruppe bzw. das Profil. Gilt für iPad, Android-Tablets und breite Browserfenster (#6).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web-App installierbar:&lt;/strong&gt; Der Server liefert ein Web-App-Manifest aus der Vereinsmarke (Name, Kurzname, Farbe) mit App-Symbolen aus dem ersten Rasterbild unter Favicon und Logos, ohne Rasterbild das clubforge-Symbol. Damit lässt sich die Web-App in Chrome und Edge installieren, und auf iPhone und iPad öffnet „Zum Home-Bildschirm“ eine eigenständige App mit Push (Vereinsmarke, #4).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Am Computer als App:&lt;/strong&gt; Die installierte Web-App startet auch ohne Netz mit den zuletzt geladenen Daten, bietet nach einem Update „Neu laden“ an, statt mitten in der Sitzung zu wechseln, und zeigt ungelesene Benachrichtigungen am Symbol. Unter Profil › Geräte gibt es „Installieren“ (Chrome, Edge) bzw. den Hinweis „Zum Dock hinzufügen“ (Safari ab macOS 14). Anleitung: Am Computer installieren (#8).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bearbeitungsverlauf für die Moderation:&lt;/strong&gt; Wer eine gemeldete Nachricht prüft, sieht unter „Frühere Fassungen“ jeden Stand vor einer Bearbeitung mit Zeitpunkt. Sonst sieht ihn niemand, auch nicht die Person selbst; im Datenexport stehen die eigenen früheren Fassungen. Gelöscht wird er mit der Nachricht, bei gelöschten Nachrichten nach 30 Tagen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Neuigkeiten im Kanal der Gruppe:&lt;/strong&gt; Über dem Chat steht die angeheftete oder neueste Neuigkeit an die Gruppe der letzten 14 Tage als schmale Karte; ein Tipp öffnet sie, „Alle N“ die Neuigkeiten der Gruppe. Weggeklickt bleibt sie auf diesem Gerät weg, die nächste Neuigkeit erscheint wieder.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Datenschutzseite aus der Verwaltung:&lt;/strong&gt; Vereins-Admins pflegen die Angaben unter Verwaltung › „Datenschutz und Impressum“: Anschrift, Kontakt für Datenschutzfragen, Hosting-Anbieter und Serverstandort, eigene Seiten für Datenschutz, Impressum und Konto löschen (nur https) und eine Ergänzung zum Standardtext je Sprache. Sie gelten sofort für &lt;code&gt;/datenschutz&lt;/code&gt;, &lt;code&gt;/konto-loeschen&lt;/code&gt; und die Links in der App; &lt;code&gt;CF_PRIVACY_CONTACT&lt;/code&gt;, &lt;code&gt;CF_CLUB_ADDRESS&lt;/code&gt; und &lt;code&gt;CF_LEGAL_*&lt;/code&gt; sind nur noch Startwerte.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hinweis, wenn eine Zusage nicht geklappt hat:&lt;/strong&gt; Ist der Termin voll, die Anmeldefrist abgelaufen oder der Termin abgesagt, oder landet „Dabei“ auf der Warteliste, kommt eine Benachrichtigung, auch bei offline gesendeten Zusagen: Glocke sofort, Push nach zwei Minuten und nur, wenn der Hinweis in der App nicht gesehen wurde, Mail bei Beginn in weniger als 48 Stunden. In der Ruhezeit nur, wenn der Termin in weniger als 12 Stunden beginnt (#7).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HEIC-Fotos:&lt;/strong&gt; Bilder im HEIC-Format, etwa aus der Dateien-App auf dem iPhone, wandelt die App vor dem Hochladen in JPEG um. Kann ein Browser HEIC nicht öffnen, sagt er das, statt mit einem Upload-Fehler abzubrechen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Info-Mail bei neuer Anmelde-Adresse:&lt;/strong&gt; Ändert die Mitgliederquelle die Login-Adresse in Zitadel, bekommt die Person eine Mail an die alte und die neue Adresse. So fällt eine Änderung auf, die nicht von ihr selbst kam.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hostnamen nachträglich ändern:&lt;/strong&gt; Neue Adressen in &lt;code&gt;.env&lt;/code&gt; genügen; &lt;code&gt;zitadel-bootstrap&lt;/code&gt; trägt die Rückleitungen der Web-App nach und zieht Aussteller und Anmeldeseite mit. Bisher landete die Anmeldung danach auf dem alten Namen, und Zitadel musste neu eingerichtet werden (Fehlerbehebung).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche neu indizieren:&lt;/strong&gt; Der Auftrag aus der Verwaltung blieb bei „Läuft gerade …“ stehen, weil der Worker den Suchindex der Mitfahrten nicht neu aufbauen durfte.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche zu unscharf:&lt;/strong&gt; Die Tippfehler-Toleranz richtete sich nach der Länge der ganzen Anfrage, fast jede Suche ließ so zwei Fehler je Wort zu, und kurze Wörter wie „zum“ trafen fast jeden Text. Jetzt zählt die Länge jedes Worts: bis 4 Zeichen nur der Wortanfang, bis 8 Zeichen ein Fehler, darüber zwei.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Große Schrift und kleine Bildschirme:&lt;/strong&gt; Die Schriftgröße des Browsers wirkt jetzt auch in der Web-App; bei großer Schrift wird nichts mehr abgeschnitten, und keine Seite scrollt seitlich. Rund 20 Knöpfe (Umschalter, Filter, Reaktionen, Wochenleiste und weitere) haben jetzt mindestens 44 px Tippfläche (#5).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anmeldung mit neuer Identität:&lt;/strong&gt; Ist das Mitglied schon mit einer anderen Anmeldung verknüpft, sagt die App das jetzt („Für dein Mitgliedskonto ist schon eine andere Anmeldung hinterlegt“) statt fälschlich „Diese Adresse gehört zu mehreren Mitgliedern“. In Verwaltung › Mitgliederquelle steht der Grund dabei, und „Zuordnen“ hat das Mitglied schon ausgewählt (#3).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Geändert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kalender:&lt;/strong&gt; Ab Tablet-Breite öffnet sich die Wochenansicht, Liste und Monat bleiben wählbar. Termin- und Neuigkeitsformular nutzen auf breiten Bildschirmen zwei Spalten (#6).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mindestversionen:&lt;/strong&gt; Die nativen Apps laufen ab iOS/iPadOS 16.4 und Android 10 (#10, #11).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Datenschutz:&lt;/strong&gt; Das Protokoll der Ereignisse (wer wann was geändert hat, Grundlage für Benachrichtigungen und Integrationen) wird nach 13 Monaten gelöscht, sobald der Worker es verarbeitet hat. Die Datenschutzseite nennt die Frist.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.3.0</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.3.0</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.3.0"/>
+    <updated>2026-10-24T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Farbschema mit Start des Vereins:&lt;/strong&gt; Lässt der Verein hell und dunkel wählen, legt er in Verwaltung › Verein › Marke fest, womit alle starten, die nichts gewählt haben (wie das Gerät, hell oder dunkel). Unter Profil › Darstellung heißt die Vorgabe dann „Wie der Verein (Dunkel)“; eine eigene Wahl geht vor. Startwert für Installationen: &lt;code&gt;CLUB_SCHEME_DEFAULT&lt;/code&gt;. Ältere Apps folgen weiter dem Gerät.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Semantische Suche (optional):&lt;/strong&gt; Die Suche findet zusätzlich nach Bedeutung („Hauptversammlung“ findet die Mitgliederversammlung, „Flasche verloren“ die Frage nach der Trinkflasche) in Terminen, Nachrichten, Neuigkeiten und Mitfahrten, nur was die Person auch sonst sieht. Ein kleines Sprachmodell läuft auf dem eigenen Server, kein Text geht an Dritte. Einrichten mit &lt;code&gt;deploy/embeddings.sh&lt;/code&gt; (Modell rund 130 MB, Arbeitsspeicher rund 550 MB); Vereins-Admins schalten sie unter Verwaltung › Suche ab. &lt;code&gt;check.sh&lt;/code&gt; meldet, ob der Dienst rechnet und wie viel noch fehlt (Suche).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monatsansicht im Kalender:&lt;/strong&gt; Raster Montag bis Sonntag mit farbigen Punkten (am Desktop mit den ersten Terminen je Tag); ein Tipp auf einen Tag zeigt seine Termine darunter. Blättern geht so weit, wie Termine auf dem Gerät liegen. Am Handy über den Knopf im Kopf, am Desktop als dritte Ansicht neben Liste und Woche. „Meine Termine“ und die Vorschau anderer Gruppen gelten auch hier.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Profilbild in der Einführung:&lt;/strong&gt; Nach der Begrüßung kommt der Schritt „Profilbild“ (überspringbar, nur wenn der Server Anhänge annimmt).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gäste je Termin:&lt;/strong&gt; Unter „Nur diesen Termin bearbeiten“ lassen sich Gäste für einen einzelnen Termin abweichend erlauben (mit eigener Höchstzahl) oder abschalten; „Wie sonst“ nimmt wieder die Einstellung des Events. Schon angemeldete Gäste bleiben.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche findet Mitfahrten und Dateien:&lt;/strong&gt; Treffpunkt und Hinweis einer Fahrt (mit Termin und Abfahrt) und Namen von Anhängen an Terminen, Nachrichten und Neuigkeiten, bei Dateien auch Wortteile („plan“ findet „Lageplan.png“). Profilbilder bleiben außen vor, abgeschaltete Module ebenso.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Geändert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Wochen wechseln im Kalender:&lt;/strong&gt; Am Handy lässt sich die Wochenleiste zur Seite wischen (oder mit den Pfeilen blättern), „Oktober KW 43“ öffnet ein Monatsblatt zum Springen mit „Nächste Woche“, „Nächster Samstag“ und „In 4 Wochen“, „Heute“ führt zurück. Ein Tipp auf einen Tag scrollt die Liste dorthin, statt sie zu filtern; Tage ohne Termin stehen als „Nichts geplant“ da. Am Desktop zeigt die Woche den Zeitraum mit Kalenderwoche als Titel, links ein Monatsblatt mit wählbaren Wochen und die Gruppen der Woche; ← → wechseln die Woche, T springt auf heute, Wischen mit zwei Fingern geht auch. Karten tragen die Farbe der Gruppe, die eigene Antwort als Punkt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suchergebnisse neu:&lt;/strong&gt; Oben steht der nächste passende Termin groß mit Uhrzeit, Strecke und direkter Antwort. Termine zeigen Datum und Gruppenfarbe, Mitfahrten wer fährt und die freien Plätze, Nachrichten Person, Unterhaltung und Zeit, GPX-Dateien die Linie mit Länge und Höhenmetern, Bilder ein Vorschaubild. Der Ausschnitt zeigt die Stelle mit dem Suchwort (auch Synonyme) und markiert es. Treffer nur nach Bedeutung tragen „ähnlich“, Arten nur mit solchen Treffern rücken nach hinten. Unter „Alle“ je Art drei, „Alle N“ öffnet die Art. Die API liefert dafür &lt;code&gt;terms&lt;/code&gt;, bei Nachrichten und Neuigkeiten &lt;code&gt;author_id&lt;/code&gt; und &lt;code&gt;at&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kleineres Image:&lt;/strong&gt; Der Paket-Cache von uv bleibt nicht mehr im Image (rund 300 MB weniger); trotz der neuen Bibliotheken für die semantische Suche ist es kleiner als 0.2.3.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Suche springt zum Treffer:&lt;/strong&gt; Ein Tipp auf einen Termin, eine Mitfahrt oder eine Datei öffnet den Termin, auf eine Nachricht die Unterhaltung. Die API liefert dafür Sprungziele und nimmt &lt;code&gt;types&lt;/code&gt; als Filter; &lt;code&gt;limit&lt;/code&gt; gilt je Art.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.2.4</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.2.4</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.2.4"/>
+    <updated>2026-10-23T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;App auf iPhone, iPad und Android:&lt;/strong&gt; Änderungen gingen still verloren, etwa Nachrichten und Antworten im Chat, Zusagen oder neue Termine. Der App fehlte auf Geräten der Zufallsgenerator für die IDs der Änderungen; im Browser trat das nie auf. Scheitert das Senden einer Nachricht künftig auf dem Gerät, bleibt der Text im Eingabefeld.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Versionsanzeige:&lt;/strong&gt; Server und Web-App nennen den Commit in der Kurzform (&lt;code&gt;2133bea&lt;/code&gt; statt 40 Zeichen).&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.2.3</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.2.3</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.2.3"/>
+    <updated>2026-10-23T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kalender „Meine Termine“:&lt;/strong&gt; Umschalter über der Terminliste zwischen allen Terminen und den eigenen (Zusage „Dabei“, „Vielleicht“, Warteliste oder eigene Fahrt bzw. Mitfahrt). Wochenleiste und Wochenansicht folgen der Wahl; sie bleibt auf dem Gerät gespeichert.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kalender:&lt;/strong&gt; Uhrzeiten in der Terminliste brechen nicht mehr um („09:0 / 0“), und in „Dein nächster Start“ rutscht ein langer Titel unter die Uhrzeit, statt mitten im Wort zu brechen (vor allem mit „Gut lesbar“). In der App auf iPhone und Android war die große Uhrzeit oben abgeschnitten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tastatur auf dem iPhone:&lt;/strong&gt; Das Eingabefeld im Chat, „Neuer Chat“ und Formulare (Termin anlegen, Profil, Melden, Mitfahrt, Verein verbinden …) bleiben über der Tastatur; das aktive Feld scrollt ins Bild.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>clubforge 0.2.2</title>
+    <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.2.2</id>
+    <link rel="alternate" type="text/html" href="https://cygnusb.github.io/clubforge-site/versionen/#v0.2.2"/>
+    <updated>2026-10-23T12:00:00Z</updated>
+    <content type="html">&lt;h2&gt;Geändert&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Neues Erscheinungsbild „Startblock“:&lt;/strong&gt; ein Aufbau für alle Vereine mit Kopfzeile aus Logo, Titel, Suche und Glocke, großen Uhrzeiten, flachen Flächen und einer einheitlichen Rundung. Farben, Schrift und hell/dunkel kommen nur aus der Marke des Vereins. Ohne eigene Marke trägt die App die clubforge-Farben (bisher waren die Farben eines Vereins der Standard); Vereine, die ihre Farben nur über den Standard hatten, setzen sie jetzt in der Marke oder über &lt;code&gt;CLUB_*&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Hinzugefügt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Schrift und Farbschema in der Marke:&lt;/strong&gt; Verwaltung › Verein › Marke bietet zwei Schriftpaare (Fjalla One und Lato, Big Shoulders und Barlow Semi Condensed) und das Farbschema „Mitglieder wählen“, „Immer dunkel“ oder „Immer hell“ (Startwerte &lt;code&gt;CLUB_FONT&lt;/code&gt;, &lt;code&gt;CLUB_SCHEME&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Darstellung im Profil:&lt;/strong&gt; „Gut lesbar“ (Atkinson Hyperlegible, größere Schrift, mehr Kontrast) und hell/dunkel, nur auf dem Gerät; legt der Verein das Farbschema fest, steht dort „Vom Verein festgelegt“.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Termin anlegen mit Vorlagen:&lt;/strong&gt; Oben stehen die eigenen früheren Termine als Vorlage (Titel, Ort, Gruppen, Dauer und Einstellungen werden übernommen); Schnellwahl für die Dauer, das Ende bleibt ein Eingabefeld.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Neuer Chat:&lt;/strong&gt; zeigt zuerst die Personen, mit denen man am häufigsten schreibt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Termin teilen:&lt;/strong&gt; Knopf im Kopf des Termins: Link teilen und im Web den einzelnen Termin als Kalenderdatei (.ics) laden.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deutsch und Englisch:&lt;/strong&gt; App, Mails, Glocke, Push und die Webseite. In der App folgt die Sprache dem Gerät, bis man sie im Profil festlegt; läuft die App auf Englisch, kommen auch Mails und Push nach dem ersten Sync auf Englisch. Fehlermeldungen des Servers mit Zahlen oder dem Begriff des Vereins („Höchstens 10 Anhänge“, „Die Gruppe ist archiviert“), Datumsangaben, Dauern, Größen und Strecken folgen ebenfalls der Sprache. Die Webseite folgt der Browsersprache, bis man oben rechts DE oder EN wählt; diese Wahl bleibt auf dem Gerät. Die deutschen Adressen bleiben. Begriffe des Vereins behalten im Englischen ihre Artikel ohne deutsche Fälle. Europäische Standorte von Hetzner bleiben die Empfehlung; Cloud-Server gibt es zusätzlich in Ashburn, Hillsboro und Singapur (ohne den kleinen ARM-Server und ohne Object Storage).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Installer mit Rückfragen:&lt;/strong&gt; &lt;code&gt;sudo bash install.sh&lt;/code&gt; ohne weitere Angaben fragt im Terminal Schritt für Schritt nach Domain, Verein, Marke, erster Admin-Person, Mail und Anhängen. Er prüft die DNS-Einträge sofort (erneut prüfen oder ohne weiter), prüft jede Eingabe wie die Einrichtung selbst, liest Passwörter verdeckt und ändert erst nach einer Zusammenfassung etwas. Am Ende zeigt er denselben Aufruf ohne Rückfragen zum Aufheben. Mit &lt;code&gt;--yes&lt;/code&gt; (cloud-init) und mit Angaben fragt er wie bisher nichts.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Projektseite:&lt;/strong&gt; Einrichtungs-Assistent (&lt;code&gt;einrichten/&lt;/code&gt;), der aus Namen, Marke, Admin-Person, Mail und Anhängen die Befehle zusammenstellt: Aufruf für &lt;code&gt;install.sh&lt;/code&gt;, ausgefüllte cloud-init-Datei für die Hetzner-Konsole oder &lt;code&gt;terraform.tfvars&lt;/code&gt; für OpenTofu; alles im Browser, ohne Passwörter. Dazu eine Installationsanleitung (&lt;code&gt;anleitung/&lt;/code&gt;), Kopieren-Knöpfe an allen Befehlen, ein einheitliches Menü und ein überarbeiteter Vergleich. Die Seite liefert &lt;code&gt;cloud-init.yaml&lt;/code&gt; neben &lt;code&gt;install.sh&lt;/code&gt; aus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Behoben&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Termin bearbeiten:&lt;/strong&gt; Anmeldefrist, Farbe und „Absagen nach der Frist erlauben“ gingen beim Speichern einer Änderung verloren.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anmeldung auf Android:&lt;/strong&gt; Die Rückkehr aus dem Browser öffnet wieder die App. Bisher erschien „Seite nicht gefunden“ und die Anmeldung brach ab.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Termin anlegen:&lt;/strong&gt; Über dem grauen „Anlegen“ steht, was noch fehlt (Titel, Tag, Uhrzeit, Ende oder eine Gruppe). Liegt das Ende nicht nach dem Beginn, geht keine Vorschau mehr an den Server; bisher blieb davon nur ein roter Fehler &lt;code&gt;422&lt;/code&gt; in der Konsole.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>clubforge 0.2.1</title>
     <id>https://cygnusb.github.io/clubforge-site/versionen/#v0.2.1</id>

@@ -66,7 +66,7 @@ sudo bash install.sh \
   --sync sync.mein-verein.example \
   --login login.mein-verein.example \
   --email vorstand@mein-verein.example \
-  --club "Mein Verein" --version 0.2.1 \
+  --club "Mein Verein" --version 0.4.0 \
   --logo https://mein-verein.example/logo-weiss.svg \
   --primary '#117733' --dark '#0a2a14' \
   --admin-first Vera --admin-last Vorstand</pre>
@@ -96,12 +96,13 @@ sudo bash install.sh \
     </div>
     <div class="grid">
       <div class="card"><h3>A server</h3><p>Linux (Debian 12/13 or Ubuntu 24.04), x86_64 or arm64, at least 2 vCPU and 4 GB RAM, 40 GB disk, a fixed IPv4 address.</p></div>
-      <div class="card"><h3>A domain</h3><p>You need to be able to set three records. The names are yours to choose, but they are fixed after install.</p></div>
+      <div class="card"><h3>A domain</h3><p>You need to be able to set three records. The names are yours to choose and can be changed later; everyone then signs in again.</p></div>
       <div class="card"><h3>Open ports</h3><p>22 (SSH), 80, and 443. Port 80 is what Let’s Encrypt uses to check the certificate.</p></div>
       <div class="card"><h3>Mail <span class="opt">optional</span></h3><p>An SMTP account for email notifications. Without it, the app and push still work.</p></div>
       <div class="card"><h3>Storage for copies <span class="opt">optional</span></h3><p>S3-compatible object storage (Hetzner, AWS, Google) for backup copies off the server.</p></div>
       <div class="card"><h3>Storage for attachments <span class="opt">optional</span></h3><p>A separate S3 bucket for photos, files, and GPX tracks, for example Hetzner Object Storage. Without it everything still runs, just without attachments. PDF previews are rendered by an isolated service with no network, on your server.</p></div>
       <div class="card"><h3>Room for maps <span class="opt">optional</span></h3><p>The map tiles for your region sit on the server: Baden-Württemberg about 1&nbsp;GB, all of Germany about 7.4&nbsp;GB. One command downloads them, and updates leave them alone; without them the app shows tracks as a line.</p></div>
+      <div class="card"><h3>Search by meaning <span class="opt">optional</span></h3><p>A small language model on the server (about 130&nbsp;MB, about 550&nbsp;MB of memory while catching up), set up with one command. No text goes to third parties; without it, search finds by words.</p></div>
       <div class="card"><h3>Member list <span class="opt">optional</span></h3><p>An API key for easyVerein, or a CSV file. Without one, you add members by hand.</p></div>
       <div class="card"><h3>A password manager</h3><p>For the backup key and the <code>.env</code>, with access for two people.</p></div>
     </div>
@@ -147,8 +148,8 @@ sudo bash install.sh \
       <div class="card"><h3>Backups</h3><p>Daily, encrypted, kept for 30 days, and optionally also in object storage. One command lets you test a restore.</p></div>
       <div class="card"><h3>Updates</h3><p>System security updates run automatically. New clubforge versions with <code>update.sh</code>: backup, pull the new image, migration, check, way back. If you want, it announces the maintenance in the app beforehand; settings and map tiles stay.</p></div>
       <div class="card"><h3>Monitoring</h3><p><code>check.sh</code> checks DNS, the certificate, every endpoint, and the latest backup. Plus an external check and a backup heartbeat.</p></div>
-      <div class="card"><h3>Privacy</h3><p>A data processing agreement with the host, a server location in the EU when the club needs the GDPR, encrypted backups. Deletion requests and data exports come through the app; the server applies the periods itself. The guide has the checklist. US locations are a choice, not “GDPR by default”.</p></div>
-      <div class="card"><h3>Settings in the club</h3><p>Admins look after features, words, logo and colors, the code of conduct, and info pages in the app’s admin area, without touching the server.</p></div>
+      <div class="card"><h3>Privacy</h3><p>A data processing agreement with the host, a server location in the EU when the club needs the GDPR, encrypted backups. Deletion requests and data exports come through the app; the server applies the periods itself. Admins maintain the details for the privacy page in admin. The guide has the checklist. US locations are a choice, not “GDPR by default”.</p></div>
+      <div class="card"><h3>Settings in the club</h3><p>Admins look after features, words, logo, colors, and fonts, the code of conduct, info pages, and privacy and imprint details in the app’s admin area, without touching the server.</p></div>
     </div>
     <div class="btn-row">
       <a class="btn" href="../anleitung/">Step by step: the installation guide</a>
@@ -167,7 +168,9 @@ sudo bash install.sh \
         <table>
           <thead><tr><th scope="col">Server version</th><th scope="col">Web app</th><th scope="col">Requires at least app</th></tr></thead>
           <tbody>
-            <tr><td>0.2.1</td><td>0.2.1, served by your own server</td><td>0.1.0</td></tr>
+            <tr><td>0.4.0</td><td>0.4.0, served by your own server</td><td>0.1.0</td></tr>
+            <tr><td>0.3.0</td><td>0.3.0, served by your own server</td><td>0.1.0</td></tr>
+            <tr><td>0.2.1 to 0.2.4</td><td>the same version, served by your own server</td><td>0.1.0</td></tr>
             <tr><td>0.2.0</td><td>0.2.0, served by your own server</td><td>0.1.0</td></tr>
             <tr><td>0.1.0, 0.1.1</td><td>the same version, served by your own server</td><td>0.1.0</td></tr>
           </tbody>

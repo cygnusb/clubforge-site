@@ -65,10 +65,10 @@
 <p>Ein frischer Server mit Debian 12/13 oder Ubuntu 24.04 (x86_64 oder arm64), mindestens 2 vCPU, 4 GB Arbeitsspeicher und 40 GB Platte, mit fester IPv4-Adresse und Standort in der EU. Bei Hetzner reicht ein CAX11 oder CX22. Den Vertrag zur Auftragsverarbeitung schließt ihr in der Konsole des Anbieters ab.</p>
 <p>Vorher im Verein entscheiden:</p>
 <ul>
-<li><strong>Die drei Namen.</strong> Sie lassen sich nach der Installation nicht mehr ändern, ohne die Anmeldung neu einzurichten (alle Anmeldungen gingen verloren, die Vereinsdaten nicht).</li>
+<li><strong>Die drei Namen.</strong> Ein Wechsel nach der Installation geht ohne Datenverlust, meldet aber alle Geräte ab, und installierte Apps brauchen eine Weiterleitung vom alten Namen.</li>
 <li><strong>Wer den Server betreut</strong> (SSH-Zugang) und <strong>wer den Backup-Schlüssel hat</strong>: zwei Personen, über einen gemeinsamen Passwortmanager.</li>
 <li><strong>Die Vereinsmarke</strong>: Name, Logo als SVG oder PNG unter einer https-Adresse, zwei bis drei Farben (<code>#rrggbb</code>) und auf Wunsch ein eigener Begriff für Gruppen. Alles lässt sich später in der App ändern.</li>
-<li><strong>Die Version.</strong> Für den Vereinsbetrieb eine feste Version wählen, aktuell <code>0.2.1</code>. Was sich je Version ändert, steht unter <a href="../versionen/">Versionen</a>.</li>
+<li><strong>Die Version.</strong> Für den Vereinsbetrieb eine feste Version wählen, aktuell <code>0.4.0</code>. Was sich je Version ändert, steht unter <a href="../versionen/">Versionen</a>.</li>
 </ul>
 
 <h2 id="dns">2. DNS-Einträge setzen</h2>
@@ -108,11 +108,12 @@ less install.sh          <span class="c"># wer will: lesen, es ist ein Shell-Skr
   --sync sync.mein-verein.example \
   --login login.mein-verein.example \
   --email vorstand@mein-verein.example \
-  --club "Mein Verein" --version 0.2.1 \
+  --club "Mein Verein" --version 0.4.0 \
   --logo https://mein-verein.example/logo-weiss.svg \
   --logo-light https://mein-verein.example/logo-dunkel.svg \
   --primary '#117733' --dark '#0a2a14' --accent '#88ccaa' \
   --admin-first Vera --admin-last Vorstand</pre>
+<p>Ohne weitere Angaben fragt <code>sudo bash install.sh</code> alles Schritt für Schritt im Terminal ab und zeigt am Ende denselben Aufruf ohne Rückfragen zum Aufheben.</p>
 <p>Was der Installer tut, jeweils nur, wenn es noch nicht so ist (ein zweiter Aufruf ist gefahrlos):</p>
 <ol>
 <li>Prüft System, Arbeitsspeicher und DNS.</li>
@@ -137,7 +138,7 @@ less install.sh          <span class="c"># wer will: lesen, es ist ein Shell-Skr
 </ol>
 <pre>export TF_VAR_hcloud_token='…'     <span class="c"># nur im Terminal, nicht in eine Datei schreiben</span></pre>
 <h3>Vorlage holen und ausfüllen</h3>
-<pre>cid=$(docker create docker.io/cygnusbn/clubforge:0.2.1)
+<pre>cid=$(docker create docker.io/cygnusbn/clubforge:0.4.0)
 docker cp "$cid:/opt/clubforge/deploy/cloud" ./clubforge-cloud &amp;&amp; docker rm "$cid"
 cd clubforge-cloud/hetzner
 cp terraform.tfvars.example terraform.tfvars
@@ -150,7 +151,7 @@ admin_email       = "vorstand@mein-verein.example"
 club_name         = "Mein Verein"
 ssh_public_key    = "ssh-ed25519 AAAA… name@rechner"
 ssh_allowed_cidrs = ["203.0.113.7/32"]       <span class="c"># nur eure Adresse darf per SSH</span>
-clubforge_version = "0.2.1"
+clubforge_version = "0.4.0"
 <span class="c"># server_type = "cax11"   location = "fsn1"   dns_zone = "mein-verein.example"</span>
 <span class="c"># age_recipient = "age1…"  (selbst erzeugter Backup-Schlüssel, siehe Schritt 5)</span>
 
@@ -196,7 +197,7 @@ sudo bash install.sh … --age-recipient age1…</pre>
 <ol>
 <li><code>https://app.mein-verein.example</code> öffnen: Name, Farben und Logo des Vereins sind schon da.</li>
 <li>Mit E-Mail-Adresse und Einmalpasswort anmelden; die Anmeldung verlangt sofort ein neues Passwort.</li>
-<li>Die Person ist Vereins-Admin und richtet alles Weitere in der Web-App ein, unter <strong>Profil › Verwaltung</strong>: Gruppen, Funktionen, Begriffe, Marke, Verhaltensregeln, Mitgliederquelle (easyVerein oder CSV).</li>
+<li>Die Person ist Vereins-Admin und richtet alles Weitere in der Web-App ein, unter <strong>Profil › Verwaltung</strong>: Gruppen, Funktionen, Begriffe, Marke, Verhaltensregeln, Datenschutz und Impressum, Mitgliederquelle (easyVerein oder CSV).</li>
 </ol>
 <p>Den Zustand des Servers prüft jederzeit ein Befehl. Erwartet sind <code>OK</code> bei Diensten, DNS, Zertifikat, Endpunkten, Backup und Platte:</p>
 <pre>sudo -u clubforge /opt/clubforge/deploy/check.sh</pre>
@@ -214,7 +215,7 @@ shred -u /dev/shm/age-key.txt</pre>
 <h3>Updates</h3>
 <p>Sicherheitsupdates des Systems laufen von allein; steht <code>/var/run/reboot-required</code> da, in einem ruhigen Moment neu starten. Neue clubforge-Versionen spielt ein Befehl ein: Backup, neues Image, Datenbank aktualisieren, Prüfung. Mit <code>--announce</code> sehen die Mitglieder die Wartung vorher in der App.</p>
 <pre>cd /opt/clubforge/deploy
-sudo -u clubforge ./update.sh --version 0.2.1 --announce 10m</pre>
+sudo -u clubforge ./update.sh --version 0.4.0 --announce 10m</pre>
 <p>Hinweise zu jeder Version stehen unter <a href="../versionen/">Versionen</a>.</p>
 
 <h3>Mail</h3>
@@ -238,6 +239,11 @@ sudo -u clubforge ./check.sh                       <span class="c"># Abschnitt "
 ./maps.sh --region bw --dry-run
 ./maps.sh --region bw</pre>
 
+<h3>Suche nach Bedeutung (optional)</h3>
+<p>Die Suche findet dann auch Umschreibungen, etwa „Hauptversammlung“ die Mitgliederversammlung. Ein kleines Sprachmodell rechnet dafür auf dem eigenen Server, kein Text geht an Dritte. Der Befehl lädt das Modell (rund 130 MB) und schaltet den Dienst ein; beim Nachrechnen des Bestands braucht er rund 550 MB Arbeitsspeicher. Den Fortschritt zeigt <code>check.sh</code>, abschalten lässt sie sich unter Verwaltung › Suche.</p>
+<pre>cd /opt/clubforge/deploy
+./embeddings.sh</pre>
+
 <h3>Überwachung</h3>
 <p>Ein externer Dienst (Uptime Kuma, healthchecks.io o. ä.) ruft alle fünf Minuten <code>https://app.mein-verein.example/api/v1/readyz</code> auf und mailt bei Ausfall an zwei Personen. Mit <code>BACKUP_HEARTBEAT_URL</code> in der <code>.env</code> meldet jedes erfolgreiche Backup sich dort; bleibt die Meldung aus, gibt es Alarm.</p>
 
@@ -256,7 +262,7 @@ sudo -u clubforge ./check.sh                       <span class="c"># Abschnitt "
 </tbody>
 </table>
 </div>
-<p>Weitere Wege führen zum selben Ergebnis: cloud-init (der Server richtet sich beim ersten Start selbst ein, bei jedem Anbieter) und OpenTofu-Vorlagen wie die für Hetzner auch für AWS und Google Cloud. Beide stecken im Image, unter <code>/opt/clubforge/deploy/cloud/</code> und <code>/opt/clubforge/deploy/cloud-init.yaml</code>; auf den eigenen Rechner holt sie <code>docker create docker.io/cygnusbn/clubforge:0.2.1</code> mit <code>docker cp</code>.</p>
+<p>Weitere Wege führen zum selben Ergebnis: cloud-init (der Server richtet sich beim ersten Start selbst ein, bei jedem Anbieter) und OpenTofu-Vorlagen wie die für Hetzner auch für AWS und Google Cloud. Beide stecken im Image, unter <code>/opt/clubforge/deploy/cloud/</code> und <code>/opt/clubforge/deploy/cloud-init.yaml</code>; auf den eigenen Rechner holt sie <code>docker create docker.io/cygnusbn/clubforge:0.4.0</code> mit <code>docker cp</code>.</p>
 <div class="btn-row">
   <span class="btn off" data-repo="/blob/main/docs/betrieb/README.md" data-label="Die ausführliche Betriebsanleitung">Die ausführliche Betriebsanleitung folgt mit dem Quellcode</span>
   <a class="btn ghost" href="../betrieb/">Zurück zu Betrieb</a>

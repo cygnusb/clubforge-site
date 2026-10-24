@@ -50,6 +50,8 @@
     <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 5.5a4 4 0 0 0 4.9 4.9L20 11l-9 9a2.1 2.1 0 0 1-3-3l9-9zM14.5 5.5L17 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-sync" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 4v4h-4M20 12a8 8 0 0 1-14 5.3M4 20v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-dev" viewBox="0 0 24 24"><rect x="2.5" y="5" width="13" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 19h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="16.5" y="8" width="5" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
     <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   </defs>
 </svg>
@@ -79,7 +81,7 @@
         <a class="btn" href="#anfangen">So fangt ihr an</a>
         <a class="btn ghost" href="#tour">Ansehen</a>
       </div>
-      <div class="badges" aria-label="Eckdaten"><span>kostenlos · Open Source</span><span>im Browser auf jedem Gerät</span><span>offline-fähig</span><span>Pilotphase</span></div>
+      <div class="badges" aria-label="Eckdaten"><span>kostenlos · Open Source</span><span>im Browser auf jedem Gerät, installierbar</span><span>offline-fähig</span><span>Pilotphase</span></div>
     </div>
     <div class="phones" aria-label="Beispielansichten der App">
       <div class="phone"><img src="img/app-kalender-hell.webp" width="560" height="1212" alt="Kalender der App mit Terminen, Zusagen und einer Terminvorschau (Beispieldaten)" fetchpriority="high" decoding="async"></div>
@@ -139,7 +141,7 @@
     </div>
     <h3 class="group-title">Im Vereinsleben</h3>
     <div class="grid">
-      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h4>Termine und Serien</h4><p>Einzeltermine und Wiederholungen. Mitglieder sagen mit einem Tipp zu, ab oder „vielleicht“, wo erlaubt auch mit Gast. Ist ein Termin voll, rückt die Warteliste automatisch nach.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h4>Termine und Serien</h4><p>Einzeltermine und Wiederholungen, im Kalender als Liste, Woche oder Monat. Mitglieder sagen mit einem Tipp zu, ab oder „vielleicht“, wo erlaubt auch mit Gast. Ist ein Termin voll, rückt die Warteliste automatisch nach.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-grp"/></svg></div><h4>Gruppen und Abteilungen</h4><p>Trainingsgruppen, Abteilungen oder Orga-Teams: offen, auf Anfrage oder privat. Jede Gruppe hat ihre Termine, Mitglieder, einen Kanal und Themen.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-chat"/></svg></div><h4>Chats</h4><p>Direktnachrichten, Gruppen- und Terminchats mit Erwähnungen. Nachrichten können sich nach einer festgelegten Zeit selbst löschen.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-car"/></svg></div><h4>Mitfahrten</h4><p>Wer zum Termin fährt, bietet freie Plätze an. Andere steigen mit einem Tipp zu, die Fahrt hat ihren eigenen Chat.</p></article>
@@ -148,17 +150,19 @@
     </div>
     <h3 class="group-title">Unterwegs und auf dem Laufenden</h3>
     <div class="grid">
-      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-bell"/></svg></div><h4>Benachrichtigungen</h4><p>Push, E-Mail und Glocke. Jede Person stellt selbst ein, was sie wann bekommt, mit Ruhezeiten, Erinnerungen und einer Mail-Zusammenfassung täglich oder wöchentlich.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-bell"/></svg></div><h4>Benachrichtigungen</h4><p>Push, E-Mail und Glocke. Jede Person stellt selbst ein, was sie wann bekommt, mit Ruhezeiten, Erinnerungen und einer Mail-Zusammenfassung täglich oder wöchentlich. Klappt eine Zusage nicht, etwa weil der Termin voll ist, sagt die App Bescheid.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-off"/></svg></div><h4>Auch ohne Netz</h4><p>Termine und Chats liegen auf dem Gerät und sind sofort da; im Funkloch arbeitet die App weiter. Zusagen und Nachrichten gehen automatisch raus, sobald es wieder Verbindung gibt.</p></article>
-      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-clip"/></svg></div><h4>Fotos, Dateien und Strecken <span class="opt">optional</span></h4><p>Fotos, PDFs und GPX-Strecken an Nachrichten, Terminen und Neuigkeiten; Strecken mit Distanz und Höhenprofil, Fotos ohne Ortsangaben. Braucht einen Online-Speicher für Dateien.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-clip"/></svg></div><h4>Fotos, Dateien und Strecken <span class="opt">optional</span></h4><p>Fotos (auch HEIC vom iPhone), PDFs und GPX-Strecken an Nachrichten, Terminen und Neuigkeiten; Strecken mit Distanz und Höhenprofil, Fotos ohne Ortsangaben. Braucht einen Online-Speicher für Dateien.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-map"/></svg></div><h4>Karten <span class="opt">optional</span></h4><p>Strecken und Treffpunkte auf einer Karte, mit „Route planen“. Die Karte eurer Region liegt auf dem eigenen Server, kein fremder Kartendienst schaut mit.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-search"/></svg></div><h4>Suche</h4><p>Findet Termine, Nachrichten, Neuigkeiten, Mitfahrten und Dateien, nur was die Person sehen darf; Treffer vom Gerät auch ohne Netz. Filter nach Zeitraum, Person und Gruppe, ein Treffer im Chat öffnet die Unterhaltung an der Nachricht. Auf Wunsch sucht sie auch nach Bedeutung, berechnet auf eurem Server.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-dev"/></svg></div><h4>Handy, Tablet, Computer</h4><p>Im Browser auf jedem Gerät, am Tablet zweispaltig. Die Web-App lässt sich installieren (Chrome und Edge, Safari am Mac, auf iPhone und iPad „Zum Home-Bildschirm“) und läuft dann wie eine eigene App, mit Push.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-hand"/></svg></div><h4>Guter Einstieg</h4><p>Beim ersten Login führt eine kurze Einführung durch Gruppen zum Mitmachen, Mitteilungen und Verhaltensregeln. Überspringen geht jederzeit.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-cal"/></svg></div><h4>Kalender abonnieren <span class="opt">optional</span></h4><p>Mitglieder holen ihre Termine in Apple-, Google- oder Outlook-Kalender. Mit Google Workspace landen Vereinstermine auf Wunsch automatisch im Google-Kalender des Vereins.</p></article>
     </div>
     <h3 class="group-title">Für Vorstand und Admins</h3>
     <div class="grid">
-      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-gear"/></svg></div><h4>Verwaltung in der App</h4><p>Funktionen ein- und ausschalten, eigene Begriffe, Logo und Farben, Profilfelder, Infoseiten und Standardwerte für Termine. Jede Änderung steht im Protokoll.</p></article>
-      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-flag"/></svg></div><h4>Moderation und Regeln</h4><p>Mitglieder melden Inhalte, Gruppen- und Vereins-Admins entscheiden: entfernen, verwarnen, Schreibsperre. Verhaltensregeln bestätigt jede Person vor dem ersten Schreiben.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-gear"/></svg></div><h4>Verwaltung in der App</h4><p>Funktionen ein- und ausschalten, eigene Begriffe, Logo, Farben und Schrift, Profilfelder, Infoseiten, Angaben für Datenschutz und Impressum und Standardwerte für Termine. Jede Änderung steht im Protokoll.</p></article>
+      <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-flag"/></svg></div><h4>Moderation und Regeln</h4><p>Mitglieder melden Inhalte, Gruppen- und Vereins-Admins entscheiden: entfernen, verwarnen, Schreibsperre. Verhaltensregeln bestätigt jede Person vor dem ersten Schreiben. Bei gemeldeten Nachrichten sehen Prüfende auch frühere Fassungen.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-tool"/></svg></div><h4>Hinweise und Wartung</h4><p>Hinweise an alle, mit Ablaufdatum. Eine Wartung erscheint vorher auf allen Geräten; währenddessen arbeitet die App ohne Netz weiter.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-sync"/></svg></div><h4>Mitgliederliste übernehmen <span class="opt">optional</span></h4><p>Die Mitglieder kommen aus easyVerein oder einer CSV-Datei, mit Probelauf und Schutz vor versehentlichem Massen-Austritt. Neue Mitglieder bekommen ihren Zugang per Mail.</p></article>
       <article class="card"><div class="ico" aria-hidden="true"><svg width="20" height="20"><use href="#i-lock"/></svg></div><h4>Datenschutz eingebaut</h4><p>Profilangaben gibt jede Person selbst frei. Löschanfrage und Datenexport gehen in der App, nach dem Austritt wird anonymisiert. Keine Werbung, keine Tracker.</p></article>
@@ -180,7 +184,7 @@
     </div>
     <figure>
       <div class="shot"><img src="img/web-termin-hell.webp" width="1600" height="1000" alt="Termin in der Web-Ansicht am Rechner mit Seitenleiste, Antwort und Mitfahrten" loading="lazy" decoding="async"></div>
-      <figcaption>Am Rechner mit Seitenleiste, am Handy mit Tab-Leiste. Hell und dunkel folgen dem Gerät.</figcaption>
+      <figcaption>Am Rechner mit Seitenleiste, am Tablet zweispaltig, am Handy mit Tab-Leiste. Hell oder dunkel folgt dem Gerät, der Vorgabe des Vereins oder der eigenen Wahl.</figcaption>
     </figure>
   </div>
 </section>
@@ -281,9 +285,10 @@
     </div>
     <ol class="roadmap">
       <li class="done"><small>Fertig in 0.1</small><strong>Kern</strong><span>Termine, Zusagen, Warteliste, Gruppen, Chats, Benachrichtigungen, Arbeiten ohne Netz; eine App für mehrere Vereine mit Einladungslinks.</span></li>
-      <li class="done"><small>Fertig in 0.2</small><strong>Vereinsalltag</strong><span>Mitfahrten, Umfragen, Neuigkeiten, Gäste, Anhänge und Karten, Moderation, Verwaltung, Mitgliederliste, Datenschutz, Anbindungen.</span></li>
-      <li class="now"><small>In Arbeit</small><strong>Apps in den Stores</strong><span>Apps für iPhone und Android aus demselben Code; Tests auf echten Geräten stehen noch aus. Bis dahin läuft clubforge im Browser, am Handy wie am Rechner.</span></li>
-      <li><small>Geplant</small><strong>Danach</strong><span>Englische Oberfläche (heute nur Deutsch) und Verbesserungen aus dem Pilot.</span></li>
+      <li class="done"><small>Fertig in 0.2</small><strong>Vereinsalltag</strong><span>Mitfahrten, Umfragen, Neuigkeiten, Gäste, Anhänge und Karten, Moderation, Verwaltung, Mitgliederliste, Datenschutz, Anbindungen; App, Mails und Push auf Deutsch und Englisch.</span></li>
+      <li class="done"><small>Fertig in 0.3 und 0.4</small><strong>Suche und Geräte</strong><span>Suche mit Filtern und nach Bedeutung, Monatsansicht im Kalender, Tablet-Ansicht, installierbare Web-App für Handy und Computer.</span></li>
+      <li class="now"><small>In Arbeit</small><strong>Apps in den Stores</strong><span>Apps für iPhone, iPad und Android aus demselben Code, ab iOS/iPadOS 16.4 und Android 10; Store-Builds und Tests auf echten Geräten stehen noch aus. Bis dahin läuft clubforge im Browser oder als installierte Web-App, am Handy wie am Rechner.</span></li>
+      <li><small>Geplant</small><strong>Danach</strong><span>Verbesserungen aus dem Pilot.</span></li>
     </ol>
     <div class="btn-row">
       <a class="btn ghost" href="versionen/">Was ist neu: alle Versionen</a>
