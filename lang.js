@@ -51,6 +51,18 @@
   document.addEventListener("mousedown", remember, true);
   document.addEventListener("click", remember, true);
 
+  // Seiten ohne Index (Einladung /join/?host=…) tragen ihren Zustand in der Adresse: der Sprachumschalter nimmt ihn mit
+  var noindex = !!document.querySelector('meta[name="robots"][content="noindex"]');
+  if (noindex && (location.search || location.hash)) {
+    document.addEventListener("DOMContentLoaded", function () {
+      var links = document.querySelectorAll(".lang a[hreflang]");
+      for (var i = 0; i < links.length; i++) {
+        var u = new URL(links[i].getAttribute("href"), location.href);
+        links[i].setAttribute("href", u.pathname + location.search + location.hash);
+      }
+    });
+  }
+
   var origin = null;
   try {
     origin = sessionStorage.getItem(FROM);
@@ -67,10 +79,10 @@
   if (!want || want === here) return;
 
   var target = null;
-  if (document.querySelector('meta[name="robots"][content="noindex"]')) {
+  if (noindex) {
     var link = document.querySelector('link[rel="alternate"][hreflang="' + want + '"]');
     if (!link) return;
-    target = new URL(link.getAttribute("href"), location.href).pathname;
+    target = new URL(link.getAttribute("href"), location.href).pathname + location.search + location.hash;
   } else {
     var src = document.currentScript && document.currentScript.src;
     if (!src) return;

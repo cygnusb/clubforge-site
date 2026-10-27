@@ -72,6 +72,27 @@ done
 log() { printf '\n==> %s\n' "$*"; }
 warn() { printf 'WARNUNG: %s\n' "$*" >&2; }
 die() { printf 'FEHLER: %s\n' "$*" >&2; exit 1; }
+# image_verify <Image:Tag> <Version>: Signatur des Release-Workflows prüfen (cosign keyless, Sigstore), wenn cosign
+# installiert ist. Ab 0.5.3 ist jedes veröffentlichte Image signiert: Fehlt die Signatur, ist das ein Fehler (sonst
+# genügte es, sie in der Registry zu löschen). Ältere Versionen sind unsigniert, dort nur ein Hinweis. Eigene Images
+# (anderer CLUBFORGE_IMAGE) prüft das Skript nicht.
+image_verify() {
+	local ref="$1" ver="$2" first=0.5.3
+	case "$ref" in docker.io/cygnusbn/clubforge:* | cygnusbn/clubforge:* | ghcr.io/cygnusb/clubforge:*) ;; *) return 0 ;; esac
+	if ! command -v cosign >/dev/null 2>&1; then
+		warn "cosign ist nicht installiert: Signatur von $ref ungeprüft (Installation: https://docs.sigstore.dev/cosign/system_config/installation/)"
+		return 0
+	fi
+	if cosign verify --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+		--certificate-identity-regexp '^https://github[.]com/cygnusb/clubforge/[.]github/workflows/release[.]yml@refs/tags/v' \
+		"$ref" >/dev/null 2>&1; then
+		log "Signatur von $ref geprüft"
+	elif [ "$(printf '%s\n%s\n' "$first" "$ver" | sort -V | head -n 1)" = "$first" ]; then
+		die "Signatur von $ref fehlt oder ist ungültig – Image nicht verwenden"
+	else
+		warn "$ref (Version $ver) stammt aus der Zeit vor den Signaturen; ungeprüft"
+	fi
+}
 # run <Befehl…>: führt aus bzw. zeigt im Trockenlauf nur an
 run() {
 	if [ "$dry" = 1 ]; then printf '  + %s\n' "$*"; else "$@"; fi
@@ -406,6 +427,7 @@ else
 			warn "Das Image $image:$version meldet die Version $found"
 		fi
 		echo "Version: $version"
+		image_verify "$image:$version" "$version"
 		tmp="$(mktemp -d)"
 		cid="$(docker create --pull=never "$image:$version")"
 		docker cp "$cid:/opt/clubforge/deploy/." "$tmp" >/dev/null

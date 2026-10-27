@@ -152,7 +152,12 @@
 
   // Shell: Wert in einfachen Anführungszeichen, wo nötig (wie quote in install.sh)
   function q(v) { return /^[A-Za-z0-9._@:\/+=-]+$/.test(v) ? v : "'" + v.replace(/'/g, "'\\''") + "'"; }
-  function hcl(v) { return '"' + v + '"'; }
+  // HCL: \ und " maskieren, ${ und %{ als $${ und %%{ (sonst Interpolation bzw. Template-Anweisung in terraform)
+  function hcl(v) {
+    var s = String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r/g, '\\r').replace(/\n/g, '\\n')
+      .replace(/\$\{/g, function () { return '$${'; }).replace(/%\{/g, '%%{');
+    return '"' + s + '"';
+  }
 
   // Gemeinsame Angaben als Liste [Option, Wert] in der Reihenfolge von install.sh
   function options() {
